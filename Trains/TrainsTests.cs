@@ -14,7 +14,8 @@ namespace Trains
         }
         decimal CalculateFlightDistance( decimal totalDistance, decimal trainVelocity)
         {
-            return 2 * 25 * 3 * 100 / 2 / 25 / 4; 
+            decimal flightTime = 3 * totalDistance / trainVelocity / 4 / 2;
+            return flightTime * 2 * trainVelocity; 
         }
 
     }
