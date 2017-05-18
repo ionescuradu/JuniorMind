@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProffesionalAthlete", "Prof
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parquet", "Parquet\Parquet.csproj", "{F8ADA36B-910F-4049-874D-7F03EEE8DB8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archaeological site", "Archaeological site\Archaeological site.csproj", "{17DD24A0-4852-4D5D-B713-471F4E48DAAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F8ADA36B-910F-4049-874D-7F03EEE8DB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8ADA36B-910F-4049-874D-7F03EEE8DB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8ADA36B-910F-4049-874D-7F03EEE8DB8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
