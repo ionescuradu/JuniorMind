@@ -15,7 +15,9 @@ namespace PavementForMarket
 
         decimal totalNumberOfCubicalStone( decimal marketDimensionOne, decimal marketDimensionTwo, decimal pavementDimension)
         {
-            return Math.Ceiling( marketDimensionOne / pavementDimension ) * Math.Ceiling( marketDimensionTwo / pavementDimension);
+            decimal horizontalStones = Math.Ceiling(marketDimensionOne / pavementDimension);
+            decimal verticalStones = Math.Ceiling(marketDimensionTwo / pavementDimension);
+            return horizontalStones * verticalStones;
         }
     }
 }
