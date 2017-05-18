@@ -13,6 +13,13 @@ namespace Parquet
             Assert.AreEqual(20, totalParquet);
         }
 
+        [TestMethod]
+        public void RoomTwelveBySix()
+        {
+            decimal totalParquet = parquet(12, 6, 1, 4);
+            Assert.AreEqual(21, totalParquet);
+        }
+
         decimal parquet(decimal roomDimensionOne, decimal roomDimensionTwo, decimal parquetDimensionOne, decimal parquetDimensionTwo)
         {
             decimal roomArea = roomDimensionOne * roomDimensionTwo;
