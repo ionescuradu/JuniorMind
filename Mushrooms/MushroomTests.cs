@@ -9,11 +9,18 @@ namespace Mushrooms
         [TestMethod]
         public void FirstTest()
         {
-            decimal whiteMushroomNumber = calculateMushroomsNumber(30, 5);
+            decimal whiteMushroomNumber = calculateRedMushroomsNumber(30, 5);
             Assert.AreEqual(25, whiteMushroomNumber);
         }
 
-        decimal calculateMushroomsNumber (int totalMushroomsNumer, decimal differenceWhiteRedMushrooms)
+        [TestMethod]
+        public void SecondTest()
+        {
+            decimal whiteMushroomNumber = calculateRedMushroomsNumber(20, 3);
+            Assert.AreEqual(15, whiteMushroomNumber);
+        }
+
+        decimal calculateRedMushroomsNumber (int totalMushroomsNumer, decimal differenceWhiteRedMushrooms)
         {
             return totalMushroomsNumer * differenceWhiteRedMushrooms /(differenceWhiteRedMushrooms + 1);
         }
