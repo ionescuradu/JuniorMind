@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goats", "Goats\Goats.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mushrooms", "Mushrooms\Mushrooms.csproj", "{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PavementForMarket", "PavementForMarket\PavementForMarket.csproj", "{9008F8A8-5981-48D1-8544-CD66F8A2E88E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9008F8A8-5981-48D1-8544-CD66F8A2E88E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9008F8A8-5981-48D1-8544-CD66F8A2E88E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9008F8A8-5981-48D1-8544-CD66F8A2E88E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9008F8A8-5981-48D1-8544-CD66F8A2E88E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
