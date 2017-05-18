@@ -22,7 +22,8 @@ namespace Mushrooms
 
         decimal calculateRedMushroomsNumber (int totalMushroomsNumer, decimal differenceWhiteRedMushrooms)
         {
-            return totalMushroomsNumer * differenceWhiteRedMushrooms /(differenceWhiteRedMushrooms + 1);
+            decimal numberWhiteMushrooms = totalMushroomsNumer / (differenceWhiteRedMushrooms + 1);
+            return numberWhiteMushrooms * differenceWhiteRedMushrooms ;
         }
             
     }
