@@ -13,6 +13,13 @@ namespace PavementForMarket
             Assert.AreEqual(4, numberOfStone);
         }
 
+        [TestMethod]
+        public void NumberOfPavementForTwelveByNineMarket()
+        {
+            decimal numberOfStone = totalNumberOfCubicalStone(12, 9, 4);
+            Assert.AreEqual(9, numberOfStone);
+        }
+
         decimal totalNumberOfCubicalStone( decimal marketDimensionOne, decimal marketDimensionTwo, decimal pavementDimension)
         {
             decimal horizontalStones = Math.Ceiling(marketDimensionOne / pavementDimension);
