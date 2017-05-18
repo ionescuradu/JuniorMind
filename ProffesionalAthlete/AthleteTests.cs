@@ -14,7 +14,9 @@ namespace ProffesionalAthlete
         }
         int numberOfRepetitions(int numberOfRounds)
         {
-            return ( numberOfRounds * (numberOfRounds + 1) + (numberOfRounds - 1) * numberOfRounds ) / 2 ;
+            int ascendingPart = numberOfRounds * (numberOfRounds + 1) / 2 ;
+            int descendingPart = (numberOfRounds - 1) * numberOfRounds  / 2 ;
+            return ascendingPart + descendingPart;
         }
     }
 }
