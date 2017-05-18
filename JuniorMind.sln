@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trains", "Trains\Trains.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goats", "Goats\Goats.csproj", "{C2B01AB8-725E-44B6-9F7B-3BBF30ACAF8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mushrooms", "Mushrooms\Mushrooms.csproj", "{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C2B01AB8-725E-44B6-9F7B-3BBF30ACAF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B01AB8-725E-44B6-9F7B-3BBF30ACAF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2B01AB8-725E-44B6-9F7B-3BBF30ACAF8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC2EE7D-E78F-437C-BE33-C2381083C5DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
