@@ -15,7 +15,10 @@ namespace Parquet
 
         decimal parquet(decimal roomDimensionOne, decimal roomDimensionTwo, decimal parquetDimensionOne, decimal parquetDimensionTwo)
         {
-            return Math.Ceiling( roomDimensionOne * roomDimensionTwo * 1.15m / parquetDimensionOne / parquetDimensionTwo );
+            decimal roomArea = roomDimensionOne * roomDimensionTwo;
+            decimal parquetArea = parquetDimensionOne * parquetDimensionTwo;
+            decimal loses = 1.15m;
+            return Math.Ceiling( roomArea / parquetArea * loses );
         }
     }
 }
