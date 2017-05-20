@@ -4,11 +4,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Melon
 {
     [TestClass]
-    public class UnitTest1
+    public class MelonSharingTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CalculateDaResponse()
         {
+            Assert.AreEqual("DA", MelonDivision(2));
         }
+
+        string MelonDivision(decimal nrKg)
+        {
+            string response = "DA";
+            return response;
+        }
+
     }
 }
