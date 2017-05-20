@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parquet", "Parquet\Parquet.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archaeological site", "Archaeological site\Archaeological site.csproj", "{17DD24A0-4852-4D5D-B713-471F4E48DAAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melon", "Melon\Melon.csproj", "{6330F7AC-E6CC-4533-B56E-1D6B57A59D90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17DD24A0-4852-4D5D-B713-471F4E48DAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6330F7AC-E6CC-4533-B56E-1D6B57A59D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6330F7AC-E6CC-4533-B56E-1D6B57A59D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6330F7AC-E6CC-4533-B56E-1D6B57A59D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6330F7AC-E6CC-4533-B56E-1D6B57A59D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
