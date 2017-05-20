@@ -12,11 +12,24 @@ namespace Melon
             Assert.AreEqual("DA", MelonDivision(2));
         }
 
+        [TestMethod]
+        public void CalculateNuResponse()
+        {
+            Assert.AreEqual("NU", MelonDivision(3));
+        }
+
         string MelonDivision(decimal nrKg)
         {
-            string response = "DA";
+            string response = "";
+            if (isMelonKgEvenOrOdd(nrKg))
+                response = "DA";
+            else response = "NU";
             return response;
         }
 
+        private bool isMelonKgEvenOrOdd(decimal nrKg)
+        {
+            return (nrKg % 2 == 0);
+        }
     }
 }
