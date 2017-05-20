@@ -20,6 +20,10 @@ namespace Melon
 
         string MelonDivision(decimal nrKg)
         {
+            return response;
+        }
+
+        {
             string response = "";
             if (isMelonKgEvenOrOdd(nrKg))
                 response = "DA";
