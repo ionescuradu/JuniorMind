@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FizzBuzz
 {
     [TestClass]
-    public class UnitTest1
+    public class FizzBuzztests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestForNumberThree()
         {
+            Assert.AreEqual("FIZZ", CalculateNumberDivision(3));
+        }
+
+        string CalculateNumberDivision(decimal givenNumber)
+        {
+            string outcome = "FIZZ";
+            return outcome;
         }
     }
 }
