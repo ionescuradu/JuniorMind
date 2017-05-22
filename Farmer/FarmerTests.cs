@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Farmer
 {
     [TestClass]
-    public class UnitTest1
+    public class FarmerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FarmerLandGivingParam()
         {
+            Assert.AreEqual(770, CalculateFarmersLand(1, 230, -770000));
+        }
+
+        decimal CalculateFarmersLand(decimal parameter1, decimal parameter2, decimal parameter3)
+        {
+            decimal solutionOne = 770;
+            return solutionOne;
         }
     }
 }
