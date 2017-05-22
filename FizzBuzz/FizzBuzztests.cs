@@ -24,6 +24,12 @@ namespace FizzBuzz
             Assert.AreEqual("FizzBuzz", CalculateNumberDivision(15));
         }
 
+        [TestMethod]
+        public void TestForNumberSeven()
+        {
+            Assert.AreEqual("", CalculateNumberDivision(7));
+        }
+
         string CalculateNumberDivision(decimal givenNumber)
         {
             string[] textes = { "FizzBuzz", "Fizz", "Buzz"};
