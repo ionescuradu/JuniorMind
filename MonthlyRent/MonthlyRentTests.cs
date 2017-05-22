@@ -23,7 +23,7 @@ namespace MonthlyRent
         [TestMethod]
         public void MonthlyRateForLongPeriods()
         {
-            Assert.AreEqual(410, CalculateMonthlyRateDelays(100, 31));
+            Assert.AreEqual(460, CalculateMonthlyRateDelays(100, 36));
         }
 
         decimal CalculateMonthlyRateDelays(decimal monthlyRent, int delayedDays)
