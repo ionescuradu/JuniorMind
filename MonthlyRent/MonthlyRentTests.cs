@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MonthlyRent
 {
     [TestClass]
-    public class UnitTest1
+    public class MonthlyRentTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void MonthlyRentForShortPeriod()
         {
+            Assert.AreEqual(102, CalculateMonthlyRateDelays(100, 1));
+        }
+
+        decimal CalculateMonthlyRateDelays(decimal monthlyRent, int delayedDays)
+        {
+            decimal shortPeriodPenalities = monthlyRent * delayedDays * 0.02m;
+            return monthlyRent + shortPeriodPenalities;
         }
     }
 }
