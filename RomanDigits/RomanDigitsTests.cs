@@ -18,40 +18,91 @@ namespace RomanDigits
             Assert.AreEqual("VIII", CalculateRomanNumber(8));
         }
 
-        string CalculateRomanNumber(int givenNumber)
+        [TestMethod]
+        public void TestForTwoDigitsNumber()
         {
-            string convertedNumber = "";
-            switch (givenNumber)
+            Assert.AreEqual("XX", CalculateRomanNumber(20));
+        }
+
+        string CalculateRomanNumber(decimal givenNumber)
+        {
+            return RomanNumberForTwoDigitNumbers(givenNumber);
+
+        }
+
+        private static string RomanNumberForTwoDigitNumbers(decimal givenNumber)
+        {
+            string convertedFirstNumber = "";
+            string convertedSecondNumber = "";
+            decimal firstDigit = givenNumber / 10;
+            decimal secondDigit = givenNumber % 10;
+
+            switch (firstDigit)
             {
                 case 1:
-                    convertedNumber = "I";
+                    convertedFirstNumber = "X";
                     break;
                 case 2:
-                    convertedNumber = "II";
+                    convertedFirstNumber = "XX";
                     break;
                 case 3:
-                    convertedNumber = "III";
+                    convertedFirstNumber = "XXX";
                     break;
                 case 4:
-                    convertedNumber = "IV";
+                    convertedFirstNumber = "XL";
                     break;
                 case 5:
-                    convertedNumber = "V";
+                    convertedFirstNumber = "L";
                     break;
                 case 6:
-                    convertedNumber = "VI";
+                    convertedFirstNumber = "LX";
                     break;
                 case 7:
-                    convertedNumber = "VII";
+                    convertedFirstNumber = "LXX";
                     break;
                 case 8:
-                    convertedNumber = "VIII";
+                    convertedFirstNumber = "LXXX";
                     break;
                 case 9:
-                    convertedNumber = "IX";
+                    convertedFirstNumber = "XC";
+                    break;
+                case 10:
+                    convertedFirstNumber = "C";
                     break;
             }
-            return convertedNumber;
+
+            switch (secondDigit)
+            {
+                case 1:
+                    convertedSecondNumber = "I";
+                    break;
+                case 2:
+                    convertedSecondNumber = "II";
+                    break;
+                case 3:
+                    convertedSecondNumber = "III";
+                    break;
+                case 4:
+                    convertedSecondNumber = "IV";
+                    break;
+                case 5:
+                    convertedSecondNumber = "V";
+                    break;
+                case 6:
+                    convertedSecondNumber = "VI";
+                    break;
+                case 7:
+                    convertedSecondNumber = "VII";
+                    break;
+                case 8:
+                    convertedSecondNumber = "VIII";
+                    break;
+                case 9:
+                    convertedSecondNumber = "IX";
+                    break;
+            }
+            
+            return convertedFirstNumber + convertedSecondNumber;
         }
     }
 }
