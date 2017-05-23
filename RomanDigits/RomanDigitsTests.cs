@@ -30,6 +30,12 @@ namespace RomanDigits
             Assert.AreEqual("XXVII", CalculateRomanNumber(27));
         }
 
+        [TestMethod]
+        public void TestForTwoDigitsNumberThirdTest()
+        {
+            Assert.AreEqual("XCII", CalculateRomanNumber(92));
+        }
+
         string CalculateRomanNumber(int givenNumber)
         {
             return RomanNumberForTwoDigitNumbers(givenNumber);
