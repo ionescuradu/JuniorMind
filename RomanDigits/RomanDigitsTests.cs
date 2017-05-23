@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RomanDigits
 {
     [TestClass]
-    public class UnitTest1
+    public class RomanDigitsTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestForOneDigitNumber()
         {
+            Assert.AreEqual("V", CalculateRomanNumber(5));
+        }
+
+        string CalculateRomanNumber(int givenNumber)
+        {
+            string convertedNumber = "V";
+            return convertedNumber;
         }
     }
 }
