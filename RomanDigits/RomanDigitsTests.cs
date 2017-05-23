@@ -24,16 +24,23 @@ namespace RomanDigits
             Assert.AreEqual("XX", CalculateRomanNumber(20));
         }
 
-        string CalculateRomanNumber(decimal givenNumber)
+        [TestMethod]
+        public void TestForTwoDigitsNumberSecondTest()
+        {
+            Assert.AreEqual("XXVII", CalculateRomanNumber(27));
+        }
+
+        string CalculateRomanNumber(int givenNumber)
         {
             return RomanNumberForTwoDigitNumbers(givenNumber);
 
         }
 
-        private static string RomanNumberForTwoDigitNumbers(decimal givenNumber)
+        private static string RomanNumberForTwoDigitNumbers(int givenNumber)
         {
             string convertedFirstNumber = "";
             string convertedSecondNumber = "";
+            string outcome = "";
             decimal firstDigit = givenNumber / 10;
             decimal secondDigit = givenNumber % 10;
 
@@ -101,8 +108,8 @@ namespace RomanDigits
                     convertedSecondNumber = "IX";
                     break;
             }
-            
-            return convertedFirstNumber + convertedSecondNumber;
+            outcome = convertedFirstNumber + convertedSecondNumber;
+            return outcome;
         }
     }
 }
