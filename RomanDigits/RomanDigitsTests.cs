@@ -44,8 +44,6 @@ namespace RomanDigits
 
         private static string RomanNumberForTwoDigitNumbers(int givenNumber)
         {
-            string convertedFirstNumber = "";
-            string convertedSecondNumber = "";
             string outcome = "";
             int firstDigit = givenNumber / 10;
             int secondDigit = givenNumber % 10;
