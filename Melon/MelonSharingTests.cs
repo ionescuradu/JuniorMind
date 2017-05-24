@@ -20,9 +20,11 @@ namespace Melon
 
         string MelonDivision(decimal nrKg)
         {
+            string response = MelonKgDividedByTwo(nrKg);
             return response;
         }
 
+        private string MelonKgDividedByTwo(decimal nrKg)
         {
             string response = "";
             if (isMelonKgEvenOrOdd(nrKg))

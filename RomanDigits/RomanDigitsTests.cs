@@ -47,74 +47,13 @@ namespace RomanDigits
             string convertedFirstNumber = "";
             string convertedSecondNumber = "";
             string outcome = "";
-            decimal firstDigit = givenNumber / 10;
-            decimal secondDigit = givenNumber % 10;
+            int firstDigit = givenNumber / 10;
+            int secondDigit = givenNumber % 10;
 
-            switch (firstDigit)
-            {
-                case 1:
-                    convertedFirstNumber = "X";
-                    break;
-                case 2:
-                    convertedFirstNumber = "XX";
-                    break;
-                case 3:
-                    convertedFirstNumber = "XXX";
-                    break;
-                case 4:
-                    convertedFirstNumber = "XL";
-                    break;
-                case 5:
-                    convertedFirstNumber = "L";
-                    break;
-                case 6:
-                    convertedFirstNumber = "LX";
-                    break;
-                case 7:
-                    convertedFirstNumber = "LXX";
-                    break;
-                case 8:
-                    convertedFirstNumber = "LXXX";
-                    break;
-                case 9:
-                    convertedFirstNumber = "XC";
-                    break;
-                case 10:
-                    convertedFirstNumber = "C";
-                    break;
-            }
+            string[] firstDigitString = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
+            string[] secondDigitString = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
-            switch (secondDigit)
-            {
-                case 1:
-                    convertedSecondNumber = "I";
-                    break;
-                case 2:
-                    convertedSecondNumber = "II";
-                    break;
-                case 3:
-                    convertedSecondNumber = "III";
-                    break;
-                case 4:
-                    convertedSecondNumber = "IV";
-                    break;
-                case 5:
-                    convertedSecondNumber = "V";
-                    break;
-                case 6:
-                    convertedSecondNumber = "VI";
-                    break;
-                case 7:
-                    convertedSecondNumber = "VII";
-                    break;
-                case 8:
-                    convertedSecondNumber = "VIII";
-                    break;
-                case 9:
-                    convertedSecondNumber = "IX";
-                    break;
-            }
-            outcome = convertedFirstNumber + convertedSecondNumber;
+            outcome = firstDigitString [firstDigit] + secondDigitString [secondDigit];
             return outcome;
         }
     }
