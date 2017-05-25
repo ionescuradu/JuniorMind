@@ -12,9 +12,17 @@ namespace ChessBoard
             Assert.AreEqual(5, CalculateNumberOfSquaresOnChessBoard(2));
         }
 
+        [TestMethod]
+        public void TestForThreeSquareDimensionOfChessBoard()
+        {
+            Assert.AreEqual(14, CalculateNumberOfSquaresOnChessBoard(3));
+        }
+
         int CalculateNumberOfSquaresOnChessBoard(int chessDimension)
         {
-            int numberOfSquares = chessDimension * chessDimension + 1;
+            int numberOfTwoByTwoSquare = Convert.ToInt32( Math.Pow(chessDimension - 1, 2));
+            int numberOfThreeByThreeSquare = Convert.ToInt32(Math.Pow(chessDimension - 2, 2));
+            int numberOfSquares = chessDimension * chessDimension + numberOfTwoByTwoSquare + numberOfThreeByThreeSquare;
             return numberOfSquares;
         }
     }
