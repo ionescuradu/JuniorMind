@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonthlyRent", "MonthlyRent\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanDigits", "RomanDigits\RomanDigits.csproj", "{E4E16E8A-1B51-4B0A-A80C-AB06AB6D832E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessBoard", "ChessBoard\ChessBoard.csproj", "{D98F6609-94F1-4B40-896B-D8C61A8AF018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{E4E16E8A-1B51-4B0A-A80C-AB06AB6D832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4E16E8A-1B51-4B0A-A80C-AB06AB6D832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4E16E8A-1B51-4B0A-A80C-AB06AB6D832E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98F6609-94F1-4B40-896B-D8C61A8AF018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98F6609-94F1-4B40-896B-D8C61A8AF018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98F6609-94F1-4B40-896B-D8C61A8AF018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98F6609-94F1-4B40-896B-D8C61A8AF018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
