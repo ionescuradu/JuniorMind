@@ -7,7 +7,7 @@ namespace ChessBoard
     public class ChessBoardTests
     {
         [TestMethod]
-        public void TestForFourSquareDimensionOfChessBoard()
+        public void TestForTwoSquareDimensionOfChessBoard()
         {
             Assert.AreEqual(5, CalculateNumberOfSquaresOnChessBoard(2));
         }
