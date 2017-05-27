@@ -32,6 +32,13 @@ namespace ChessBoard
 
         }
 
+        [TestMethod]
+        public void TestForEightSquareDimensionOfChessBoard()
+        {
+            Assert.AreEqual(204, CalculateNumberOfSquaresOnChessBoard(8));
+
+        }
+
         int CalculateNumberOfSquaresOnChessBoard(int chessDimension)    
         {
             int numberOfSquares = 0;
