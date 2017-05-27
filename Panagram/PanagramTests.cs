@@ -24,6 +24,12 @@ namespace Panagram
             Assert.AreEqual (true, CalculateIfWordPanagram("The quick brown fox jumps over the lazy dog"));
         }
 
+        [TestMethod]
+        public void FourthSentence()
+        {
+            Assert.AreEqual(false, CalculateIfWordPanagram("The quick brown fox jumps over the lazy do"));
+        }
+
         bool CalculateIfWordPanagram(string inputSentence)
         {
             string allLetters = "abcdefghijklmnopqrstuvwxyz ";
