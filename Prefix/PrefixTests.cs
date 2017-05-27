@@ -7,7 +7,7 @@ namespace Prefix
     public class PrefixTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void OneLetterCommonPrefix()
         {
             Assert.AreEqual("a", CalculateCommonPrefix("aab", "aba"));
         }
