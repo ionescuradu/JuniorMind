@@ -20,7 +20,11 @@ namespace Prefix
 
         string CalculateCommonPrefix (string firstString, string secondString)
         {
-            string commonPrefix = "a";
+            string commonPrefix = "";
+            if (firstString[0] == secondString[0])
+            {
+                commonPrefix = Convert.ToString(firstString[0]);
+            }
             return commonPrefix;
         }
     }
