@@ -23,7 +23,11 @@ namespace Prefix
             string commonPrefix = "";
             if (firstString[0] == secondString[0])
             {
-                commonPrefix = Convert.ToString(firstString[0]);
+                if (firstString[1] == secondString[1])
+                {
+                    commonPrefix = firstString[0].ToString() + firstString[1].ToString();
+                }
+                else commonPrefix = firstString[0].ToString();
             }
             return commonPrefix;
         }
