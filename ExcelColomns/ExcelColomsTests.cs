@@ -36,6 +36,12 @@ namespace ExcelColomns
             Assert.AreEqual("Z", CalculateExcelColomns(26));
         }
 
+        [TestMethod]
+        public void ColomnAYTest()
+        {
+            Assert.AreEqual("AY", CalculateExcelColomns(51));
+        }
+
         string CalculateExcelColomns(int numberOfColomn)
         {
             string colomnIndex;
