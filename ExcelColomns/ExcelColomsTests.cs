@@ -30,12 +30,18 @@ namespace ExcelColomns
             Assert.AreEqual("AA", CalculateExcelColomns(27));
         }
 
+        [TestMethod]
+        public void ColomnZTest()
+        {
+            Assert.AreEqual("Z", CalculateExcelColomns(26));
+        }
+
         string CalculateExcelColomns(int numberOfColomn)
         {
             string colomnIndex;
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             if (numberOfColomn < 27)
-                colomnIndex = alphabetLetters[numberOfColomn % 26 - 1].ToString();
+                colomnIndex = alphabetLetters[numberOfColomn - 1].ToString();
             else colomnIndex = alphabetLetters[numberOfColomn / 26 - 1].ToString() + alphabetLetters[numberOfColomn % 26 - 1].ToString(); 
             return colomnIndex;
         }
