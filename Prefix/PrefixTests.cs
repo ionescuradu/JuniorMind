@@ -14,7 +14,8 @@ namespace Prefix
 
         string CalculateCommonPrefix (string firstString, string secondString)
         {
-            return "a";
+            string commonPrefix = "a";
+            return commonPrefix;
         }
     }
 }
