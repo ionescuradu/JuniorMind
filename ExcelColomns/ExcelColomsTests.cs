@@ -54,6 +54,13 @@ namespace ExcelColomns
             Assert.AreEqual("AAA", CalculateExcelColomns(677));
         }
 
+        [TestMethod]
+        public void ColomnABATest()
+        {
+            Assert.AreEqual("ACB", CalculateExcelColomns(730));
+        }
+
+
         string CalculateExcelColomns(int numberOfColomn)
         {
             string colomnIndex = "";
@@ -65,7 +72,7 @@ namespace ExcelColomns
                 decimal n = numberOfColomn / 26;
                 int remainingLetters = numberOfColomn;
                 int total = 0;
-                while ( n > 25)
+                while ( n >= 26)
                 {
                     total += 1;
                     n = n / 26;
@@ -73,9 +80,12 @@ namespace ExcelColomns
                 }
                 if (total != 0)
                     colomnIndex = alphabetLetters[total - 1].ToString();
-                if (numberOfColomn % 26 == 0)
+                if (remainingLetters % 26 == 0)
                     colomnIndex = alphabetLetters[remainingLetters / 26 - 2].ToString() + alphabetLetters[25].ToString();
-                else colomnIndex = colomnIndex + alphabetLetters[remainingLetters / 26 - 1].ToString() + alphabetLetters[remainingLetters % 26 - 1].ToString();
+                else
+                    if (remainingLetters != numberOfColomn)
+                        colomnIndex = colomnIndex + alphabetLetters[remainingLetters - 27].ToString() + alphabetLetters[numberOfColomn - (numberOfColomn / 26) * 26 -1].ToString();
+                    else colomnIndex = colomnIndex + alphabetLetters[numberOfColomn / 26 - 1].ToString() + alphabetLetters[numberOfColomn % 26 - 1].ToString();
             }
             return colomnIndex;
         }
