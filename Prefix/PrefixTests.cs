@@ -12,6 +12,12 @@ namespace Prefix
             Assert.AreEqual("a", CalculateCommonPrefix("aab", "aba"));
         }
 
+        [TestMethod]
+        public void TwoLettersCommonPrefix()
+        {
+            Assert.AreEqual("aa", CalculateCommonPrefix("aab", "aabc"));
+        }
+
         string CalculateCommonPrefix (string firstString, string secondString)
         {
             string commonPrefix = "a";
