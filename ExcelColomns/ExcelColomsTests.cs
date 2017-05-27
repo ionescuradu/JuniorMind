@@ -18,6 +18,12 @@ namespace ExcelColomns
             Assert.AreEqual("M", CalculateExcelColomns(13));
         }
 
+        [TestMethod]
+        public void ColomnXTest()
+        {
+            Assert.AreEqual("X", CalculateExcelColomns(24));
+        }
+
         string CalculateExcelColomns(int numberOfColomn)
         {
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
