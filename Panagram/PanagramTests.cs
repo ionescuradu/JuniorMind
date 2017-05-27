@@ -38,7 +38,6 @@ namespace Panagram
             }
             if (numberOfFindings >= 26)
                 isPanagram = true;
-            else isPanagram = false;
             return isPanagram;
         }
 
