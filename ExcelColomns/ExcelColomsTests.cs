@@ -42,13 +42,27 @@ namespace ExcelColomns
             Assert.AreEqual("AY", CalculateExcelColomns(51));
         }
 
+        [TestMethod]
+        public void ColomnAZTest()
+        {
+            Assert.AreEqual("BZ", CalculateExcelColomns(78));
+        }
+
+        [TestMethod]
+        public void ColomnAAATest()
+        {
+            Assert.AreEqual("AAA", CalculateExcelColomns(677));
+        }
+
         string CalculateExcelColomns(int numberOfColomn)
         {
             string colomnIndex;
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             if (numberOfColomn < 27)
                 colomnIndex = alphabetLetters[numberOfColomn - 1].ToString();
-            else colomnIndex = alphabetLetters[numberOfColomn / 26 - 1].ToString() + alphabetLetters[numberOfColomn % 26 - 1].ToString(); 
+            else if (numberOfColomn % 26 == 0 )
+                    colomnIndex = alphabetLetters[numberOfColomn / 26 - 2].ToString() + alphabetLetters[25].ToString();
+                 else colomnIndex = alphabetLetters[numberOfColomn / 26 - 1].ToString() + alphabetLetters[numberOfColomn % 26 - 1].ToString(); 
             return colomnIndex;
         }
     }
