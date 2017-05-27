@@ -12,9 +12,16 @@ namespace ExcelColomns
             Assert.AreEqual("A", CalculateExcelColomns(1));
         }
 
+        [TestMethod]
+        public void ColomnMtest()
+        {
+            Assert.AreEqual("M", CalculateExcelColomns(13));
+        }
+
         string CalculateExcelColomns(int numberOfColomn)
         {
-            string colomnIndex = "A";
+            string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string colomnIndex = alphabetLetters[numberOfColomn % 26 - 1].ToString();
             return colomnIndex;
         }
     }
