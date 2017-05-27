@@ -25,6 +25,13 @@ namespace ChessBoard
 
         }
 
+        [TestMethod]
+        public void TestForFiveSquareDimensionOfChessBoard()
+        {
+            Assert.AreEqual(55, CalculateNumberOfSquaresOnChessBoard(5));
+
+        }
+
         int CalculateNumberOfSquaresOnChessBoard(int chessDimension)    
         {
             int numberOfSquares = 0;
