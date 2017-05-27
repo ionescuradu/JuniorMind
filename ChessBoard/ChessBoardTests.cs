@@ -25,12 +25,16 @@ namespace ChessBoard
 
         }
 
-        int CalculateNumberOfSquaresOnChessBoard(int chessDimension)
+        int CalculateNumberOfSquaresOnChessBoard(int chessDimension)    
         {
-            int numberOfTwoByTwoSquare = Convert.ToInt32( Math.Pow(chessDimension - 1, 2));
-            int numberOfThreeByThreeSquare = Convert.ToInt32(Math.Pow(chessDimension - 2, 2));
-            int numberOfFourByFourSquare = Convert.ToInt32(Math.Pow(chessDimension - 3, 2));
-            int numberOfSquares = chessDimension * chessDimension + numberOfTwoByTwoSquare + numberOfThreeByThreeSquare + numberOfFourByFourSquare;
+            int numberOfSquares = 0;
+            for (int i = 1; i <= chessDimension; i++)
+            {
+                //int numberOfTwoByTwoSquare = Convert.ToInt32( Math.Pow(chessDimension - i, 2));
+                //int numberOfThreeByThreeSquare = Convert.ToInt32(Math.Pow(chessDimension - 2, 2));
+                //int numberOfFourByFourSquare = Convert.ToInt32(Math.Pow(chessDimension - 3, 2));
+                numberOfSquares += Convert.ToInt32(Math.Pow(i, 2));
+            }
             return numberOfSquares;
         }
     }
