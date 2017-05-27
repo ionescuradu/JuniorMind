@@ -18,6 +18,12 @@ namespace Panagram
             Assert.AreEqual(true, CalculateIfWordPanagram("The quick brown fox jumps over the lazy dog"));
         }
 
+        [TestMethod]
+        public void ThirdSentence()
+        {
+            Assert.AreEqual (true, CalculateIfWordPanagram("The quick brown fox jumps over the lazy dog"));
+        }
+
         bool CalculateIfWordPanagram(string inputSentence)
         {
             string allLetters = "abcdefghijklmnopqrstuvwxyz ";
@@ -31,12 +37,12 @@ namespace Panagram
                     {
                         isPanagram = true;
                     }
-                    if (isPanagram == true)
-                        numberOfFindings += 1;
-                    isPanagram = false;
                 }
+                if (isPanagram == true)
+                    numberOfFindings += 1;
+                isPanagram = false;
             }
-            if (numberOfFindings >= 26)
+            if (numberOfFindings > 26)
                 isPanagram = true;
             return isPanagram;
         }
