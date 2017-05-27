@@ -15,20 +15,23 @@ namespace Prefix
         [TestMethod]
         public void TwoLettersCommonPrefix()
         {
-            Assert.AreEqual("aa", CalculateCommonPrefix("aab", "aabc"));
+            Assert.AreEqual("aa", CalculateCommonPrefix("aad", "aabc"));
+        }
+
+        [TestMethod]
+        public void ThreeLettersCommonPrefix()
+        {
+            Assert.AreEqual("aaa", CalculateCommonPrefix("aaabc", "aaacb"));
         }
 
         string CalculateCommonPrefix (string firstString, string secondString)
         {
             string commonPrefix = "";
-            if (firstString[0] == secondString[0])
+            for ( int i = 0; i < firstString.Length; i++)
             {
-                if (firstString[1] == secondString[1])
-                {
-                    commonPrefix = firstString[0].ToString() + firstString[1].ToString();
-                }
-                else commonPrefix = firstString[0].ToString();
-            }
+                if (firstString[i] == secondString[i])
+                    commonPrefix += firstString[i].ToString();
+            }              
             return commonPrefix;
         }
     }
