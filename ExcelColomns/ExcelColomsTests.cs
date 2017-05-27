@@ -56,13 +56,27 @@ namespace ExcelColomns
 
         string CalculateExcelColomns(int numberOfColomn)
         {
-            string colomnIndex;
+            string colomnIndex = "";
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             if (numberOfColomn < 27)
                 colomnIndex = alphabetLetters[numberOfColomn - 1].ToString();
-            else if (numberOfColomn % 26 == 0 )
-                    colomnIndex = alphabetLetters[numberOfColomn / 26 - 2].ToString() + alphabetLetters[25].ToString();
-                 else colomnIndex = alphabetLetters[numberOfColomn / 26 - 1].ToString() + alphabetLetters[numberOfColomn % 26 - 1].ToString(); 
+            else
+            {
+                decimal n = numberOfColomn / 26;
+                int remainingLetters = numberOfColomn;
+                int total = 0;
+                while ( n > 25)
+                {
+                    total += 1;
+                    n = n / 26;
+                    remainingLetters = numberOfColomn / 26 + 1;
+                }
+                if (total != 0)
+                    colomnIndex = alphabetLetters[total - 1].ToString();
+                if (numberOfColomn % 26 == 0)
+                    colomnIndex = alphabetLetters[remainingLetters / 26 - 2].ToString() + alphabetLetters[25].ToString();
+                else colomnIndex = colomnIndex + alphabetLetters[remainingLetters / 26 - 1].ToString() + alphabetLetters[remainingLetters % 26 - 1].ToString();
+            }
             return colomnIndex;
         }
     }
