@@ -33,16 +33,13 @@ namespace Panagram
         bool CalculateIfWordPanagram(string inputSentence)
         {
             bool isPanagram = false;
-            int numberOfFindings = 0;
-            for (char i = 'a'; i <= 'a'+25 ; i++)
+            for (char i = 'a'; i <= 'z' ; i++)
             {
-                isPanagram = Contains(inputSentence, isPanagram, i);
-                if (isPanagram == true)
-                    numberOfFindings += 1;
                 isPanagram = false;
+                isPanagram = Contains(inputSentence, isPanagram, i);
+                if (isPanagram != true)
+                    return isPanagram;
             }
-            if (numberOfFindings >= 26)
-                isPanagram = true;
             return isPanagram;
         }
 
