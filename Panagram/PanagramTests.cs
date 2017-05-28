@@ -35,11 +35,11 @@ namespace Panagram
             string allLetters = "abcdefghijklmnopqrstuvwxyz ";
             bool isPanagram = false;
             int numberOfFindings = 0;
-            for (int i = 0; i < allLetters.Length; i++)
+            for (char i = 'a'; i <= 'a'+25 ; i++)
             {
                 for (int j = 0; j < inputSentence.Length; j++)
                 {
-                    if (allLetters[i] == inputSentence[j])
+                    if (i == inputSentence[j])
                     {
                         isPanagram = true;
                     }
@@ -48,7 +48,7 @@ namespace Panagram
                     numberOfFindings += 1;
                 isPanagram = false;
             }
-            if (numberOfFindings > 26)
+            if (numberOfFindings >= 26)
                 isPanagram = true;
             return isPanagram;
         }
