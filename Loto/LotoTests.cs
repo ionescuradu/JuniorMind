@@ -9,7 +9,7 @@ namespace Loto
         [TestMethod]
         public void SixNumbersWinnings()
         {
-            Assert.AreEqual(1 / 13983816, CalculateTheOddsOfWinning(6));
+            Assert.AreEqual(0.0000000715112384201851626194m, CalculateTheOddsOfWinning(6));
         }
 
         [TestMethod]
