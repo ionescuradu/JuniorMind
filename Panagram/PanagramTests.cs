@@ -36,13 +36,7 @@ namespace Panagram
             int numberOfFindings = 0;
             for (char i = 'a'; i <= 'a'+25 ; i++)
             {
-                for (int j = 0; j < inputSentence.Length; j++)
-                {
-                    if (i == inputSentence[j])
-                    {
-                        isPanagram = true;
-                    }
-                }
+                isPanagram = Contains(inputSentence, isPanagram, i);
                 if (isPanagram == true)
                     numberOfFindings += 1;
                 isPanagram = false;
@@ -52,5 +46,17 @@ namespace Panagram
             return isPanagram;
         }
 
+        private static bool Contains(string inputSentence, bool isPanagram, char i)
+        {
+            for (int j = 0; j < inputSentence.Length; j++)
+            {
+                if (i == inputSentence[j])
+                {
+                    isPanagram = true;
+                }
+            }
+
+            return isPanagram;
+        }
     }
 }
