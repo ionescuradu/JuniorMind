@@ -32,7 +32,6 @@ namespace Panagram
 
         bool CalculateIfWordPanagram(string inputSentence)
         {
-            string allLetters = "abcdefghijklmnopqrstuvwxyz ";
             bool isPanagram = false;
             int numberOfFindings = 0;
             for (char i = 'a'; i <= 'a'+25 ; i++)
