@@ -9,13 +9,20 @@ namespace Loto
         [TestMethod]
         public void SixNumbersWinnings()
         {
-            Assert.AreEqual(13983816, CalculateTheOddsOfWinning(6));
+            Assert.AreEqual(1 / 13983816, CalculateTheOddsOfWinning(6));
+        }
+
+        [TestMethod]
+        public void FiveNumbersWinnings()
+        {
+            Assert.AreEqual(43 / 2330636, CalculateTheOddsOfWinning(5));
         }
 
         decimal CalculateTheOddsOfWinning(decimal winningNumbers)
         {
             decimal combination = 13983816;
-            return combination;
+            decimal probability = 1 / combination;
+            return probability;
         }
 
     }
