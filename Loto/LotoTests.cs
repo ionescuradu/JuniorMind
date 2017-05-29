@@ -15,16 +15,16 @@ namespace Loto
         [TestMethod]
         public void FiveNumbersWinnings()
         {
-            Assert.AreEqual(0.0000184498995124077719558094m, CalculateTheOddsOfWinning(5));
+            Assert.AreEqual(0.0000184498995124077719558095m, CalculateTheOddsOfWinning(5));
         }
 
         decimal CalculateTheOddsOfWinning(decimal winningNumbers)
         {
-            decimal combination = CalculaterRemainingFactorialNumbers(49 - winningNumbers) / CalculateFactorialWinningNumbers(winningNumbers) ;
-            decimal probability = 1 / combination;
+            decimal combination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6) ;
+            decimal probability = CalculateFactorialForFirstDenominator(winningNumbers) * CalculateFactorialForSecondDenominator(winningNumbers) / combination;
             return probability;
         }
-
+        
         private decimal CalculateFactorialWinningNumbers(decimal winningNumbers)
         {
             decimal factorialNumber = 1;
@@ -33,6 +33,27 @@ namespace Loto
                 factorialNumber = factorialNumber * i;
             }
             return factorialNumber;
+
+        }
+        
+        private decimal CalculateFactorialForFirstDenominator(decimal winningNumbers)
+        {
+            decimal factorialNumber = 1;
+            for (int i = 6; i > winningNumbers ; i--)
+            {
+                factorialNumber = factorialNumber * i;
+            }
+            return factorialNumber;
+        }
+
+        private decimal CalculateFactorialForSecondDenominator(decimal winningNumbers)
+        {
+            decimal factorialNumber = 1;
+            for (int i = 43; i < (49 - winningNumbers); i++)
+            {
+                factorialNumber = factorialNumber * i;
+            }
+           return factorialNumber;
         }
 
         private static decimal CalculaterRemainingFactorialNumbers(decimal givingNumber)
