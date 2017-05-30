@@ -24,6 +24,12 @@ namespace Anagrams
             Assert.AreEqual(120, CalculateNumberOfAnagrams("CAINE"));
         }
 
+        [TestMethod]
+        public void ThreeLetterWordWithRepeatingLetter()
+        {
+            Assert.AreEqual(3, CalculateNumberOfAnagrams("ANA"));
+        }
+
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
             decimal nrOfAnagrams = numberOfPermutation(givenWord);
