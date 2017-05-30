@@ -24,11 +24,24 @@ namespace Loto
             Assert.AreEqual(0.0009686197244014080276799981m, CalculateTheOddsOfWinning(4));
         }
 
+        [TestMethod]
+        public void FiveNumbersFromForty()
+        {
+            Assert.AreEqual(0.00000042906743052111097571649970222m, CalculateTheOddsOfWinningSpecial(5));
+        }
+
         decimal CalculateTheOddsOfWinning(decimal winningNumbers)
         {
             decimal combination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6) ;
             decimal probability = CalculateFactorialForFirstDenominator(winningNumbers) * CalculateFactorialForSecondDenominator(winningNumbers) / combination / CalculateFactorialWinningNumbers(6 - winningNumbers) / CalculateFactorialWinningNumbers(6 - winningNumbers);
             return probability;
+        }
+
+        decimal CalculateTheOddsOfWinningSpecial(decimal winningNumbers)
+        {
+            decimal newCombination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6);
+            decimal newProbability = CalculateFactorialForFirstDenominator(winningNumbers) / newCombination;
+            return newProbability;
         }
         
         private decimal CalculateFactorialWinningNumbers(decimal winningNumbers)
