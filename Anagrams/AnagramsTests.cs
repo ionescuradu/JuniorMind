@@ -30,6 +30,11 @@ namespace Anagrams
             Assert.AreEqual(3, CalculateNumberOfAnagrams("ANA"));
         }
 
+        [TestMethod]
+        public void FourLetterWordRepeatingLetter()
+        {
+            Assert.AreEqual(12, CalculateNumberOfAnagrams("MERE"));
+        }
 
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
