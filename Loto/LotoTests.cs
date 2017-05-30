@@ -18,10 +18,16 @@ namespace Loto
             Assert.AreEqual(0.0000184498995124077719558095m, CalculateTheOddsOfWinning(5));
         }
 
+        [TestMethod]
+        public void FourNumbersWinnings()
+        {
+            Assert.AreEqual(0.0009686197244014080276799981m, CalculateTheOddsOfWinning(4));
+        }
+
         decimal CalculateTheOddsOfWinning(decimal winningNumbers)
         {
             decimal combination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6) ;
-            decimal probability = CalculateFactorialForFirstDenominator(winningNumbers) * CalculateFactorialForSecondDenominator(winningNumbers) / combination;
+            decimal probability = CalculateFactorialForFirstDenominator(winningNumbers) * CalculateFactorialForSecondDenominator(winningNumbers) / combination / CalculateFactorialWinningNumbers(6 - winningNumbers) / CalculateFactorialWinningNumbers(6 - winningNumbers);
             return probability;
         }
         
@@ -49,7 +55,7 @@ namespace Loto
         private decimal CalculateFactorialForSecondDenominator(decimal winningNumbers)
         {
             decimal factorialNumber = 1;
-            for (int i = 43; i < (49 - winningNumbers); i++)
+            for (int i = 43; i > (43 - 6 + winningNumbers); i--)
             {
                 factorialNumber = factorialNumber * i;
             }
