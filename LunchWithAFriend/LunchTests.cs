@@ -18,6 +18,12 @@ namespace LunchWithAFriend
             Assert.AreEqual(24, CalculateNextMeetingWithFriend(8, 6));
         }
 
+        [TestMethod]
+        public void Cmmmc16And7()
+        {
+            Assert.AreEqual(112, CalculateNextMeetingWithFriend(16, 7));
+        }
+
         int CalculateNextMeetingWithFriend(int myPeriod, int friendPeriod)
         {
             int containsFriendPeriod = Cmmdc(myPeriod, friendPeriod);
