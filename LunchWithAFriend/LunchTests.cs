@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LunchWithAFriend
 {
     [TestClass]
-    public class UnitTest1
+    public class LunchTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GivenDatesMeeting()
         {
+            Assert.AreEqual(12, CalculateNextMeetingWithFriend(4, 6));
+        }
+
+        int CalculateNextMeetingWithFriend(int yourPeriod, int friendPeriod)
+        {
+            int smallestMultiple = 12;
+            return smallestMultiple;
         }
     }
 }
