@@ -45,11 +45,15 @@ namespace Anagrams
         private decimal numberOfRepeatingLetters(string givenWord)
         {
             decimal numberOfRepetition = 1;
+            decimal maxRepetetion = 1; 
             for (int i = 0; i < givenWord.Length; i++)
             {
+                
                 numberOfRepetition = CalculateNumberOfRepeatingLetters(givenWord, numberOfRepetition, i);
+                if (maxRepetetion < numberOfRepetition)
+                    maxRepetetion = numberOfRepetition;
             }
-            return numberOfRepetition;
+            return maxRepetetion;
         }
 
         private static decimal CalculateNumberOfRepeatingLetters(string givenWord, decimal numberOfRepetition, int i)
