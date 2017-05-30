@@ -20,8 +20,24 @@ namespace LunchWithAFriend
 
         int CalculateNextMeetingWithFriend(int myPeriod, int friendPeriod)
         {
-            int smallestMultiple = 12;
+            int containsFriendPeriod = Cmmdc(myPeriod, friendPeriod);
+            int smallestMultiple = myPeriod * friendPeriod / containsFriendPeriod;
             return smallestMultiple;
+        }
+
+        private static int Cmmdc(int myPeriod, int friendPeriod)
+        {
+            int devide = myPeriod % friendPeriod;
+            int containsMyPeriod = myPeriod;
+            int containsFriendPeriod = friendPeriod;
+            while (devide != 0)
+            {
+                containsMyPeriod = containsFriendPeriod;
+                containsFriendPeriod = devide;
+                devide = containsMyPeriod % containsFriendPeriod;
+            }
+
+            return containsFriendPeriod;
         }
     }
 }
