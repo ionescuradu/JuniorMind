@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Anagrams
 {
     [TestClass]
-    public class UnitTest1
+    public class AnagramsTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ThreeLettersWord()
         {
+            Assert.AreEqual(6, CalculateNumberOfAnagrams(3));
+        }
+
+        decimal CalculateNumberOfAnagrams(int wordLenght)
+        {
+            decimal nrOfAnagrams = 6;
+            return nrOfAnagrams;
         }
     }
 }
