@@ -9,31 +9,31 @@ namespace Anagrams
         [TestMethod]
         public void ThreeLettersWord()
         {
-            Assert.AreEqual(6, CalculateNumberOfAnagrams(3));
+            Assert.AreEqual(6, CalculateNumberOfAnagrams("MAR"));
         }
 
         [TestMethod]
         public void FourLetterWord()
         {
-            Assert.AreEqual(24, CalculateNumberOfAnagrams(4));
+            Assert.AreEqual(24, CalculateNumberOfAnagrams("OAIE"));
         }
 
         [TestMethod]
         public void FiveLetterWord()
         {
-            Assert.AreEqual(120, CalculateNumberOfAnagrams(5));
+            Assert.AreEqual(120, CalculateNumberOfAnagrams("CAINE"));
         }
 
-        decimal CalculateNumberOfAnagrams(int wordLenght)
+        decimal CalculateNumberOfAnagrams(string givenWord)
         {
-            decimal nrOfAnagrams = numberOfPermutation(wordLenght);
+            decimal nrOfAnagrams = numberOfPermutation(givenWord);
             return nrOfAnagrams;
         }
 
-        private decimal numberOfPermutation(int wordLenght)
+        private decimal numberOfPermutation(string givenWord)
         {
             decimal result = 1;
-            for (int i = 1; i <= wordLenght; i++)
+            for (int i = 1; i <= givenWord.Length; i++)
             {
                 result = result * i;
             }
