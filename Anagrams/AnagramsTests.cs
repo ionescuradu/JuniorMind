@@ -18,6 +18,12 @@ namespace Anagrams
             Assert.AreEqual(24, CalculateNumberOfAnagrams(4));
         }
 
+        [TestMethod]
+        public void FiveLetterWord()
+        {
+            Assert.AreEqual(120, CalculateNumberOfAnagrams(5));
+        }
+
         decimal CalculateNumberOfAnagrams(int wordLenght)
         {
             decimal nrOfAnagrams = numberOfPermutation(wordLenght);
