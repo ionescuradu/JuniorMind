@@ -27,25 +27,23 @@ namespace Cub888
         double CalculateSpecificCubes (int indexNumber)
         {
             string sufix = "888";
-            double[] arrayNumbers = new double [200];
+            double indicatedNumber = 0;
             int index = 0;
             string concatenateNumber = "";
+            double radical = 1d / 3;
                 for (int i = 1; i < int.MaxValue; i++)
                 {
                     concatenateNumber = Convert.ToString(i) + sufix;
-                    double radical = 1d / 3;
-                    if (Math.Abs(Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical)) - Math.Pow(Convert.ToDouble(concatenateNumber), radical)) < 0.000000000001d)
+                    double numberAtRadical = Math.Pow(Convert.ToDouble(concatenateNumber), radical);
+                if (Math.Abs(Convert.ToInt32(numberAtRadical) - numberAtRadical) < 0.000000000001d)
                     {
                         index += 1;
-                        arrayNumbers[index] = Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical));
+                        indicatedNumber = Convert.ToInt32(numberAtRadical);
                     }
                     if (index == indexNumber)
                         break;
-
-
-
                 }
-            return arrayNumbers[indexNumber];
+            return indicatedNumber;
         }
     }
 }
