@@ -38,11 +38,11 @@ namespace Anagrams
 
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
-            decimal nrOfAnagrams = numberOfPermutation(givenWord) / numberOfRepeatingLetters(givenWord);
+            decimal nrOfAnagrams = numberOfPermutation(givenWord) / NumberOfRepeatingLetters(givenWord);
             return nrOfAnagrams;
         }
 
-        private decimal numberOfRepeatingLetters(string givenWord)
+        private decimal NumberOfRepeatingLetters(string givenWord)
         {
             decimal numberOfRepetition = 1;
             decimal maxRepetetion = 1; 
