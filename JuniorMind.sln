@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anagrams", "Anagrams\Anagra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchWithAFriend", "LunchWithAFriend\LunchWithAFriend.csproj", "{F99C3C40-0C98-4951-BD27-35944E988A96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cub888", "Cub888\Cub888.csproj", "{6928C0BA-4CE3-425C-BE3C-2ABC6A37245C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{F99C3C40-0C98-4951-BD27-35944E988A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99C3C40-0C98-4951-BD27-35944E988A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F99C3C40-0C98-4951-BD27-35944E988A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6928C0BA-4CE3-425C-BE3C-2ABC6A37245C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6928C0BA-4CE3-425C-BE3C-2ABC6A37245C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6928C0BA-4CE3-425C-BE3C-2ABC6A37245C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6928C0BA-4CE3-425C-BE3C-2ABC6A37245C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

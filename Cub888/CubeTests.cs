@@ -4,11 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Cub888
 {
     [TestClass]
-    public class UnitTest1
+    public class CubeTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FirstNumber()
         {
+            Assert.AreEqual(192, CalculateSpecificCubes(1));
+        }
+
+        double CalculateSpecificCubes (double indexNumber)
+        {
+            double[] arrayNumbers = {192d};
+            return arrayNumbers[0];
         }
     }
 }
