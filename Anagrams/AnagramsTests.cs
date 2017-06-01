@@ -38,7 +38,7 @@ namespace Anagrams
 
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
-            decimal nrOfAnagrams = numberOfPermutation(givenWord) / NumberOfRepeatingLetters(givenWord);
+            decimal nrOfAnagrams = NumberOfPermutation(givenWord) / NumberOfRepeatingLetters(givenWord);
             return nrOfAnagrams;
         }
 
@@ -69,7 +69,7 @@ namespace Anagrams
             return numberOfRepetition;
         }
 
-        private decimal numberOfPermutation(string givenWord)
+        private decimal NumberOfPermutation(string givenWord)
         {
             decimal result = 1;
             for (int i = 1; i <= givenWord.Length; i++)
