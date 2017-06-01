@@ -18,25 +18,33 @@ namespace Cub888
             Assert.AreEqual(442, CalculateSpecificCubes(2));
         }
 
+        [TestMethod]
+        public void ThirdNumber()
+        {
+            Assert.AreEqual(692, CalculateSpecificCubes(3));
+        }
+
         double CalculateSpecificCubes (int indexNumber)
         {
             string sufix = "888";
-            double[] arrayNumbers = new double [2000000];
-            int index = 1;
+            double[] arrayNumbers = new double [200];
+            int index = 0;
             string concatenateNumber = "";
-            for (int i = 1; i < double.MaxValue ; i++)
-            {
-                concatenateNumber = Convert.ToString(i) + sufix;
-                double radical = 1d / 3;
-                if (Math.Abs(Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical)) - Math.Pow(Convert.ToDouble(concatenateNumber), radical)) < 0.000000000001d)
+                for (int i = 1; i < int.MaxValue; i++)
                 {
-                    arrayNumbers[index] = Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical));
-                    index += 1;
+                    concatenateNumber = Convert.ToString(i) + sufix;
+                    double radical = 1d / 3;
+                    if (Math.Abs(Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical)) - Math.Pow(Convert.ToDouble(concatenateNumber), radical)) < 0.000000000001d)
+                    {
+                        index += 1;
+                        arrayNumbers[index] = Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical));
+                    }
+                    if (index == indexNumber)
+                        break;
+
+
+
                 }
-                
-                //if (( Math.Pow(Convert.ToDouble(concatenateNumber), radical) == Convert.ToInt32(Math.Pow(Convert.ToDouble(concatenateNumber), radical))))
-                
-            }
             return arrayNumbers[indexNumber];
         }
     }
