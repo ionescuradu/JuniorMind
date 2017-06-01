@@ -44,7 +44,7 @@ namespace Anagrams
 
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
-            decimal nrOfAnagrams = CalculateNumberOfPermutation(givenWord) / CalculateNumberOfRepeatingLetters(givenWord);
+            decimal nrOfAnagrams = CalculateNumberOfPermutationForAGivenNumber(givenWord.Length) / CalculateNumberOfRepeatingLetters(givenWord);
             return nrOfAnagrams;
         }
 
@@ -53,25 +53,22 @@ namespace Anagrams
             decimal maxRepetition = 1;
             for (char i = 'A'; i < 'Z'; i++)
             {
-                decimal numberOfRepetition = 0;
-                for (int j = 0; j < givenWord.Length; j++)
-                {
-                    if (i == givenWord[j])
-                        numberOfRepetition += 1;
-                }
+                decimal numberOfRepetition = CalculateNumberOfLetterRepetition(givenWord, i);
                 maxRepetition = maxRepetition * CalculateNumberOfPermutationForAGivenNumber(numberOfRepetition);
             }
             return maxRepetition;
         }
 
-        private decimal CalculateNumberOfPermutation(string givenWord)
+        private static decimal CalculateNumberOfLetterRepetition(string givenWord, char i)
         {
-            decimal result = 1;
-            for (int i = 1; i <= givenWord.Length; i++)
+            decimal numberOfRepetition = 0;
+            for (int j = 0; j < givenWord.Length; j++)
             {
-                result = result * i;
+                if (i == givenWord[j])
+                    numberOfRepetition += 1;
             }
-            return result;
+
+            return numberOfRepetition;
         }
 
         private decimal CalculateNumberOfPermutationForAGivenNumber(decimal NumberOfRepetion)
