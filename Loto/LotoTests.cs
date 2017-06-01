@@ -27,7 +27,7 @@ namespace Loto
         [TestMethod]
         public void FiveNumbersFromForty()
         {
-           Assert.AreEqual(0.00000042906743052111097571649970222d, CalculateTheOddsOfWinning(40, 5, 5), 0.00000001d);
+           Assert.AreEqual(0.000001519738618436250d, CalculateTheOddsOfWinning(40, 5, 5), 0.00000001d);
         }
 
         double CalculateTheOddsOfWinning(double totalNumbers, double numberOfExtractions ,double winningNumbers)
