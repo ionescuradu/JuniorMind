@@ -50,8 +50,7 @@ namespace Anagrams
             {
                 
                 numberOfRepetition = CalculateNumberOfRepeatingLetters(givenWord, numberOfRepetition, i);
-                if (maxRepetetion < numberOfRepetition)
-                    maxRepetetion = numberOfRepetition;
+                maxRepetetion = maxRepetetion * NumberOfPermutationForAGivenNumber(numberOfRepetition);
             }
             return maxRepetetion;
         }
@@ -59,6 +58,7 @@ namespace Anagrams
         private static decimal CalculateNumberOfRepeatingLetters(string givenWord, decimal numberOfRepetition, int i)
         {
             decimal repetition = 1;
+            numberOfRepetition = 1;
             for (int j = i + 1; j < givenWord.Length; j++)
             {
                 if (givenWord[i] == givenWord[j])
@@ -73,6 +73,16 @@ namespace Anagrams
         {
             decimal result = 1;
             for (int i = 1; i <= givenWord.Length; i++)
+            {
+                result = result * i;
+            }
+            return result;
+        }
+
+        private decimal NumberOfPermutationForAGivenNumber(decimal NumberOfRepetion)
+        {
+            decimal result = 1;
+            for (int i = 1; i <= NumberOfRepetion; i++)
             {
                 result = result * i;
             }
