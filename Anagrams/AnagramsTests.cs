@@ -36,40 +36,35 @@ namespace Anagrams
             Assert.AreEqual(12, CalculateNumberOfAnagrams("MERE"));
         }
 
+        [TestMethod]
+        public void TenLettersMultipleRepeatingLetters()
+        {
+            Assert.AreEqual(12600, CalculateNumberOfAnagrams("AAAABBCDDD"));
+        }
+
         decimal CalculateNumberOfAnagrams(string givenWord)
         {
-            decimal nrOfAnagrams = NumberOfPermutation(givenWord) / NumberOfRepeatingLetters(givenWord);
+            decimal nrOfAnagrams = CalculateNumberOfPermutation(givenWord) / CalculateNumberOfRepeatingLetters(givenWord);
             return nrOfAnagrams;
         }
 
-        private decimal NumberOfRepeatingLetters(string givenWord)
+        private decimal CalculateNumberOfRepeatingLetters(string givenWord)
         {
-            decimal numberOfRepetition = 1;
-            decimal maxRepetetion = 1; 
-            for (int i = 0; i < givenWord.Length; i++)
+            decimal maxRepetition = 1;
+            for (char i = 'A'; i < 'Z'; i++)
             {
-                
-                numberOfRepetition = CalculateNumberOfRepeatingLetters(givenWord, numberOfRepetition, i);
-                maxRepetetion = maxRepetetion * NumberOfPermutationForAGivenNumber(numberOfRepetition);
+                decimal numberOfRepetition = 0;
+                for (int j = 0; j < givenWord.Length; j++)
+                {
+                    if (i == givenWord[j])
+                        numberOfRepetition += 1;
+                }
+                maxRepetition = maxRepetition * CalculateNumberOfPermutationForAGivenNumber(numberOfRepetition);
             }
-            return maxRepetetion;
+            return maxRepetition;
         }
 
-        private static decimal CalculateNumberOfRepeatingLetters(string givenWord, decimal numberOfRepetition, int i)
-        {
-            decimal repetition = 1;
-            numberOfRepetition = 1;
-            for (int j = i + 1; j < givenWord.Length; j++)
-            {
-                if (givenWord[i] == givenWord[j])
-                    repetition += 1;
-            }
-            if (numberOfRepetition < repetition)
-                numberOfRepetition = repetition;
-            return numberOfRepetition;
-        }
-
-        private decimal NumberOfPermutation(string givenWord)
+        private decimal CalculateNumberOfPermutation(string givenWord)
         {
             decimal result = 1;
             for (int i = 1; i <= givenWord.Length; i++)
@@ -79,7 +74,7 @@ namespace Anagrams
             return result;
         }
 
-        private decimal NumberOfPermutationForAGivenNumber(decimal NumberOfRepetion)
+        private decimal CalculateNumberOfPermutationForAGivenNumber(decimal NumberOfRepetion)
         {
             decimal result = 1;
             for (int i = 1; i <= NumberOfRepetion; i++)
