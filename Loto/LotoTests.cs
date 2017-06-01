@@ -9,80 +9,46 @@ namespace Loto
         [TestMethod]
         public void SixNumbersWinnings()
         {
-            Assert.AreEqual(0.0000000715112384201851626194m, CalculateTheOddsOfWinning(6));
+            Assert.AreEqual(0.0000000715112384201851626194d, CalculateTheOddsOfWinning(49, 6, 6), 0.00000001d);
         }
 
         [TestMethod]
         public void FiveNumbersWinnings()
         {
-            Assert.AreEqual(0.0000184498995124077719558095m, CalculateTheOddsOfWinning(5));
+            Assert.AreEqual(0.0000184498995124077719558095d, CalculateTheOddsOfWinning(49, 6, 5), 0.00000001d);
         }
 
         [TestMethod]
         public void FourNumbersWinnings()
         {
-            Assert.AreEqual(0.0009686197244014080276799981m, CalculateTheOddsOfWinning(4));
+            Assert.AreEqual(0.0009686197244014080276799981d, CalculateTheOddsOfWinning(49, 6 ,4), 0.00000001d);
         }
 
         [TestMethod]
         public void FiveNumbersFromForty()
         {
-            Assert.AreEqual(0.00000042906743052111097571649970222m, CalculateTheOddsOfWinningSpecial(5));
+           Assert.AreEqual(0.00000042906743052111097571649970222d, CalculateTheOddsOfWinning(40, 5, 5), 0.00000001d);
         }
 
-        decimal CalculateTheOddsOfWinning(decimal winningNumbers)
+        double CalculateTheOddsOfWinning(double totalNumbers, double numberOfExtractions ,double winningNumbers)
         {
-            decimal combination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6) ;
-            decimal probability = CalculateFactorialForFirstDenominator(winningNumbers) * CalculateFactorialForSecondDenominator(winningNumbers) / combination / CalculateFactorialWinningNumbers(6 - winningNumbers) / CalculateFactorialWinningNumbers(6 - winningNumbers);
+            double combination = CalculateFactorialNumbers(totalNumbers) / CalculateFactorialNumbers(numberOfExtractions) / CalculateFactorialNumbers(totalNumbers - numberOfExtractions);
+            double winningNumberCombination = CalculateFactorialNumbers(numberOfExtractions) / CalculateFactorialNumbers(winningNumbers) / CalculateFactorialNumbers(numberOfExtractions - winningNumbers);
+            double remainingNumberCombination = CalculateFactorialNumbers(totalNumbers - numberOfExtractions) / CalculateFactorialNumbers(numberOfExtractions - winningNumbers) / CalculateFactorialNumbers(totalNumbers - 2 * numberOfExtractions + winningNumbers);
+            double probability = winningNumberCombination * remainingNumberCombination / combination;
             return probability;
         }
 
-        decimal CalculateTheOddsOfWinningSpecial(decimal winningNumbers)
+        private double CalculateFactorialNumbers(double totalNumbers)
         {
-            decimal newCombination = CalculaterRemainingFactorialNumbers(43) / CalculateFactorialWinningNumbers(6);
-            decimal newProbability = CalculateFactorialForFirstDenominator(winningNumbers) / newCombination;
-            return newProbability;
-        }
-        
-        private decimal CalculateFactorialWinningNumbers(decimal winningNumbers)
-        {
-            decimal factorialNumber = 1;
-            for (int i = 1; i <= winningNumbers; i++)
+            double factorialNumber = 1;
+            for (int i = 1; i <= totalNumbers; i++)
             {
                 factorialNumber = factorialNumber * i;
             }
             return factorialNumber;
 
         }
-        
-        private decimal CalculateFactorialForFirstDenominator(decimal winningNumbers)
-        {
-            decimal factorialNumber = 1;
-            for (int i = 6; i > winningNumbers ; i--)
-            {
-                factorialNumber = factorialNumber * i;
-            }
-            return factorialNumber;
-        }
 
-        private decimal CalculateFactorialForSecondDenominator(decimal winningNumbers)
-        {
-            decimal factorialNumber = 1;
-            for (int i = 43; i > (43 - 6 + winningNumbers); i--)
-            {
-                factorialNumber = factorialNumber * i;
-            }
-           return factorialNumber;
-        }
-
-        private static decimal CalculaterRemainingFactorialNumbers(decimal givingNumber)
-        {
-            decimal factorialNumber = 1;
-            for (int i = 49; i > givingNumber; i--)
-            {
-                factorialNumber = factorialNumber * i;
-            }
-            return factorialNumber;
-        }
     }
 }
