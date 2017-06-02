@@ -65,6 +65,22 @@ namespace BinaryNumber
 
         private byte[] CalculateAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
+            if (numberBinaryOne.Length > numberBinaryTwo.Length)
+            {
+                Array.Reverse(numberBinaryTwo);
+                Array.Resize(ref numberBinaryTwo, numberBinaryOne.Length + numberBinaryOne.Length - numberBinaryTwo.Length);
+                for (int i = numberBinaryTwo.Length; i < numberBinaryOne.Length; i++)
+                    numberBinaryTwo[i] = 0;
+                Array.Reverse(numberBinaryTwo);
+            }
+            else
+            {
+                Array.Reverse(numberBinaryOne);
+                Array.Resize(ref numberBinaryOne, numberBinaryTwo.Length + numberBinaryTwo.Length - numberBinaryOne.Length);
+                for (int i = numberBinaryOne.Length; i < numberBinaryTwo.Length; i++)
+                    numberBinaryOne[i] = 0;
+                Array.Reverse(numberBinaryOne);
+            }
             byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
             for (int i = 0; i < numberBinaryOne.Length; i++)
             {
