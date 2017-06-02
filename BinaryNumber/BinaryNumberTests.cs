@@ -60,6 +60,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheOrOperation(21, 7));
         }
 
+        [TestMethod]
+        public void FirstTestXor()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0 }, CalculateTheXorOperation(10, 8));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
@@ -87,6 +93,27 @@ namespace BinaryNumber
             byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
             byte[] numberBinaryOr = CalculateOrOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
             return numberBinaryOr;
+        }
+
+        byte[] CalculateTheXorOperation(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            byte[] numberBinaryXor = CalculateXorOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            return numberBinaryXor;
+        }
+
+        private byte[] CalculateXorOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
+            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
+            byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
+            for (int i = 0; i < numberBinaryOne.Length; i++)
+            {
+                if (numberBinaryOne[i] == 1 ^ numberBinaryTwo[i] == 1)
+                    numberBinaryCombined[i] = 1;
+                else numberBinaryCombined[i] = 0;
+            }
+            return numberBinaryCombined;
         }
 
         private byte[] CalculateOrOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
