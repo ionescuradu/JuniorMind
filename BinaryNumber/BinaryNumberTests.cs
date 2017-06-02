@@ -9,7 +9,7 @@ namespace BinaryNumber
         [TestMethod]
         public void FirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0}, CalculateBinaryNumberFromDecimal(10));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateBinaryNumberFromDecimal(10));
         }
 
         [TestMethod]
@@ -27,13 +27,13 @@ namespace BinaryNumber
         [TestMethod]
         public void FirstTestNOT()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1}, CalculateTheNotOperation(10));
+            CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1 }, CalculateTheNotOperation(10));
         }
 
         [TestMethod]
         public void SecondTestNOT()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0}, CalculateTheNotOperation(49));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0 }, CalculateTheNotOperation(49));
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace BinaryNumber
         [TestMethod]
         public void SecondTestAnd()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1}, CalculateTheAndOperation(21, 7));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1 }, CalculateTheAndOperation(21, 7));
         }
 
         [TestMethod]
@@ -72,7 +72,13 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateTheXorOperation(21, 7));
         }
 
-        byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
+        [TestMethod]
+        public void ShiftingLeftFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0}, CalculateTheShiftingLeft(1, 3));
+        }
+
+        byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
             return numberBinary;
@@ -107,6 +113,13 @@ namespace BinaryNumber
             byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
             byte[] numberBinaryXor = CalculateXorOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
             return numberBinaryXor;
+        }
+
+        byte[] CalculateTheShiftingLeft(int givenNumberOne, int numberOfBit)
+        {
+            givenNumberOne = givenNumberOne * Convert.ToInt32(Math.Pow(2, numberOfBit));
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            return numberBinaryOne;
         }
 
         private byte[] CalculateXorOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
