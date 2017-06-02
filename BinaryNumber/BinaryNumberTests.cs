@@ -90,6 +90,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1 }, CalculateTheShiftingRight(8, 3));
         }
 
+        [TestMethod]
+        public void ShiftingRightSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 0, 0}, CalculateTheShiftingRight(50, 2));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
