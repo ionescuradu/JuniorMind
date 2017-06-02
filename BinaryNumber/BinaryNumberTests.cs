@@ -33,7 +33,7 @@ namespace BinaryNumber
         private byte[] ConvertToBinary(int givenNumber)
         {
             string binary = "";
-            byte[] numberInBinary = { };
+            byte[] numberInBinary = new byte [20];
             do
             {
                 binary = givenNumber % 2 + binary;
