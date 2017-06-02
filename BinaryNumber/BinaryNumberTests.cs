@@ -78,6 +78,13 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0}, CalculateTheShiftingLeft(1, 3));
         }
 
+        [TestMethod]
+        public void ShiftingLeftSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0, 0}, CalculateTheShiftingLeft(5, 2));
+        }
+
+
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
