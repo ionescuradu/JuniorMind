@@ -36,6 +36,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0}, CalculateTheNotOperation(49));
         }
 
+        [TestMethod]
+        public void FirstTestAnd()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateTheAndOperation(10, 8));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
@@ -49,7 +55,25 @@ namespace BinaryNumber
             return numberBinaryNot;
         }
 
+        byte[] CalculateTheAndOperation(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            byte[] numberBinaryAnd = CalculateAndOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            return numberBinaryAnd;
+        }
 
+        private byte[] CalculateAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
+            byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
+            for (int i = 0; i < numberBinaryOne.Length; i++)
+            {
+                if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == 1)
+                    numberBinaryCombined[i] = 1;
+                else numberBinaryCombined[i] = 0;
+            }
+            return numberBinaryCombined;
+        }
 
         private static byte[] CalculateNotOfABinaryNumber(byte[] numberBinary)
         {
