@@ -32,17 +32,16 @@ namespace BinaryNumber
 
         private byte[] ConvertToBinary(int givenNumber)
         {
-            string binary = "";
-            byte[] numberInBinary = new byte [20];
+            byte[] numberInBinary = new byte [100] ;
+            int i = 0;
             do
             {
-                binary = givenNumber % 2 + binary;
+                numberInBinary[i] = Convert.ToByte(givenNumber % 2);
                 givenNumber = givenNumber / 2;
+                i += 1;
             } while (givenNumber != 0);
-            for (int i = 0; i < binary.Length; i++)
-            {
-                numberInBinary[i] = Convert.ToByte(binary[i]);
-            }
+            Array.Resize(ref numberInBinary, i);
+            Array.Reverse(numberInBinary);
             return numberInBinary;
         }
     }
