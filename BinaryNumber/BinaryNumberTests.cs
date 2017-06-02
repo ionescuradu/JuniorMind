@@ -42,6 +42,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateTheAndOperation(10, 8));
         }
 
+        [TestMethod]
+        public void SecondTestAnd()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1}, CalculateTheAndOperation(21, 7));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
@@ -68,7 +74,7 @@ namespace BinaryNumber
             if (numberBinaryOne.Length > numberBinaryTwo.Length)
             {
                 Array.Reverse(numberBinaryTwo);
-                Array.Resize(ref numberBinaryTwo, numberBinaryOne.Length + numberBinaryOne.Length - numberBinaryTwo.Length);
+                Array.Resize(ref numberBinaryTwo,numberBinaryOne.Length);
                 for (int i = numberBinaryTwo.Length; i < numberBinaryOne.Length; i++)
                     numberBinaryTwo[i] = 0;
                 Array.Reverse(numberBinaryTwo);
@@ -76,13 +82,13 @@ namespace BinaryNumber
             else
             {
                 Array.Reverse(numberBinaryOne);
-                Array.Resize(ref numberBinaryOne, numberBinaryTwo.Length + numberBinaryTwo.Length - numberBinaryOne.Length);
+                Array.Resize(ref numberBinaryOne,numberBinaryTwo.Length);
                 for (int i = numberBinaryOne.Length; i < numberBinaryTwo.Length; i++)
                     numberBinaryOne[i] = 0;
                 Array.Reverse(numberBinaryOne);
             }
             byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
-            for (int i = 0; i < numberBinaryOne.Length; i++)
+            for (byte i = 0; i < numberBinaryOne.Length; i++)
             {
                 if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == 1)
                     numberBinaryCombined[i] = 1;
