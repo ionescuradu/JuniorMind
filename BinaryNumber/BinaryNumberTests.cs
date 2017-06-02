@@ -24,10 +24,27 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateBinaryNumberFromDecimal(8));
         }
 
+        [TestMethod]
+        public void FirstTestNOT()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1}, CalculateTheNotOperation(10));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
             return numberBinary;
+        }
+
+        byte[] CalculateTheNotOperation(int givenNumber)
+        {
+            byte[] numberBinary = ConvertToBinary(givenNumber);
+            byte[] numberBinaryNot = new byte[numberBinary.Length];
+            for (byte i = 0; i < numberBinary.Length; i++)
+            {
+                numberBinaryNot[i] = (byte)~numberBinary[i];
+            } 
+            return numberBinaryNot;
         }
 
         private byte[] ConvertToBinary(int givenNumber)
