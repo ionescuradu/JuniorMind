@@ -42,7 +42,9 @@ namespace BinaryNumber
             byte[] numberBinaryNot = new byte[numberBinary.Length];
             for (byte i = 0; i < numberBinary.Length; i++)
             {
-                numberBinaryNot[i] = (byte)~numberBinary[i];
+                if (numberBinary[i] == 0 )
+                    numberBinaryNot[i] = 1 ;
+                else numberBinaryNot[i] = 0;
             } 
             return numberBinaryNot;
         }
