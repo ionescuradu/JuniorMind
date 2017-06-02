@@ -48,6 +48,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1}, CalculateTheAndOperation(21, 7));
         }
 
+        [TestMethod]
+        public void FirstTestOr()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateTheOrOperation(10, 8));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
@@ -69,7 +75,26 @@ namespace BinaryNumber
             return numberBinaryAnd;
         }
 
+        byte[] CalculateTheOrOperation(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            byte[] numberBinaryOr = CalculateOrOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            return numberBinaryOr;
+        }
 
+        private byte[] CalculateOrOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
+            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
+            byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
+            for (int i = 0; i < numberBinaryOne.Length; i++)
+            {
+                if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == 0)
+                    numberBinaryCombined[i] = 0;
+                else numberBinaryCombined[i] = 1;
+            }
+            return numberBinaryCombined;
+        }
 
         private byte[] CalculateAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
