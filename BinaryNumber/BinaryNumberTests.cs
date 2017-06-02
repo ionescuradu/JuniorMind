@@ -30,6 +30,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1}, CalculateTheNotOperation(10));
         }
 
+        [TestMethod]
+        public void SecondTestNOT()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0}, CalculateTheNotOperation(49));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal (int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
@@ -42,6 +48,8 @@ namespace BinaryNumber
             byte[] numberBinaryNot = CalculateNotOfABinaryNumber(numberBinary);
             return numberBinaryNot;
         }
+
+
 
         private static byte[] CalculateNotOfABinaryNumber(byte[] numberBinary)
         {
