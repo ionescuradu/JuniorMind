@@ -84,6 +84,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0, 0}, CalculateTheShiftingLeft(5, 2));
         }
 
+        [TestMethod]
+        public void ShiftingRightFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1 }, CalculateTheShiftingRight(8, 3));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -126,6 +132,18 @@ namespace BinaryNumber
         {
             givenNumberOne = givenNumberOne * Convert.ToInt32(Math.Pow(2, numberOfBit));
             byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            return numberBinaryOne;
+        }
+
+        byte[] CalculateTheShiftingRight(int givenNumberOne, int numberOfBit)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            int lenghtOfBinaryNumber = numberBinaryOne.Length;
+            givenNumberOne = givenNumberOne / Convert.ToInt32(Math.Pow(2, numberOfBit));
+            numberBinaryOne = ConvertToBinary(givenNumberOne);
+            Array.Reverse(numberBinaryOne);
+            Array.Resize(ref numberBinaryOne, lenghtOfBinaryNumber);
+            Array.Reverse(numberBinaryOne);
             return numberBinaryOne;
         }
 
