@@ -39,13 +39,20 @@ namespace BinaryNumber
         byte[] CalculateTheNotOperation(int givenNumber)
         {
             byte[] numberBinary = ConvertToBinary(givenNumber);
+            byte[] numberBinaryNot = CalculateNotOfABinaryNumber(numberBinary);
+            return numberBinaryNot;
+        }
+
+        private static byte[] CalculateNotOfABinaryNumber(byte[] numberBinary)
+        {
             byte[] numberBinaryNot = new byte[numberBinary.Length];
             for (byte i = 0; i < numberBinary.Length; i++)
             {
-                if (numberBinary[i] == 0 )
-                    numberBinaryNot[i] = 1 ;
+                if (numberBinary[i] == 0)
+                    numberBinaryNot[i] = 1;
                 else numberBinaryNot[i] = 0;
-            } 
+            }
+
             return numberBinaryNot;
         }
 
