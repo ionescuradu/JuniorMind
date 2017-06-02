@@ -69,24 +69,11 @@ namespace BinaryNumber
             return numberBinaryAnd;
         }
 
+
+
         private byte[] CalculateAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
-            if (numberBinaryOne.Length > numberBinaryTwo.Length)
-            {
-                Array.Reverse(numberBinaryTwo);
-                Array.Resize(ref numberBinaryTwo,numberBinaryOne.Length);
-                for (int i = numberBinaryTwo.Length; i < numberBinaryOne.Length; i++)
-                    numberBinaryTwo[i] = 0;
-                Array.Reverse(numberBinaryTwo);
-            }
-            else
-            {
-                Array.Reverse(numberBinaryOne);
-                Array.Resize(ref numberBinaryOne,numberBinaryTwo.Length);
-                for (int i = numberBinaryOne.Length; i < numberBinaryTwo.Length; i++)
-                    numberBinaryOne[i] = 0;
-                Array.Reverse(numberBinaryOne);
-            }
+            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
             byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
             for (byte i = 0; i < numberBinaryOne.Length; i++)
             {
@@ -95,6 +82,26 @@ namespace BinaryNumber
                 else numberBinaryCombined[i] = 0;
             }
             return numberBinaryCombined;
+        }
+
+        private static void MakingTheTwoBinaryNumbersTheSameLenght(ref byte[] numberBinaryOne, ref byte[] numberBinaryTwo)
+        {
+            if (numberBinaryOne.Length > numberBinaryTwo.Length)
+            {
+                Array.Reverse(numberBinaryTwo);
+                Array.Resize(ref numberBinaryTwo, numberBinaryOne.Length);
+                for (int i = numberBinaryTwo.Length; i < numberBinaryOne.Length; i++)
+                    numberBinaryTwo[i] = 0;
+                Array.Reverse(numberBinaryTwo);
+            }
+            else
+            {
+                Array.Reverse(numberBinaryOne);
+                Array.Resize(ref numberBinaryOne, numberBinaryTwo.Length);
+                for (int i = numberBinaryOne.Length; i < numberBinaryTwo.Length; i++)
+                    numberBinaryOne[i] = 0;
+                Array.Reverse(numberBinaryOne);
+            }
         }
 
         private static byte[] CalculateNotOfABinaryNumber(byte[] numberBinary)
