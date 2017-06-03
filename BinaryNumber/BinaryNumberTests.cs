@@ -126,6 +126,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 1, 1, 0}, CalculateSubstractionOfTwoNumbers(10, 4));
         }
 
+        [TestMethod]
+        public void SubtractionOfNumbersSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1, 1, 1, 0, 1 }, CalculateSubstractionOfTwoNumbers(142, 113));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
