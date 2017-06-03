@@ -102,6 +102,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 0, 0 }, CalculateLessThenNumber(49, 8));
         }
 
+        [TestMethod]
+        public void LessThenSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0, 1 }, CalculateLessThenNumber(49, 37));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
