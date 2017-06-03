@@ -114,6 +114,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 1, 1, 0}, CalculateSumOfTwoNumbers(10, 4));
         }
 
+        [TestMethod]
+        public void SumOfTwoNumbersSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateSumOfTwoNumbers(10, 8));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -194,10 +200,17 @@ namespace BinaryNumber
         {
             byte[] sumOfNumbers = new byte[numberBinaryOne.Length];
             byte surplus = 0;
-            for (int i = numberBinaryOne.Length - 1; i >= 0; i--)
+            for (int i = numberBinaryOne.Length -1; i >=0; i--)
             {
                 sumOfNumbers[i] = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i] + surplus) % 2);
                 surplus = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i]) / 2);
+            }
+            if (numberBinaryOne[0] + numberBinaryTwo[0] > 1)
+            {
+                Array.Reverse(sumOfNumbers);
+                Array.Resize(ref sumOfNumbers, numberBinaryOne.Length + 1);
+                Array.Reverse(sumOfNumbers);
+                sumOfNumbers[0] = 1;
             }
             return sumOfNumbers;
         }
