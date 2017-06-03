@@ -170,6 +170,12 @@ namespace BinaryNumber
             byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
             byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
             MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
+            byte[] smallestNumber = CalculateLessThan(numberBinaryOne, numberBinaryTwo);
+            return smallestNumber;
+        }
+
+        private static byte[] CalculateLessThan(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
             byte[] smallestNumber = numberBinaryOne;
             for (int i = 0; i < numberBinaryOne.Length; i++)
             {
@@ -180,6 +186,7 @@ namespace BinaryNumber
                 }
                 else smallestNumber = numberBinaryOne;
             }
+
             return smallestNumber;
         }
 
