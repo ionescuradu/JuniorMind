@@ -108,6 +108,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0, 1 }, CalculateLessThenNumber(49, 37));
         }
 
+        [TestMethod]
+        public void SumOfTwoNumbersFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 1, 0}, CalculateSumOfTwoNumbers(10, 4));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -172,6 +178,28 @@ namespace BinaryNumber
             MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
             byte[] smallestNumber = CalculateLessThan(numberBinaryOne, numberBinaryTwo);
             return smallestNumber;
+        }
+
+        byte[] CalculateSumOfTwoNumbers(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
+            byte[] sumOfTwoNumbers = new byte[numberBinaryOne.Length];
+            sumOfTwoNumbers = AddingTwoBinaryNumbers(numberBinaryOne, numberBinaryTwo);
+            return sumOfTwoNumbers;
+        }
+
+        private byte[] AddingTwoBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
+            byte[] sumOfNumbers = new byte[numberBinaryOne.Length];
+            byte surplus = 0;
+            for (int i = numberBinaryOne.Length - 1; i >= 0; i--)
+            {
+                sumOfNumbers[i] = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i] + surplus) % 2);
+                surplus = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i]) / 2);
+            }
+            return sumOfNumbers;
         }
 
         private static byte[] CalculateLessThan(byte[] numberBinaryOne, byte[] numberBinaryTwo)
