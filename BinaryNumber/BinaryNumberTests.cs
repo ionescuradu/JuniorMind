@@ -96,6 +96,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 0, 0}, CalculateTheShiftingRight(50, 2));
         }
 
+        [TestMethod]
+        public void LessThenFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 0, 0 }, CalculateLessThenNumber(49, 8));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -151,6 +157,24 @@ namespace BinaryNumber
             Array.Resize(ref numberBinaryOne, lenghtOfBinaryNumber);
             Array.Reverse(numberBinaryOne);
             return numberBinaryOne;
+        }
+
+        byte[] CalculateLessThenNumber(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
+            byte[] smallestNumber = numberBinaryOne;
+            for (int i = 0; i < numberBinaryOne.Length; i++)
+            {
+                if (numberBinaryOne[i] > numberBinaryTwo[i])
+                {
+                    smallestNumber = numberBinaryTwo;
+                    break;
+                }
+                else smallestNumber = numberBinaryOne;
+            }
+            return smallestNumber;
         }
 
         private byte[] CalculateXorOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
