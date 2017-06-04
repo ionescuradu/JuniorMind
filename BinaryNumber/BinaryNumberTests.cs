@@ -132,6 +132,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1, 1, 1, 0, 1 }, CalculateSubstractionOfTwoNumbers(142, 113));
         }
 
+        [TestMethod]
+        public void MultiplicationOfNumberFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 1, 1, 1, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(27, 10));
+        }
+
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -218,6 +224,53 @@ namespace BinaryNumber
             return substractionOfTwoNumbers;
         }
 
+        byte[] CalculateTheMultiplicationOfTwoBinaryNumbers(int givenNumberOne, int givenNumberTwo)
+        {
+            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            byte[] resultOfMultiplication = new byte[numberBinaryOne.Length + numberBinaryTwo.Length];
+            for (int i = numberBinaryTwo.Length - 1; i >= 0; i--)
+            {
+                byte[] bufferNumber = new byte[numberBinaryOne.Length];
+                for (int j = 0; j < numberBinaryOne.Length; j++)
+                {
+                    bufferNumber[j] = Convert.ToByte(numberBinaryOne[j] * numberBinaryTwo[i]);
+                }
+                if (i != numberBinaryTwo.Length - 1)
+                {
+                    Array.Resize(ref bufferNumber, bufferNumber.Length + numberBinaryTwo.Length - i - 1);
+                    MakingTheTwoBinaryNumbersTheSameLenght(ref resultOfMultiplication, ref bufferNumber);
+                    string rezultattrei = "";
+                    for (int k = 0; k < bufferNumber.Length; k++)
+                    {
+                        rezultattrei += Convert.ToString(bufferNumber[k]);
+                    }
+                    resultOfMultiplication = AddingTwoBinaryNumbers(resultOfMultiplication, bufferNumber);
+                    string rezultat = "";
+                    for (int k = 0; k < resultOfMultiplication.Length; k++)
+                    {
+                        rezultat += Convert.ToString(resultOfMultiplication[k]);
+                    }
+                }
+                else
+                {
+                    MakingTheTwoBinaryNumbersTheSameLenght(ref resultOfMultiplication, ref bufferNumber);
+                    string rezultatdoi = "";
+                    for (int k = 0; k < resultOfMultiplication.Length; k++)
+                    {
+                        rezultatdoi += Convert.ToString(bufferNumber[k]);
+                    }
+                    resultOfMultiplication = AddingTwoBinaryNumbers(resultOfMultiplication, bufferNumber);
+                    string rezultatpatru = "";
+                    for (int k = 0; k < resultOfMultiplication.Length; k++)
+                    {
+                        rezultatpatru += Convert.ToString(resultOfMultiplication[k]);
+                    }
+                }
+            }
+            return resultOfMultiplication;
+        }
+
         private byte[] SubtractingTwoBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
             byte[] subtractionOfNumbers = new byte[numberBinaryOne.Length];
@@ -236,12 +289,14 @@ namespace BinaryNumber
         {
             byte[] sumOfNumbers = new byte[numberBinaryOne.Length];
             byte surplus = 0;
+            string rezultat = "";
             for (int i = numberBinaryOne.Length -1; i >=0; i--)
             {
                 sumOfNumbers[i] = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i] + surplus) % 2);
-                surplus = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i]) / 2);
+                surplus = Convert.ToByte((numberBinaryOne[i] + numberBinaryTwo[i] + surplus) / 2);
+                rezultat = Convert.ToString(sumOfNumbers[i]) + rezultat;
             }
-            if (numberBinaryOne[0] + numberBinaryTwo[0] > 1)
+            if (surplus != 0)
             {
                 Array.Reverse(sumOfNumbers);
                 Array.Resize(ref sumOfNumbers, numberBinaryOne.Length + 1);
@@ -312,8 +367,6 @@ namespace BinaryNumber
             {
                 Array.Reverse(numberBinaryTwo);
                 Array.Resize(ref numberBinaryTwo, numberBinaryOne.Length);
-                for (int i = numberBinaryTwo.Length; i < numberBinaryOne.Length; i++)
-                    numberBinaryTwo[i] = 0;
                 Array.Reverse(numberBinaryTwo);
             }
             else
