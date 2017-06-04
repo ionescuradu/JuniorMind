@@ -228,6 +228,12 @@ namespace BinaryNumber
         {
             byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
             byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
+            byte[] resultOfMultiplication = MultiplicationOfBinaryNumbers(numberBinaryOne, numberBinaryTwo);
+            return resultOfMultiplication;
+        }
+
+        private byte[] MultiplicationOfBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        {
             byte[] resultOfMultiplication = new byte[numberBinaryOne.Length + numberBinaryTwo.Length];
             for (int i = numberBinaryTwo.Length - 1; i >= 0; i--)
             {
@@ -268,6 +274,7 @@ namespace BinaryNumber
                     }
                 }
             }
+
             return resultOfMultiplication;
         }
 
