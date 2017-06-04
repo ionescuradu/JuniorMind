@@ -138,6 +138,11 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 1, 1, 1, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(27, 10));
         }
 
+        [TestMethod]
+        public void MultiplicationOfNumbersSecondTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1, 0, 0, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(49, 8));
+        }
 
         byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
         {
@@ -274,7 +279,12 @@ namespace BinaryNumber
                     }
                 }
             }
-
+            if (resultOfMultiplication[0] == 0)
+            {
+                Array.Reverse(resultOfMultiplication);
+                Array.Resize(ref resultOfMultiplication, resultOfMultiplication.Length - 1);
+                Array.Reverse(resultOfMultiplication);
+            }
             return resultOfMultiplication;
         }
 
