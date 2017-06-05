@@ -150,6 +150,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] {1, 1, 1}, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(42), ToBinary(6)));
         }
 
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(46), ToBinary(2)));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal(byte[] givenNumber)
         {
             byte[] numberBinary = givenNumber;
