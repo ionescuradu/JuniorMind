@@ -144,6 +144,12 @@ namespace BinaryNumber
             CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1, 0, 0, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(ToBinary(49), ToBinary(8)));
         }
 
+        [TestMethod]
+        public void DivisionOfNumberFirstTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 1 }, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(42), ToBinary(6)));
+        }
+
         byte[] CalculateBinaryNumberFromDecimal(byte[] givenNumber)
         {
             byte[] numberBinary = givenNumber;
@@ -224,6 +230,20 @@ namespace BinaryNumber
             byte[] resultOfMultiplication = MultiplicationOfBinaryNumbers(givenNumberOne, givenNumberTwo);
             return resultOfMultiplication;
         }
+
+        byte[] CalculateTheDivisionOfTwoBinaryNumbers(byte[] givenNumberOne, byte[] givenNumberTwo)
+        {
+            int result = 0;
+            byte[] reminder = new byte[givenNumberOne.Length];
+            MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
+            while (givenNumberOne != reminder)
+            {
+                givenNumberOne = SubtractingTwoBinaryNumbers(givenNumberOne, givenNumberTwo);
+                result += 1;
+            }
+            byte[] outcome = ToBinary(result);
+            return outcome;
+        }
         
         private byte[] MultiplicationOfBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
@@ -279,14 +299,21 @@ namespace BinaryNumber
         private byte[] SubtractingTwoBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
             byte[] subtractionOfNumbers = new byte[numberBinaryOne.Length];
-            byte difference = 0;
+            int difference = 0;
             for (int i = numberBinaryOne.Length - 1; i >= 0; i--)
             {
-                subtractionOfNumbers[i] = Convert.ToByte((numberBinaryTwo[i] + numberBinaryOne[i] - difference) % 2);
+                int ajutor = (numberBinaryTwo[i] + numberBinaryOne[i] - difference) % 2;
+                if (ajutor < 0)
+                    ajutor = Math.Abs(ajutor);
+                subtractionOfNumbers[i] =Convert.ToByte(ajutor);
                 if (numberBinaryTwo[i] > numberBinaryOne[i])
                     difference = 1;
-                else difference = 0;
+                else if (numberBinaryOne[i] > numberBinaryTwo[i])
+                    difference = 0;
             }
+            string rezultat = "";
+            for (int i = 0; i <= subtractionOfNumbers.Length - 1; i++)
+                rezultat += subtractionOfNumbers[i];
             return subtractionOfNumbers;
         }
 
