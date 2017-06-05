@@ -9,67 +9,67 @@ namespace BinaryNumber
         [TestMethod]
         public void FirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateBinaryNumberFromDecimal(10));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateBinaryNumberFromDecimal(ToBinary(10)));
         }
 
         [TestMethod]
         public void SecondtTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1 }, CalculateBinaryNumberFromDecimal(49));
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1 }, CalculateBinaryNumberFromDecimal(ToBinary(49)));
         }
 
         [TestMethod]
         public void ThirdTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateBinaryNumberFromDecimal(8));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateBinaryNumberFromDecimal(ToBinary(8)));
         }
 
         [TestMethod]
         public void FirstTestNOT()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1 }, CalculateTheNotOperation(10));
+            CollectionAssert.AreEqual(new byte[] { 0, 1, 0, 1 }, CalculateTheNotOperation(ToBinary(10)));
         }
 
         [TestMethod]
         public void SecondTestNOT()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0 }, CalculateTheNotOperation(49));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 1, 1, 0 }, CalculateTheNotOperation(ToBinary(49)));
         }
 
         [TestMethod]
         public void FirstTestAnd()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateTheAndOperation(10, 8));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, CalculateTheAndOperation(ToBinary(10), ToBinary(8)));
         }
 
         [TestMethod]
         public void SecondTestAnd()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1 }, CalculateTheAndOperation(21, 7));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 1 }, CalculateTheAndOperation(ToBinary(21), ToBinary(7)));
         }
 
         [TestMethod]
         public void FirstTestOr()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateTheOrOperation(10, 8));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 0 }, CalculateTheOrOperation(ToBinary(10), ToBinary(8)));
         }
 
         [TestMethod]
         public void SecondTestOr()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheOrOperation(21, 7));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheOrOperation(ToBinary(21), ToBinary(7)));
         }
 
         [TestMethod]
         public void FirstTestXor()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0 }, CalculateTheXorOperation(10, 8));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0 }, CalculateTheXorOperation(ToBinary(10), ToBinary(8)));
         }
 
         [TestMethod]
         public void SecondTestXor()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateTheXorOperation(21, 7));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateTheXorOperation(ToBinary(21), ToBinary(7)));
         }
 
         [TestMethod]
@@ -99,144 +99,132 @@ namespace BinaryNumber
         [TestMethod]
         public void LessThenFirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 0, 0 }, CalculateLessThenNumber(49, 8));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 1, 0, 0, 0 }, CalculateLessThenNumber(ToBinary(49), ToBinary(8)));
         }
 
         [TestMethod]
         public void LessThenSecondTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0, 1 }, CalculateLessThenNumber(49, 37));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0, 1 }, CalculateLessThenNumber(ToBinary(49), ToBinary(37)));
         }
 
         [TestMethod]
         public void SumOfTwoNumbersFirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 1, 1, 0}, CalculateSumOfTwoNumbers(10, 4));
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 1, 0}, CalculateSumOfTwoNumbers(ToBinary(10), ToBinary(4)));
         }
 
         [TestMethod]
         public void SumOfTwoNumbersSecondTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateSumOfTwoNumbers(10, 8));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 1, 0 }, CalculateSumOfTwoNumbers(ToBinary(10), ToBinary(8)));
         }
 
         [TestMethod]
         public void SubtractionOfNumbersFirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 1, 1, 0}, CalculateSubstractionOfTwoNumbers(10, 4));
+            CollectionAssert.AreEqual(new byte[] { 0, 1, 1, 0}, CalculateSubstractionOfTwoNumbers(ToBinary(10), ToBinary(4)));
         }
 
         [TestMethod]
         public void SubtractionOfNumbersSecondTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1, 1, 1, 0, 1 }, CalculateSubstractionOfTwoNumbers(142, 113));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1, 1, 1, 0, 1 }, CalculateSubstractionOfTwoNumbers(ToBinary(142), ToBinary(113)));
         }
 
         [TestMethod]
         public void MultiplicationOfNumberFirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 1, 1, 1, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(27, 10));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 0, 1, 1, 1, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(ToBinary(27), ToBinary(10)));
         }
 
         [TestMethod]
         public void MultiplicationOfNumbersSecondTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1, 0, 0, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(49, 8));
+            CollectionAssert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1, 0, 0, 0 }, CalculateTheMultiplicationOfTwoBinaryNumbers(ToBinary(49), ToBinary(8)));
         }
 
-        byte[] CalculateBinaryNumberFromDecimal(int givenNumber)
+        byte[] CalculateBinaryNumberFromDecimal(byte[] givenNumber)
         {
-            byte[] numberBinary = ConvertToBinary(givenNumber);
+            byte[] numberBinary = givenNumber;
             return numberBinary;
         }
 
-        byte[] CalculateTheNotOperation(int givenNumber)
+        byte[] CalculateTheNotOperation(byte[] givenNumber)
         {
-            byte[] numberBinary = ConvertToBinary(givenNumber);
-            byte[] numberBinaryNot = CalculateNotOfABinaryNumber(numberBinary);
+            byte[] numberBinaryNot = CalculateNotOfABinaryNumber(givenNumber);
             return numberBinaryNot;
         }
 
-        byte[] CalculateTheAndOperation(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateTheAndOperation(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            byte[] numberBinaryAnd = CalculateAndOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            byte[] numberBinaryAnd = CalculateAndOfABinaryNumber(givenNumberOne, givenNumberTwo);
             return numberBinaryAnd;
         }
 
-        byte[] CalculateTheOrOperation(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateTheOrOperation(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            byte[] numberBinaryOr = CalculateOrOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            byte[] numberBinaryOr = CalculateOrOfABinaryNumber(givenNumberOne, givenNumberTwo);
             return numberBinaryOr;
         }
 
-        byte[] CalculateTheXorOperation(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateTheXorOperation(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            byte[] numberBinaryXor = CalculateXorOfABinaryNumber(numberBinaryOne, numberBinaryTwo);
+            byte[] numberBinaryXor = CalculateXorOfABinaryNumber(givenNumberOne, givenNumberTwo);
             return numberBinaryXor;
         }
 
         byte[] CalculateTheShiftingLeft(int givenNumberOne, int numberOfBit)
         {
             givenNumberOne = givenNumberOne * Convert.ToInt32(Math.Pow(2, numberOfBit));
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryOne = ToBinary(givenNumberOne);
             return numberBinaryOne;
         }
 
         byte[] CalculateTheShiftingRight(int givenNumberOne, int numberOfBit)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
+            byte[] numberBinaryOne = ToBinary(givenNumberOne);
             int lenghtOfBinaryNumber = numberBinaryOne.Length;
             givenNumberOne = givenNumberOne / Convert.ToInt32(Math.Pow(2, numberOfBit));
-            numberBinaryOne = ConvertToBinary(givenNumberOne);
+            numberBinaryOne = ToBinary(givenNumberOne);
             Array.Reverse(numberBinaryOne);
             Array.Resize(ref numberBinaryOne, lenghtOfBinaryNumber);
             Array.Reverse(numberBinaryOne);
             return numberBinaryOne;
         }
 
-        byte[] CalculateLessThenNumber(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateLessThenNumber(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
-            byte[] smallestNumber = CalculateLessThan(numberBinaryOne, numberBinaryTwo);
+            MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
+            byte[] smallestNumber = givenNumberOne;
+            if (CalculateLessThan(givenNumberOne, givenNumberOne))
+                smallestNumber = givenNumberTwo;
+            else smallestNumber = givenNumberOne;
             return smallestNumber;
         }
 
-        byte[] CalculateSumOfTwoNumbers(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateSumOfTwoNumbers(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
-            byte[] sumOfTwoNumbers = new byte[numberBinaryOne.Length];
-            sumOfTwoNumbers = AddingTwoBinaryNumbers(numberBinaryOne, numberBinaryTwo);
+            MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
+            byte[] sumOfTwoNumbers = new byte[givenNumberOne.Length];
+            sumOfTwoNumbers = AddingTwoBinaryNumbers(givenNumberOne, givenNumberTwo);
             return sumOfTwoNumbers;
         }
 
-        byte[] CalculateSubstractionOfTwoNumbers(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateSubstractionOfTwoNumbers(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
-            byte[] substractionOfTwoNumbers = new byte[numberBinaryOne.Length];
-            substractionOfTwoNumbers = SubtractingTwoBinaryNumbers(numberBinaryOne, numberBinaryTwo);
+            MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
+            byte[] substractionOfTwoNumbers = new byte[givenNumberOne.Length];
+            substractionOfTwoNumbers = SubtractingTwoBinaryNumbers(givenNumberOne, givenNumberTwo);
             return substractionOfTwoNumbers;
         }
 
-        byte[] CalculateTheMultiplicationOfTwoBinaryNumbers(int givenNumberOne, int givenNumberTwo)
+        byte[] CalculateTheMultiplicationOfTwoBinaryNumbers(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOne = ConvertToBinary(givenNumberOne);
-            byte[] numberBinaryTwo = ConvertToBinary(givenNumberTwo);
-            byte[] resultOfMultiplication = MultiplicationOfBinaryNumbers(numberBinaryOne, numberBinaryTwo);
+            byte[] resultOfMultiplication = MultiplicationOfBinaryNumbers(givenNumberOne, givenNumberTwo);
             return resultOfMultiplication;
         }
-
+        
         private byte[] MultiplicationOfBinaryNumbers(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
             byte[] resultOfMultiplication = new byte[numberBinaryOne.Length + numberBinaryTwo.Length];
@@ -323,7 +311,7 @@ namespace BinaryNumber
             return sumOfNumbers;
         }
 
-        private static byte[] CalculateLessThan(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        private static bool CalculateLessThan(byte[] numberBinaryOne, byte[] numberBinaryTwo)
         {
             byte[] smallestNumber = numberBinaryOne;
             for (int i = 0; i < numberBinaryOne.Length; i++)
@@ -335,8 +323,7 @@ namespace BinaryNumber
                 }
                 else smallestNumber = numberBinaryOne;
             }
-
-            return smallestNumber;
+            return (smallestNumber == numberBinaryOne);
         }
 
         private byte[] CalculateXorOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
@@ -409,7 +396,7 @@ namespace BinaryNumber
             return numberBinaryNot;
         }
 
-        private byte[] ConvertToBinary(int givenNumber)
+        private byte[] ToBinary(int givenNumber)
         {
             byte[] numberInBinary = new byte [100] ;
             int i = 0;
