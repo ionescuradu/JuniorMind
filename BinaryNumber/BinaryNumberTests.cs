@@ -158,13 +158,13 @@ namespace BinaryNumber
 
         byte[] CalculateTheAndOperation(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryAnd = CalculateAndOfABinaryNumber(givenNumberOne, givenNumberTwo);
+            byte[] numberBinaryAnd = CalculateOrAndOfABinaryNumber(givenNumberOne, givenNumberTwo, 1);
             return numberBinaryAnd;
         }
 
         byte[] CalculateTheOrOperation(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
-            byte[] numberBinaryOr = CalculateOrOfABinaryNumber(givenNumberOne, givenNumberTwo);
+            byte[] numberBinaryOr = CalculateOrAndOfABinaryNumber(givenNumberOne, givenNumberTwo, 0);
             return numberBinaryOr;
         }
 
@@ -339,28 +339,15 @@ namespace BinaryNumber
             return numberBinaryCombined;
         }
 
-        private byte[] CalculateOrOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
+        private byte[] CalculateOrAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo, int operation)
         {
             MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
             byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
             for (int i = 0; i < numberBinaryOne.Length; i++)
             {
-                if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == 0)
-                    numberBinaryCombined[i] = 0;
-                else numberBinaryCombined[i] = 1;
-            }
-            return numberBinaryCombined;
-        }
-
-        private byte[] CalculateAndOfABinaryNumber(byte[] numberBinaryOne, byte[] numberBinaryTwo)
-        {
-            MakingTheTwoBinaryNumbersTheSameLenght(ref numberBinaryOne, ref numberBinaryTwo);
-            byte[] numberBinaryCombined = new byte[numberBinaryOne.Length];
-            for (byte i = 0; i < numberBinaryOne.Length; i++)
-            {
-                if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == 1)
-                    numberBinaryCombined[i] = 1;
-                else numberBinaryCombined[i] = 0;
+                if (numberBinaryOne[i] == numberBinaryTwo[i] && numberBinaryOne[i] == operation)
+                    numberBinaryCombined[i] = Convert.ToByte(operation);
+                else numberBinaryCombined[i] = Convert.ToByte( (operation + 1) % 2);
             }
             return numberBinaryCombined;
         }
