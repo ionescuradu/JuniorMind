@@ -147,7 +147,7 @@ namespace BinaryNumber
         [TestMethod]
         public void DivisionOfNumberFirstTest()
         {
-            CollectionAssert.AreEqual(new byte[] { 1, 1, 1 }, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(42), ToBinary(6)));
+            CollectionAssert.AreEqual(new byte[] {1, 1, 1}, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(42), ToBinary(6)));
         }
 
         byte[] CalculateBinaryNumberFromDecimal(byte[] givenNumber)
@@ -203,9 +203,9 @@ namespace BinaryNumber
         {
             MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
             byte[] smallestNumber = givenNumberOne;
-            if (CalculateLessThan(givenNumberOne, givenNumberOne))
-                smallestNumber = givenNumberTwo;
-            else smallestNumber = givenNumberOne;
+            if (CalculateLessThan(givenNumberOne, givenNumberTwo))
+                smallestNumber = givenNumberOne;
+            else smallestNumber = givenNumberTwo;
             return smallestNumber;
         }
 
@@ -236,7 +236,7 @@ namespace BinaryNumber
             int result = 0;
             byte[] reminder = new byte[givenNumberOne.Length];
             MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
-            while (givenNumberOne != reminder)
+            while (CalculateLessThan(givenNumberOne, reminder) == false && CalculateLessThan(givenNumberOne, reminder) == false)
             {
                 givenNumberOne = SubtractingTwoBinaryNumbers(givenNumberOne, givenNumberTwo);
                 result += 1;
@@ -311,9 +311,6 @@ namespace BinaryNumber
                 else if (numberBinaryOne[i] > numberBinaryTwo[i])
                     difference = 0;
             }
-            string rezultat = "";
-            for (int i = 0; i <= subtractionOfNumbers.Length - 1; i++)
-                rezultat += subtractionOfNumbers[i];
             return subtractionOfNumbers;
         }
 
