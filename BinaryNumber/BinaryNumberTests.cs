@@ -151,9 +151,15 @@ namespace BinaryNumber
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void DivisionOfNumbersSecondTest()
         {
             CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(46), ToBinary(2)));
+        }
+
+        [TestMethod]
+        public void DivisionOfNumbersThirdTest()
+        {
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 1, 1, 1 }, CalculateTheDivisionOfTwoBinaryNumbers(ToBinary(2), ToBinary(46)));
         }
 
         byte[] CalculateBinaryNumberFromDecimal(byte[] givenNumber)
@@ -240,8 +246,14 @@ namespace BinaryNumber
         byte[] CalculateTheDivisionOfTwoBinaryNumbers(byte[] givenNumberOne, byte[] givenNumberTwo)
         {
             int result = 0;
-            byte[] reminder = new byte[givenNumberOne.Length];
             MakingTheTwoBinaryNumbersTheSameLenght(ref givenNumberOne, ref givenNumberTwo);
+            if (CalculateLessThan(givenNumberOne, givenNumberTwo) == true)
+            {
+                byte[] intermediate = givenNumberTwo;
+                givenNumberTwo = givenNumberOne;
+                givenNumberOne = intermediate;
+            }
+            byte[] reminder = new byte[givenNumberOne.Length];
             while (CalculateLessThan(givenNumberOne, reminder) == false && CalculateLessThan(givenNumberOne, reminder) == false)
             {
                 givenNumberOne = SubtractingTwoBinaryNumbers(givenNumberOne, givenNumberTwo);
