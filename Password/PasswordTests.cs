@@ -9,7 +9,7 @@ namespace Password
         [TestMethod]
         public void OneLowerLetter()
         {
-            Assert.AreEqual("a", GeneratePassword(1, Options.LowerCases));
+            Assert.AreEqual(1, GeneratePassword(1, Options.LowerCases));
         }
 
         enum Options
@@ -21,10 +21,16 @@ namespace Password
             WithoutSpeacialChars,
             WithoutAmbiguuChars
         }
-        string GeneratePassword(int passwordLenght, Options style)
+        int GeneratePassword(int passwordLenght, Options style)
         {
             string password = "a";
-            return password;
+            int counter = 0;
+            for (int i = 0; i < password.Length - 1; i++)
+            {
+                if (password[i] <= 26 && password[i] >= 1)
+                    counter += 1;
+            }
+            return counter;
         }
     }
 }
