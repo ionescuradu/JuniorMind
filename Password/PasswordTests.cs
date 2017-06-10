@@ -25,9 +25,9 @@ namespace Password
         {
             string password = "a";
             int counter = 0;
-            for (int i = 0; i < password.Length - 1; i++)
+            for (int i = 0; i < password.Length; i++)
             {
-                if (password[i] <= 26 && password[i] >= 1)
+                if (password[i] <= 122 && password[i] >= 97)
                     counter += 1;
             }
             return counter;
