@@ -4,13 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Password
 {
     [TestClass]
-    public class UnitTest1
+    public class PasswordTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void OneLowerLetter()
         {
             Assert.AreEqual("a", GeneratePassword(1, Options.LowerCases));
         }
+
         enum Options
         {
             LowerCases,
