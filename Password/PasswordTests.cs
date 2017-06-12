@@ -45,7 +45,7 @@ namespace Password
             int counter = 0;
             for (int i = 0; i < password.Length; i++)
             {
-                if (password[i] <= 122 && password[i] >= 97)
+                if (password[i] <= 'z' && password[i] >= 'a')
                     counter += 1;
             }
 
