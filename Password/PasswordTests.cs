@@ -19,6 +19,7 @@ namespace Password
         }
 
         [TestMethod]
+        public void UpperCaseAndNumber()
         {
             Assert.AreEqual(10, GeneratePassword(10, Options.UpperCaseesAndNumber));
         }
@@ -32,7 +33,13 @@ namespace Password
             WithoutSpeacialChars,
             WithoutAmbiguuChars
         }
-        int GeneratePassword(int passwordLenght, Options style)
+
+        int GeneratePassword(int passwordLenght, Options passwordType)
+        {
+            return PasswordGenerator(passwordLenght);
+        }
+
+        private int PasswordGenerator(int passwordLenght)
         {
             char[] password = GenerateRandom('a', 'z', passwordLenght);
             int counter = 0;
@@ -41,6 +48,7 @@ namespace Password
                 if (password[i] <= 122 && password[i] >= 97)
                     counter += 1;
             }
+
             return counter;
         }
 
@@ -50,6 +58,7 @@ namespace Password
             Random random = new Random();
             for (int i = 0; i < passwordLenght; i++)
             {
+                generatedNumbers[i] = (char)random.Next(start, end);
             }
             return generatedNumbers;
         }
