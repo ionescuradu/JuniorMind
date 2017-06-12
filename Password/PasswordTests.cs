@@ -33,32 +33,66 @@ namespace Password
             WithoutSpeacialChars,
             WithoutAmbiguuChars
         }
-
         int GeneratePassword(int passwordLenght, Options passwordType)
         {
-            return PasswordGenerator(passwordLenght);
+            switch (passwordType)
+            {
+                case Options.LowerCases:
+                    return PasswordVerifierLower(passwordLenght);
+                case Options.UpperCaseesAndNumber:
+                    return PasswordVerifierUpper(passwordLenght);
+                default:
+                    return 0;
+
+            }
         }
 
-        private int PasswordGenerator(int passwordLenght)
+        private int PasswordVerifierUpper(int passwordLenght)
         {
-            char[] password = GenerateRandom('a', 'z', passwordLenght);
+            int number = 1;
+            char[] password = GenerateRandom('A', 'Z', number, passwordLenght);
+            int counter = 0;
+            for (int i = 0; i < password.Length - 1; i++)
+            {
+                if (password[i] <= 'Z' && password[i] >= 'A')
+                    counter += 1;
+            }
+            if (password[password.Length - 1] == password.Length - 1)
+                counter += 1;
+            return counter;
+        }
+
+            private int PasswordVerifierLower(int passwordLenght)
+        {
+            int number = 0;
+            char[] password = GenerateRandom('a', 'z', number, passwordLenght);
             int counter = 0;
             for (int i = 0; i < password.Length; i++)
             {
                 if (password[i] <= 'z' && password[i] >= 'a')
                     counter += 1;
             }
-
             return counter;
         }
 
-        private char[] GenerateRandom(int start, int end, int passwordLenght)
+        private char[] GenerateRandom(int start, int end, int number, int passwordLenght)
         {
             char[] generatedNumbers = new char[passwordLenght];
             Random random = new Random();
-            for (int i = 0; i < passwordLenght; i++)
+            if (number == 0)
             {
-                generatedNumbers[i] = (char)random.Next(start, end);
+                for (int i = 0; i < passwordLenght; i++)
+                {
+                    generatedNumbers[i] = (char)random.Next(start, end);
+                }
+            }
+            else
+            { 
+                for (int i = 0; i < passwordLenght - 1; i++)
+                {
+                    generatedNumbers[i] = (char)random.Next(start, end);
+                }
+                generatedNumbers[passwordLenght - 1] = (char)(passwordLenght - 1);
             }
             return generatedNumbers;
         }
