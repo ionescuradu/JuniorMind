@@ -25,6 +25,7 @@ namespace Password
 
         string GeneratePassword(Options options)
         {
+            string finalPassword = "";
             string ambiguousCharacters = "{}[]()/\'`~,;:.<>";
             string similarCharacters = "il1Lo0O";
             string simbolsVector = "*?!_&#$+-@^=%";
@@ -37,7 +38,8 @@ namespace Password
             if (options.withoutSimilar != false)
                 randomSimilar = GenerateRandomNumber(1, remainingCharacters);
             int remainingLowerCase = rest - randomSimilar;
-            return GenerateRandomString(options.upperCases, 'A', 'Z', similarCharacters) + GenerateRandomString(remainingLowerCase, 'a', 'z', similarCharacters) + GenerateRandomString(options.numbers, '0', '9', similarCharacters) + GenerateSimbols(options.passwordLenght, options.simbols, simbolsVector) + GenerateSimilar(options.passwordLenght, similarCharacters, randomSimilar) + GenerateAmbigous(options.passwordLenght, ambiguousCharacters, randomAmbigous);
+            finalPassword = GenerateRandomString(options.upperCases, 'A', 'Z', similarCharacters) + GenerateRandomString(remainingLowerCase, 'a', 'z', similarCharacters) + GenerateRandomString(options.numbers, '0', '9', similarCharacters) + GenerateSimbols(options.passwordLenght, options.simbols, simbolsVector) + GenerateSimilar(options.passwordLenght, similarCharacters, randomSimilar) + GenerateAmbigous(options.passwordLenght, ambiguousCharacters, randomAmbigous);
+            return finalPassword;
         }
         private string GenerateSimbols(int passwordLenght, int simbols, string simbolsVector)
         {
