@@ -39,6 +39,17 @@ namespace Password
                 randomSimilar = GenerateRandomNumber(1, remainingCharacters);
             int remainingLowerCase = rest - randomSimilar;
             finalPassword = GenerateRandomString(options.upperCases, 'A', 'Z', similarCharacters) + GenerateRandomString(remainingLowerCase, 'a', 'z', similarCharacters) + GenerateRandomString(options.numbers, '0', '9', similarCharacters) + GenerateSimbols(options.passwordLenght, options.simbols, simbolsVector) + GenerateSimilar(options.passwordLenght, similarCharacters, randomSimilar) + GenerateAmbigous(options.passwordLenght, ambiguousCharacters, randomAmbigous);
+            char[] randomize = finalPassword.ToCharArray();
+            int lenght = randomize.Length - 1;
+            while (lenght >= 0 )
+            {
+                var random = GenerateRandomNumber(0, lenght + 1);
+                var value = randomize[random];
+                randomize[random] = randomize[lenght];
+                randomize[lenght] = value;
+                lenght--; 
+            }
+            finalPassword = new string(randomize);
             return finalPassword;
         }
         private string GenerateSimbols(int passwordLenght, int simbols, string simbolsVector)
