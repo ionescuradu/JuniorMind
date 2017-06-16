@@ -9,92 +9,131 @@ namespace Password
         [TestMethod]
         public void OneLowerLetter()
         {
-            Assert.AreEqual(1, GeneratePassword(1, Options.LowerCases));
+            Assert.AreEqual("", GeneratePassword(10, 3, 2, 1, true, true));
         }
 
-        [TestMethod]
-        public void MultiLowerCase()
-        {
-            Assert.AreEqual(3, GeneratePassword(3, Options.LowerCases));
-        }
+        //struct Options
+        //{
+        //    public char[] lowerCases;ra
+        //    public char[] upperCases;
+        //    public char[] numbers;
+        //    public char[] withoutSimilar;
+        //    public char[] withoutAmbigous;
+        //}
 
-        [TestMethod]
-        public void UpperCaseAndNumber()
+        string GeneratePassword(int passwordLenght, int upperCases, int numbers, int simbols, bool withoutSimilar, bool withoutAmbigous)
         {
-            Assert.AreEqual(10, GeneratePassword(10, Options.UpperCaseesAndNumber));
-        }
-
-        enum Options
-        {
-            LowerCases,
-            UpperCaseesAndNumber,
-            NumbersAndHowMany,
-            SimbolsAndNumber,
-            WithoutSpeacialChars,
-            WithoutAmbiguuChars
-        }
-        int GeneratePassword(int passwordLenght, Options passwordType)
-        {
-            switch (passwordType)
+            char[] password = new char[passwordLenght];
+            string finalPassword = "";
+            string ambiguousCharacters = "{}[]()/\'`~,;:.<>";
+            string similarCharacters = "il1Lo0O";
+            string simbolsVector = "*?!_&#$+-@^=%";
+            int randomAmbigous = 0;
+            int randomSimilar = 0;
+            int remainingCharacters = passwordLenght - upperCases - numbers - simbols;
+            if (withoutAmbigous != false)
+                randomAmbigous = GenerateRandomNumber(1, remainingCharacters);
+            var rest = remainingCharacters - randomAmbigous;
+            if (withoutSimilar != false)
+                randomSimilar = GenerateRandomNumber(1, remainingCharacters);
+            int remainingLowerCase = rest - randomSimilar;
+            for (int i = 1; i <= remainingLowerCase; i++)  //Lower letter
             {
-                case Options.LowerCases:
-                    return PasswordVerifierLower(passwordLenght);
-                case Options.UpperCaseesAndNumber:
-                    return PasswordVerifierUpper(passwordLenght);
-                default:
-                    return 0;
-
+                var index = 1;
+                var randomLetter = GenerateRandomNumber(Convert.ToInt32('a'), Convert.ToInt32('z'));
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)randomLetter;
+                        index = 0;
+                    }
+                        
+                }
             }
-        }
-
-        private int PasswordVerifierUpper(int passwordLenght)
-        {
-            int number = 1;
-            char[] password = GenerateRandom('A', 'Z', number, passwordLenght);
-            int counter = 0;
-            for (int i = 0; i < password.Length - 1; i++)
+            for (int i = 1; i <= randomAmbigous; i++)  //Ambigous
             {
-                if (password[i] <= 'Z' && password[i] >= 'A')
-                    counter += 1;
+                var index = 1;
+                var ambigous = GenerateRandomNumber(0, ambiguousCharacters.Length);
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)ambiguousCharacters[ambigous];
+                        index = 0;
+                    }
+                }
             }
-            if (password[password.Length - 1] == password.Length - 1)
-                counter += 1;
-            return counter;
-        }
-
-            private int PasswordVerifierLower(int passwordLenght)
-        {
-            int number = 0;
-            char[] password = GenerateRandom('a', 'z', number, passwordLenght);
-            int counter = 0;
+            for (int i = 1; i <= randomSimilar; i++) //Similar
+            {
+                var index = 1;
+                var similar = GenerateRandomNumber(0, similarCharacters.Length);
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)similarCharacters[similar];
+                        index = 0;
+                    }
+                }
+            }
+            for (int i = 1; i <= simbols; i++) //Symbols
+            {
+                var index = 1;
+                var randomSimbols = GenerateRandomNumber(0, simbolsVector.Length);
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)simbolsVector[randomSimbols];
+                        index = 0;
+                    }
+                }
+            }
+            for (int i = 1; i <= upperCases; i++)  //Upper letter
+            {
+                var index = 1;
+                var randomLetter = GenerateRandomNumber(Convert.ToInt32('A'), Convert.ToInt32('Z'));
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)randomLetter;
+                        index = 0;
+                    }
+                        
+                }
+            }
+            for (int i = 1; i <= numbers; i++) //Numbers
+            {
+                var index = 1;
+                var randomNumber = GenerateRandomNumber(Convert.ToInt32('2'), Convert.ToInt32('9'));
+                while (index != 0)
+                {
+                    int indexForPassword = GenerateRandomNumber(0, passwordLenght);
+                    if (password[indexForPassword] == 0)
+                    {
+                        password[indexForPassword] = (char)randomNumber;
+                        index = 0; 
+                    }
+                        
+                }
+            }
             for (int i = 0; i < password.Length; i++)
             {
-                if (password[i] <= 'z' && password[i] >= 'a')
-                    counter += 1;
+                finalPassword += password[i];
             }
-            return counter;
+            return finalPassword;
         }
-
-        private char[] GenerateRandom(int start, int end, int number, int passwordLenght)
+        private int GenerateRandomNumber(int start, int end)
         {
-            char[] generatedNumbers = new char[passwordLenght];
             Random random = new Random();
-            if (number == 0)
-            {
-                for (int i = 0; i < passwordLenght; i++)
-                {
-                    generatedNumbers[i] = (char)random.Next(start, end);
-                }
-            }
-            else
-            { 
-                for (int i = 0; i < passwordLenght - 1; i++)
-                {
-                    generatedNumbers[i] = (char)random.Next(start, end);
-                }
-                generatedNumbers[passwordLenght - 1] = (char)(passwordLenght - 1);
-            }
-            return generatedNumbers;
+            return random.Next(start, end);
         }
     }
 }
