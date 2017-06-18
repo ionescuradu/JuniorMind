@@ -24,6 +24,12 @@ namespace Password
             Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 7, upperCases = 2, numbers = 1, simbols = 2, withoutAmbigous = true, withoutSimilar = false }));
         }
 
+        [TestMethod]
+        public void FourthPasswordGeneration()
+        {
+            Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 10, upperCases = 2, numbers = 1, simbols = 2, withoutAmbigous = true, withoutSimilar = true }));
+        }
+
         struct Options
         {
             public int passwordLenght;
