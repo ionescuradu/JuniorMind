@@ -7,9 +7,15 @@ namespace Password
     public class PasswordTests
     {
         [TestMethod]
-        public void OneLowerLetter()
+        public void FistPasswordTest()
         {
             Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 4, upperCases = 1, numbers = 1, simbols = 1, withoutAmbigous = false, withoutSimilar = false}));
+        }
+
+        [TestMethod]
+        public void SecondPasswordTest()
+        {
+            Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 6, upperCases = 2, numbers = 1, simbols = 2, withoutAmbigous = false, withoutSimilar = false }));
         }
 
         struct Options
