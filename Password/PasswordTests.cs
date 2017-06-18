@@ -18,6 +18,12 @@ namespace Password
             Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 6, upperCases = 2, numbers = 1, simbols = 2, withoutAmbigous = false, withoutSimilar = false }));
         }
 
+        [TestMethod]
+        public void ThirdPasswordTest()
+        {
+            Assert.AreEqual("Password is Correct", GeneratePassword(new Options { passwordLenght = 7, upperCases = 2, numbers = 1, simbols = 2, withoutAmbigous = true, withoutSimilar = false }));
+        }
+
         struct Options
         {
             public int passwordLenght;
@@ -156,7 +162,7 @@ namespace Password
             for (int i = 1; i <= randomSimilar; i++)
             {
                 var similar = GenerateRandomNumber(0, similarCharacters.Length);
-                random += (char)similar;
+                random += (char)similarCharacters[similar];
             }
             return random;
         }
@@ -166,7 +172,7 @@ namespace Password
             for (int i = 1; i <= randomAmbigous; i++)
             {
                 var ambigous = GenerateRandomNumber(0, ambiguousCharacters.Length);
-                random += (char)ambigous;
+                random += (char)ambiguousCharacters[ambigous];
             }
             return random;
         }
