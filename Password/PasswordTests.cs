@@ -41,6 +41,15 @@ namespace Password
             finalPassword = GenerateRandomString(options.upperCases, 'A', 'Z', similarCharacters) + GenerateRandomString(remainingLowerCase, 'a', 'z', similarCharacters) + GenerateRandomString(options.numbers, '0', '9', similarCharacters) + GenerateSimbols(options.passwordLenght, options.simbols, simbolsVector) + GenerateSimilar(options.passwordLenght, similarCharacters, randomSimilar) + GenerateAmbigous(options.passwordLenght, ambiguousCharacters, randomAmbigous);
             char[] randomize = RandomizePassword(finalPassword);
             finalPassword = new string(randomize);
+            bool correctPassword = PasswordValidation(options, finalPassword, ambiguousCharacters, similarCharacters, simbolsVector);
+            if (correctPassword == true)
+                return "Password is Correct";
+            else
+                return "Password is Incorrect";
+        }
+
+        private static bool PasswordValidation(Options options, string finalPassword, string ambiguousCharacters, string similarCharacters, string simbolsVector)
+        {
             var indexSmall = 0;
             var indexUpper = 0;
             var indexNumber = 0;
@@ -106,10 +115,7 @@ namespace Password
             }
             if (indexSimbols == options.simbols && indexSimilar == options.withoutSimilar && indexNumber == options.numbers && indexAmbigous == options.withoutAmbigous && indexUpper == options.upperCases && options.passwordLenght == (indexAmbigous2 + indexSimilar2 + indexSmall + indexUpper + indexSimbols + indexNumber))
                 correctPassword = true;
-            if (correctPassword == true)
-                return "Password is Correct";
-            else
-                return "Password is Incorrect";
+            return correctPassword;
         }
 
         private char[] RandomizePassword(string finalPassword)
