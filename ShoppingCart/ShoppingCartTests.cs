@@ -41,6 +41,13 @@ namespace ShoppingCart
             Assert.AreEqual(1, ExpensiveProduct(shoppingCart));
         }
 
+        [TestMethod]
+        public void SecondTestEliminationExpensive()
+        {
+            var shoppingCart = new Product[4] { new Product("castraveti", 10f), new Product("rosii", 5f), new Product("mere", 40f), new Product("gutui", 40f) };
+            Assert.AreEqual(2, ExpensiveProduct(shoppingCart));
+        }
+
         public struct Product
         {
             public string productName;
@@ -72,9 +79,9 @@ namespace ShoppingCart
         {
             var price = shoppingCart[0].price;
             var index = 0;
-            for (int i = 0; i < shoppingCart.Length; i++)
+            for (int i = 1; i < shoppingCart.Length; i++)
             {
-                if (price < shoppingCart[i].price)
+                if (price <= shoppingCart[i].price)
                 {
                     price = shoppingCart[i].price;
                     index += 1;
