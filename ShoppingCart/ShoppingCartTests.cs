@@ -20,6 +20,13 @@ namespace ShoppingCart
             Assert.AreEqual(95, CalculateTotal(shoppingCart));
         }
 
+        [TestMethod]
+        public void FirstTestCheapest()
+        {
+            var shoppingCart = new Product[2] { new Product("castraveti", 10f), new Product("rosii", 20f) };
+            Assert.AreEqual("castraveti", CheapestProduct(shoppingCart));
+        }
+
         public struct Product
         {
             public string productName;
@@ -40,6 +47,21 @@ namespace ShoppingCart
                 sum += shoppingCart[i].price  ;
             }
             return sum;
+        }
+
+        string CheapestProduct(Product[] shoppingCart)
+        {
+            string cheapest = shoppingCart[0].productName;
+            var price = shoppingCart[0].price;
+            for (int i = 0; i < shoppingCart.Length; i++)
+            {
+                if (price > shoppingCart[i].price)
+                {
+                    price = shoppingCart[i].price;
+                    cheapest = shoppingCart[i].productName;
+                }
+            }
+            return cheapest;
         }
     }
 }
