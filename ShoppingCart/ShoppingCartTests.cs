@@ -34,6 +34,13 @@ namespace ShoppingCart
             Assert.AreEqual("rosii", CheapestProduct(shoppingCart));
         }
 
+        [TestMethod]
+        public void FirstTestEliminateExpensive()
+        {
+            var shoppingCart = new Product[2] { new Product("castraveti", 10f), new Product("rosii", 20f) };
+            Assert.AreEqual(1, ExpensiveProduct(shoppingCart));
+        }
+
         public struct Product
         {
             public string productName;
@@ -58,6 +65,35 @@ namespace ShoppingCart
 
         string CheapestProduct(Product[] shoppingCart)
         {
+            return cheapestArticle(shoppingCart);
+        }
+
+        int ExpensiveProduct(Product[] shoppingCart)
+        {
+            var price = shoppingCart[0].price;
+            var index = 0;
+            for (int i = 0; i < shoppingCart.Length; i++)
+            {
+                if (price < shoppingCart[i].price)
+                {
+                    price = shoppingCart[i].price;
+                    index += 1;
+                }
+            }
+            Product[] resizedShoppingCart = new Product[shoppingCart.Length - index];
+            for (int i = 0; i < shoppingCart.Length; i++)
+            {
+                if (price != shoppingCart[i].price)
+                {
+                    resizedShoppingCart[i].price = shoppingCart[i].price;
+                    resizedShoppingCart[i].productName = shoppingCart[i].productName;
+                }
+            }
+            return resizedShoppingCart.Length;
+        }
+
+        private static string cheapestArticle(Product[] shoppingCart)
+        {
             string cheapest = shoppingCart[0].productName;
             var price = shoppingCart[0].price;
             for (int i = 0; i < shoppingCart.Length; i++)
@@ -68,6 +104,7 @@ namespace ShoppingCart
                     cheapest = shoppingCart[i].productName;
                 }
             }
+
             return cheapest;
         }
     }
