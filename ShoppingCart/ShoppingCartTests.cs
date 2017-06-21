@@ -27,6 +27,13 @@ namespace ShoppingCart
             Assert.AreEqual("castraveti", CheapestProduct(shoppingCart));
         }
 
+        [TestMethod]
+        public void SecondTestCheapest()
+        {
+            var shoppingCart = new Product[4] { new Product("castraveti", 10f), new Product("rosii", 5f), new Product("mere", 25f), new Product("gutui", 40f) };
+            Assert.AreEqual("rosii", CheapestProduct(shoppingCart));
+        }
+
         public struct Product
         {
             public string productName;
