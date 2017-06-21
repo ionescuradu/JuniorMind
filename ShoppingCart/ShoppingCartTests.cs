@@ -48,6 +48,13 @@ namespace ShoppingCart
             Assert.AreEqual(2, ExpensiveProduct(shoppingCart));
         }
 
+        [TestMethod]
+        public void FirstAddingAProductTest()
+        {
+            var shoppingCart = new Product[2] { new Product("castraveti", 10f), new Product("rosii", 20f) };
+            Assert.AreEqual(60, AddindANewProduct(shoppingCart, 30f, "vinete"));
+        }
+
         public struct Product
         {
             public string productName;
@@ -62,12 +69,7 @@ namespace ShoppingCart
 
         float CalculateTotal(Product[] shoppingCart)
         {
-            float sum = 0;
-            for (int i = 0; i < shoppingCart.Length; i++)
-            {
-                sum += shoppingCart[i].price  ;
-            }
-            return sum;
+            return ShoppingCarCosts(shoppingCart);
         }
 
         string CheapestProduct(Product[] shoppingCart)
@@ -99,6 +101,15 @@ namespace ShoppingCart
             return resizedShoppingCart.Length;
         }
 
+        float AddindANewProduct(Product[] shoppingCart, float newPrice, string newProductName)
+        {
+            Array.Resize(ref shoppingCart, shoppingCart.Length + 1);
+            var newProduct = shoppingCart.Length - 1;
+            shoppingCart[newProduct].price = newPrice;
+            shoppingCart[newProduct].productName = newProductName;
+            return ShoppingCarCosts(shoppingCart);
+        }
+
         private static string cheapestArticle(Product[] shoppingCart)
         {
             string cheapest = shoppingCart[0].productName;
@@ -113,6 +124,16 @@ namespace ShoppingCart
             }
 
             return cheapest;
+        }
+        private static float ShoppingCarCosts(Product[] shoppingCart)
+        {
+            float sum = 0;
+            for (int i = 0; i < shoppingCart.Length; i++)
+            {
+                sum += shoppingCart[i].price;
+            }
+
+            return sum;
         }
     }
 }
