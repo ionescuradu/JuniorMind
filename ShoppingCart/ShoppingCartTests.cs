@@ -55,6 +55,13 @@ namespace ShoppingCart
             Assert.AreEqual(60, AddindANewProduct(shoppingCart, 30f, "vinete"));
         }
 
+        [TestMethod]
+        public void SecondAddingAProductTest()
+        {
+            var shoppingCart = new Product[4] { new Product("castraveti", 10f), new Product("rosii", 5f), new Product("mere", 40f), new Product("gutui", 40f) };
+            Assert.AreEqual(100, AddindANewProduct(shoppingCart, 5f, "ridichii"));
+        }
+
         public struct Product
         {
             public string productName;
