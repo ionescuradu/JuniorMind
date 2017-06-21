@@ -13,6 +13,13 @@ namespace ShoppingCart
             Assert.AreEqual(30, CalculateTotal(shoppingCart));
         }
 
+        [TestMethod]
+        public void SecontCartTest()
+        {
+            var shoppingCart = new Product[4] { new Product("castraveti", 10f), new Product("rosii", 20f), new Product("mere", 25f), new Product("gutui", 40f) };
+            Assert.AreEqual(95, CalculateTotal(shoppingCart));
+        }
+
         public struct Product
         {
             public string productName;
