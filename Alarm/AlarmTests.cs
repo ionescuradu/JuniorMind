@@ -7,10 +7,17 @@ namespace Alarm
     public class AlarmTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FirstAlarmTest()
         {
             var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
             Assert.AreEqual(true, AlarmVerifier(8, "Luni", timeSchedule));
+        }
+
+        [TestMethod]
+        public void SecondAlarmTest()
+        {
+            var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
+            Assert.AreEqual(false, AlarmVerifier(9, "Luni", timeSchedule));
         }
 
         public struct Schedule
