@@ -20,6 +20,13 @@ namespace Alarm
             Assert.AreEqual(false, AlarmVerifier(9, "Luni", timeSchedule));
         }
 
+        [TestMethod]
+        public void ThirdAlamTest()
+        {
+            var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
+            Assert.AreEqual(true, AlarmVerifier(11, "Duminica", timeSchedule));
+        }
+
         public struct Schedule
         {
             public int hour;
