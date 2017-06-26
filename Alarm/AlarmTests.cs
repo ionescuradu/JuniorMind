@@ -9,44 +9,29 @@ namespace Alarm
         [TestMethod]
         public void FirstAlarmTest()
         {
-            var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
-            Assert.AreEqual(true, AlarmVerifier(8, "Luni", timeSchedule));
+            var AlarmSchedule = new DaysOfWeek[] { DaysOfWeek.Monday};
+            Assert.AreEqual(true,AlarmVerifier(6, "Monday", AlarmSchedule));
         }
-
-        [TestMethod]
-        public void SecondAlarmTest()
+        [Flags]
+        enum DaysOfWeek
         {
-            var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
-            Assert.AreEqual(false, AlarmVerifier(9, "Luni", timeSchedule));
+            Monday = 0,
+            Tuesday = 1,
+            Wednesday = 2,
+            Thursday = 3,
+            Friday = 4,
+            Saturday = 5,
+            Sunday = 6
         }
 
-        [TestMethod]
-        public void ThirdAlamTest()
-        {
-            var timeSchedule = new Schedule[7] { new Schedule(8, "Luni"), new Schedule(8, "Marti"), new Schedule(8, "Miercuri"), new Schedule(9, "Joi"), new Schedule(10, "Vineri"), new Schedule(11, "Sambata"), new Schedule(11, "Duminica") };
-            Assert.AreEqual(true, AlarmVerifier(11, "Duminica", timeSchedule));
-        }
-
-        public struct Schedule
-        {
-            public int hour;
-            public string dayOfWeek;
-
-            public Schedule(int hour, string dayOfWeek)
-            {
-                this.dayOfWeek = dayOfWeek;
-                this.hour = hour;
-            }
-        }
-
-        bool AlarmVerifier(int givenHour, string givenDay, Schedule[] program)
+        bool AlarmVerifier(int givenHour, string givenDay, DaysOfWeek[] AlarmSchedule)
         {
             bool setOnAlarm = false;
-            for (int i = 0; i < program.Length; i++)
+            for (int i = 0; i < AlarmSchedule.Length; i++)
             {
-                if (givenDay == program[i].dayOfWeek && givenHour == program[i].hour)
+                if (AlarmSchedule[i].HasFlag == )
                 {
-                    setOnAlarm = true;
+
                 }
             }
             return setOnAlarm;
