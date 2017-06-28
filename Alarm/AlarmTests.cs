@@ -18,6 +18,12 @@ namespace Alarm
             Assert.AreEqual(false, AlarmVerifier(new Alarm(4, DaysOfWeek.Tuesday | DaysOfWeek.Thursday | DaysOfWeek.Friday), DaysOfWeek.Monday, 4));
         }
 
+        [TestMethod]
+        public void ThirdAlarmTest()
+        {
+            Assert.AreEqual(false, AlarmVerifier(new Alarm(4, DaysOfWeek.Tuesday | DaysOfWeek.Thursday), DaysOfWeek.Tuesday, 3));
+        }
+
         [Flags]
         enum DaysOfWeek
         {
