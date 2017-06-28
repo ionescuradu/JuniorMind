@@ -9,32 +9,40 @@ namespace Alarm
         [TestMethod]
         public void FirstAlarmTest()
         {
-            var AlarmSchedule = new DaysOfWeek[] { DaysOfWeek.Monday};
-            Assert.AreEqual(true,AlarmVerifier(6, "Monday", AlarmSchedule));
+            Assert.AreEqual(true, AlarmVerifier(new Alarm(4, DayOfWeek.Tuesday | DayOfWeek.Thursday), DaysOfWeek.Tuesday, 4));
         }
+
         [Flags]
         enum DaysOfWeek
         {
-            Monday = 0,
-            Tuesday = 1,
-            Wednesday = 2,
-            Thursday = 3,
-            Friday = 4,
-            Saturday = 5,
-            Sunday = 6
+            Monday = 1,
+            Tuesday = 2,
+            Wednesday = 4,
+            Thursday = 8,
+            Friday = 16,
+            Saturday = 32,
+            Sunday = 64
+        }
+        struct Alarm
+        {
+            public DaysOfWeek days;
+            public int hour;
+
+            public Alarm(int hour, DaysOfWeek days)
+            {
+                this.days = days;
+                this.hour = hour;
+            }
         }
 
-        bool AlarmVerifier(int givenHour, string givenDay, DaysOfWeek[] AlarmSchedule)
+        bool AlarmVerifier(Alarm alarm, DaysOfWeek currentDay, int currentHour)
         {
-            bool setOnAlarm = false;
-            for (int i = 0; i < AlarmSchedule.Length; i++)
-            {
-                if (AlarmSchedule[i].HasFlag == )
-                {
+            return isSet(alarm.days, currentDay) && currentHour == alarm.hour;
+        }
 
-                }
-            }
-            return setOnAlarm;
+        private bool isSet(DaysOfWeek daySet, DaysOfWeek currentDay)
+        {
+            return (daySet & currentDay) != 0;
         }
     }
 }
