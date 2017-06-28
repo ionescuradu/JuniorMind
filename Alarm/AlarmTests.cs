@@ -9,7 +9,13 @@ namespace Alarm
         [TestMethod]
         public void FirstAlarmTest()
         {
-            Assert.AreEqual(true, AlarmVerifier(new Alarm(4, DayOfWeek.Tuesday | DayOfWeek.Thursday), DaysOfWeek.Tuesday, 4));
+            Assert.AreEqual(true, AlarmVerifier(new Alarm(4, DaysOfWeek.Tuesday | DaysOfWeek.Thursday), DaysOfWeek.Tuesday, 4));
+        }
+
+        [TestMethod]
+        public void SecondAlarmTest()
+        {
+            Assert.AreEqual(false, AlarmVerifier(new Alarm(4, DaysOfWeek.Tuesday | DaysOfWeek.Thursday | DaysOfWeek.Friday), DaysOfWeek.Monday, 4));
         }
 
         [Flags]
