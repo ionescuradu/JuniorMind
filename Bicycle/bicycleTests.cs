@@ -27,6 +27,13 @@ namespace Bicycle
             Assert.AreEqual("Radu", CyclistSpeedster(data));
         }
 
+        [TestMethod]
+        public void OneCyclistAverageSpeed()
+        {
+            var data = new Data[2] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75) };
+            Assert.AreEqual("Radu", CyclistAverageSpeed(data));
+        }
+
         public struct Data
         {
             public string name;
@@ -71,6 +78,31 @@ namespace Bicycle
                 }
             }
             return data[index].name;
+        }
+
+        string CyclistAverageSpeed(Data[] data)
+        {
+            decimal averageSpeed = 0;
+            var name = data[0].name;
+            var distance = 0;
+            var index = 0;
+            for (int i = 1; i < data.Length; i++)
+            {
+                if (name == data[i].name)
+                {
+                    distance += data[i].rotationCount * data[i].wheelDiam;
+                    index += 1;
+                }
+                else
+                {
+                    var speed = distance / index;
+                    if (averageSpeed < speed)
+                    {
+                        name = data[i - 1].name;
+                    }
+                }
+            }
+            return name;
         }
     }
 }
