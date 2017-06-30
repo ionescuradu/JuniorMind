@@ -13,6 +13,13 @@ namespace Bicycle
             Assert.AreEqual(5887.5m, Distance(data));
         }
 
+        [TestMethod]
+        public void TwoCyclists()
+        {
+            var data = new Data[5] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75), new Data("Dan", 1, 12, 75), new Data("Dan", 1, 8, 75), new Data("Dan", 3, 5, 75)};
+            Assert.AreEqual(5887.5m, Distance(data));
+        }
+
         public struct Data
         {
             public string name;
@@ -32,11 +39,14 @@ namespace Bicycle
         decimal Distance(Data[] data)
         {
             var rotations = 0;
+            var cyclistName = data[0].name;
+            var i = 0;
             decimal distance = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                rotations += data[i].rotationCount;   
-            }
+            while (i < data.Length && cyclistName == data[i].name)
+                {
+                    rotations += data[i].rotationCount;
+                    i += 1;
+                }
             distance = rotations * data[0].wheelDiam * 3.14m;
             return distance;
         }
