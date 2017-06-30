@@ -20,6 +20,13 @@ namespace Bicycle
             Assert.AreEqual(5887.5m, Distance(data));
         }
 
+        [TestMethod]
+        public void TwoCyclistsSpeed()
+        {
+            var data = new Data[5] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75), new Data("Dan", 1, 12, 75), new Data("Dan", 1, 8, 75), new Data("Dan", 3, 5, 75) };
+            Assert.AreEqual("Radu", CyclistSpeedster(data));
+        }
+
         public struct Data
         {
             public string name;
@@ -49,6 +56,21 @@ namespace Bicycle
                 }
             distance = rotations * data[0].wheelDiam * 3.14m;
             return distance;
+        }
+
+        string CyclistSpeedster(Data[] data)
+        {
+            var speed = data[0].rotationCount * data[0].wheelDiam;
+            var index = 0;
+            for (int i = 1; i < data.Length; i++)
+            {
+                if (speed < data[i].rotationCount * data[i].wheelDiam)
+                {
+                    index = i;
+                    speed = data[i].rotationCount * data[i].wheelDiam;
+                }
+            }
+            return data[index].name;
         }
     }
 }
