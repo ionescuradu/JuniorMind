@@ -34,6 +34,27 @@ namespace Bicycle
             Assert.AreEqual("Radu", CyclistAverageSpeed(data));
         }
 
+        [TestMethod]
+        public void TwoCyclistsAverageSpeed()
+        {
+            var data = new Data[5] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75), new Data("Dan", 1, 12, 75), new Data("Dan", 2, 8, 75), new Data("Dan", 3, 5, 75) };
+            Assert.AreEqual("Radu", CyclistAverageSpeed(data));
+        }
+
+        [TestMethod]
+        public void TwoCyclistsAverageSpeedSecond()
+        {
+            var data = new Data[7] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75), new Data("Radu", 3, 12, 75), new Data("Radu", 4, 18, 75), new Data("Dan", 1, 20, 75), new Data("Dan", 2, 20, 75), new Data("Dan", 3, 15, 75) };
+            Assert.AreEqual("Dan", CyclistAverageSpeed(data));
+        }
+
+        [TestMethod]
+        public void TwoCyclistsAverageSpeedThird()
+        {
+            var data = new Data[12] { new Data("Radu", 1, 10, 75), new Data("Radu", 2, 15, 75), new Data("Radu", 3, 12, 75), new Data("Radu", 4, 18, 75), new Data("Dan", 1, 20, 75), new Data("Dan", 2, 20, 75), new Data("Dan", 3, 15, 75), new Data("Alin", 1, 10, 55), new Data("Alin", 2, 20, 55), new Data("Alin", 3, 20, 55), new Data("Alin", 4, 10, 55), new Data("Alin", 5, 10, 55) };
+            Assert.AreEqual("Dan", CyclistAverageSpeed(data));
+        }
+
         public struct Data
         {
             public string name;
@@ -83,9 +104,11 @@ namespace Bicycle
         string CyclistAverageSpeed(Data[] data)
         {
             decimal averageSpeed = 0;
+            string cyclist = data[0].name;
+            decimal speed = 0;
             var name = data[0].name;
-            var distance = 0;
-            var index = 0;
+            decimal distance = data[0].rotationCount * data[0].wheelDiam;
+            var index = 1;
             for (int i = 1; i < data.Length; i++)
             {
                 if (name == data[i].name)
@@ -93,16 +116,26 @@ namespace Bicycle
                     distance += data[i].rotationCount * data[i].wheelDiam;
                     index += 1;
                 }
-                else
+                else 
                 {
-                    var speed = distance / index;
+                    speed = distance / index;
                     if (averageSpeed < speed)
                     {
-                        name = data[i - 1].name;
+                        cyclist = data[i - 1].name;
+                        name = data[i].name;
+                        i -= 1;
+                        distance = 0;
+                        index = 0;
+                        averageSpeed = speed;
                     }
                 }
             }
-            return name;
+            var velocity = distance / index;
+            if (averageSpeed < velocity)
+            {
+                cyclist = data[data.Length - 1].name;
+            }
+            return cyclist;
         }
     }
 }
