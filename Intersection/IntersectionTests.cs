@@ -12,6 +12,13 @@ namespace Intersection
             Assert.AreEqual(false, Intersection(new string[4] { "stanga", "jos", "dreapta", "jos" }));
         }
 
+        [TestMethod]
+        public void IntersectionSecondTest()
+        {
+            Assert.AreEqual(true, Intersection(new string[6] { "stanga", "jos", "dreapta", "jos", "stanga", "sus" }));
+
+        }
+
         bool Intersection(string[] directions)
         {
             bool verdict = true;
@@ -21,6 +28,7 @@ namespace Intersection
                 {
                     verdict = false;
                 }
+                else verdict = true;
             }
             return verdict;
         }
