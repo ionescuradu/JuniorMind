@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alarm", "Alarm\Alarm.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bicycle", "Bicycle\Bicycle.csproj", "{666DA53E-3376-409F-9BCE-87F18C42C535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersection", "Intersection\Intersection.csproj", "{70F2D21F-ED27-446C-9A16-54110E683450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{666DA53E-3376-409F-9BCE-87F18C42C535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{666DA53E-3376-409F-9BCE-87F18C42C535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{666DA53E-3376-409F-9BCE-87F18C42C535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F2D21F-ED27-446C-9A16-54110E683450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F2D21F-ED27-446C-9A16-54110E683450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F2D21F-ED27-446C-9A16-54110E683450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F2D21F-ED27-446C-9A16-54110E683450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
