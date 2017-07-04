@@ -9,17 +9,24 @@ namespace Intersection
         [TestMethod]
         public void IntersectionFirstTest()
         {
-            Assert.AreEqual(false, Intersection(new string[4] { "stanga", "jos", "dreapta", "jos" }));
+            Assert.AreEqual(false, Intersection(new Ways[4] { Ways.left, Ways.down, Ways.right, Ways.down }));
         }
 
         [TestMethod]
         public void IntersectionSecondTest()
         {
-            Assert.AreEqual(true, Intersection(new string[6] { "stanga", "jos", "dreapta", "jos", "stanga", "sus" }));
-
+            Assert.AreEqual(true, Intersection(new Ways[6] { Ways.left, Ways.down, Ways.right, Ways.down, Ways.left, Ways.up }));
         }
 
-        bool Intersection(string[] directions)
+        enum Ways
+        {
+            down,
+            up,
+            right,
+            left
+        }
+
+        bool Intersection(Ways[] directions)
         {
             bool verdict = true;
             for (int i = 0; i < directions.Length - 3; i++)
