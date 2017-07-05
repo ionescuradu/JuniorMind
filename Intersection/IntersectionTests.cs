@@ -9,13 +9,13 @@ namespace Intersection
         [TestMethod]
         public void IntersectionFirstTest()
         {
-            Assert.AreEqual(false, Intersection(new Ways[4] { Ways.left, Ways.down, Ways.right, Ways.down }));
+            Assert.AreEqual("000", Intersection(new Ways[4] { Ways.left, Ways.down, Ways.right, Ways.down }));
         }
 
         [TestMethod]
         public void IntersectionSecondTest()
         {
-            Assert.AreEqual(true, Intersection(new Ways[6] { Ways.left, Ways.down, Ways.right, Ways.down, Ways.left, Ways.up }));
+            Assert.AreEqual("125", Intersection(new Ways[6] { Ways.left, Ways.down, Ways.right, Ways.down, Ways.left, Ways.up }));
         }
 
         enum Ways
@@ -26,18 +26,24 @@ namespace Intersection
             left
         }
 
-        bool Intersection(Ways[] directions)
+        string Intersection(Ways[] directions)
         {
-            bool verdict = true;
+            int[] firstIntersection = new int[3];
+            string intersectionPoint = "";
             for (int i = 0; i < directions.Length - 3; i++)
             {
-                if (directions[i] == directions[i + 1] || directions[i] == directions[i + 2] || directions[i] == directions[i + 3] || directions[i + 1] == directions[i + 2] || directions[i + 1] == directions[i + 3] || directions[i + 2] == directions[i + 3])
+                if (directions[i] != directions[i + 1] && directions[i] != directions[i + 2] && directions[i] != directions[i + 3] && directions[i + 1] != directions[i + 2] && directions[i + 1] != directions[i + 3] && directions[i + 2] != directions[i + 3])
                 {
-                    verdict = false;
+                    firstIntersection[0] = i - 1;
+                    firstIntersection[1] = i;
+                    firstIntersection[2] = i + 3;
                 }
-                else verdict = true;
             }
-            return verdict;
+            for (int i = 0; i < firstIntersection.Length; i++)
+            {
+                intersectionPoint += firstIntersection[i];
+            }
+            return intersectionPoint;
         }
     }
 }
