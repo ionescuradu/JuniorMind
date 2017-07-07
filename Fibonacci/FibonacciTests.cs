@@ -12,6 +12,12 @@ namespace Fibonacci
             Assert.AreEqual(0, Fibonacci(0));
         }
 
+        [TestMethod]
+        public void FibonacciSecond()
+        {
+            Assert.AreEqual(1, Fibonacci(2));
+        }
+
         int Fibonacci(int givenNumber)
         {
             if (givenNumber < 2)
