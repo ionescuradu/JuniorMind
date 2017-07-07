@@ -12,6 +12,12 @@ namespace StringReversing
             Assert.AreEqual("udar", ReverseString("radu"));
         }
 
+        [TestMethod]
+        public void ReverseStringSecond()
+        {
+            Assert.AreEqual("ereMerAanA", ReverseString("AnaAreMere"));
+        }
+
         string ReverseString(string givenString)
         {
             if (givenString.Length > 0)
