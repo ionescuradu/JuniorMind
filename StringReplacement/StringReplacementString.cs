@@ -12,6 +12,12 @@ namespace StringReplacement
             Assert.AreEqual("RIONESCUDU", ConcatenateTwoStrings("RADU", "IONESCU", 1));
         }
 
+        [TestMethod]
+        public void StringReplacementSecondTest()
+        {
+            Assert.AreEqual("ABRACMEREDABRA", ConcatenateTwoStrings("ABRACADABRA", "MERE", 5));
+        }
+
         string ConcatenateTwoStrings(string first, string second, int insertionPoint)
         {
             string result = "";
