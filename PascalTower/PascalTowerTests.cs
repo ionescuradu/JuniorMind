@@ -24,6 +24,12 @@ namespace PascalTower
             CollectionAssert.AreEqual(new int[5] { 1, 4, 6, 4, 1}, Triangle(5));
         }
 
+        [TestMethod]
+        public void PascalFourthTest()
+        {
+            CollectionAssert.AreEqual(new int[7] { 1, 6, 15, 20, 15, 6, 1 }, Triangle(7));
+        }
+
         int[] Triangle(int row)
         {
             int[] triangleLevel = new int[row];
