@@ -18,12 +18,18 @@ namespace PascalTower
             CollectionAssert.AreEqual(new int[2] { 1 , 1 }, Triangle(2));
         }
 
+        [TestMethod]
+        public void PascalThirdTest()
+        {
+            CollectionAssert.AreEqual(new int[5] { 1, 4, 6, 4, 1}, Triangle(5));
+        }
+
         int[] Triangle(int row)
         {
             int[] triangleLevel = new int[row];
             for (int i = 0; i < row; i++)
             {
-                triangleLevel[i] = Pascal(row, i);
+                triangleLevel[i] = Pascal(row, i + 1);
             }
             return triangleLevel;
         }
