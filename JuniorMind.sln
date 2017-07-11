@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringReplacement", "String
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PochetCalculator", "PochetCalculator\PochetCalculator.csproj", "{9A92421F-B91A-4FBE-B9D8-DBD830F03519}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalTower", "PascalTower\PascalTower.csproj", "{AAD7A598-B5D4-4FA1-AC70-19343966BF04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{9A92421F-B91A-4FBE-B9D8-DBD830F03519}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A92421F-B91A-4FBE-B9D8-DBD830F03519}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A92421F-B91A-4FBE-B9D8-DBD830F03519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD7A598-B5D4-4FA1-AC70-19343966BF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD7A598-B5D4-4FA1-AC70-19343966BF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD7A598-B5D4-4FA1-AC70-19343966BF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD7A598-B5D4-4FA1-AC70-19343966BF04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
