@@ -44,8 +44,8 @@ namespace HanoiTests
                                 secondTower[indexB] = firstTower[indexA];
                                 firstTower[indexA] = 0;
                                 indexA += 1;
-                                if (indexA == 4)
-                                    indexA = 3;
+                                if (indexA == total)
+                                    indexA = total - 1;
                                 index = 1;
                                 counter += 1;
                                 return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
@@ -58,8 +58,8 @@ namespace HanoiTests
                                     secondTower[indexB] = firstTower[indexA];
                                     firstTower[indexA] = 0;
                                     indexA += 1;
-                                    if (indexA == 4)
-                                        indexA = 3;
+                                    if (indexA == total)
+                                        indexA = total - 1;
                                     index = 1;
                                     counter += 1;
                                     return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
@@ -70,8 +70,8 @@ namespace HanoiTests
                                     secondTower[indexB] = 0;
                                     indexB += 1;
                                     counter += 1;
-                                    if (indexB == 4)
-                                        indexB = 3;
+                                    if (indexB == total)
+                                        indexB = total - 1;
                                     index = 1;
                                     return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
                                 }
@@ -94,8 +94,8 @@ namespace HanoiTests
                                 thirdTower[indexC] = firstTower[indexA];
                                 firstTower[indexA] = 0;
                                 indexA += 1;
-                                if (indexA == 4)
-                                    indexA = 3;
+                                if (indexA == total)
+                                    indexA = total - 1;
                                 index = 2;
                                 counter += 1;
                                 return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
@@ -106,8 +106,8 @@ namespace HanoiTests
                                 thirdTower[indexC] = firstTower[indexA];
                                 firstTower[indexA] = 0;
                                 indexA += 1;
-                                if (indexA == 4)
-                                    indexA = 3;
+                                if (indexA == total)
+                                    indexA = total - 1;
                                 index = 2;
                                 counter += 1;
                                 return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
@@ -130,8 +130,8 @@ namespace HanoiTests
                             indexC -= 1;
                             secondTower[indexB] = 0;
                             indexB += 1;
-                            if (indexB == 4)
-                                indexB = 3;
+                            if (indexB == total)
+                                indexB = total - 1;
                             index = 0;
                             counter += 1;
                             return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
