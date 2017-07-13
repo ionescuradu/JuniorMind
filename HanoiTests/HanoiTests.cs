@@ -12,6 +12,12 @@ namespace HanoiTests
             Assert.AreEqual((Math.Pow(2, 4) - 1), HanoiTowers(4));
         }
 
+        [TestMethod]
+        public void HanoiSecondTest()
+        {
+            Assert.AreEqual((Math.Pow(2, 6) - 1), HanoiTowers(6));
+        }
+
         int HanoiTowers(int numberOfDisks)
         {
             int counter = 0;
@@ -79,6 +85,7 @@ namespace HanoiTests
                         }
                         else
                         {
+                            indexA -= 1;
                             firstTower[indexA] = secondTower[indexB];
                             secondTower[indexB] = 0;
                             indexB += 1;
