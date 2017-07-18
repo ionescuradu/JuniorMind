@@ -60,7 +60,7 @@ namespace HanoiTests
                             {
                                 if (firstTower[indexA] != 0)
                                 {
-                                    indexB -= 1;/////////////////
+                                    indexB -= 1;
                                     secondTower[indexB] = firstTower[indexA];
                                     firstTower[indexA] = 0;
                                     indexA += 1;
@@ -148,6 +148,9 @@ namespace HanoiTests
                             secondTower[indexB - 1] = thirdTower[indexC];
                             thirdTower[indexC] = 0;
                             indexB -= 1;
+                            indexC += 1;
+                            if (indexC == total)
+                                indexC = total - 1;
                             index = 0;
                             counter += 1;
                             return Hanoi(firstTower, secondTower, thirdTower, index, indexA, indexB, indexC, ref counter, total);
