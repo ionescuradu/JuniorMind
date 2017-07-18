@@ -24,6 +24,11 @@ namespace HanoiTests
             Assert.AreEqual((Math.Pow(2, 10) - 1), HanoiTowers(10));
         }
 
+        [TestMethod]
+        public void HanoiFourthTest()
+        {
+        }
+
         int HanoiTowers(int numberOfDisks)
         {
             int counter = 0;
