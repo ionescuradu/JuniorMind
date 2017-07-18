@@ -18,6 +18,12 @@ namespace HanoiTests
             Assert.AreEqual((Math.Pow(2, 6) - 1), HanoiTowers(6));
         }
 
+        [TestMethod]
+        public void HanoiThirdTest()
+        {
+            Assert.AreEqual((Math.Pow(2, 10) - 1), HanoiTowers(10));
+        }
+
         int HanoiTowers(int numberOfDisks)
         {
             int counter = 0;
