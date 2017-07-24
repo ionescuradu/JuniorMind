@@ -1,6 +1,5 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.decimaleropServices;
+using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("HanoiTests")]
 [assembly: AssemblyDescription("")]
