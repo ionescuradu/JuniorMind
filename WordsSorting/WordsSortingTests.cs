@@ -12,6 +12,12 @@ namespace WordsSorting
             CollectionAssert.AreEqual(new string[4] { "mere", "mere", "Ana", "are" }, sortingSentence("Ana are mere mere"));
         }
 
+        [TestMethod]
+        public void WordSortingSecond()
+        {
+            CollectionAssert.AreEqual(new string[5] { "are", "are", "mere", "mere", "Ana" }, sortingSentence("Ana are mere mere are"));
+        }
+
         public struct wordAppearance
         {
             public string word;
