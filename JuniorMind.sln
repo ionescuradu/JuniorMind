@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotoExtraction", "LotoExtra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairCenter", "RepairCenter\RepairCenter.csproj", "{59A6AB17-5E89-462C-9BA3-C465EF719F2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsSorting", "WordsSorting\WordsSorting.csproj", "{DADEBF4F-3A33-4A2C-8307-46DA529998D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -213,6 +215,10 @@ Global
 		{59A6AB17-5E89-462C-9BA3-C465EF719F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59A6AB17-5E89-462C-9BA3-C465EF719F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59A6AB17-5E89-462C-9BA3-C465EF719F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
