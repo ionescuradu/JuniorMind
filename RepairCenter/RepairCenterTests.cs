@@ -12,6 +12,12 @@ namespace RepairCenter
             CollectionAssert.AreEqual(new priority[3] { priority.High, priority.Medium, priority.Low }, sortingArray(new priority[3] { priority.Low, priority.High, priority.Medium }));
         }
 
+        [TestMethod]
+        public void RepairCenterSecond()
+        {
+            CollectionAssert.AreEqual(new priority[4] { priority.High, priority.High, priority.Medium, priority.Low }, sortingArray(new priority[4] { priority.Low, priority.High, priority.Medium, priority.High }));
+        }
+
         enum priority
         {
             High,
