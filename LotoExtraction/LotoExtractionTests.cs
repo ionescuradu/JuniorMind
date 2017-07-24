@@ -12,6 +12,12 @@ namespace LotoExtraction
             CollectionAssert.AreEqual(new int[3] { 6, 5, 4}, LotoSorting(new int[3] { 4, 5, 6} ) );
         }
 
+        [TestMethod]
+        public void LotoSortingSecondTest()
+        {
+            CollectionAssert.AreEqual(new int[5] { 46, 45, 24, 17, 7 }, LotoSorting(new int[5] { 7, 46, 24, 17, 45 }));
+        }
+
         int[] LotoSorting(int[] givenNumbers)
         {
             int[] sortedNumbers = new int[givenNumbers.Length];
