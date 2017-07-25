@@ -33,7 +33,35 @@ namespace WordsSorting
         string[] sortingSentence(string sentence)
         {
             int index = 0;
-            string[] newSentence = sentence.Split(' ');
+            string word = "";
+            for (int i = 0; i < sentence.Length; i++) // numara cuvintele
+            {
+                if (sentence[i].ToString() == " " || i == sentence.Length - 1)
+                {
+                    index += 1;
+                }
+            }
+            string[] newSentence = new string[index];
+            index = 0;
+            for (int i = 0; i < sentence.Length; i++) // introduce cuvintele intr-un string in ordinea din text
+            {
+                if (sentence[i].ToString() != " ")
+                {
+                    word += sentence[i];
+                    if ( i == sentence.Length - 1)
+                    {
+                        newSentence[index] = word;
+                        word = "";
+                    }
+                }
+                else
+                {
+                    newSentence[index] = word;
+                    index += 1;
+                    word = "";
+                }
+
+            }
             var wordsAppearance = new wordAppearance[newSentence.Length];
             index = 0;
             for (int i = 0; i < newSentence.Length; i++) // introduce toate cuvintele fara dubluri in struct
