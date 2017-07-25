@@ -20,25 +20,24 @@ namespace LotoExtraction
 
         int[] LotoSorting(int[] givenNumbers)
         {
-            int[] sortedNumbers = new int[givenNumbers.Length];
             int index = 0;
             while (index != givenNumbers.Length)
             {
-                int max = givenNumbers[0];
-                var pos = 0;
-                for (int i = 0; i < givenNumbers.Length; i++)
+                var aux = 0;
+                var pos = index;
+                for (int i = index; i < givenNumbers.Length; i++)
                 {
-                    if (max < givenNumbers[i])
+                    if ( givenNumbers[pos] < givenNumbers[i])
                     {
-                        max = givenNumbers[i];
                         pos = i;
                     }
                 }
-                givenNumbers[pos] = 0;
-                sortedNumbers[index] = max;
+                aux = givenNumbers[pos];
+                givenNumbers[pos] = givenNumbers[index];
+                givenNumbers[index] = aux;                
                 index += 1;
             }
-            return sortedNumbers;
+            return givenNumbers;
         }
     }
 }
