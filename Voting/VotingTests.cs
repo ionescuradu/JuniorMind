@@ -13,6 +13,12 @@ namespace Voting
             CollectionAssert.AreEqual(new Candidate[2] { new Candidate("Andreea", 50), new Candidate("Radu", 40) }, Election(new PollingStation[] { new PollingStation(new Candidate[2] { new Candidate("Andreea", 20), new Candidate("Radu", 15) }), new PollingStation(new Candidate[2] { new Candidate("Andreea", 30), new Candidate("Radu", 25) }) }));
         }
 
+        [TestMethod]
+        public void PollsSecondTest()
+        {
+            CollectionAssert.AreEqual(new Candidate[3] { new Candidate("Tudor", 60), new Candidate("Andreea", 50), new Candidate("Radu", 40)  }, Election(new PollingStation[] { new PollingStation(new Candidate[3] { new Candidate("Tudor", 50), new Candidate("Andreea", 20), new Candidate("Radu", 15) }), new PollingStation(new Candidate[3] { new Candidate("Andreea", 30), new Candidate("Radu", 25), new Candidate("Tudor", 10) }) }));
+        }
+
         public struct Candidate
         {
             public string name;
