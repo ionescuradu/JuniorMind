@@ -36,7 +36,7 @@ namespace Voting
 
         Candidate[] Election(PollingStation[] givenVotes)
         { 
-            var finalPolls = new Candidate[] { new Candidate("Radu", 0), new Candidate("Andreea", 0) };
+            var finalPolls = new Candidate[givenVotes[0].station.Length];
             for (int i = 0; i < givenVotes.Length; i++)
             {
                 for (int j = 0; j < givenVotes[i].station.Length; j++)
@@ -45,6 +45,15 @@ namespace Voting
                         if (finalPolls[k].name == givenVotes[i].station[j].name)
                         {
                             finalPolls[k].votes += givenVotes[i].station[j].votes;
+                        }
+                        else
+                        {
+                            if (finalPolls[k].name == null)
+                            {
+                                finalPolls[k].name = givenVotes[i].station[j].name;
+                                finalPolls[k].votes += givenVotes[i].station[j].votes;
+                                break; // sa nu copieze primul candidat pe toate pozitiile din lista finala
+                            }
                         }
                 }
             }
