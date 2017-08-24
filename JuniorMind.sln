@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairCenter", "RepairCente
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsSorting", "WordsSorting\WordsSorting.csproj", "{DADEBF4F-3A33-4A2C-8307-46DA529998D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voting", "Voting\Voting.csproj", "{07B10ED0-FCBE-4308-B598-D885A65F4522}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADEBF4F-3A33-4A2C-8307-46DA529998D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B10ED0-FCBE-4308-B598-D885A65F4522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B10ED0-FCBE-4308-B598-D885A65F4522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B10ED0-FCBE-4308-B598-D885A65F4522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B10ED0-FCBE-4308-B598-D885A65F4522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
