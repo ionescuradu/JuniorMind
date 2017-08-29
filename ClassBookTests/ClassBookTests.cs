@@ -7,8 +7,9 @@ namespace ClassBookTests
     public class ClassBookTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ClassBookFirstTest()
         {
+            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) , new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m) }, ClassBookOrdering (new Student[2] { new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m), new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) }));
         }
 
 
@@ -30,7 +31,7 @@ namespace ClassBookTests
             public string name;
             public decimal generalAverage;
 
-            public Student(Topic[] student, string name, decimal generalAverage)
+            public Student(string name, Topic[] student, decimal generalAverage)
             {
                 this.student = student;
                 this.name = name;
