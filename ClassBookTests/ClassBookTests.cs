@@ -53,7 +53,13 @@ namespace ClassBookTests
 
         Student[] ClassBookOverallAverage(Student[] givenList) // pentru calcularea mediei generale
         {
-            var classBookSubjectAverage = new Student[givenList.Length];
+            CalculationAverage(givenList);
+            SelectionSorting(givenList);
+            return givenList;
+        }
+
+        private static void CalculationAverage(Student[] givenList)
+        {
             for (int i = 0; i < givenList.Length; i++) // se parcurge lista cu numele studentilor
             {
                 var average = 0m;
@@ -72,8 +78,6 @@ namespace ClassBookTests
                 }
                 givenList[i].generalAverage = average / indexAverage; // calculul mediei generale pentru fiecare student
             }
-            SelectionSorting(givenList);
-            return givenList;
         }
 
         private static void SelectionSorting(Student[] givenList)
