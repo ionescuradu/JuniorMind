@@ -12,6 +12,12 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m), new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m) }, ClassBookOrdering (new Student[2] { new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m), new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) }));
         }
 
+        [TestMethod]
+        public void ClassBookSecondTest()
+        {
+            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 9.75m), new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 9m) }, ClassBookOverallAverage(new Student[2] { new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m), new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) }));
+        }
+
 
         public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
         {
@@ -50,11 +56,11 @@ namespace ClassBookTests
             var classBookSubjectAverage = new Student[givenList.Length];
             for (int i = 0; i < givenList.Length; i++) // se parcurge lista cu numele studentilor
             {
-                var average = 0;
+                var average = 0m;
                 var indexAverage = 0;
                 for (int j = 0; j < givenList[i].student.Length; j++) // se parcurge lista cu materiile pentru fiecare student
                 {
-                    var sum = 0;
+                    var sum = 0m;
                     var indexSum = 0;
                     for (int k = 0; k < givenList[i].student[j].grades.Length; k++) // se parcurge lista cu notele pentru fiecare materie
                     {
@@ -78,7 +84,7 @@ namespace ClassBookTests
             var aux = 0m;
             var auxString = "";
             var auxStudent = givenList[0].student;
-            while (index != givenList.Length)
+            while (index != givenList.Length - 1)
             {
                 for (int i = 1; i < givenList.Length; i++)
                 {
