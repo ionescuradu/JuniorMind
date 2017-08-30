@@ -19,11 +19,9 @@ namespace ClassBookTests
               new Topic("Math", new int[2] { 10, 7 }),
               new Topic("Physics", new int[2] { 10, 9 })
             };
-            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
-            var raduAverage = new Student("Radu", raduGrades, 9m);
             var andreea = new Student("Andreea", andreeaGrades, 0m);
             var radu = new Student("Radu", raduGrades, 0m);
-            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", andreeaGrades, 0m), new Student("Radu", raduGrades, 0m) }, ClassBookOrdering (new Student[] { new Student("Radu", raduGrades, 0m), new Student("Andreea", andreeaGrades, 0m) }));
+            CollectionAssert.AreEqual(new Student[2] { andreea, radu }, ClassBookOrdering (new Student[] { radu, andreea }));
         }
 
         [TestMethod]
