@@ -9,13 +9,41 @@ namespace ClassBookTests
         [TestMethod]
         public void ClassBookFirstTest()
         {
-            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m), new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m) }, ClassBookOrdering (new Student[2] { new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m), new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) }));
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", andreeaGrades, 0m), new Student("Radu", raduGrades, 0m) }, ClassBookOrdering (new Student[] { new Student("Radu", raduGrades, 0m), new Student("Andreea", andreeaGrades, 0m) }));
         }
 
         [TestMethod]
         public void ClassBookSecondTest()
         {
-            CollectionAssert.AreEqual(new Student[2] { new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 9.75m), new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 9m) }, ClassBookOverallAverage(new Student[2] { new Student("Radu", new Topic[2] { new Topic("Math", new int[2] { 10, 7 }), new Topic("Physics", new int[2] { 10, 9 }) }, 0m), new Student("Andreea", new Topic[2] { new Topic("Literature", new int[2] { 10, 10 }), new Topic("Latin", new int[2] { 10, 9 }) }, 0m) }));
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            CollectionAssert.AreEqual(new Student[2] { andreeaAverage, raduAverage }, ClassBookOverallAverage(new Student[] { radu, andreea}));
         }
 
 
@@ -47,18 +75,44 @@ namespace ClassBookTests
 
         Student[] ClassBookOrdering(Student[] givenList) // pentru ordonarea alfabetica a elevilor
         {
-            Array.Sort(givenList, (x, y) => string.Compare(x.name, y.name));
+            //Array.Sort(givenList, (x, y) => string.Compare(x.name, y.name));
+            bool nrMoves = false;
+            while (nrMoves == false) 
+            {
+                nrMoves = true;
+                for (int i = 1; i < givenList.Length; i++)
+                {
+                    var firstLetter = 0;
+                    while (givenList[i].name[firstLetter] == givenList[i - 1].name[firstLetter])
+                    {
+                        firstLetter += 1;
+                    }
+                    if (givenList[i].name[firstLetter] < givenList[i - 1].name[firstLetter])
+                    {
+                        nrMoves = false;
+                        var auxName = givenList[i].name;
+                        var auxGrades = givenList[i].student;
+                        var auxAverage = givenList[i].generalAverage;
+                        givenList[i].name = givenList[i - 1].name;
+                        givenList[i].student = givenList[i - 1].student;
+                        givenList[i].generalAverage = givenList[i - 1].generalAverage;
+                        givenList[i - 1].name = auxName;
+                        givenList[i - 1].student = auxGrades;
+                        givenList[i - 1].generalAverage = auxAverage;
+                    }
+                }
+            }
             return givenList;
         }
 
         Student[] ClassBookOverallAverage(Student[] givenList) // pentru calcularea mediei generale
         {
-            CalculationAverage(givenList);
+            AverageCalculation(givenList);
             SelectionSorting(givenList);
             return givenList;
         }
 
-        private static void CalculationAverage(Student[] givenList)
+        private static void AverageCalculation(Student[] givenList)
         {
             for (int i = 0; i < givenList.Length; i++) // se parcurge lista cu numele studentilor
             {
@@ -98,7 +152,7 @@ namespace ClassBookTests
                         index = i;
                     }
                 }
-                aux = givenList[indexFinal].generalAverage; //Extract method !!!!
+                aux = givenList[indexFinal].generalAverage; 
                 auxString = givenList[indexFinal].name;
                 auxStudent = givenList[indexFinal].student;
                 givenList[indexFinal].generalAverage = givenList[index].generalAverage;
