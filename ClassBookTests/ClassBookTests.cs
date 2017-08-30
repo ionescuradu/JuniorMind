@@ -96,6 +96,26 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[3] { andreeaAverage, raduAverage, antoniaAverage }, ClassBookOverallAverage(new Student[] { radu, andreea, antonia }));
         }
 
+        [TestMethod]
+        public void ClassBookFifthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            CollectionAssert.AreEqual(new Student[1] { andreeaAverage}, ClassBookSpecificAverage(new Student[] { radu, andreea }, 9.75m));
+        }
+
 
         public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
         {
@@ -160,6 +180,32 @@ namespace ClassBookTests
             AverageCalculation(givenList);
             SelectionSorting(givenList);
             return givenList;
+        }
+
+        Student[] ClassBookSpecificAverage(Student[] givenList, decimal givenAverage)
+        {
+            AverageCalculation(givenList);
+            var index = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (givenList[i].generalAverage == givenAverage)
+                {
+                    index += 1;
+                }
+            }
+            var specificStudents = new Student[index];
+            var aux = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (givenList[i].generalAverage == givenAverage)
+                {
+                    specificStudents[aux].name = givenList[i].name;
+                    specificStudents[aux].student = givenList[i].student;
+                    specificStudents[aux].generalAverage = givenList[i].generalAverage;
+                    aux += 1;
+                }
+            }
+            return specificStudents;
         }
 
         private static void AverageCalculation(Student[] givenList)
