@@ -69,6 +69,33 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[2] { andreeaAverage, raduAverage }, ClassBookOverallAverage(new Student[] { radu, andreea}));
         }
 
+        [TestMethod]
+        public void ClassBookFourthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var antoniaGrades = new Topic[2]
+            {
+              new Topic("Chemistry", new int[2] { 10, 8 }),
+              new Topic("Math", new int[2] { 10, 6 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var antoniaAverage = new Student("Antonia", antoniaGrades, 8.5m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            var antonia = new Student("Antonia", antoniaGrades, 0m);
+            CollectionAssert.AreEqual(new Student[3] { andreeaAverage, raduAverage, antoniaAverage }, ClassBookOverallAverage(new Student[] { radu, andreea, antonia }));
+        }
+
 
         public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
         {
@@ -128,7 +155,7 @@ namespace ClassBookTests
             return givenList;
         }
 
-        Student[] ClassBookOverallAverage(Student[] givenList) // pentru calcularea mediei generale
+        Student[] ClassBookOverallAverage(Student[] givenList) 
         {
             AverageCalculation(givenList);
             SelectionSorting(givenList);
@@ -137,23 +164,23 @@ namespace ClassBookTests
 
         private static void AverageCalculation(Student[] givenList)
         {
-            for (int i = 0; i < givenList.Length; i++) // se parcurge lista cu numele studentilor
+            for (int i = 0; i < givenList.Length; i++) 
             {
                 var average = 0m;
                 var indexAverage = 0;
-                for (int j = 0; j < givenList[i].student.Length; j++) // se parcurge lista cu materiile pentru fiecare student
+                for (int j = 0; j < givenList[i].student.Length; j++) 
                 {
                     var sum = 0m;
                     var indexSum = 0;
-                    for (int k = 0; k < givenList[i].student[j].grades.Length; k++) // se parcurge lista cu notele pentru fiecare materie
+                    for (int k = 0; k < givenList[i].student[j].grades.Length; k++) 
                     {
                         sum += givenList[i].student[j].grades[k];
                         indexSum += 1;
                     }
-                    average += sum / indexSum; // se adauga media pentru fiecare materie pe prima pozitie in array-ul de note
+                    average += sum / indexSum; 
                     indexAverage += 1;
                 }
-                givenList[i].generalAverage = average / indexAverage; // calculul mediei generale pentru fiecare student
+                givenList[i].generalAverage = average / indexAverage; 
             }
         }
 
@@ -162,12 +189,9 @@ namespace ClassBookTests
             var index = 0;
             var indexFinal = 0;
             var max = givenList[0].generalAverage;
-            var aux = 0m;
-            var auxString = "";
-            var auxStudent = givenList[0].student;
-            while (index != givenList.Length - 1)
+            while (indexFinal != givenList.Length - 1)
             {
-                for (int i = 1; i < givenList.Length; i++)
+                for (int i = indexFinal + 1; i < givenList.Length; i++)
                 {
                     if (givenList[i].generalAverage > max)
                     {
@@ -175,9 +199,9 @@ namespace ClassBookTests
                         index = i;
                     }
                 }
-                aux = givenList[indexFinal].generalAverage; 
-                auxString = givenList[indexFinal].name;
-                auxStudent = givenList[indexFinal].student;
+                var aux = givenList[indexFinal].generalAverage; 
+                var auxString = givenList[indexFinal].name;
+                var auxStudent = givenList[indexFinal].student;
                 givenList[indexFinal].generalAverage = givenList[index].generalAverage;
                 givenList[indexFinal].name = givenList[index].name;
                 givenList[indexFinal].student = givenList[index].student;
@@ -187,10 +211,5 @@ namespace ClassBookTests
                 indexFinal += 1;
             }
         }
-
-        //string ClassBookOverallStudents(Student[] givenList)
-        //{
-        //    var averageList = ClassBookOverallAverage(Student[] givenList);
-        //}
     }
 }
