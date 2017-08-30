@@ -37,6 +37,31 @@ namespace ClassBookTests
               new Topic("Math", new int[2] { 10, 7 }),
               new Topic("Physics", new int[2] { 10, 9 })
             };
+            var antoniaGrades = new Topic[2]
+            {
+              new Topic("Chemistry", new int[2] { 10, 8 }),
+              new Topic("Math", new int[2] { 10, 6 })
+            };
+
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            var antonia = new Student("Antonia", antoniaGrades, 0m);
+            CollectionAssert.AreEqual(new Student[3] { andreea, antonia, radu }, ClassBookOrdering(new Student[] { radu, andreea, antonia }));
+        }
+
+        [TestMethod]
+        public void ClassBookThirdTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
             var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
             var raduAverage = new Student("Radu", raduGrades, 9m);
             var andreea = new Student("Andreea", andreeaGrades, 0m);
