@@ -116,6 +116,33 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[1] { andreeaAverage}, ClassBookSpecificAverage(new Student[] { radu, andreea }, 9.75m));
         }
 
+        [TestMethod]
+        public void ClassBookSixthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var antoniaGrades = new Topic[2]
+            {
+              new Topic("Chemistry", new int[2] { 10, 8 }),
+              new Topic("Math", new int[2] { 10, 8 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var antoniaAverage = new Student("Antonia", antoniaGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            var antonia = new Student("Antonia", antoniaGrades, 0m);
+            CollectionAssert.AreEqual(new Student[2] {raduAverage, antoniaAverage }, ClassBookSpecificAverage(new Student[] { radu, andreea, antonia }, 9m));
+        }
+
 
         public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
         {
