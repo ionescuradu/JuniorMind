@@ -173,7 +173,23 @@ namespace ClassBookTests
             var antonia = new Student("Antonia", antoniaGrades);
             CollectionAssert.AreEqual(new Student[2] { andreea, antonia }, ClassBookBestStudets(new Student[] { radu, andreea, antonia }));
         }
-
+        [TestMethod]
+        public void ClassBookNinthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var andreea = new Student("Andreea", andreeaGrades);
+            var radu = new Student("Radu", raduGrades);
+            CollectionAssert.AreEqual(new Student[1] { radu }, ClassBookWeakestStudets(new Student[] { radu, andreea }));
+        }
 
 
         public struct Topic       
@@ -320,16 +336,47 @@ namespace ClassBookTests
                 }
             }
             var bestStudents = new Student[index];
-            var aux = 0;
+            index = 0;
             for (int i = 0; i < givenList.Length; i++)
             {
                 if (max == givenList[i].CountGradesOf10PerStudent())
                 {
-                    bestStudents[aux] = givenList[i];
-                    aux += 1;
+                    bestStudents[index] = givenList[i];
+                    index += 1;
                 }
             }
             return bestStudents;
+        }
+
+        Student[] ClassBookWeakestStudets(Student[] givenList)
+        {
+            var min = givenList[0].TotalSubjectAverage();
+            for (int i = 1; i < givenList.Length; i++)
+            {
+                if (min > givenList[i].TotalSubjectAverage())
+                {
+                    min = givenList[i].TotalSubjectAverage();
+                }
+            }
+            var index = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (min == givenList[i].TotalSubjectAverage())
+                {
+                    index += 1;
+                }
+            }
+            var weakestStudents = new Student[index];
+            index = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (min == givenList[i].TotalSubjectAverage())
+                {
+                    weakestStudents[index] = givenList[i];
+                    index += 1;
+                }
+            }
+            return weakestStudents;
         }
 
         private static void SelectionSorting(Student[] givenList)
