@@ -190,7 +190,29 @@ namespace ClassBookTests
             var radu = new Student("Radu", raduGrades);
             CollectionAssert.AreEqual(new Student[1] { radu }, ClassBookWeakestStudets(new Student[] { radu, andreea }));
         }
-
+        [TestMethod]
+        public void ClassBookTenthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var antoniaGrades = new Topic[2]
+            {
+              new Topic("Chemistry", new int[2] { 10, 9 }),
+              new Topic("Math", new int[2] { 10, 7 })
+            };
+            var andreea = new Student("Andreea", andreeaGrades);
+            var radu = new Student("Radu", raduGrades);
+            var antonia = new Student("Antonia", antoniaGrades);
+            CollectionAssert.AreEqual(new Student[2] { radu, antonia }, ClassBookWeakestStudets(new Student[] { radu, andreea, antonia }));
+        }
 
         public struct Topic       
         {
