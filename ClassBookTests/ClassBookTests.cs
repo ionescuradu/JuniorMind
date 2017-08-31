@@ -143,8 +143,29 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[2] {raduAverage, antoniaAverage }, ClassBookSpecificAverage(new Student[] { radu, andreea, antonia }, 9m));
         }
 
+        [TestMethod]
+        public void ClassBookSeventhTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            CollectionAssert.AreEqual(new Student[1] { andreea }, ClassBookBestStudets(new Student[] { radu, andreea }));
+        }
 
-        public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
+
+
+        public struct Topic       
         {
             public string subject;
             public int[] grades;
@@ -154,9 +175,34 @@ namespace ClassBookTests
                 this.subject = subject;
                 this.grades = grades;
             }
+            
+            public int CountGradesOf10()
+            {
+                var count = 0;
+                for (int i = 0; i < grades.Length; i++)
+                {
+                    if (grades[i] == 10)
+                    {
+                        count += 1;
+                    }
+                }
+                return count;
+            }
+
+            public decimal SubjectAverage()
+            {
+                var average = 0m;
+                var index = 0;
+                for (int i = 0; i < grades.Length; i++)
+                {
+                    average += grades[i];
+                    index += 1;
+                }
+                return average / index;
+            }
         }
 
-        public struct Student     // Struct pentru array de materii si note pentru fiecare student 
+        public struct Student     
         {
             public Topic[] pupil;
             public string name;
@@ -168,11 +214,32 @@ namespace ClassBookTests
                 this.name = name;
                 this.generalAverage = generalAverage;
             }
+
+            public int CountGradesOf10PerStudent()
+            {
+                var count = 0;
+                for (int i = 0; i < pupil.Length; i++)
+                {
+                    count += pupil[i].CountGradesOf10();
+                }
+                return count;
+            }
+
+            public decimal TotalSubjectAverage()
+            {
+                var average = 0m;
+                var index = 0;
+                for (int i = 0; i < pupil.Length; i++)
+                {
+                    average += pupil[i].SubjectAverage();
+                    index += 1;
+                }
+                return average / index;
+            }
         }
 
         Student[] ClassBookOrdering(Student[] givenList) // pentru ordonarea alfabetica a elevilor
         {
-            //Array.Sort(givenList, (x, y) => string.Compare(x.name, y.name));
             bool nrMoves = false;
             while (nrMoves == false) 
             {
@@ -229,31 +296,33 @@ namespace ClassBookTests
 
         Student[] ClassBookBestStudets(Student[] givenList)
         {
-            var sumOfTen= 0;
-            for (int i = 0; i < givenList[0].pupil.Length; i++)
-            {
-                for (int j = 0; j < givenList[0].pupil[i].grades.Length; j++)
-                {
-                    if (givenList[0].pupil[i].grades[j] == 10)
-                    {
-                        sumOfTen += 10;
-                    }
-                }
-            }
+            var max = givenList[0].TotalSubjectAverage();
             for (int i = 0; i < givenList.Length; i++)
             {
-                for (int j = 0; j < givenList[i].pupil.Length; j++)
+                if (max < givenList[i].TotalSubjectAverage())
                 {
-                    for (int k = 0; k < givenList[i].pupil[j].grades.Length; k++)
-                    {
-                        if (givenList[i].pupil[j].grades[k] == 10)
-                        {
-                            sumOfTen += 10;
-                        }
-                    }
+                    max = givenList[i].TotalSubjectAverage();
                 }
             }
-            return givenList;
+            var index = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (max == givenList[i].TotalSubjectAverage())
+                {
+                    index += 1;
+                }
+            }
+            var bestStudents = new Student[index];
+            var aux = 0;
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (max == givenList[i].TotalSubjectAverage())
+                {
+                    bestStudents[aux] = givenList[i];
+                    aux += 1;
+                }
+            }
+            return bestStudents;
         }
 
         private static void AverageCalculation(Student[] givenList)
