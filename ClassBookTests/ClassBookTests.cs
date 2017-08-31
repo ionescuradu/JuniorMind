@@ -21,7 +21,7 @@ namespace ClassBookTests
             };
             var andreea = new Student("Andreea", andreeaGrades, 0m);
             var radu = new Student("Radu", raduGrades, 0m);
-            CollectionAssert.AreEqual(new Student[2] { andreea, radu }, ClassBookOrdering (new Student[] { radu, andreea }));
+            CollectionAssert.AreEqual(new Student[2] { andreea, radu }, ClassBookOrderingByName(new Student[] { radu, andreea }));
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace ClassBookTests
             var andreea = new Student("Andreea", andreeaGrades, 0m);
             var radu = new Student("Radu", raduGrades, 0m);
             var antonia = new Student("Antonia", antoniaGrades, 0m);
-            CollectionAssert.AreEqual(new Student[3] { andreea, antonia, radu }, ClassBookOrdering(new Student[] { radu, andreea, antonia }));
+            CollectionAssert.AreEqual(new Student[3] { andreea, antonia, radu }, ClassBookOrderingByName(new Student[] { radu, andreea, antonia }));
         }
 
         [TestMethod]
@@ -265,7 +265,7 @@ namespace ClassBookTests
             }
         }
 
-        Student[] ClassBookOrdering(Student[] givenList) // pentru ordonarea alfabetica a elevilor
+        Student[] ClassBookOrderingByName(Student[] givenList) // pentru ordonarea alfabetica a elevilor
         {
             bool nrMoves = false;
             while (nrMoves == false) 
