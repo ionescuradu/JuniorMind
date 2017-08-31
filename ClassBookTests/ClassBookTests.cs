@@ -163,6 +163,33 @@ namespace ClassBookTests
             CollectionAssert.AreEqual(new Student[1] { andreea }, ClassBookBestStudets(new Student[] { radu, andreea }));
         }
 
+        [TestMethod]
+        public void ClassBookEighthTest()
+        {
+            var andreeaGrades = new Topic[2]
+            {
+                new Topic("Literature", new int[2] { 10, 10 }),
+                new Topic("Latin", new int[2] { 10, 9 })
+            };
+            var raduGrades = new Topic[2]
+            {
+              new Topic("Math", new int[2] { 10, 7 }),
+              new Topic("Physics", new int[2] { 10, 9 })
+            };
+            var antoniaGrades = new Topic[2]
+            {
+              new Topic("Chemistry", new int[2] { 10, 10 }),
+              new Topic("Math", new int[2] { 10, 8 })
+            };
+            var andreeaAverage = new Student("Andreea", andreeaGrades, 9.75m);
+            var raduAverage = new Student("Radu", raduGrades, 9m);
+            var antoniaAverage = new Student("Antonia", antoniaGrades, 9m);
+            var andreea = new Student("Andreea", andreeaGrades, 0m);
+            var radu = new Student("Radu", raduGrades, 0m);
+            var antonia = new Student("Antonia", antoniaGrades, 0m);
+            CollectionAssert.AreEqual(new Student[2] { andreea, antonia }, ClassBookBestStudets(new Student[] { radu, andreea, antonia }));
+        }
+
 
 
         public struct Topic       
@@ -296,18 +323,18 @@ namespace ClassBookTests
 
         Student[] ClassBookBestStudets(Student[] givenList)
         {
-            var max = givenList[0].TotalSubjectAverage();
+            var max = givenList[0].CountGradesOf10PerStudent();
             for (int i = 0; i < givenList.Length; i++)
             {
-                if (max < givenList[i].TotalSubjectAverage())
+                if (max < givenList[i].CountGradesOf10PerStudent())
                 {
-                    max = givenList[i].TotalSubjectAverage();
+                    max = givenList[i].CountGradesOf10PerStudent();
                 }
             }
             var index = 0;
             for (int i = 0; i < givenList.Length; i++)
             {
-                if (max == givenList[i].TotalSubjectAverage())
+                if (max == givenList[i].CountGradesOf10PerStudent())
                 {
                     index += 1;
                 }
@@ -316,7 +343,7 @@ namespace ClassBookTests
             var aux = 0;
             for (int i = 0; i < givenList.Length; i++)
             {
-                if (max == givenList[i].TotalSubjectAverage())
+                if (max == givenList[i].CountGradesOf10PerStudent())
                 {
                     bestStudents[aux] = givenList[i];
                     aux += 1;
