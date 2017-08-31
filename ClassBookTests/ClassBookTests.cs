@@ -146,25 +146,25 @@ namespace ClassBookTests
 
         public struct Topic       // Struct pentru numele materiilor si notele pentru fiecare(materie)
         {
-            public string subjects;
+            public string subject;
             public int[] grades;
 
-            public Topic(string subjects, int[] grades)
+            public Topic(string subject, int[] grades)
             {
-                this.subjects = subjects;
+                this.subject = subject;
                 this.grades = grades;
             }
         }
 
         public struct Student     // Struct pentru array de materii si note pentru fiecare student 
         {
-            public Topic[] student;
+            public Topic[] pupil;
             public string name;
             public decimal generalAverage;
 
-            public Student(string name, Topic[] student, decimal generalAverage)
+            public Student(string name, Topic[] pupil, decimal generalAverage)
             {
-                this.student = student;
+                this.pupil = pupil;
                 this.name = name;
                 this.generalAverage = generalAverage;
             }
@@ -187,15 +187,9 @@ namespace ClassBookTests
                     if (givenList[i].name[firstLetter] < givenList[i - 1].name[firstLetter])
                     {
                         nrMoves = false;
-                        var auxName = givenList[i].name;
-                        var auxGrades = givenList[i].student;
-                        var auxAverage = givenList[i].generalAverage;
-                        givenList[i].name = givenList[i - 1].name;
-                        givenList[i].student = givenList[i - 1].student;
-                        givenList[i].generalAverage = givenList[i - 1].generalAverage;
-                        givenList[i - 1].name = auxName;
-                        givenList[i - 1].student = auxGrades;
-                        givenList[i - 1].generalAverage = auxAverage;
+                        var aux = givenList[i];
+                        givenList[i] = givenList[i - 1];
+                        givenList[i - 1] = aux;
                     }
                 }
             }
@@ -226,13 +220,40 @@ namespace ClassBookTests
             {
                 if (givenList[i].generalAverage == givenAverage)
                 {
-                    specificStudents[aux].name = givenList[i].name;
-                    specificStudents[aux].student = givenList[i].student;
-                    specificStudents[aux].generalAverage = givenList[i].generalAverage;
+                    specificStudents[aux] = givenList[i];
                     aux += 1;
                 }
             }
             return specificStudents;
+        }
+
+        Student[] ClassBookBestStudets(Student[] givenList)
+        {
+            var sumOfTen= 0;
+            for (int i = 0; i < givenList[0].pupil.Length; i++)
+            {
+                for (int j = 0; j < givenList[0].pupil[i].grades.Length; j++)
+                {
+                    if (givenList[0].pupil[i].grades[j] == 10)
+                    {
+                        sumOfTen += 10;
+                    }
+                }
+            }
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                for (int j = 0; j < givenList[i].pupil.Length; j++)
+                {
+                    for (int k = 0; k < givenList[i].pupil[j].grades.Length; k++)
+                    {
+                        if (givenList[i].pupil[j].grades[k] == 10)
+                        {
+                            sumOfTen += 10;
+                        }
+                    }
+                }
+            }
+            return givenList;
         }
 
         private static void AverageCalculation(Student[] givenList)
@@ -241,13 +262,13 @@ namespace ClassBookTests
             {
                 var average = 0m;
                 var indexAverage = 0;
-                for (int j = 0; j < givenList[i].student.Length; j++) 
+                for (int j = 0; j < givenList[i].pupil.Length; j++) 
                 {
                     var sum = 0m;
                     var indexSum = 0;
-                    for (int k = 0; k < givenList[i].student[j].grades.Length; k++) 
+                    for (int k = 0; k < givenList[i].pupil[j].grades.Length; k++) 
                     {
-                        sum += givenList[i].student[j].grades[k];
+                        sum += givenList[i].pupil[j].grades[k];
                         indexSum += 1;
                     }
                     average += sum / indexSum; 
@@ -272,15 +293,9 @@ namespace ClassBookTests
                         index = i;
                     }
                 }
-                var aux = givenList[indexFinal].generalAverage; 
-                var auxString = givenList[indexFinal].name;
-                var auxStudent = givenList[indexFinal].student;
-                givenList[indexFinal].generalAverage = givenList[index].generalAverage;
-                givenList[indexFinal].name = givenList[index].name;
-                givenList[indexFinal].student = givenList[index].student;
-                givenList[index].generalAverage = aux;
-                givenList[index].name = auxString;
-                givenList[index].student = auxStudent;
+                var aux = givenList[indexFinal]; 
+                givenList[indexFinal] = givenList[index];
+                givenList[index] = aux;
                 indexFinal += 1;
             }
         }
