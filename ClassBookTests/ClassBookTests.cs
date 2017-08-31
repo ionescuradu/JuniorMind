@@ -285,7 +285,7 @@ namespace ClassBookTests
             }
         }
 
-        Student[] ClassBookOrderingByName(Student[] givenList) // pentru ordonarea alfabetica a elevilor
+        Student[] ClassBookOrderingByName(Student[] givenList) 
         {
             bool nrMoves = false;
             while (nrMoves == false) 
