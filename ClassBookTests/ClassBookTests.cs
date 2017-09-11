@@ -283,6 +283,7 @@ namespace ClassBookTests
                 }
                 return average / index;
             }
+
         }
 
         Student[] ClassBookOrderingByName(Student[] givenList) 
