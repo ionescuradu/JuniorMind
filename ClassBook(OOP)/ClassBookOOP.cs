@@ -290,12 +290,7 @@ namespace ClassBook_OOP_
 
                 public int OrderingByName(Student other)
                 {
-                    switch (string.Compare(name, other.name))
-                    {
-                        case 0: return 0;
-                        case 1: return 1;
-                        default: return -1;
-                    }
+                    return string.Compare(name, other.name);
                 }
 
                 public int SelectionSorting(Student other)
@@ -310,10 +305,7 @@ namespace ClassBook_OOP_
                         {
                             return -1;
                         }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
 
@@ -327,12 +319,7 @@ namespace ClassBook_OOP_
                     nrMoves = true;
                     for (int i = 1; i < givenList.Length; i++)
                     {
-                        var firstLetter = 0;
-                        while (givenList[i].name[firstLetter] == givenList[i - 1].name[firstLetter])
-                        {
-                            firstLetter += 1;
-                        }
-                        if (givenList[i].name[firstLetter] < givenList[i - 1].name[firstLetter])
+                        if (givenList[i].OrderingByName(givenList[i - 1]) == -1)
                         {
                             nrMoves = false;
                             var aux = givenList[i];
@@ -346,7 +333,24 @@ namespace ClassBook_OOP_
 
             Student[] ClassBookOverallAverage(Student[] givenList)
             {
-                SelectionSorting(givenList);
+                var index = 0;
+                var indexFinal = 0;
+                var max = givenList[0].TotalSubjectAverage();
+                while (indexFinal != givenList.Length - 1)
+                {
+                    for (int i = indexFinal + 1; i < givenList.Length; i++)
+                    {
+                        if (givenList[i].SelectionSorting(givenList[0]) == 1)
+                        {
+                            max = givenList[i].TotalSubjectAverage();
+                            index = i;
+                        }
+                    }
+                    var aux = givenList[indexFinal];
+                    givenList[indexFinal] = givenList[index];
+                    givenList[index] = aux;
+                    indexFinal += 1;
+                }
                 return givenList;
             }
 
@@ -435,27 +439,6 @@ namespace ClassBook_OOP_
                 return weakestStudents;
             }
 
-            private static void SelectionSorting(Student[] givenList)
-            {
-                var index = 0;
-                var indexFinal = 0;
-                var max = givenList[0].TotalSubjectAverage();
-                while (indexFinal != givenList.Length - 1)
-                {
-                    for (int i = indexFinal + 1; i < givenList.Length; i++)
-                    {
-                        if (givenList[i].TotalSubjectAverage() > max)
-                        {
-                            max = givenList[i].TotalSubjectAverage();
-                            index = i;
-                        }
-                    }
-                    var aux = givenList[indexFinal];
-                    givenList[indexFinal] = givenList[index];
-                    givenList[index] = aux;
-                    indexFinal += 1;
-                }
-            }
         }
     }
 
