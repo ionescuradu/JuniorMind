@@ -8,7 +8,7 @@ namespace ClassBook_OOP_
 {
     public struct ClassBook
     {
-        public Student[] classBook;
+        private Student[] classBook;
         public ClassBook(Student[] classBook)
         {
             this.classBook = classBook;

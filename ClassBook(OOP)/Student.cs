@@ -8,8 +8,8 @@ namespace ClassBook_OOP_
 { 
     public struct Student
     {
-        public Topic[] pupil;
-        public string name;
+        private Topic[] pupil;
+        private string name;
 
         public Student(string name, Topic[] pupil)
         {

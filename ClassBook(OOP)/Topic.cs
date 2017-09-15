@@ -8,8 +8,8 @@ namespace ClassBook_OOP_
 {
         public struct Topic
         {
-            public string subject;
-            public int[] grades;
+            private string subject;
+            private int[] grades;
 
             public Topic(string subject, int[] grades)
             {
