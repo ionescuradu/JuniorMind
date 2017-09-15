@@ -79,7 +79,7 @@ namespace ClassBook_OOP_
             var max = classBook[0].CountGradesOf10PerStudent();
             var bestStudents = new Student[1];
             var index = 0;
-            for (int i = 0; i < classBook.Length; i++) // parcuge structul pentru a determina nr max de 10
+            for (int i = 0; i < classBook.Length; i++)
             {
                 if (max == classBook[i].CountGradesOf10PerStudent())
                 {
@@ -94,7 +94,6 @@ namespace ClassBook_OOP_
                     max = classBook[i].CountGradesOf10PerStudent();
                     bestStudents[index - 1] = classBook[i];
                 }
-                
             }
             return bestStudents;
         }
@@ -102,29 +101,22 @@ namespace ClassBook_OOP_
         public Student[] WeakestStudents()
         {
             var min = classBook[0].TotalSubjectAverage();
-            for (int i = 1; i < classBook.Length; i++)
-            {
-                if (min > classBook[i].TotalSubjectAverage())
-                {
-                    min = classBook[i].TotalSubjectAverage();
-                }
-            }
+            var weakestStudents = new Student[1];
             var index = 0;
             for (int i = 0; i < classBook.Length; i++)
             {
                 if (min == classBook[i].TotalSubjectAverage())
                 {
                     index += 1;
+                    Array.Resize(ref weakestStudents, index);
+                    weakestStudents[index - 1] = classBook[i];
                 }
-            }
-            var weakestStudents = new Student[index];
-            index = 0;
-            for (int i = 0; i < classBook.Length; i++)
-            {
-                if (min == classBook[i].TotalSubjectAverage())
+                if (min > classBook[i].TotalSubjectAverage())
                 {
-                    weakestStudents[index] = classBook[i];
-                    index += 1;
+                    index = 1;
+                    Array.Resize(ref weakestStudents, index);
+                    min = classBook[i].TotalSubjectAverage();
+                    weakestStudents[index - 1] = classBook[i];
                 }
             }
             return weakestStudents;
