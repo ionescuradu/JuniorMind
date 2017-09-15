@@ -25,9 +25,7 @@ namespace ClassBook_OOP_
                     if (classBook[i].OrderingByName(classBook[i - 1]) == -1)
                     {
                         nrMoves = false;
-                        var aux = classBook[i];
-                        classBook[i] = classBook[i - 1];
-                        classBook[i - 1] = aux;
+                        Swap(i, i - 1, classBook);
                     }
                 }
             }
@@ -50,9 +48,7 @@ namespace ClassBook_OOP_
                         index = i;
                     }
                 }
-                var aux = classBook[indexFinal];
-                classBook[indexFinal] = classBook[index];
-                classBook[index] = aux;
+                Swap(indexFinal, index, classBook);
                 indexFinal += 1;
             }
             return classBook;
@@ -122,6 +118,13 @@ namespace ClassBook_OOP_
         {
             Array.Resize(ref givenArray, index);
             givenArray[index - 1] = classBook[i];
+        }
+
+        private void Swap(int index1, int index2, Student[] givenArray)
+        {
+            var aux = givenArray[index1];
+            givenArray[index1] = givenArray[index2];
+            givenArray[index2] = aux;
         }
     }
 
