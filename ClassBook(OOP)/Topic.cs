@@ -33,13 +33,11 @@ namespace ClassBook_OOP_
             public decimal SubjectAverage()
             {
                 var average = 0m;
-                var index = 0;
                 for (int i = 0; i < grades.Length; i++)
                 {
                     average += grades[i];
-                    index += 1;
                 }
-                return average / index;
+                return average / grades.Length;
             }
         }
     }

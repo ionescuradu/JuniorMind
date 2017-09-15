@@ -61,21 +61,14 @@ namespace ClassBook_OOP_
         public Student[] SpecificAverage(decimal givenAverage)
         {
             var index = 0;
+            var specificStudents = new Student[index];//parcurge array-ul pentru a determina cati studenti sunt cu o medie
             for (int i = 0; i < classBook.Length; i++)
             {
                 if (classBook[i].TotalSubjectAverage() == givenAverage)
                 {
+                    Array.Resize(ref specificStudents, index + 1);    
+                    specificStudents[index] = classBook[i];
                     index += 1;
-                }
-            }
-            var specificStudents = new Student[index];
-            var aux = 0;
-            for (int i = 0; i < classBook.Length; i++)
-            {
-                if (classBook[i].TotalSubjectAverage() == givenAverage)
-                {
-                    specificStudents[aux] = classBook[i];
-                    aux += 1;
                 }
             }
             return specificStudents;

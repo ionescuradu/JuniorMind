@@ -30,13 +30,11 @@ namespace ClassBook_OOP_
         public decimal TotalSubjectAverage()
         {
             var average = 0m;
-            var index = 0;
             for (int i = 0; i < pupil.Length; i++)
             {
                 average += pupil[i].SubjectAverage();
-                index += 1;
             }
-            return average / index;
+            return average / pupil.Length;
         }
 
         public int OrderingByName(Student other)
@@ -52,11 +50,7 @@ namespace ClassBook_OOP_
             }
             else
             {
-                if (TotalSubjectAverage() < other.TotalSubjectAverage())
-                {
-                    return -1;
-                }
-                return 1;
+                return TotalSubjectAverage() < other.TotalSubjectAverage() ? -1 : 1; 
             }
         }
 
