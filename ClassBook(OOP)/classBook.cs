@@ -61,7 +61,7 @@ namespace ClassBook_OOP_
         public Student[] SpecificAverage(decimal givenAverage)
         {
             var index = 0;
-            var specificStudents = new Student[index];//parcurge array-ul pentru a determina cati studenti sunt cu o medie
+            var specificStudents = new Student[index];
             for (int i = 0; i < classBook.Length; i++)
             {
                 if (classBook[i].TotalSubjectAverage() == givenAverage)
@@ -77,30 +77,24 @@ namespace ClassBook_OOP_
         public Student[] BestStudents()
         {
             var max = classBook[0].CountGradesOf10PerStudent();
-            for (int i = 0; i < classBook.Length; i++)
+            var bestStudents = new Student[1];
+            var index = 0;
+            for (int i = 0; i < classBook.Length; i++) // parcuge structul pentru a determina nr max de 10
             {
+                if (max == classBook[i].CountGradesOf10PerStudent())
+                {
+                    index += 1;
+                    Array.Resize(ref bestStudents, index);
+                    bestStudents[index - 1] = classBook[i];
+                }
                 if (max < classBook[i].CountGradesOf10PerStudent())
                 {
+                    index = 1;
+                    Array.Resize(ref bestStudents, index);
                     max = classBook[i].CountGradesOf10PerStudent();
+                    bestStudents[index - 1] = classBook[i];
                 }
-            }
-            var index = 0;
-            for (int i = 0; i < classBook.Length; i++)
-            {
-                if (max == classBook[i].CountGradesOf10PerStudent())
-                {
-                    index += 1;
-                }
-            }
-            var bestStudents = new Student[index];
-            index = 0;
-            for (int i = 0; i < classBook.Length; i++)
-            {
-                if (max == classBook[i].CountGradesOf10PerStudent())
-                {
-                    bestStudents[index] = classBook[i];
-                    index += 1;
-                }
+                
             }
             return bestStudents;
         }
