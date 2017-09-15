@@ -84,15 +84,13 @@ namespace ClassBook_OOP_
                 if (max == classBook[i].CountGradesOf10PerStudent())
                 {
                     index += 1;
-                    Array.Resize(ref bestStudents, index);
-                    bestStudents[index - 1] = classBook[i];
+                    AddStudent(index, ref bestStudents, i);
                 }
                 if (max < classBook[i].CountGradesOf10PerStudent())
                 {
                     index = 1;
-                    Array.Resize(ref bestStudents, index);
+                    AddStudent(index, ref bestStudents, i);
                     max = classBook[i].CountGradesOf10PerStudent();
-                    bestStudents[index - 1] = classBook[i];
                 }
             }
             return bestStudents;
@@ -108,18 +106,22 @@ namespace ClassBook_OOP_
                 if (min == classBook[i].TotalSubjectAverage())
                 {
                     index += 1;
-                    Array.Resize(ref weakestStudents, index);
-                    weakestStudents[index - 1] = classBook[i];
+                    AddStudent(index, ref weakestStudents, i);
                 }
                 if (min > classBook[i].TotalSubjectAverage())
                 {
                     index = 1;
-                    Array.Resize(ref weakestStudents, index);
+                    AddStudent(index, ref weakestStudents, i);
                     min = classBook[i].TotalSubjectAverage();
-                    weakestStudents[index - 1] = classBook[i];
                 }
             }
             return weakestStudents;
+        }
+
+        private void AddStudent(int index, ref Student[] givenArray, int i)
+        {
+            Array.Resize(ref givenArray, index);
+            givenArray[index - 1] = classBook[i];
         }
     }
 
