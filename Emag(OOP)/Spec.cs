@@ -21,17 +21,17 @@ namespace Emag_OOP_
 
         public bool CompareRam(Phone another)
         {
-            return (ram == another.spec.ram) || (another.spec.ram == 0);
+            return (ram >= another.spec.ram) || (another.spec.ram == 0);
         }
 
         public bool CompareDisplaySize(Phone another)
         {
-            return (displaySize == another.spec.displaySize) || (another.spec.displaySize == 0);
+            return (displaySize >= another.spec.displaySize) || (another.spec.displaySize == 0);
         }
 
         public bool CompareInternalMemory(Phone another)
         {
-            return (internalMemory == another.spec.internalMemory) || (another.spec.internalMemory == 0);
+            return (internalMemory >= another.spec.internalMemory) || (another.spec.internalMemory == 0);
         }
 
     }
