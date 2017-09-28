@@ -62,9 +62,5 @@ namespace Emag_OOP_
 
             CollectionAssert.AreEqual(new Phone[4] { phone1, phone2, phone3, phone4 }, phonelist.FindPhones(givenCriterias));
         }
-
-
-
-
     }
 }

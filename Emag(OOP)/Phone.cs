@@ -17,7 +17,7 @@ namespace Emag_OOP_
     }
     public class Phone
     {
-        public Spec spec;
+        private Spec spec;
         private Promotion promotion;
 
         public Phone(Spec spec, Promotion promotion)
@@ -28,7 +28,7 @@ namespace Emag_OOP_
 
         public bool Compare(Phone another)
         {
-            return (spec.CompareRam(another) && spec.CompareInternalMemory(another) && spec.CompareDisplaySize(another) && (promotion == another.promotion || another.promotion == 0));
+            return (spec.CompareRam(another.spec) && spec.CompareInternalMemory(another.spec) && spec.CompareDisplaySize(another.spec) && (promotion == another.promotion || another.promotion == 0));
         }
     }
 

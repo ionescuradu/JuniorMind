@@ -19,19 +19,19 @@ namespace Emag_OOP_
             this.internalMemory = internalMemory;
         }
 
-        public bool CompareRam(Phone another)
+        public bool CompareRam(Spec spec)
         {
-            return (ram >= another.spec.ram) || (another.spec.ram == 0);
+            return (ram >= spec.ram) || (spec.ram == 0);
         }
 
-        public bool CompareDisplaySize(Phone another)
+        public bool CompareDisplaySize(Spec spec)
         {
-            return (displaySize >= another.spec.displaySize) || (another.spec.displaySize == 0);
+            return (displaySize >= spec.displaySize) || (spec.displaySize == 0);
         }
 
-        public bool CompareInternalMemory(Phone another)
+        public bool CompareInternalMemory(Spec spec)
         {
-            return (internalMemory >= another.spec.internalMemory) || (another.spec.internalMemory == 0);
+            return (internalMemory >= spec.internalMemory) || (spec.internalMemory == 0);
         }
 
     }
