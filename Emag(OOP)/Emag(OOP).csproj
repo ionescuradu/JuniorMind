@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PhoneList.cs" />
     <Compile Include="Spec.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="EmagTests.cs" />
