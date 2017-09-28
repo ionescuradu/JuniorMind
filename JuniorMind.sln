@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBookTests", "ClassBook
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBook(OOP)", "ClassBook(OOP)\ClassBook(OOP).csproj", "{AA119D6A-04F4-4BAF-958F-9BD5AA4DCBCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emag(OOP)", "Emag(OOP)\Emag(OOP).csproj", "{81C11FDA-7E70-472E-BEA0-CA1403F82885}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -237,6 +239,10 @@ Global
 		{AA119D6A-04F4-4BAF-958F-9BD5AA4DCBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA119D6A-04F4-4BAF-958F-9BD5AA4DCBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA119D6A-04F4-4BAF-958F-9BD5AA4DCBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
