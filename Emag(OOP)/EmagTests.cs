@@ -77,10 +77,9 @@ namespace Emag_OOP_
             var phone4 = new Phone(specFourthPhone, Promotion.Resealed, 15, PhoneNames.S8PLUS);
             var phone2Sell = new Phone(specSecondPhone, Promotion.Promotion, 30, PhoneNames.IPHONE7);
             PhoneList phonelist = new PhoneList(new Phone[4] { phone1, phone2, phone3, phone4 });
-            PhoneNames phoneName = PhoneNames.IPHONE7;
             int sellNumber = 20;
 
-            CollectionAssert.AreEqual(new Phone[4] { phone1, phone2Sell, phone3, phone4 }, phonelist.SellPhone(phoneName, sellNumber));
+            Assert.AreEqual(30, phone2.PhoneSubtract(sellNumber));
         }
     }
 }

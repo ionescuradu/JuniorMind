@@ -31,16 +31,5 @@ namespace Emag_OOP_
             return aux;
         }
 
-        public Phone[] SellPhone(PhoneNames phoneName, int sellNumber)
-        {
-            for (int i = 0; i < phoneList.Length; i++)
-            {
-                if (phoneList[i].FindPhone(phoneName) == true)
-                {
-                    phoneList[i].PhoneSubtract(sellNumber);
-                }
-            }
-            return phoneList;
-        }
     }
 }

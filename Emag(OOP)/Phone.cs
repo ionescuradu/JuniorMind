@@ -51,9 +51,9 @@ namespace Emag_OOP_
             return (name == phoneName);
         }
 
-        public void PhoneSubtract(int sellNumber)
+        public int PhoneSubtract(int sellNumber)
         {
-            stoc -= sellNumber;
+            return (stoc - sellNumber);
         }
     }
 
