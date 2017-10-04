@@ -79,9 +79,10 @@ namespace Emag_OOP_
             PhoneList phonelist = new PhoneList(new Phone[4] { phone1, phone2, phone3, phone4 });
             int sellNumber = 20;
 
-            Assert.AreEqual(30, phone2.PhoneSubtract(sellNumber));
-        }
+            Assert.AreEqual(30, phonelist.SellPhone(PhoneNames.IPHONE7, sellNumber));
 
+        }
+        
         [TestMethod]
         public void EmagTest5()
         {
@@ -98,7 +99,7 @@ namespace Emag_OOP_
             PhoneList phonelist = new PhoneList(new Phone[4] { phone1, phone2, phone3, phone4 });
             int sellNumber = 10;
 
-            Assert.AreEqual(10, phone1.PhoneSubtract(sellNumber));
+            //Assert.AreEqual(10, phone1.PhoneSubtract(sellNumber));
         }
     }
 }
