@@ -31,17 +31,20 @@ namespace Emag_OOP_
             return aux;
         }
 
-        public int SellPhone(PhoneNames phoneName, int sellNumber)
+        public bool SellPhone(PhoneNames phoneName, int sellNumber)
         {
-            int remainingStoc = 0;
             for (int i = 0; i < phoneList.Length; i++)
             {
                 if (phoneList[i].FindPhone(phoneName) == true)
                 {
-                    remainingStoc = phoneList[i].SellPhone(sellNumber);
+                    if (phoneList[i].SellPhone(sellNumber) == true)
+                    {
+                        return true;
+                    }
+
                 }
             }
-            return remainingStoc;
+            return false;
         }
 
     }

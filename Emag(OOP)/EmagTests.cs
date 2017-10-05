@@ -79,7 +79,7 @@ namespace Emag_OOP_
             PhoneList phonelist = new PhoneList(new Phone[4] { phone1, phone2, phone3, phone4 });
             int sellNumber = 20;
 
-            Assert.AreEqual(30, phonelist.SellPhone(PhoneNames.IPHONE7, sellNumber));
+            Assert.AreEqual(true, phonelist.SellPhone(PhoneNames.IPHONE7, sellNumber));
 
         }
         

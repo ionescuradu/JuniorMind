@@ -51,10 +51,14 @@ namespace Emag_OOP_
             return (name == phoneName);
         }
 
-        public int SellPhone(int sellNumber)
+        public bool SellPhone(int sellNumber)
         {
-            stoc = stoc - sellNumber;
-            return stoc;
+            if(stoc > sellNumber)
+            {
+                stoc = stoc - sellNumber;
+                return true;
+            }
+            else return false;
         }
     }
 
