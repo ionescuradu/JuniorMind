@@ -3,10 +3,14 @@ using System.Collections;
 
 namespace IListTests
 {
-    class List :IList
+    class List : IList
     {
-        public List()
-        { 
+        private object[] givenList;
+        private int count;
+
+        public List ()
+        {
+            count = 0;
         }
 
         public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -23,7 +27,9 @@ namespace IListTests
 
         public int Add(object value)
         {
-            throw new NotImplementedException();
+            givenList[count] = value;
+            count++;
+            return count - 1;
         }
 
         public void Clear()
@@ -43,7 +49,7 @@ namespace IListTests
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         public int IndexOf(object value)

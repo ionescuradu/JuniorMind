@@ -81,6 +81,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBook(OOP)", "ClassBook
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emag(OOP)", "Emag(OOP)\Emag(OOP).csproj", "{81C11FDA-7E70-472E-BEA0-CA1403F82885}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IListTests", "IListTests\IListTests.csproj", "{BEE0DDB9-D1E2-4450-9B1A-086016127150}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -243,6 +245,10 @@ Global
 		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C11FDA-7E70-472E-BEA0-CA1403F82885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE0DDB9-D1E2-4450-9B1A-086016127150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE0DDB9-D1E2-4450-9B1A-086016127150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE0DDB9-D1E2-4450-9B1A-086016127150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE0DDB9-D1E2-4450-9B1A-086016127150}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
