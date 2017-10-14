@@ -10,7 +10,7 @@ namespace IListTests
 
         public List ()
         {
-            count = 0;
+            count = 0;  
         }
 
         public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -49,7 +49,7 @@ namespace IListTests
 
         public IEnumerator GetEnumerator()
         {
-            return GetEnumerator();
+            return new VectorEnumerator(givenList);
         }
 
         public int IndexOf(object value)
@@ -71,5 +71,10 @@ namespace IListTests
         {
             throw new NotImplementedException();
         }
+    }
+
+    interface Lists : IEnumerable
+    {
+
     }
 }
