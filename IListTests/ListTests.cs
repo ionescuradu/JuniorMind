@@ -12,8 +12,7 @@ namespace IListTests
         public void IListTests1()
         {
             List givenList = new List(8);
-            givenList.Add(2);
-            Assert.AreEqual(1, givenList.Add(2));
+            Assert.AreEqual(0, givenList.Add(2));
         }
     }
 }
