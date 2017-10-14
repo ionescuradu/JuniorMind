@@ -14,5 +14,15 @@ namespace IListTests
             List givenList = new List(8);
             Assert.AreEqual(0, givenList.Add(2));
         }
+
+        [TestMethod]
+        public void IListTest2()
+        {
+            List givenList = new List(8);
+            givenList.Add(2);
+            Assert.AreEqual(1, givenList.Add(2));
+        }
     }
+
+    
 }
