@@ -8,10 +8,12 @@ namespace IListTests
         private object[] givenList;
         private int count;
 
-        public List ()
+        public List (int initialCapacity)
         {
-            count = 0;  
+            count = 0;
+            givenList = new object[initialCapacity];
         }
+        
 
         public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -71,10 +73,5 @@ namespace IListTests
         {
             throw new NotImplementedException();
         }
-    }
-
-    interface Lists : IEnumerable
-    {
-
     }
 }

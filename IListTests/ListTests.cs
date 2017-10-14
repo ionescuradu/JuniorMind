@@ -11,7 +11,7 @@ namespace IListTests
         [TestMethod]
         public void TestMethod1()
         {
-            List givenList = new List();
+            List givenList = new List(8);
             givenList.Add(2);
             Assert.AreEqual(1, givenList.Add(2));
         }
