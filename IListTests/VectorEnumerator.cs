@@ -19,9 +19,13 @@ namespace IListTests
             return (position < givenList.Length);
         }
 
-        public int Current()
-        { 
-            return position;
+        public object Current
+        {
+            get
+            {
+                return givenList[position];
+            }
+            
         }
 
         public void Reset()

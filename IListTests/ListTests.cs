@@ -9,7 +9,7 @@ namespace IListTests
     public class ListTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void IListTests1()
         {
             List givenList = new List(8);
             givenList.Add(2);
