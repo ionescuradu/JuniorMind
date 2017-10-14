@@ -22,6 +22,21 @@ namespace IListTests
             givenList.Add(2);
             Assert.AreEqual(1, givenList.Add(2));
         }
+
+        [TestMethod]
+        public void IListTest3()
+        {
+            List givenList = new List(8);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            givenList.Add(2);
+            Assert.AreEqual(8, givenList.Add(2));
+        }
     }
 
     

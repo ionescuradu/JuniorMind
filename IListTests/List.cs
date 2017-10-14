@@ -29,6 +29,10 @@ namespace IListTests
 
         public int Add(object value)
         {
+            if (count == givenList.Length)
+            {
+                Array.Resize(ref givenList, givenList.Length * 2);
+            }
             givenList[count] = value;
             count++;
             return count - 1;
