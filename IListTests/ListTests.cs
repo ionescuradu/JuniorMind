@@ -37,6 +37,17 @@ namespace IListTests
             givenList.Add(2);
             Assert.AreEqual(8, givenList.Add(2));
         }
+
+        [TestMethod]
+        public void IListTest4()
+        {
+            List givenList = new List(8) { 1, 2, 3};
+            givenList.Remove(2);
+            List compareList = new List(8);
+            compareList.Add(1);
+            compareList.Add(3);
+            CollectionAssert.AreEqual(compareList, givenList);
+        }
     }
 
     

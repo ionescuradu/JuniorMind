@@ -15,13 +15,29 @@ namespace IListTests
         }
         
 
-        public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public object this[int index]
+        {
+            get
+            {
+                return givenList[index];
+            }
+            set
+            {
+                givenList[index] = value;
+            }
+        }
 
         public bool IsReadOnly => throw new NotImplementedException();
 
         public bool IsFixedSize => throw new NotImplementedException();
 
-        public int Count => throw new NotImplementedException();
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
 
         public object SyncRoot => throw new NotImplementedException();
 
@@ -60,7 +76,15 @@ namespace IListTests
 
         public int IndexOf(object value)
         {
-            throw new NotImplementedException();
+            var position = -1;
+            for (int i = 0; i < count; i++)
+            {
+                if (givenList[i] == value)
+                {
+                    position = i;
+                }
+            }
+            return position;
         }
 
         public void Insert(int index, object value)
@@ -70,12 +94,19 @@ namespace IListTests
 
         public void Remove(object value)
         {
-            throw new NotImplementedException();
+            RemoveAt(IndexOf(value));
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if ((index > -1) && (index < count))
+            {
+                for (int i = index; i < count - 1; i++)
+                {
+                    givenList[i] = givenList[i + 1];
+                }
+                count--;
+            }
         }
     }
 }
