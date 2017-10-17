@@ -43,10 +43,7 @@ namespace IListTests
         {
             List givenList = new List(8) { 1, 2, 3};
             givenList.Remove(2);
-            List compareList = new List(8);
-            compareList.Add(1);
-            compareList.Add(3);
-            CollectionAssert.AreEqual(compareList, givenList);
+            CollectionAssert.AreEqual(new List(8) { 1, 3 }, givenList);
         }
     }
 

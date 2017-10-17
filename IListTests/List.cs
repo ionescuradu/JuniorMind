@@ -99,7 +99,6 @@ namespace IListTests
 
         public void RemoveAt(int index)
         {
-            if ((index > -1) && (index < count))
             {
                 for (int i = index; i < count - 1; i++)
                 {
