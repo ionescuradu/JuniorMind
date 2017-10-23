@@ -6,16 +6,17 @@ namespace IListTests
     internal class VectorEnumerator : IEnumerator
     {
         private object[] givenList;
-        int position = -1;
+        private int position = -1;
 
-        public VectorEnumerator(object[] givenList)
+        public VectorEnumerator(object[] givenList, int position)
         {
             this.givenList = givenList;
+            this.position = position;
         }
 
         public bool MoveNext()
         {
-            position++;
+             position++;
             return (position < givenList.Length);
         }
 
