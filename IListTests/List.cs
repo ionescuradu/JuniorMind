@@ -50,7 +50,7 @@ namespace IListTests
                 Array.Resize(ref givenList, givenList.Length * 2);
             }
             givenList[count] = value;
-            count++;
+            count++ ;
             return count - 1;
         }
 
@@ -77,7 +77,7 @@ namespace IListTests
         public int IndexOf(object value)
         {
             var position = -1;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (givenList[i].Equals(value))
                 {
@@ -90,7 +90,15 @@ namespace IListTests
 
         public void Insert(int index, object value)
         {
-            throw new NotImplementedException();
+            if (count + 1 <= givenList.Length)
+            {
+                count++;
+                for (int i = count - 1; i > index; i--)
+                {
+                    givenList[i] = givenList[i - 1];
+                }
+                givenList[index] = value;
+            }
         }
 
         public void Remove(object value)
@@ -102,7 +110,7 @@ namespace IListTests
         {
             if (index > -1) 
             {
-                for (int i = index; i < count - 1; i++)
+                for (int i = index; i < Count - 1; i++)
                 {
                     givenList[i] = givenList[i + 1];
                 }

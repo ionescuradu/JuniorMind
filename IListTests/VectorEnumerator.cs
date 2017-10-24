@@ -18,7 +18,8 @@ namespace IListTests
         public bool MoveNext()
         {
              position++;
-            return (position < givenList.Length);
+             return (position < count);
+
         }
 
         public object Current
