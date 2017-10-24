@@ -87,6 +87,14 @@ namespace IListTests
             Assert.AreEqual(false, givenList.Contains(4));
         }
 
+        [TestMethod]
+        public void IListTest10()
+        {
+            List givenList = new List(8) { 1, 2, 3 };
+            givenList.Clear();
+            CollectionAssert.AreEqual(new List(8), givenList);
+        }
+
     }
 
     
