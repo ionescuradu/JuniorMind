@@ -71,7 +71,7 @@ namespace IListTests
 
         public IEnumerator GetEnumerator()
         {
-            return new VectorEnumerator(givenList);
+            return new VectorEnumerator(givenList, count);
         }
 
         public int IndexOf(object value)
@@ -79,9 +79,10 @@ namespace IListTests
             var position = -1;
             for (int i = 0; i < count; i++)
             {
-                if (givenList[i] == value)
+                if (givenList[i].Equals(value))
                 {
                     position = i;
+                    break;
                 }
             }
             return position;
@@ -99,6 +100,7 @@ namespace IListTests
 
         public void RemoveAt(int index)
         {
+            if (index > -1) 
             {
                 for (int i = index; i < count - 1; i++)
                 {

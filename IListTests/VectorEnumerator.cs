@@ -7,11 +7,12 @@ namespace IListTests
     {
         private object[] givenList;
         private int position = -1;
+        private int count;
 
-        public VectorEnumerator(object[] givenList, int position)
+        public VectorEnumerator(object[] givenList, int count)
         {
             this.givenList = givenList;
-            this.position = position;
+            this.count = count;
         }
 
         public bool MoveNext()
