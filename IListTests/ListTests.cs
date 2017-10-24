@@ -79,6 +79,14 @@ namespace IListTests
             List givenList = new List(8) { 1, 2, 3 };
             Assert.AreEqual(true, givenList.Contains(2));
         }
+
+        [TestMethod]
+        public void IListTest9()
+        {
+            List givenList = new List(8) { 1, 2, 3 };
+            Assert.AreEqual(false, givenList.Contains(4));
+        }
+
     }
 
     

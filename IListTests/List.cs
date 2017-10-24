@@ -61,7 +61,7 @@ namespace IListTests
 
         public bool Contains(object value)
         {
-            for (int i = 0; i < givenList.Length; i++)
+            for (int i = 0; i < count; i++)
             {
                 if (givenList[i].Equals(value))
                 {
