@@ -72,6 +72,13 @@ namespace IListTests
             givenList.Insert(3, 10);
             CollectionAssert.AreEqual(compareList, givenList);
         }
+
+        [TestMethod]
+        public void IListTest8()
+        {
+            List givenList = new List(8) { 1, 2, 3 };
+            Assert.AreEqual(true, givenList.Contains(2));
+        }
     }
 
     

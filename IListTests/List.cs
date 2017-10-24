@@ -61,7 +61,14 @@ namespace IListTests
 
         public bool Contains(object value)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < givenList.Length; i++)
+            {
+                if (givenList[i].Equals(value))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void CopyTo(Array array, int index)
