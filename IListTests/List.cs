@@ -90,15 +90,16 @@ namespace IListTests
 
         public void Insert(int index, object value)
         {
-            if (count + 1 <= givenList.Length)
+            if (count + 1 > givenList.Length)
             {
-                count++;
-                for (int i = count - 1; i > index; i--)
-                {
-                    givenList[i] = givenList[i - 1];
-                }
-                givenList[index] = value;
+                Array.Resize(ref givenList, givenList.Length * 2);
             }
+            count++;
+            for (int i = count - 1; i > index; i--)
+            {
+                givenList[i] = givenList[i - 1];
+            }
+            givenList[index] = value;
         }
 
         public void Remove(object value)
@@ -108,7 +109,7 @@ namespace IListTests
 
         public void RemoveAt(int index)
         {
-            if (index > -1) 
+            if (index > -1)
             {
                 for (int i = index; i < Count - 1; i++)
                 {

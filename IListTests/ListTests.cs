@@ -63,6 +63,15 @@ namespace IListTests
             CollectionAssert.AreEqual(new List(8) { 1, 2, 6, 3, 4, 5 }, givenList);
         }
 
+        [TestMethod]
+        public void IListTest7()
+        {
+            List givenList = new List(8) { 1, 2, 3, 4, 5, 6, 7, 8 };
+            List compareList = new List(10) { 1, 2, 9, 10, 3, 4, 5, 6, 7, 8 };
+            givenList.Insert(2, 9);
+            givenList.Insert(3, 10);
+            CollectionAssert.AreEqual(compareList, givenList);
+        }
     }
 
     
