@@ -109,6 +109,20 @@ namespace IListTests
             CollectionAssert.AreEqual(compareArray, givenArray);
         }
 
+        [TestMethod]
+        public void IListTest12()
+        {
+            List givenList = new List(8) { 1, 2, 3, 4, 5 };
+            var compareArray = new List(8) { 0, 0, 0, 1, 2, 3, 4, 5 };
+            object[] givenArray = new object[8];
+            for (int i = 0; i < givenArray.Length; i++)
+            {
+                givenArray[i] = 0;
+            }
+            givenList.CopyTo(givenArray, 3);
+            CollectionAssert.AreEqual(compareArray, givenArray);
+        }
+
     }
 
     
