@@ -73,7 +73,11 @@ namespace IListTests
 
         public void CopyTo(Array array, int index)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < count; i++)
+            {
+                array.SetValue(givenList[i], index);
+                index++;
+            }
         }
 
         public IEnumerator GetEnumerator()
