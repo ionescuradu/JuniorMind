@@ -45,5 +45,16 @@ namespace IListT_Tests
             givenList.Add(3);
             Assert.AreEqual(false, givenList.Remove(4));
         }
+
+        [TestMethod]
+        public void ListInsert1()
+        {
+            List<int> givenList = new List<int>(8);
+            givenList.Add(2);
+            givenList.Add(3);
+            givenList.Insert(1, 4);
+            var compareList = new List<int>(8) { 2, 4, 3 };
+            CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
+        }
     }
 }
