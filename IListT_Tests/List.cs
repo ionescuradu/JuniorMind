@@ -107,7 +107,7 @@ namespace IListT_Tests
             givenList[index] = item;
         }
 
-        public bool Remove(T item)
+        public bool Remove(T item) //ok la teste
         {
             RemoveAt(IndexOf(item));
             return removed == true;
