@@ -127,7 +127,7 @@ namespace IListT_Tests
             }
         }
 
-        public void ResizeList()
+        private void ResizeList()
         {
             Array.Resize(ref givenList, givenList.Length * 2);
         }
