@@ -86,5 +86,16 @@ namespace IListT_Tests
             givenList.Add("mere");
             Assert.AreEqual(false, givenList.Contains("Mere"));
         }
+
+        [TestMethod]
+        public void ListClear1()
+        {
+            List<int> givenList = new List<int>(8);
+            givenList.Add(2);
+            givenList.Add(3);
+            givenList.Clear();
+            var compareList = new List<int>(8);
+            CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
+        }
     }
 }
