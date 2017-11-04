@@ -56,5 +56,16 @@ namespace IListT_Tests
             var compareList = new List<int>(8) { 2, 4, 3 };
             CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
         }
+
+        [TestMethod]
+        public void ListInsert2()
+        {
+            List<string> givenList = new List<string>(8);
+            givenList.Add("Ana");
+            givenList.Add("mere");
+            givenList.Insert(1, "are");
+            var compareList = new List<string>(8) { "Ana", "are", "mere" };
+            CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
+        }
     }
 }
