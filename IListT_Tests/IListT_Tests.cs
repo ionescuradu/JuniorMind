@@ -29,6 +29,23 @@ namespace IListT_Tests
         }
 
         [TestMethod]
+        public void ListAdd3()
+        {
+            List<int> givenList = new List<int>(8);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            givenList.Add(1);
+            var compareList = new List<int>(16) { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
+        }
+
+        [TestMethod]
         public void ListRemove1()
         {
             List<int> givenList = new List<int>(8);

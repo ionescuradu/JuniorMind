@@ -42,7 +42,7 @@ namespace IListT_Tests
         {
             if (count == givenList.Length)
             {
-                Array.Resize(ref givenList, givenList.Length * 2);
+                ResizeList();
             }
             givenList[count] = item;
             count++;
@@ -97,7 +97,7 @@ namespace IListT_Tests
         {
             if (count + 1 > givenList.Length)
             {
-                Array.Resize(ref givenList, givenList.Length * 2);
+                ResizeList();
             }
             count++;
             for (int i = count - 1; i > index; i--)
@@ -107,7 +107,7 @@ namespace IListT_Tests
             givenList[index] = item;
         }
 
-        public bool Remove(T item) //ok la teste
+        public bool Remove(T item)
         {
             RemoveAt(IndexOf(item));
             return removed == true;
@@ -125,6 +125,11 @@ namespace IListT_Tests
                 }
                 count--;
             }
+        }
+
+        public void ResizeList()
+        {
+            Array.Resize(ref givenList, givenList.Length * 2);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
