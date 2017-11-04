@@ -34,8 +34,16 @@ namespace IListT_Tests
             List<int> givenList = new List<int>(8);
             givenList.Add(2);
             givenList.Add(3);
-            var compareList = new List<int>(8) { 2 };
             Assert.AreEqual(true, givenList.Remove(3));
+        }
+
+        [TestMethod]
+        public void ListRemove2()
+        {
+            List<int> givenList = new List<int>(8);
+            givenList.Add(2);
+            givenList.Add(3);
+            Assert.AreEqual(false, givenList.Remove(4));
         }
     }
 }
