@@ -97,5 +97,15 @@ namespace IListT_Tests
             var compareList = new List<int>(8);
             CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
         }
+
+        [TestMethod]
+        public void ListToArray1()
+        {
+            List<int> givenList = new List<int>(8) { 2, 3, 4 };
+            var compareArray = new List<int>(8) { 0, 2, 3, 4 };
+            var givenArray = new int[4] { 0, 0, 0, 0 };
+            givenList.CopyTo(givenArray, 1);
+            CollectionAssert.AreEqual(compareArray.ToArray(), givenArray);
+        }
     }
 }
