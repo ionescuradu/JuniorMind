@@ -107,5 +107,15 @@ namespace IListT_Tests
             givenList.CopyTo(givenArray, 1);
             CollectionAssert.AreEqual(compareArray.ToArray(), givenArray);
         }
+
+        [TestMethod]
+        public void ListToArray2()
+        {
+            List<string> givenList = new List<string>(8) { "are", "mere", "multe" };
+            var compareArray = new List<string>(8) { "Ana", "are", "mere", "multe" };
+            var givenArray = new string[4] { "Ana", "", "", "" };
+            givenList.CopyTo(givenArray, 1);
+            CollectionAssert.AreEqual(compareArray.ToArray(), givenArray);
+        }
     }
 }
