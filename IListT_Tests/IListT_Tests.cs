@@ -76,5 +76,15 @@ namespace IListT_Tests
             givenList.Add(3);
             Assert.AreEqual(true, givenList.Contains(2));
         }
+
+        [TestMethod]
+        public void ListContains2()
+        {
+            List<string> givenList = new List<string>(8);
+            givenList.Add("Ana");
+            givenList.Add("are");
+            givenList.Add("mere");
+            Assert.AreEqual(false, givenList.Contains("Mere"));
+        }
     }
 }
