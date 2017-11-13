@@ -11,7 +11,7 @@ namespace IListT_Tests
         bool removed;
 
         public List(int initialCapacity)
-        {
+        {   
             count = 0;
             givenList = new T[initialCapacity];
         }
