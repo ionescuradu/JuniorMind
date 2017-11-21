@@ -6,7 +6,7 @@ namespace LinkedListTests
 {
     internal class Node<T> : IList<T>
     {
-        public Node<T> newNode;
+        private Node<T> newNode;
         private T data;
 
         public T this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
