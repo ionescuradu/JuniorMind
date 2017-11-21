@@ -8,11 +8,6 @@ namespace LinkedListTests
     {
         private Node<T> root;
 
-        public List(Node<T> root)
-        {
-            this.root = root;
-        }
-
         public int Count => throw new NotImplementedException();
 
         public bool IsReadOnly => throw new NotImplementedException();
