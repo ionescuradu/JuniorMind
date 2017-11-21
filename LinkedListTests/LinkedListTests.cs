@@ -9,7 +9,7 @@ namespace LinkedListTests
         [TestMethod]
         public void LinkedAdd1()
         {
-
+            var newNode = new Node<int>();
         }
     }
 }

@@ -36,7 +36,9 @@ namespace LinkedListTests
 
         public void Add(T item)
         {
-
+            var newNode = new Node<T>();
+            newNode.Value = item;
+            newNode.Next = root;
         }
 
         public void Clear()

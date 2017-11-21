@@ -16,7 +16,7 @@ namespace IListT_Tests
             givenList = new T[initialCapacity];
         }
 
-        public T this[int index]
+        public T this[int index]    
         {
             get
             {
