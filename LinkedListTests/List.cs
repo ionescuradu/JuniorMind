@@ -59,7 +59,7 @@ namespace LinkedListTests
 
         public IEnumerator<T> GetEnumerator()
         {
-            new VectorEnumerator<T>(root);
+            return new VectorEnumerator<T>(root);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
