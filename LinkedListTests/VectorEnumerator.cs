@@ -7,13 +7,15 @@ namespace LinkedListTests
     internal class VectorEnumerator<T> : IEnumerator<T>
     {
         private Node<T> current;
+        private Node<T> first;
 
         public VectorEnumerator(Node<T> root)
         {
             this.current = root;
+            first = root;
         }
 
-        public T Current => throw new NotImplementedException();
+        public T Current => current.Value;
 
         object IEnumerator.Current => throw new NotImplementedException();
 
@@ -24,12 +26,16 @@ namespace LinkedListTests
 
         public bool MoveNext()
         {
-            return (current.Next == null);
+            if (current != null)
+            {
+                current = current.Next;
+            }
+            return (current != null);
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            current = first;
         }
     }
 }
