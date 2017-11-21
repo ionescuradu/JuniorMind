@@ -59,7 +59,7 @@ namespace LinkedListTests
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            new VectorEnumerator<T>(root);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

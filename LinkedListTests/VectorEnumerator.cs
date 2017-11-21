@@ -6,11 +6,11 @@ namespace LinkedListTests
 {
     internal class VectorEnumerator<T> : IEnumerator<T>
     {
-        private Node<T> root;
+        private Node<T> current;
 
         public VectorEnumerator(Node<T> root)
         {
-            this.root = root;
+            this.current = root;
         }
 
         public T Current => throw new NotImplementedException();
@@ -24,7 +24,7 @@ namespace LinkedListTests
 
         public bool MoveNext()
         {
-            return (root.Next != null);
+            return (current.Next == null);
         }
 
         public void Reset()
