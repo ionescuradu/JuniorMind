@@ -52,6 +52,7 @@
     <Compile Include="Node.cs" />
     <Compile Include="LinkedListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VectorEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

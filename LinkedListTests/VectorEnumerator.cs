@@ -21,16 +21,15 @@ namespace LinkedListTests
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         public bool MoveNext()
         {
-            if (current != null)
+            if (current != null) 
             {
                 current = current.Next;
             }
-            return (current != null);
+            return (first != null);
         }
 
         public void Reset()

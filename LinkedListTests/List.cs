@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LinkedListTests
 {
-    internal class List<T> : IList<T>
+    internal class List<T> : IEnumerable<T>
     {
         private Node<T> root;
 
