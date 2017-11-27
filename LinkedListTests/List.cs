@@ -71,7 +71,7 @@ namespace LinkedListTests
 
         public void Clear()
         {
-            
+            throw new NotImplementedException();
         }
 
         public bool Contains(T item)
@@ -87,6 +87,18 @@ namespace LinkedListTests
         public bool Remove(T item)
         {
             throw new NotImplementedException();
+        }
+
+        public void RemoveFirst()
+        {
+            var newNode = root;
+            var aux = new Node<T>();
+            while (newNode.Next != null)
+            {
+                aux = newNode;
+                newNode = newNode.Next;
+            }
+            aux.Next = null;
         }
 
         public IEnumerator<T> GetEnumerator()
