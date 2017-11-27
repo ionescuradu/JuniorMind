@@ -28,19 +28,30 @@ namespace LinkedListTests
             var inserted = false;
             while (inserted == false)
             {
-                if (count == index - 1)
+                if (index == 0)
                 {
-                    node.Next = newNode;
                     newNode.Value = item;
-                    newNode.Next = aux;
+                    newNode.Next = root;
+                    root = newNode;
                     inserted = true;
                 }
                 else
                 {
-                    count++;
-                    node = node.Next;
-                    aux = node.Next;
+                    if (count == index - 1)
+                    {
+                        node.Next = newNode;
+                        newNode.Value = item;
+                        newNode.Next = aux;
+                        inserted = true;
+                    }
+                    else
+                    {
+                        count++;
+                        node = node.Next;
+                        aux = node.Next;
+                    }
                 }
+                
             }
             
         }
