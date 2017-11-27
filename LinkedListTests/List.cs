@@ -21,7 +21,19 @@ namespace LinkedListTests
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            var node = root;
+            var aux = new Node<T>();
+            var newNode = new Node<T>();
+            var count = 0;
+            while (count != index - 1)
+            {
+                count++;
+                node = node.Next;
+                aux = node.Next;
+            }
+            node.Next = newNode;
+            newNode.Value = item;
+            newNode.Next = aux;
         }
 
         public void RemoveAt(int index)
@@ -39,7 +51,7 @@ namespace LinkedListTests
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool Contains(T item)

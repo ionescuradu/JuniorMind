@@ -11,10 +11,17 @@ namespace LinkedListTests
         public void LinkedAdd1()
         {
             var list = new List<int> { 1, 2, 3 };
-            var array = list.ToArray();
             list.Add(4);
-            array = list.ToArray();
             var compareList = new List<int> { 1, 2, 3, 4 };
+            CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
+        }
+
+        [TestMethod]
+        public void LinkedAdd2()
+        {
+            var list = new List<int> { 1, 2, 3, 4, 5 };
+            list.Add(8);
+            var compareList = new List<int> { 1, 2, 3, 4, 5, 8 };
             CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
         }
     }
