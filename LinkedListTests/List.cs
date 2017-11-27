@@ -76,7 +76,21 @@ namespace LinkedListTests
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            bool contains = false;
+            var newNode = root;
+            while (newNode != null)
+            {
+                if (newNode.Value.Equals(item))
+                {
+                    contains = true;
+                    return contains;
+                }
+                else
+                {
+                    newNode = newNode.Next;
+                }
+            }
+            return contains;
         }
 
         public void CopyTo(T[] array, int arrayIndex)

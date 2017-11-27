@@ -76,5 +76,12 @@ namespace LinkedListTests
             var list = new List<int> { 1, 2, 3 };
             Assert.AreEqual(false, list.Remove(4));
         }
+
+        [TestMethod]
+        public void LinkedContains1()
+        {
+            var list = new List<int> { 1, 2, 3 };
+            Assert.AreEqual(true, list.Contains(1));
+        }
     }
 }
