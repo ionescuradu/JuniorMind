@@ -86,7 +86,23 @@ namespace LinkedListTests
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            var removed = false;
+            var newNode = root;
+            var aux = newNode;
+            while (removed == false)
+            {
+                if (newNode.Value.Equals(item))
+                {
+                    aux.Next = newNode.Next;
+                    removed = true;
+                }
+                else
+                {
+                    aux = newNode;
+                    newNode = newNode.Next;
+                }
+            }
+            return removed;
         }
 
         public void RemoveFirst()

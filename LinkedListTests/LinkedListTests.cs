@@ -54,5 +54,15 @@ namespace LinkedListTests
             var compareList = new List<int> { 2, 3 };
             CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
         }
+
+        [TestMethod]
+        public void LinkedRemove1()
+        {
+            var list = new List<int> { 1, 2, 3 };
+            list.Remove(2);
+            list.ToArray();
+            var newList = list;
+            Assert.AreEqual(true, newList);
+        }
     }
 }
