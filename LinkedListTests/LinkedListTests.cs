@@ -59,10 +59,15 @@ namespace LinkedListTests
         public void LinkedRemove1()
         {
             var list = new List<int> { 1, 2, 3 };
+            Assert.AreEqual(true, list.Remove(2));
+        }
+
+        [TestMethod]
+        public void LinkedRemove2()
+        {
+            var list = new List<int> { 1, 2, 3 };
             list.Remove(2);
-            list.ToArray();
-            var newList = list;
-            Assert.AreEqual(true, newList);
+            Assert.AreEqual(true, list.Remove(1));
         }
     }
 }

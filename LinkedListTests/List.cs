@@ -101,6 +101,10 @@ namespace LinkedListTests
                     aux = newNode;
                     newNode = newNode.Next;
                 }
+                if (newNode == null)
+                {
+                    break;
+                }
             }
             return removed;
         }
