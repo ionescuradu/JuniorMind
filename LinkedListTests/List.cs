@@ -11,11 +11,6 @@ namespace LinkedListTests
         private Node<T> newNode;
         private Node<T> newHead;
 
-        public List()
-        {
-            newHead = head;
-        }
-
         public int Count => throw new NotImplementedException();
 
         public bool IsReadOnly => throw new NotImplementedException();
@@ -87,6 +82,11 @@ namespace LinkedListTests
             {
                 newHead.Previous = root;
                 newHead = root;
+                head.Next = root;
+            }
+            if (root.Previous == null)
+            {
+                root.Previous = head;
             }
         }
 

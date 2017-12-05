@@ -33,15 +33,15 @@ namespace IListT_Tests
         {
             List<int> givenList = new List<int>(8);
             givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            givenList.Add(1);
-            var compareList = new List<int>(16) { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            givenList.Add(2);
+            givenList.Add(3);
+            givenList.Add(4);
+            givenList.Add(5);
+            givenList.Add(6);
+            givenList.Add(7);
+            givenList.Add(8);
+            givenList.Add(9);
+            var compareList = new List<int>(16) { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
         }
 
