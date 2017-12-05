@@ -7,7 +7,14 @@ namespace LinkedListTests
     internal class List<T> : IEnumerable<T>
     {
         private Node<T> root;
+        private Node<T> head;
         private Node<T> newNode;
+        private Node<T> newHead;
+
+        public List()
+        {
+            newHead = head;
+        }
 
         public int Count => throw new NotImplementedException();
 
@@ -68,9 +75,19 @@ namespace LinkedListTests
 
         public void AddingNode(T item, Node<T> newNode)
         {
+            if (head == null)
+            {
+                head = root;
+                newHead = head;
+            }
             newNode.Value = item;
             newNode.Next = root;
             root = newNode;
+            if (newHead != null)
+            {
+                newHead.Previous = root;
+                newHead = root;
+            }
         }
 
         public void Clear()

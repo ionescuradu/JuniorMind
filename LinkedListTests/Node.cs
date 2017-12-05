@@ -17,6 +17,7 @@ namespace LinkedListTests
 
         public T Value { get; internal set; }
         public Node<T> Next { get; internal set; }
+        public Node<T> Previous { get; internal set; }
 
         public void Add(T item)
         {
