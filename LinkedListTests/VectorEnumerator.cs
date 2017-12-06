@@ -11,9 +11,7 @@ namespace LinkedListTests
 
         public VectorEnumerator(Node<T> root)
         {
-            var virtualnode = new Node<T>();
-            virtualnode.Next = root;
-            this.current = virtualnode;
+            this.current = root;
             first = root;
         }
 
@@ -31,12 +29,12 @@ namespace LinkedListTests
             {
                 current = current.Next;
             }
-            return (current != null);
+            return (current != first);
         }
 
         public void Reset()
         {
-            current = first;
+            current = null;
         }
     }
 }
