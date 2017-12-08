@@ -95,7 +95,8 @@ namespace LinkedListTests
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            root.Next = root;
+            root.Previous = root;
         }
 
         public bool Contains(T item)

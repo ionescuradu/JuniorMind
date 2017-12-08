@@ -120,5 +120,14 @@ namespace LinkedListTests
             var list = new List<int> { 1, 2, 3 };
             Assert.AreEqual(false, list.Contains(4));
         }
+
+        [TestMethod]
+        public void LinkedClear()
+        {
+            var list = new List<int> { 1, 2, 3 };
+            var compareList = new List<int>();
+            list.Clear();
+            CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
+        }
     }
 }
