@@ -75,50 +75,50 @@ namespace LinkedListTests
         public void LinkedRemove1()
         {
             var list = new List<int> { 1, 2, 3 };
-            //Assert.AreEqual(true, list.Remove(2));
+            Assert.AreEqual(true, list.Remove(2));
         }
 
         [TestMethod]
         public void LinkedRemove2()
         {
             var list = new List<int> { 1, 2, 3 };
-            //list.Remove(2);
-            //Assert.AreEqual(true, list.Remove(1));
+            list.Remove(2);
+            Assert.AreEqual(true, list.Remove(1));
         }
 
         [TestMethod]
         public void LinkedRemove3()
         {
             var list = new List<int> { 1, 2, 3 };
-            //Assert.AreEqual(false, list.Remove(4));
+            Assert.AreEqual(false, list.Remove(4));
         }
 
         [TestMethod]
         public void LinkedRemove4()
         {
             var list = new List<int>();
-            //Assert.AreEqual(false, list.Remove(1));
+            Assert.AreEqual(false, list.Remove(1));
         }
 
         [TestMethod]
         public void LinkedContains1()
         {
             var list = new List<int> { 1, 2, 3 };
-            //Assert.AreEqual(true, list.Contains(1));
+            Assert.AreEqual(true, list.Contains(1));
         }
 
         [TestMethod]
         public void LinkedContains2()
         {
             var list = new List<int> { 1, 2, 3 };
-            //Assert.AreEqual(true, list.Contains(3));
+            Assert.AreEqual(true, list.Contains(3));
         }
 
         [TestMethod]
         public void LinkedContains3()
         {
             var list = new List<int> { 1, 2, 3 };
-            //Assert.AreEqual(false, list.Contains(4));
+            Assert.AreEqual(false, list.Contains(4));
         }
     }
 }
