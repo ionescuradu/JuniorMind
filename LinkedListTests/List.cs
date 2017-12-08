@@ -37,7 +37,7 @@ namespace LinkedListTests
             {
                 if (index == 0)
                 {
-                    AddLast(item, newNode);
+                    Add(item);
                     inserted = true;
                 }
                 else
@@ -79,6 +79,16 @@ namespace LinkedListTests
             newNode.Previous = root.Previous;
             root.Previous.Next = newNode;
             root.Previous = newNode;
+        }
+
+        public void AddFirst(T item)
+        {
+            var newNode = new Node<T>();
+            newNode.Value = item;
+            newNode.Next = root.Next;
+            newNode.Previous = root;
+            root.Next = newNode;
+            root.Next.Next.Previous = newNode;
         }
 
         public void Clear()
