@@ -102,7 +102,7 @@ namespace LinkedListTests
         public bool Contains(T item)
         {
             bool contains = false;
-            var newNode = root;
+            var newNode = root.Next;
             while (newNode != null)
             {
                 if (newNode.Value.Equals(item))
@@ -113,6 +113,10 @@ namespace LinkedListTests
                 else
                 {
                     newNode = newNode.Next;
+                    if (newNode == root)
+                    {
+                        break;
+                    }
                 }
             }
             return contains;
