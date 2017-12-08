@@ -47,11 +47,10 @@ namespace LinkedListTests
         [TestMethod]
         public void LinkedInsert1()
         {
-            //var list = new List<int> { 1, 2, 3 };
-            //list.Insert(1, 4);
-            //list.ToArray();
-            //var compareList = new List<int> { 1, 2, 4, 3 };
-            //CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
+            var list = new List<int> { 1, 2, 3 };
+            list.Insert(1, 4);
+            var compareList = new List<int> { 1, 4, 2, 3 };
+            CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
         }
 
         [TestMethod]

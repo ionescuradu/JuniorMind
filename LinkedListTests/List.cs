@@ -28,7 +28,7 @@ namespace LinkedListTests
 
         public void Insert(int index, T item)
         {
-            var node = root;
+            var node = root.Next;
             var aux = node.Next;
             var newNode = new Node<T>();
             var count = 0;
@@ -44,9 +44,11 @@ namespace LinkedListTests
                 {
                     if (count == index - 1)
                     {
-                        node.Next = newNode;
                         newNode.Value = item;
                         newNode.Next = aux;
+                        newNode.Previous = node;
+                        node.Next = newNode;
+                        aux.Previous = newNode;
                         inserted = true;
                     }
                     else
