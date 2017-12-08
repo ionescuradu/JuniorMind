@@ -139,7 +139,7 @@ namespace LinkedListTests
                     aux = newNode;
                     newNode = newNode.Next;
                 }
-                if (newNode == null)
+                if (newNode == root)
                 {
                     break;
                 }
