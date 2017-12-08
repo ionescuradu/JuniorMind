@@ -149,14 +149,7 @@ namespace LinkedListTests
 
         public void RemoveFirst()
         {
-            var newNode = root;
-            var aux = new Node<T>();
-            while (newNode.Next != null)
-            {
-                aux = newNode;
-                newNode = newNode.Next;
-            }
-            aux.Next = null;
+            root.Next = root.Next.Next;
         }
 
         public IEnumerator<T> GetEnumerator()
