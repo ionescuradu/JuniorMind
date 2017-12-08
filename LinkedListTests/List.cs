@@ -31,7 +31,7 @@ namespace LinkedListTests
             var node = root.Next;
             var newNode = new Node<T>();
             newNode.Value = item;
-            FindNode(index, ref node);
+            FindNode(index, node);
             if (index == 0)
             {
                 AddFirst(item);
@@ -45,7 +45,7 @@ namespace LinkedListTests
             }
         }
 
-        public Node<T> FindNode(int index, ref Node<T> node)
+        public Node<T> FindNode(int index, Node<T> node)
         {
             var count = 0;
             while (count != index)
