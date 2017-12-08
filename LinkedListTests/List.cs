@@ -29,38 +29,32 @@ namespace LinkedListTests
         public void Insert(int index, T item)
         {
             var node = root.Next;
-            var aux = node.Next;
             var newNode = new Node<T>();
-            var count = 0;
-            var inserted = false;
-            while (inserted == false)
+            newNode.Value = item;
+            FindNode(index, ref node);
+            if (index == 0)
             {
-                if (index == 0)
-                {
-                    AddFirst(item);
-                    inserted = true;
-                }
-                else
-                {
-                    if (count == index - 1)
-                    {
-                        newNode.Value = item;
-                        newNode.Next = aux;
-                        newNode.Previous = node;
-                        node.Next = newNode;
-                        aux.Previous = newNode;
-                        inserted = true;
-                    }
-                    else
-                    {
-                        count++;
-                        node = node.Next;
-                        aux = node.Next;
-                    }
-                }
-                
+                AddFirst(item);
             }
-            
+            else
+            {
+                newNode.Next = node.Next;
+                newNode.Previous = node;
+                node.Next = newNode;
+                node.Next.Next.Previous = newNode;
+            }
+        }
+
+        public Node<T> FindNode(int index, ref Node<T> node)
+        {
+            var count = 0;
+            while (count != index)
+            {
+                node = node.Next;
+                count++;
+            }
+            node = node.Previous;
+            return node;
         }
 
         public void RemoveAt(int index)
