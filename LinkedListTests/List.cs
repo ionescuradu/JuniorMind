@@ -37,7 +37,7 @@ namespace LinkedListTests
             {
                 if (index == 0)
                 {
-                    Add(item);
+                    AddFirst(item);
                     inserted = true;
                 }
                 else
