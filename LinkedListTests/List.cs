@@ -18,7 +18,7 @@ namespace LinkedListTests
         public int Count => throw new NotImplementedException();
 
         public bool IsReadOnly => throw new NotImplementedException();
-            
+
         public T this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public int IndexOf(T item)
@@ -31,13 +31,14 @@ namespace LinkedListTests
             var node = root.Next;
             var newNode = new Node<T>();
             newNode.Value = item;
-            FindNode(index, node);
+            FindNode(index, ref node);
             if (index == 0)
             {
                 AddFirst(item);
             }
             else
             {
+                node = node.Previous;
                 newNode.Next = node.Next;
                 newNode.Previous = node;
                 node.Next = newNode;
@@ -45,7 +46,7 @@ namespace LinkedListTests
             }
         }
 
-        public Node<T> FindNode(int index, Node<T> node)
+        public Node<T> FindNode(int index, ref Node<T> node)
         {
             var count = 0;
             while (count != index)
@@ -53,7 +54,6 @@ namespace LinkedListTests
                 node = node.Next;
                 count++;
             }
-            node = node.Previous;
             return node;
         }
 
@@ -95,25 +95,50 @@ namespace LinkedListTests
 
         public bool Contains(T item)
         {
-            bool contains = false;
-            var newNode = root.Next;
-            while (newNode != null)
+            var node = root;
+            return FindFirst(item, node);
+        }
+
+        public bool FindFirst(T item, Node<T> node)
+        {
+            var first = false;
+            while (first == false)
             {
-                if (newNode.Value.Equals(item))
+                if (node.Value.Equals(item))
                 {
-                    contains = true;
-                    return contains;
+                    first = true;
                 }
                 else
                 {
-                    newNode = newNode.Next;
-                    if (newNode == root)
-                    {
-                        break;
-                    }
+                    node = node.Next;
+                }
+                if (node == root)
+                {
+                    break;
                 }
             }
-            return contains;
+            return first;
+        }
+
+        public bool FindLast(T item, Node<T> node)
+        {
+            var last = false;
+            while (last == false)
+            {
+                if (node.Value.Equals(item))
+                {
+                    last = true;
+                }
+                else
+                {
+                    node = node.Previous;
+                }
+                if (node == root)
+                {
+                    break;
+                }
+            }
+            return last;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
