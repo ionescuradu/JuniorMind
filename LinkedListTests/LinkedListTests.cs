@@ -63,22 +63,13 @@ namespace LinkedListTests
         }
 
         [TestMethod]
-        public void LinkedRemoveFirst()
-        {
-            var list = new List<int> { 1, 2, 3 };
-            list.RemoveFirst();
-            var compareList = new List<int> { 2, 3 };
-            CollectionAssert.AreEqual(compareList.ToArray(), list.ToArray());
-        }
-
-        [TestMethod]
         public void LinkedRemove1()
         {
             var list = new List<int> { 1, 2, 3 };
             Assert.AreEqual(true, list.Remove(2));
         }
 
-        [TestMethod]
+        [TestMethod]    
         public void LinkedRemove2()
         {
             var list = new List<int> { 1, 2, 3 };
@@ -112,6 +103,13 @@ namespace LinkedListTests
         {
             var list = new List<int> { 1, 2, 3 };
             Assert.AreEqual(true, list.Contains(3));
+        }
+
+        [TestMethod]
+        public void LinkedContainsLast1()
+        {
+            var list = new List<int> { 1, 2, 3, 2, 3 };
+            Assert.AreEqual(true, list.ContainsLast(3));
         }
 
         [TestMethod]
