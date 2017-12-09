@@ -167,6 +167,11 @@ namespace LinkedListTests
             return new VectorEnumerator<T>(root);
         }
 
+        public IEnumerator<T> GetReverseEnumerator()
+        {
+            return new VectorEnumeratorReverse<T>(root);
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
