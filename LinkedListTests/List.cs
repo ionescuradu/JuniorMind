@@ -95,47 +95,51 @@ namespace LinkedListTests
 
         public bool Contains(T item)
         {
-            var node = root;
-            return FindFirst(item, node);
+            if (FindFirst(item) == root)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public bool FindFirst(T item, Node<T> node)
+        public bool ContainsLast(T item)
         {
-            var first = false;
-            while (first == false)
+            if (FindLast(item) == root)
             {
-                if (node.Value.Equals(item))
+                return false;
+            }
+            return true;
+        }
+
+        public Node<T> FindFirst(T item)
+        {
+            var first = root.Next;
+            while (first != root)
+            {
+                if (first.Value.Equals(item))
                 {
-                    first = true;
+                    return first;
                 }
                 else
                 {
-                    node = node.Next;
-                }
-                if (node == root)
-                {
-                    break;
+                    first = first.Next;
                 }
             }
             return first;
         }
 
-        public bool FindLast(T item, Node<T> node)
+        public Node<T> FindLast(T item)
         {
-            var last = false;
-            while (last == false)
+            var last = root.Previous;
+            while (last != root)
             {
-                if (node.Value.Equals(item))
+                if (last.Value.Equals(item))
                 {
-                    last = true;
+                    return last;
                 }
                 else
                 {
-                    node = node.Previous;
-                }
-                if (node == root)
-                {
-                    break;
+                    last = last.Previous;
                 }
             }
             return last;
@@ -149,31 +153,13 @@ namespace LinkedListTests
         public bool Remove(T item)
         {
             var removed = false;
-            var newNode = root;
-            var aux = newNode;
-            while (removed == false)
+            var node = FindFirst(item);
+            if (node != root)
             {
-                if (newNode.Value.Equals(item))
-                {
-                    aux.Next = newNode.Next;
-                    removed = true;
-                }
-                else
-                {
-                    aux = newNode;
-                    newNode = newNode.Next;
-                }
-                if (newNode == root)
-                {
-                    break;
-                }
+                node.Previous = node.Next;
+                removed = true;
             }
             return removed;
-        }
-
-        public void RemoveFirst()
-        {
-            root.Next = root.Next.Next;
         }
 
         public IEnumerator<T> GetEnumerator()
