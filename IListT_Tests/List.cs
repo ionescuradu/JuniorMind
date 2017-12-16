@@ -111,6 +111,10 @@ namespace IListT_Tests
 
         public void Insert(int index, T item)
         {
+            if ((index < 0) || (index > count))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             if (count + 1 > givenList.Length)
             {
                 ResizeList();
