@@ -153,5 +153,13 @@ namespace IListT_Tests
             Assert.IsTrue(enumerator.MoveNext());
             Assert.AreEqual(3, enumerator.Current);
         }
+
+        [TestMethod]
+        public void YieldTest3()
+        {
+            List<int> givenList = new List<int>(8) { 10, 15, 100, 2, 1 };
+            var enumerator = givenList.GetEnumerator();
+            Assert.IsTrue(enumerator.MoveNext());
+        }
     }
 }
