@@ -220,7 +220,7 @@ namespace IListT_Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void RemoveException1()
+        public void RemoveAtException1()
         {
             List<int> givenList = new List<int>(8);
             givenList.Add(2);
@@ -230,7 +230,7 @@ namespace IListT_Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void RemoveException2()
+        public void RemoveAtException2()
         {
             List<int> givenList = new List<int>(8);
             givenList.Add(2);
