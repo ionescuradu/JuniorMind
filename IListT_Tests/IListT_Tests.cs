@@ -180,5 +180,14 @@ namespace IListT_Tests
             int[] givenArray = null;
             givenList.CopyTo(givenArray, 1);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CopyToException2()
+        {
+            List<int> givenList = new List<int>(8) { 2, 3, 4 };
+            int[] givenArray = new int[4] { 0, 0, 0, 0 };
+            givenList.CopyTo(givenArray, -1);
+        }
     }
 }
