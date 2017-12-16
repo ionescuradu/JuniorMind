@@ -75,6 +75,7 @@ namespace IListT_Tests
             {
                 throw new ArgumentOutOfRangeException();
             }
+            if (array.Length - arrayIndex - count < 0)
             {
                 throw new ArgumentException();
             }

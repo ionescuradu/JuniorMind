@@ -195,6 +195,7 @@ namespace IListT_Tests
         {
             List<int> givenList = new List<int>(8) { 2, 3, 4, 5 };
             int[] givenArray = new int[4] { 0, 0, 0, 0 };
+            givenList.CopyTo(givenArray, 1);
         }
     }
 }
