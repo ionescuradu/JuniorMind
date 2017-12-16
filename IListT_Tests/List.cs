@@ -97,7 +97,7 @@ namespace IListT_Tests
 
         public int IndexOf(T item)
         {
-            var position = -1;
+            var position = 0;
             for (int i = 0; i < Count; i++)
             {
                 if (givenList[i].Equals(item))
@@ -135,7 +135,11 @@ namespace IListT_Tests
 
         public void RemoveAt(int index)
         {
-            if (index > -1)
+            if ((index < 0) || (index >= count))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (index > 0)
             {
                 removed = false;
                 for (int i = index; i <= Count - 1; i++)
