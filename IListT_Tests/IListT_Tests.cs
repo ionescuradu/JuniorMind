@@ -135,5 +135,23 @@ namespace IListT_Tests
             givenList.CopyTo(givenArray, 1);
             CollectionAssert.AreEqual(compareArray.ToArray(), givenArray);
         }
+
+        [TestMethod]
+        public void YieldTest1()
+        {
+            List<int> givenList = new List<int>(8) { 2, 1};
+            var enumerator = givenList.GetEnumerator();
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual(2, enumerator.Current);
+        }
+
+        [TestMethod]
+        public void YieldTest2()
+        {
+            List<int> givenList = new List<int>(8) { 3, 2, 1 };
+            var enumerator = givenList.GetEnumerator();
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual(3, enumerator.Current);
+        }
     }
 }

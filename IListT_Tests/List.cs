@@ -76,11 +76,11 @@ namespace IListT_Tests
 
         public IEnumerator<T> GetEnumerator()
         {
-            //for (int position = 0; position < count; position++)
-            //{
-            //    yield return givenList[position];
-            //}
-            throw new NotImplementedException();
+            for (int position = 0; position < count; position++)
+            {
+               yield return givenList[position];
+            }
+
         }
 
         public int IndexOf(T item)
