@@ -160,6 +160,16 @@ namespace IListT_Tests
             List<int> givenList = new List<int>(8) { 10, 15, 100, 2, 1 };
             var enumerator = givenList.GetEnumerator();
             Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual(10, enumerator.Current);
+        }
+
+        [TestMethod]
+        public void YieldTest4()
+        {
+            List<int> givenList = new List<int>(8);
+            var enumerator = givenList.GetEnumerator();
+            Assert.IsFalse(enumerator.MoveNext());
+            Assert.AreEqual(0 , enumerator.Current);
         }
     }
 }
