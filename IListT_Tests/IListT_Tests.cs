@@ -227,5 +227,15 @@ namespace IListT_Tests
             givenList.Add(3);
             givenList.RemoveAt(2);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void RemoveException2()
+        {
+            List<int> givenList = new List<int>(8);
+            givenList.Add(2);
+            givenList.Add(3);
+            givenList.RemoveAt(10);
+        }
     }
 }
