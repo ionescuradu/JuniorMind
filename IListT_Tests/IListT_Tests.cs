@@ -14,8 +14,9 @@ namespace IListT_Tests
         {
             List<int> givenList = new List<int>(8);
             givenList.Add(2);
+            givenList.ToList();
             var compareList = new List<int>(8) { 2 };
-            CollectionAssert.AreEqual(compareList.ToArray(), givenList.ToArray());
+            CollectionAssert.AreEqual(compareList.ToList(), givenList.ToList());
         }
 
         [TestMethod]
