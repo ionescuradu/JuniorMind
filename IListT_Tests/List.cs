@@ -67,11 +67,16 @@ namespace IListT_Tests
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if ( array == null)
+            {
+                throw new ArgumentNullException();
+            }
             for (int i = 0; i < count; i++)
             {
                 array.SetValue(givenList[i], arrayIndex);
                 arrayIndex++;
             }
+
         }
 
         public IEnumerator<T> GetEnumerator()

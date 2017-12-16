@@ -171,5 +171,14 @@ namespace IListT_Tests
             Assert.IsFalse(enumerator.MoveNext());
             Assert.AreEqual(0 , enumerator.Current);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CopyToException1()
+        {
+            List<int> givenList = null;
+            var givenArray = new int[4] { 0, 0, 0, 0 };
+            givenList.CopyTo(givenArray, 1);
+        }
     }
 }
