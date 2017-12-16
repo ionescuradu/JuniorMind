@@ -176,8 +176,8 @@ namespace IListT_Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void CopyToException1()
         {
-            List<int> givenList = null;
-            var givenArray = new int[4] { 0, 0, 0, 0 };
+            List<int> givenList = new List<int>(8) { 2, 3, 4 };
+            int[] givenArray = null;
             givenList.CopyTo(givenArray, 1);
         }
     }

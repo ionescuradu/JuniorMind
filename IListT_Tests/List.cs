@@ -76,7 +76,6 @@ namespace IListT_Tests
                 array.SetValue(givenList[i], arrayIndex);
                 arrayIndex++;
             }
-
         }
 
         public IEnumerator<T> GetEnumerator()
