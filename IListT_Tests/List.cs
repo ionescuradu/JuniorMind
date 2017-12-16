@@ -75,6 +75,9 @@ namespace IListT_Tests
             {
                 throw new ArgumentOutOfRangeException();
             }
+            {
+                throw new ArgumentException();
+            }
             for (int i = 0; i < count; i++)
             {
                 array.SetValue(givenList[i], arrayIndex);

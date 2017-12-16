@@ -14,7 +14,6 @@ namespace IListT_Tests
         {
             List<int> givenList = new List<int>(8);
             givenList.Add(2);
-            givenList.ToList();
             var compareList = new List<int>(8) { 2 };
             CollectionAssert.AreEqual(compareList.ToList(), givenList.ToList());
         }
@@ -188,6 +187,14 @@ namespace IListT_Tests
             List<int> givenList = new List<int>(8) { 2, 3, 4 };
             int[] givenArray = new int[4] { 0, 0, 0, 0 };
             givenList.CopyTo(givenArray, -1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CopyToException3()
+        {
+            List<int> givenList = new List<int>(8) { 2, 3, 4, 5 };
+            int[] givenArray = new int[4] { 0, 0, 0, 0 };
         }
     }
 }
