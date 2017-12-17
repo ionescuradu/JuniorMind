@@ -4,29 +4,48 @@ using System.Collections.Generic;
 
 namespace IDictionaryT
 {
-    internal class BookCase: IDictionary
+    internal class Dictionary<TKey, TValue>: IDictionary<TKey, TValue>
     {
-        public BookCase()
+        private Dictionary<TKey, TValue> dictionary;
+        private int count;
+
+        public Dictionary()
         {
+            count = 0;
         }
 
-        public object this[object key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public TValue this[TKey key]
+        {
+            get
+            {
+                return dictionary[key];
+            }
+            set
+            {
+                dictionary[key] = value;
+            }
+        }
 
-        public ICollection Keys => throw new NotImplementedException();
+        public ICollection<TKey> Keys => throw new NotImplementedException();
 
-        public ICollection Values => throw new NotImplementedException();
+        public ICollection<TValue> Values => throw new NotImplementedException();
+
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
 
         public bool IsReadOnly => throw new NotImplementedException();
 
-        public bool IsFixedSize => throw new NotImplementedException();
+        public void Add(TKey key, TValue value)
+        {
+            throw new NotImplementedException();
+        }
 
-        public int Count => throw new NotImplementedException();
-
-        public object SyncRoot => throw new NotImplementedException();
-
-        public bool IsSynchronized => throw new NotImplementedException();
-
-        public void Add(object key, object value)
+        public void Add(KeyValuePair<TKey, TValue> item)
         {
             throw new NotImplementedException();
         }
@@ -36,22 +55,37 @@ namespace IDictionaryT
             throw new NotImplementedException();
         }
 
-        public bool Contains(object key)
+        public bool Contains(KeyValuePair<TKey, TValue> item)
         {
             throw new NotImplementedException();
         }
 
-        public void CopyTo(Array array, int index)
+        public bool ContainsKey(TKey key)
         {
             throw new NotImplementedException();
         }
 
-        public IDictionaryEnumerator GetEnumerator()
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(object key)
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(TKey key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(KeyValuePair<TKey, TValue> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetValue(TKey key, out TValue value)
         {
             throw new NotImplementedException();
         }
