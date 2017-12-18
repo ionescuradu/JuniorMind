@@ -72,7 +72,10 @@ namespace IDictionaryT
 
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int position = 0; position < count; position++)
+            {
+                yield return new KeyValuePair<TKey, TValue>();
+            }
         }
 
         public bool Remove(TKey key)

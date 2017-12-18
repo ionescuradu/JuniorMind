@@ -87,6 +87,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IListT_Tests", "IListT_Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListTests", "LinkedListTests\LinkedListTests.csproj", "{653704EB-BC36-4494-ADDD-7790AF727761}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDictionaryT", "IDictionaryT\IDictionaryT.csproj", "{18FC5050-5600-41EE-9D7A-4DBF6E67ACCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -261,6 +263,10 @@ Global
 		{653704EB-BC36-4494-ADDD-7790AF727761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653704EB-BC36-4494-ADDD-7790AF727761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{653704EB-BC36-4494-ADDD-7790AF727761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FC5050-5600-41EE-9D7A-4DBF6E67ACCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FC5050-5600-41EE-9D7A-4DBF6E67ACCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FC5050-5600-41EE-9D7A-4DBF6E67ACCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FC5050-5600-41EE-9D7A-4DBF6E67ACCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

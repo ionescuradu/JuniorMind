@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IDictionaryT
@@ -9,7 +11,7 @@ namespace IDictionaryT
         [TestMethod]
         public void TestMethod1()
         {
-            var bookCase = new IDictionary <T>();
+            
         }
     }
 }
