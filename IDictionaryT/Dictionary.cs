@@ -4,27 +4,19 @@ using System.Collections.Generic;
 
 namespace IDictionaryT
 {
-    internal class Dictionary<TKey, TValue>: IDictionary<TKey, TValue>
+    internal class Dictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> dictionary;
+        private Bucket<Entry<TKey, TValue>>[] dictionary;
         private int count;
+        private int initalCapacity;
 
-        public Dictionary()
+        public Dictionary(int initialCapacity)
         {
+            dictionary = new Bucket<Entry<TKey, TValue>>[initialCapacity];
             count = 0;
         }
 
-        public TValue this[TKey key]
-        {
-            get
-            {
-                return dictionary[key];
-            }
-            set
-            {
-                dictionary[key] = value;
-            }
-        }
+        public TValue this[TKey key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ICollection<TKey> Keys => throw new NotImplementedException();
 
@@ -40,14 +32,15 @@ namespace IDictionaryT
 
         public bool IsReadOnly => throw new NotImplementedException();
 
+        public TValue value { get; private set; }
+
         public void Add(TKey key, TValue value)
         {
-            throw new NotImplementedException();
+            Add(new KeyValuePair<TKey, TValue>(key, value));
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
         }
 
         public void Clear()
