@@ -7,6 +7,5 @@ namespace IDictionaryT
     internal class Bucket<T>
     {
         private List<T> bucket;
-
     }
 }

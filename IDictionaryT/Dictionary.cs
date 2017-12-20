@@ -16,7 +16,21 @@ namespace IDictionaryT
             count = 0;
         }
 
-        public TValue this[TKey key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public TValue this[TKey key]
+        {
+            get
+            {
+                var searchBucket = key.GetHashCode() % dictionary.Length ;
+                foreach (var key in dictionary[ TKey ,searchBucket])
+                {
+
+                }
+            }
+            set
+            {
+                dictionary[key] = value; 
+            }
+        }
 
         public ICollection<TKey> Keys => throw new NotImplementedException();
 
@@ -31,8 +45,6 @@ namespace IDictionaryT
         }
 
         public bool IsReadOnly => throw new NotImplementedException();
-
-        public TValue value { get; private set; }
 
         public void Add(TKey key, TValue value)
         {
