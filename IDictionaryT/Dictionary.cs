@@ -40,8 +40,6 @@ namespace IDictionaryT
                         dictionary[searchBucket].AddFirst(new Entry<TKey, TValue>(key, value));
                     }
                 }
-                throw new KeyNotFoundException();
-
             }
         }
 

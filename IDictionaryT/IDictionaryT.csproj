@@ -48,7 +48,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bucket.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="IDictionaryTTests.cs" />

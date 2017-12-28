@@ -19,7 +19,6 @@ namespace IDictionaryT
             bucket3.Add(new Entry<int, int>(102, 700));
             var dictionary = new List<Entry<int, int>>[3] { bucket1, bucket2, bucket3 };
 
-
         }
     }
 }
