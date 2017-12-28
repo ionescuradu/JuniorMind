@@ -20,15 +20,20 @@ namespace IDictionaryT
         {
             get
             {
-                var searchBucket = key.GetHashCode() % dictionary.Length ;
-                foreach (var key in dictionary[ TKey ,searchBucket])
-                {
 
+                var searchBucket = key.GetHashCode() % dictionary.Length;
+                foreach (Entry<TKey, TValue> entry in dictionary[searchBucket])
+                {
+                    if (!entry.FindValue(key).Equals(default(TValue)))
+                    {
+                        return entry.FindValue(key);
+                    }
                 }
             }
+
             set
             {
-                dictionary[key] = value; 
+
             }
         }
 
