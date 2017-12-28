@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace IDictionaryT
 {
@@ -6,7 +8,7 @@ namespace IDictionaryT
     {
         private TKey key;
         private TValue value;
-        private TValue searchedValue;
+        private TValue searchValue;
 
         public Entry( TKey key, TValue value)
         {
@@ -14,11 +16,11 @@ namespace IDictionaryT
             this.value = value;
         }
 
-        public TValue FindValue(TKey searchedKey)
+        public TValue FindValue(TKey searchKey)
         {
-            if (key.Equals(searchedKey))
+            if (key.Equals(searchKey))
             {
-                return searchedValue = value;
+                return searchValue = value;
             }
             return default(TValue);
         }
