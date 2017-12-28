@@ -6,13 +6,13 @@ namespace IDictionaryT
 {
     internal class Dictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        private Bucket<Entry<TKey, TValue>>[] dictionary;
+        private List<Entry<TKey, TValue>>[] dictionary;
         private int count;
         private int initalCapacity;
 
         public Dictionary(int initialCapacity)
         {
-            dictionary = new Bucket<Entry<TKey, TValue>>[initialCapacity];
+            dictionary = new List<Entry<TKey, TValue>>[initialCapacity];
             count = 0;
         }
 
@@ -20,7 +20,6 @@ namespace IDictionaryT
         {
             get
             {
-
                 var searchBucket = key.GetHashCode() % dictionary.Length;
                 foreach (Entry<TKey, TValue> entry in dictionary[searchBucket])
                 {
@@ -29,10 +28,19 @@ namespace IDictionaryT
                         return entry.FindValue(key);
                     }
                 }
+                throw new KeyNotFoundException();
             }
-
             set
             {
+                var searchBucket = key.GetHashCode() % dictionary.Length;
+                foreach (Entry<TKey, TValue> entry in dictionary[searchBucket])
+                {
+                    if (entry.FindValue(key).Equals(default(TValue)))
+                    {
+                        dictionary[searchBucket].AddFirst(new Entry<TKey, TValue>(key, value));
+                    }
+                }
+                throw new KeyNotFoundException();
 
             }
         }
