@@ -59,11 +59,15 @@ namespace IDictionaryT
 
         public void Add(TKey key, TValue value)
         {
-           
+            var bucket = key.GetHashCode() % dictionary.Length;
+            dictionary[bucket].Add(new Entry<TKey, TValue>(key, value));
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
+            var auxKey = item.Key;
+            var auxValue = item.Value;
+            Add(auxKey, auxValue);
         }
 
         public void Clear()
