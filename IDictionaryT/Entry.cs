@@ -21,6 +21,16 @@ namespace IDictionaryT
                 return searchedValue = value;
             }
             return default(TValue);
+        }       
+
+        public bool FindKey(TKey searchedkey)
+        {
+            if (key.Equals(searchedkey))
+            {
+                return true;
+            }
+            return false;
         }
+
     }
 }
