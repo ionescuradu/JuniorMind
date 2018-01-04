@@ -77,7 +77,8 @@ namespace IDictionaryT
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
+            var auxKey = item.Key;
+            return ContainsKey(auxKey);
         }
 
         public bool ContainsKey(TKey key)
