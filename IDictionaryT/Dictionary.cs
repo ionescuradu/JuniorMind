@@ -37,7 +37,7 @@ namespace IDictionaryT
                 {
                     if (entry.FindValue(key).Equals(default(TValue)))
                     {
-                        dictionary[searchBucket].AddFirst(new Entry<TKey, TValue>(key, value));
+                        dictionary[searchBucket].Add(new Entry<TKey, TValue>(key, value));
                     }
                 }
             }
