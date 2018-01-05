@@ -13,15 +13,11 @@ namespace IDictionaryT
         public Dictionary(int initialCapacity)
         {
             dictionary = new List<Entry<TKey, TValue>>[initialCapacity];
-            count = 0;
-        }
-
-        public void ResetEntries()
-        {
             for (int i = 0; i < dictionary.Length; i++)
             {
                 dictionary[i] = new List<Entry<TKey, TValue>>();
             }
+            count = 0;
         }
 
         public TValue this[TKey key]

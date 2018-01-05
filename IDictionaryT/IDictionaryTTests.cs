@@ -13,7 +13,6 @@ namespace IDictionaryT
         {
             var initialCapacity = 3;
             var dictionary = new Dictionary<int,int>(initialCapacity);
-            dictionary.ResetEntries();
             var entry = new KeyValuePair<int, int>(1, 100);
             dictionary.Add(entry);
             Assert.AreEqual(true, dictionary.Contains(entry));
@@ -24,7 +23,6 @@ namespace IDictionaryT
         {
             var initialCapacity = 3;
             var dictionary = new Dictionary<int, int>(initialCapacity);
-            dictionary.ResetEntries();
             var entry1 = new KeyValuePair<int, int>(1, 100);
             var entry2 = new KeyValuePair<int, int>(2, 102);
             dictionary.Add(entry1);
@@ -36,7 +34,6 @@ namespace IDictionaryT
         {
             var initialCapacity = 3;
             var dictionary = new Dictionary<int, int>(initialCapacity);
-            dictionary.ResetEntries();
             var entry1 = new KeyValuePair<int, int>(1, 100);
             var entry2 = new KeyValuePair<int, int>(2, 102);
             var entry3 = new KeyValuePair<int, int>(1, 103);
