@@ -64,6 +64,13 @@ namespace IDictionaryT
         public void Add(TKey key, TValue value)
         {
             var bucket = key.GetHashCode() % dictionary.Length;
+            foreach (Entry<TKey, TValue> entry in dictionary[bucket])
+            {
+                if (entry.FindKey(key))
+                {
+                    throw new ArgumentException();
+                }
+            }
             dictionary[bucket].Add(new Entry<TKey, TValue>(key, value));
         }
 
