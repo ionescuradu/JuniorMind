@@ -16,6 +16,14 @@ namespace IDictionaryT
             count = 0;
         }
 
+        public void ResetEntries()
+        {
+            for (int i = 0; i < dictionary.Length; i++)
+            {
+                dictionary[i] = new List<Entry<TKey, TValue>>();
+            }
+        }
+
         public TValue this[TKey key]
         {
             get

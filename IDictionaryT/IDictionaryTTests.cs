@@ -13,8 +13,8 @@ namespace IDictionaryT
         {
             var initialCapacity = 3;
             var dictionary = new Dictionary<int,int>(initialCapacity);
+            dictionary.ResetEntries();
             var entry = new KeyValuePair<int, int>(1, 100);
-            var insertBucket = entry.Key.GetHashCode() % initialCapacity;
             dictionary.Add(entry);
             Assert.AreEqual(true, dictionary.Contains(entry));
         }
@@ -22,17 +22,13 @@ namespace IDictionaryT
         [TestMethod]
         public void DictionaryAdd2()
         {
-            var dictionary = new List<Entry<int, int>>[3];
-            for (int i = 0; i < dictionary.Length; i++)
-            {
-                dictionary[i] = new List<Entry<int, int>>();
-            }
-            var newEntry1 = new Entry<int, int>(1, 100);
-            var newEntry2 = new Entry<int, int>(2, 102);
-            var key = 1;
-            var insertBucket = key.GetHashCode() % dictionary.Length;
-            dictionary[insertBucket].Add(newEntry1);
-            Assert.AreEqual(false, dictionary[insertBucket].Contains(newEntry2));
+            var initialCapacity = 3;
+            var dictionary = new Dictionary<int, int>(initialCapacity);
+            dictionary.ResetEntries();
+            var entry1 = new KeyValuePair<int, int>(1, 100);
+            var entry2 = new KeyValuePair<int, int>(2, 102);
+            dictionary.Add(entry1);
+            Assert.AreEqual(false, dictionary.Contains(entry2));
         }
 
         [TestMethod]
