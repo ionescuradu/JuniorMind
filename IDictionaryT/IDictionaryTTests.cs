@@ -12,11 +12,15 @@ namespace IDictionaryT
         public void DictionaryAdd1()
         {
             var dictionary = new List<Entry<int, int>>[3];
+            for (int i = 0; i < dictionary.Length; i++)
+            {
+                dictionary[i] = new List<Entry<int, int>>();   
+            }
             var newEntry = new Entry<int, int>(1, 100);
             var key = 1;
             var insertBucket = key.GetHashCode() % dictionary.Length;
             dictionary[insertBucket].Add(newEntry);
-            Assert.AreEqual(true, dictionary[insertBucket].Contains))
+            Assert.AreEqual(true, dictionary[insertBucket].Contains(newEntry));
         }
     }
 }

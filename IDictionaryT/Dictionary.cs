@@ -81,7 +81,7 @@ namespace IDictionaryT
             var containingBucket = auxKey.GetHashCode() % dictionary.Length;
             foreach (Entry<TKey, TValue> entry in dictionary[containingBucket])
             {
-                if ((ContainsKey(auxKey) == true) && (entry.FindValue(auxKey).Equals(item.Value))
+                if ((ContainsKey(auxKey) == true) && (entry.FindValue(auxKey).Equals(item.Value)))
                 {
                     return true;
                 }
