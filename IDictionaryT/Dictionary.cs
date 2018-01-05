@@ -78,12 +78,28 @@ namespace IDictionaryT
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
             var auxKey = item.Key;
-            return ContainsKey(auxKey);
+            var containingBucket = auxKey.GetHashCode() % dictionary.Length;
+            foreach (Entry<TKey, TValue> entry in dictionary[containingBucket])
+            {
+                if ((ContainsKey(auxKey) == true) && (entry.FindValue(auxKey).Equals(item.Value))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool ContainsKey(TKey key)
         {
-            throw new NotImplementedException();
+            var bucket = key.GetHashCode() % dictionary.Length;
+            foreach (Entry<TKey,TValue> item in dictionary[bucket])
+            {
+                if (item.FindKey(key) == true)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)

@@ -16,7 +16,7 @@ namespace IDictionaryT
             var key = 1;
             var insertBucket = key.GetHashCode() % dictionary.Length;
             dictionary[insertBucket].Add(newEntry);
-
+            Assert.AreEqual(true, dictionary[insertBucket].Contains))
         }
     }
 }
