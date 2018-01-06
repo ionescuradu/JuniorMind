@@ -95,7 +95,7 @@ namespace IDictionaryT
             var containingBucket = auxKey.GetHashCode() % dictionary.Length;
             foreach (Entry<TKey, TValue> entry in dictionary[containingBucket])
             {
-                if ((ContainsKey(auxKey) == true) && (entry.FindValue(auxKey).Equals(item.Value)))
+                if ((ContainsKey(auxKey) == true))
                 {
                     return true;
                 }
@@ -136,7 +136,12 @@ namespace IDictionaryT
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
+            var bucket = item.Key.GetHashCode() % dictionary.Length;
+            if (!Contains(item))
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool TryGetValue(TKey key, out TValue value)
