@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IDictionaryT
@@ -57,6 +58,21 @@ namespace IDictionaryT
             dictionary.Add(entry3);
         }
 
+        [TestMethod]
+        public void DictionaryClear1()
+        {
+            var initialCapacity = 3;
+            var dictionary = new Dictionary<int, int>(initialCapacity);
+            var auxDictionary = dictionary;
+            var entry1 = new KeyValuePair<int, int>(1, 100);
+            var entry2 = new KeyValuePair<int, int>(2, 102);
+            var entry3 = new KeyValuePair<int, int>(4, 103);
+            dictionary.Add(entry1);
+            dictionary.Add(entry2);
+            dictionary.Add(entry3);
+            dictionary.Clear();
+            CollectionAssert.AreEqual(auxDictionary.ToList(), dictionary.ToList());
+        }
     }
 
 

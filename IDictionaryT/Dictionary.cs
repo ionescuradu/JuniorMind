@@ -83,7 +83,10 @@ namespace IDictionaryT
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < dictionary.Length; i++)
+            {
+                dictionary[i] = new List<Entry<TKey, TValue>>();
+            }
         }
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
