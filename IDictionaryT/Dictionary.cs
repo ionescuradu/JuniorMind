@@ -23,9 +23,8 @@ namespace IDictionaryT
         public TValue this[TKey key]
         {
             get
-            {
-                var searchBucket = key.GetHashCode() % dictionary.Length;
-                foreach (Entry<TKey, TValue> entry in dictionary[searchBucket])
+            { 
+                foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
                 {
                     if (!entry.FindValue(key).Equals(default(TValue)))
                     {
@@ -36,12 +35,11 @@ namespace IDictionaryT
             }
             set
             {
-                var searchBucket = key.GetHashCode() % dictionary.Length;
-                foreach (Entry<TKey, TValue> entry in dictionary[searchBucket])
+                foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
                 {
                     if (entry.FindValue(key).Equals(default(TValue)))
                     {
-                        dictionary[searchBucket].Add(new Entry<TKey, TValue>(key, value));
+                        dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
                     }
                 }
             }
@@ -63,15 +61,14 @@ namespace IDictionaryT
 
         public void Add(TKey key, TValue value)
         {
-            var bucket = key.GetHashCode() % dictionary.Length;
-            foreach (Entry<TKey, TValue> entry in dictionary[bucket])
+            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
             {
                 if (entry.FindKey(key))
                 {
                     throw new ArgumentException();
                 }
             }
-            dictionary[bucket].Add(new Entry<TKey, TValue>(key, value));
+            dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
@@ -91,11 +88,9 @@ namespace IDictionaryT
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
-            var auxKey = item.Key;
-            var containingBucket = auxKey.GetHashCode() % dictionary.Length;
-            foreach (Entry<TKey, TValue> entry in dictionary[containingBucket])
+            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(item.Key)])
             {
-                if ((ContainsKey(auxKey) == true))
+                if ((ContainsKey(item.Key) == true))
                 {
                     return true;
                 }
@@ -105,8 +100,7 @@ namespace IDictionaryT
 
         public bool ContainsKey(TKey key)
         {
-            var bucket = key.GetHashCode() % dictionary.Length;
-            foreach (Entry<TKey,TValue> item in dictionary[bucket])
+            foreach (Entry<TKey,TValue> item in dictionary[Bucket(key)])
             {
                 if (item.FindKey(key) == true)
                 {
@@ -131,12 +125,11 @@ namespace IDictionaryT
 
         public bool Remove(TKey key)
         {
-            var bucket = key.GetHashCode() % dictionary.Length;
-            foreach (Entry<TKey, TValue> entry in dictionary[bucket])
+            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
             {
                 if (entry.FindKey(key))
                 {
-                    return dictionary[bucket].Remove(entry);
+                    return dictionary[Bucket(key)].Remove(entry);
                 }
             }
             throw new ArgumentNullException();
@@ -155,6 +148,11 @@ namespace IDictionaryT
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        public int Bucket(TKey key)
+        {
+            return key.GetHashCode() % dictionary.Length;
         }
     }
 }
