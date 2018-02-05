@@ -132,6 +132,21 @@ namespace IDictionaryT
             dictionary.Add(entry3);
             Assert.AreEqual(false, dictionary.Remove(entry4));
         }
+
+        [TestMethod]
+        public void DictionaryTryGetvalue1()
+        {
+            var initialCapacity = 3;
+            var dictionary = new Dictionary<int, int>(initialCapacity);
+            var entry1 = new KeyValuePair<int, int>(1, 100);
+            var entry2 = new KeyValuePair<int, int>(2, 102);
+            var entry3 = new KeyValuePair<int, int>(4, 103);
+            dictionary.Add(entry1);
+            dictionary.Add(entry2);
+            dictionary.Add(entry3);
+            dictionary.TryGetValue(1, out int value);
+            Assert.AreEqual(100, value);
+        }
     }
 
 

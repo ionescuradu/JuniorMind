@@ -142,7 +142,16 @@ namespace IDictionaryT
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            throw new NotImplementedException();
+            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            {
+                if (entry.FindKey(key).Equals(true))
+                {
+                    value = entry.FindValue(key);
+                    return true;
+                }
+            }
+            value = default(TValue);
+            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
