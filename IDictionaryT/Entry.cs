@@ -6,7 +6,6 @@ namespace IDictionaryT
     {
         private TKey key;
         private TValue value;
-        private TValue searchedValue;
 
         public Entry( TKey key, TValue value)
         {
@@ -16,6 +15,7 @@ namespace IDictionaryT
 
         public TValue FindValue(TKey searchedKey)
         {
+            var searchedValue = default(TValue);
             if (key.Equals(searchedKey))
             {
                 return searchedValue = value;

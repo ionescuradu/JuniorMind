@@ -131,17 +131,20 @@ namespace IDictionaryT
 
         public bool Remove(TKey key)
         {
-            throw new NotImplementedException();
+            var bucket = key.GetHashCode() % dictionary.Length;
+            foreach (Entry<TKey, TValue> entry in dictionary[bucket])
+            {
+                if (entry.FindKey(key))
+                {
+                    return dictionary[bucket].Remove(entry);
+                }
+            }
+            return false;
         }
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
         {
-            var bucket = item.Key.GetHashCode() % dictionary.Length;
-            if (!Contains(item))
-            {
-                return false;
-            }
-            return true;
+            return Remove(item.Key);
         }
 
         public bool TryGetValue(TKey key, out TValue value)
