@@ -101,6 +101,20 @@ namespace IDictionaryT
             dictionary.Add(entry3);
             Assert.AreEqual(false, dictionary.Remove(3));
         }
+
+        [TestMethod]
+        public void DictionaryRemove3()
+        {
+            var initialCapacity = 3;
+            var dictionary = new Dictionary<int, int>(initialCapacity);
+            var entry1 = new KeyValuePair<int, int>(1, 100);
+            var entry2 = new KeyValuePair<int, int>(2, 102);
+            var entry3 = new KeyValuePair<int, int>(4, 103);
+            dictionary.Add(entry1);
+            dictionary.Add(entry2);
+            dictionary.Add(entry3);
+            Assert.AreEqual(true, dictionary.Remove(entry1));
+        }
     }
 
 
