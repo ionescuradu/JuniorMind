@@ -89,6 +89,7 @@ namespace IDictionaryT
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void DictionaryRemove2()
         {
             var initialCapacity = 3;
@@ -117,6 +118,7 @@ namespace IDictionaryT
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void DictionaryRemove4()
         {
             var initialCapacity = 3;

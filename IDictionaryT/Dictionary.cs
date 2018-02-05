@@ -139,7 +139,7 @@ namespace IDictionaryT
                     return dictionary[bucket].Remove(entry);
                 }
             }
-            return false;
+            throw new ArgumentNullException();
         }
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
