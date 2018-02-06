@@ -24,7 +24,7 @@ namespace IDictionaryT
         {
             get
             {
-                if (FindKeyInBucket(key, dictionary, out var entry) == true)
+                if (FindKeyInBucket(key, dictionary, out var entry))
                 {
                     return entry.FindValue(key);
                 }
@@ -33,7 +33,7 @@ namespace IDictionaryT
             set
             {
 
-                if (FindKeyInBucket(key, dictionary, out var entry) == false)
+                if (!FindKeyInBucket(key, dictionary, out var entry))
                 {
                     dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
                 }
@@ -56,7 +56,7 @@ namespace IDictionaryT
 
         public void Add(TKey key, TValue value)
         {
-            if (FindKeyInBucket(key, dictionary, out var entry) == true)
+            if (FindKeyInBucket(key, dictionary, out var entry))
             {
                 throw new ArgumentException();
             }
@@ -102,7 +102,7 @@ namespace IDictionaryT
 
         public bool Remove(TKey key)
         {
-            if (FindKeyInBucket(key, dictionary, out var entry) == true)
+            if (FindKeyInBucket(key, dictionary, out var entry))
             {
                 return dictionary[Bucket(key)].Remove(entry);
             }
@@ -116,7 +116,7 @@ namespace IDictionaryT
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            if (FindKeyInBucket(key, dictionary, out var entry) == true)
+            if (FindKeyInBucket(key, dictionary, out var entry))
             {
                 value = entry.FindValue(key);
                 return true;
