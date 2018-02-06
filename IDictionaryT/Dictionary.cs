@@ -24,7 +24,7 @@ namespace IDictionaryT
         {
             get
             {
-                if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
+                if (FindKeyInBucket(key, dictionary, out var entry) == true)
                 {
                     return entry.FindValue(key);
                 }
@@ -33,7 +33,7 @@ namespace IDictionaryT
             set
             {
 
-                if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(false))
+                if (FindKeyInBucket(key, dictionary, out var entry) == false)
                 {
                     dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
                 }
@@ -56,7 +56,7 @@ namespace IDictionaryT
 
         public void Add(TKey key, TValue value)
         {
-            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
+            if (FindKeyInBucket(key, dictionary, out var entry) == true)
             {
                 throw new ArgumentException();
             }
@@ -65,9 +65,7 @@ namespace IDictionaryT
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
-            var auxKey = item.Key;
-            var auxValue = item.Value;
-            Add(auxKey, auxValue);
+            Add(item.Key, item.Value);
         }
 
         public void Clear()
@@ -81,20 +79,12 @@ namespace IDictionaryT
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
 
-            if (FindKeyInBucket(item.Key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
-            {
-                return true;
-            }
-            return false;
+            return FindKeyInBucket(item.Key, dictionary, out var entry);
         }
 
         public bool ContainsKey(TKey key)
         {
-            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
-            {
-                return true;
-            }
-            return false;
+            return FindKeyInBucket(key, dictionary, out var entry);
         }
 
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
@@ -112,7 +102,7 @@ namespace IDictionaryT
 
         public bool Remove(TKey key)
         {
-            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
+            if (FindKeyInBucket(key, dictionary, out var entry) == true)
             {
                 return dictionary[Bucket(key)].Remove(entry);
             }
@@ -126,7 +116,7 @@ namespace IDictionaryT
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
+            if (FindKeyInBucket(key, dictionary, out var entry) == true)
             {
                 value = entry.FindValue(key);
                 return true;
@@ -149,7 +139,7 @@ namespace IDictionaryT
         {
             foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
             {
-                if (entry.FindKey(key).Equals(true))
+                if (entry.FindKey(key) == true)
                 {
                     searchedEntry = entry;
                     return true;
