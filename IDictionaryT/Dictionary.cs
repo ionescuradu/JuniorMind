@@ -23,24 +23,19 @@ namespace IDictionaryT
         public TValue this[TKey key]
         {
             get
-            { 
-                foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            {
+                if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
                 {
-                    if (!entry.FindValue(key).Equals(default(TValue)))
-                    {
-                        return entry.FindValue(key);
-                    }
+                    return entry.FindValue(key);
                 }
                 throw new KeyNotFoundException();
             }
             set
             {
-                foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+
+                if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(false))
                 {
-                    if (entry.FindValue(key).Equals(default(TValue)))
-                    {
-                        dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
-                    }
+                    dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
                 }
             }
         }
@@ -61,12 +56,9 @@ namespace IDictionaryT
 
         public void Add(TKey key, TValue value)
         {
-            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
             {
-                if (entry.FindKey(key))
-                {
-                    throw new ArgumentException();
-                }
+                throw new ArgumentException();
             }
             dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
         }
@@ -88,24 +80,19 @@ namespace IDictionaryT
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
         {
-            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(item.Key)])
+
+            if (FindKeyInBucket(item.Key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
             {
-                if ((ContainsKey(item.Key) == true))
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
 
         public bool ContainsKey(TKey key)
         {
-            foreach (Entry<TKey,TValue> item in dictionary[Bucket(key)])
+            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
             {
-                if (item.FindKey(key) == true)
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
