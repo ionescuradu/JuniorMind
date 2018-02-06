@@ -25,11 +25,7 @@ namespace IDictionaryT
 
         public bool FindKey(TKey searchedkey)
         {
-            if (key.Equals(searchedkey))
-            {
-                return true;
-            }
-            return false;
+            return key.Equals(searchedkey);
         }
 
     }

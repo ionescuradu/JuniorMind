@@ -139,7 +139,7 @@ namespace IDictionaryT
         {
             foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
             {
-                if (entry.FindKey(key) == true)
+                if (entry.FindKey(key))
                 {
                     searchedEntry = entry;
                     return true;
