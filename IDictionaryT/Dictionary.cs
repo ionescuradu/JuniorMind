@@ -32,11 +32,14 @@ namespace IDictionaryT
             }
             set
             {
-
                 if (!FindKeyInBucket(key, dictionary, out var entry))
                 {
                     dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
                     count++;
+                }
+                else
+                {
+                    entry.ReplaceValue(value);
                 }
             }
         }

@@ -28,5 +28,10 @@ namespace IDictionaryT
             return key.Equals(searchedkey);
         }
 
+        public void ReplaceValue(TValue replaceValue)
+        {
+            value = replaceValue;
+        }
+
     }
 }
