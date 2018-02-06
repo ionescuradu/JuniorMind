@@ -36,6 +36,7 @@ namespace IDictionaryT
                 if (!FindKeyInBucket(key, dictionary, out var entry))
                 {
                     dictionary[Bucket(key)].Add(new Entry<TKey, TValue>(key, value));
+                    count++;
                 }
             }
         }
@@ -74,6 +75,7 @@ namespace IDictionaryT
             {
                 dictionary[i] = new List<Entry<TKey, TValue>>();
             }
+            count = 0;
         }
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
@@ -104,6 +106,7 @@ namespace IDictionaryT
         {
             if (FindKeyInBucket(key, dictionary, out var entry))
             {
+                count--;
                 return dictionary[Bucket(key)].Remove(entry);
             }
             throw new ArgumentNullException();
