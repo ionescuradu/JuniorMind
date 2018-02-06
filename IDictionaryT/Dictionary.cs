@@ -125,12 +125,9 @@ namespace IDictionaryT
 
         public bool Remove(TKey key)
         {
-            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
             {
-                if (entry.FindKey(key))
-                {
-                    return dictionary[Bucket(key)].Remove(entry);
-                }
+                return dictionary[Bucket(key)].Remove(entry);
             }
             throw new ArgumentNullException();
         }
@@ -142,13 +139,10 @@ namespace IDictionaryT
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            if (FindKeyInBucket(key, dictionary, out Entry<TKey, TValue> entry).Equals(true))
             {
-                if (entry.FindKey(key).Equals(true))
-                {
-                    value = entry.FindValue(key);
-                    return true;
-                }
+                value = entry.FindValue(key);
+                return true;
             }
             value = default(TValue);
             return false;
@@ -162,6 +156,20 @@ namespace IDictionaryT
         public int Bucket(TKey key)
         {
             return key.GetHashCode() % dictionary.Length;
+        }
+
+        private bool FindKeyInBucket(TKey key, List<Entry<TKey, TValue>>[] dictionary, out Entry<TKey, TValue> searchedEntry)
+        {
+            foreach (Entry<TKey, TValue> entry in dictionary[Bucket(key)])
+            {
+                if (entry.FindKey(key).Equals(true))
+                {
+                    searchedEntry = entry;
+                    return true;
+                }
+            }
+            searchedEntry = new Entry<TKey, TValue>(default(TKey), default(TValue));
+            return false;
         }
     }
 }
