@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ISetT_Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class ISetT_Tests
     {
         [TestMethod]
         public void TestMethod1()
