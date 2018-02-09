@@ -72,7 +72,12 @@ namespace ISetT_Tests
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < buckets.Length; i++)
+            {
+                buckets[i] = -1;
+                entries[i] = default(Entry<T>);
+            }
+            count = 0;
         }
 
         public bool Contains(T item)

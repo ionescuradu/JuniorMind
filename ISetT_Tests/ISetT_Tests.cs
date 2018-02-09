@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ISetT_Tests
@@ -37,6 +38,20 @@ namespace ISetT_Tests
             set.Add(14);
             set.Add(24);
             Assert.AreEqual(false, set.Add(3));
+        }
+
+        [TestMethod]
+        public void Set_Clear1()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            var auxSet = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(14);
+            set.Add(24);
+            set.Clear();
+            CollectionAssert.AreEqual(auxSet.ToArray(), set.ToArray());
         }
     }
 }
