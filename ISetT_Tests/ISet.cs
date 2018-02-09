@@ -35,14 +35,14 @@ namespace ISetT_Tests
         public bool Add(T item)
         {
             entries[count] = new Entry<T>(item);
-            if (buckets[GetBucket(item)] != -1)
+            if (buckets[GetBucket(item)] == -1)
             {
                 buckets[GetBucket(item)] = count;
+                entries[count].next = -1;
+                count++;
+                return true;
             }
-            entries[count].next = -1;
-            count++;
-            return true;
-            
+            return false;
         }
 
         public void Clear()

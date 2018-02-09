@@ -8,8 +8,12 @@ namespace ISetT_Tests
     public class ISetT_Tests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Set_Add1()
         {
+            var initialCapacity = 10;
+            var entry = new Entry<int>(3);
+            var set = new Set<int>(initialCapacity);
+            Assert.AreEqual(true, set.Add(3));
         }
     }
 }

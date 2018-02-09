@@ -51,10 +51,7 @@
     <Compile Include="Entry.cs" />
     <Compile Include="ISet.cs" />
     <Compile Include="ISetT_Tests.cs" />
-    <Compile Include="List.cs" />
-    <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VectorEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

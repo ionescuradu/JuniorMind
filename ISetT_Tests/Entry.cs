@@ -11,5 +11,6 @@ namespace ISetT_Tests
             this.key = key; 
         }
 
+        public int next { get; internal set; }
     }
 }
