@@ -87,14 +87,14 @@ namespace ISetT_Tests
             {
                 return false;
             }
-            while (entries[index].next != -1 )
+            do
             {
-                if (entries[buckets[GetBucket(item)]].CompareKey(new Entry<T>(item)))
+                if (entries[index].CompareKey(new Entry<T>(item)))
                 {
                     return true;
                 }
-                index = entries[buckets[GetBucket(item)]].next;
-            }
+                index = entries[index].next;
+            } while (entries[index].next != -1);
             return false;
         }
 
