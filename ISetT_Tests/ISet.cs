@@ -18,6 +18,7 @@ namespace ISetT_Tests
             for (int i = 0; i < initialCapacity; i++)
             {
                 buckets[i] = -1;
+                entries[i] = default(Entry<T>);
             }
             count = 0;
         }
@@ -34,6 +35,8 @@ namespace ISetT_Tests
 
         public bool Add(T item)
         {
+            var lastEntryBucket = new Entry<T>(default(T));
+            var index = 0;
             entries[count] = new Entry<T>(item);
             if (buckets[GetBucket(item)] == -1)
             {
@@ -42,7 +45,24 @@ namespace ISetT_Tests
                 count++;
                 return true;
             }
-            return false;
+            index = count;
+            lastEntryBucket = entries[buckets[GetBucket(item)]];
+            bool added = false;
+            while (added != true)
+            {
+                if (lastEntryBucket.next == -1)
+                {
+                    lastEntryBucket.next = count;
+                    entries[count].next = -1;
+                    count++;
+                    added = true;
+                }
+                else
+                {
+                    lastEntryBucket = entries[lastEntryBucket.next];
+                }
+            }
+            return index != count;
         }
 
         public void Clear()
