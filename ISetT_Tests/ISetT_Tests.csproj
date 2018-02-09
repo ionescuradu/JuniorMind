@@ -48,8 +48,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entry.cs" />
+    <Compile Include="ISet.cs" />
     <Compile Include="ISetT_Tests.cs" />
-    <Compile Include="LinkedListTests.cs" />
     <Compile Include="List.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
