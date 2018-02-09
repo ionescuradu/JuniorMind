@@ -11,6 +11,11 @@ namespace ISetT_Tests
             this.key = key; 
         }
 
+        public bool CompareKey(Entry<TKey> item)
+        {
+            return key.Equals(item.key);
+        }
+
         public int next { get; internal set; }
     }
 }

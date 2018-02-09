@@ -37,9 +37,9 @@ namespace ISetT_Tests
         {
             var lastEntryBucket = new Entry<T>(default(T));
             var index = 0;
-            entries[count] = new Entry<T>(item);
             if (buckets[GetBucket(item)] == -1)
             {
+                entries[count] = new Entry<T>(item);
                 buckets[GetBucket(item)] = count;
                 entries[count].next = -1;
                 count++;
@@ -50,8 +50,13 @@ namespace ISetT_Tests
             bool added = false;
             while (added != true)
             {
+                if (lastEntryBucket.CompareKey(new Entry<T>(item)))
+                {
+                    return false;
+                }
                 if (lastEntryBucket.next == -1)
                 {
+                    entries[count] = new Entry<T>(item);
                     lastEntryBucket.next = count;
                     entries[count].next = -1;
                     count++;
