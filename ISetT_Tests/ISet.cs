@@ -15,6 +15,10 @@ namespace ISetT_Tests
         {
             buckets = new int[initialCapacity];
             entries = new Entry<T>[initialCapacity];
+            for (int i = 0; i < initialCapacity; i++)
+            {
+                buckets[i] = -1;
+            }
             count = 0;
         }
 
@@ -30,6 +34,14 @@ namespace ISetT_Tests
 
         public bool Add(T item)
         {
+            entries[count] = new Entry<T>(item);
+            if (buckets[GetBucket(item)] != -1)
+            {
+                buckets[GetBucket(item)] = count;
+            }
+            entries[count].next = -1;
+            count++;
+            return true;
             
         }
 
@@ -118,7 +130,7 @@ namespace ISetT_Tests
             throw new NotImplementedException();
         }
 
-        public int GetBucket(int key)
+        public int GetBucket(T key)
         {
             return key.GetHashCode() % buckets.Length;
         }
