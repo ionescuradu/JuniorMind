@@ -53,5 +53,18 @@ namespace ISetT_Tests
             set.Clear();
             CollectionAssert.AreEqual(auxSet.ToArray(), set.ToArray());
         }
+
+        [TestMethod]
+        public void Set_Contains1()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            var auxSet = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(14);
+            set.Add(24);
+            Assert.AreEqual(false, set.Contains(5));
+        }
     }
 }

@@ -82,7 +82,20 @@ namespace ISetT_Tests
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            var index = buckets[GetBucket(item)];
+            if (index == -1)
+            {
+                return false;
+            }
+            while (entries[index].next != -1 )
+            {
+                if (entries[buckets[GetBucket(item)]].CompareKey(new Entry<T>(item)))
+                {
+                    return true;
+                }
+                index = entries[buckets[GetBucket(item)]].next;
+            }
+            return false;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
