@@ -91,5 +91,17 @@ namespace ISetT_Tests
             set.Add(24);
             Assert.AreEqual(true, set.Remove(3));
         }
+
+        [TestMethod]
+        public void Set_Remove2()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(14);
+            set.Add(24);
+            Assert.AreEqual(false, set.Remove(5));
+        }
     }
 }
