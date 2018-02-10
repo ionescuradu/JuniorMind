@@ -35,8 +35,6 @@ namespace ISetT_Tests
 
         public bool Add(T item)
         {
-            var lastEntryBucket = new Entry<T>(default(T));
-            var index = 0;
             if (buckets[GetBucket(item)] == -1)
             {
                 entries[count] = new Entry<T>(item);
@@ -45,9 +43,6 @@ namespace ISetT_Tests
                 count++;
                 return true;
             }
-            index = count;
-            lastEntryBucket = entries[buckets[GetBucket(item)]];
-            //bool added = false;
             if (Contains(item))
             {
                 return false;
@@ -55,32 +50,11 @@ namespace ISetT_Tests
             else
             {
                 entries[count] = new Entry<T>(item);
-                lastEntryBucket.next = count;
+                entries[buckets[GetBucket(item)]].next = count;
                 entries[count].next = -1;
                 count++;
                 return true;
             }
-            
-            //while (added != true)
-            //{
-            //    if (lastEntryBucket.CompareKey(new Entry<T>(item)))
-            //    {
-            //        return false;
-            //    }
-            //    if (lastEntryBucket.next == -1)
-            //    {
-            //        entries[count] = new Entry<T>(item);
-            //        lastEntryBucket.next = count;
-            //        entries[count].next = -1;
-            //        count++;
-            //        added = true;
-            //    }
-            //    else
-            //    {
-            //        lastEntryBucket = entries[lastEntryBucket.next];
-            //    }
-            //}
-            //return index != count;
         }
 
         public void Clear()
