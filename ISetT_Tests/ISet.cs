@@ -47,14 +47,11 @@ namespace ISetT_Tests
             {
                 return false;
             }
-            else
-            {
-                entries[count] = new Entry<T>(item);
-                entries[buckets[GetBucket(item)]].next = count;
-                entries[count].next = -1;
-                count++;
-                return true;
-            }
+            entries[count] = new Entry<T>(item);
+            entries[buckets[GetBucket(item)]].next = count;
+            entries[count].next = -1;
+            count++;
+            return true;
         }
 
         public void Clear()
