@@ -47,27 +47,40 @@ namespace ISetT_Tests
             }
             index = count;
             lastEntryBucket = entries[buckets[GetBucket(item)]];
-            bool added = false;
-            while (added != true)
+            //bool added = false;
+            if (Contains(item))
             {
-                if (lastEntryBucket.CompareKey(new Entry<T>(item)))
-                {
-                    return false;
-                }
-                if (lastEntryBucket.next == -1)
-                {
-                    entries[count] = new Entry<T>(item);
-                    lastEntryBucket.next = count;
-                    entries[count].next = -1;
-                    count++;
-                    added = true;
-                }
-                else
-                {
-                    lastEntryBucket = entries[lastEntryBucket.next];
-                }
+                return false;
             }
-            return index != count;
+            else
+            {
+                entries[count] = new Entry<T>(item);
+                lastEntryBucket.next = count;
+                entries[count].next = -1;
+                count++;
+                return true;
+            }
+            
+            //while (added != true)
+            //{
+            //    if (lastEntryBucket.CompareKey(new Entry<T>(item)))
+            //    {
+            //        return false;
+            //    }
+            //    if (lastEntryBucket.next == -1)
+            //    {
+            //        entries[count] = new Entry<T>(item);
+            //        lastEntryBucket.next = count;
+            //        entries[count].next = -1;
+            //        count++;
+            //        added = true;
+            //    }
+            //    else
+            //    {
+            //        lastEntryBucket = entries[lastEntryBucket.next];
+            //    }
+            //}
+            //return index != count;
         }
 
         public void Clear()
@@ -94,7 +107,7 @@ namespace ISetT_Tests
                     return true;
                 }
                 index = entries[index].next;
-            } while (entries[index].next != -1);
+            } while (index != -1);
             return false;
         }
 
@@ -145,7 +158,11 @@ namespace ISetT_Tests
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (!Contains(item))
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool SetEquals(IEnumerable<T> other)
