@@ -116,5 +116,21 @@ namespace ISetT_Tests
             set.Remove(14);
             Assert.AreEqual(true, set.Add(34));
         }
+
+        [TestMethod]
+        public void Set_ExceptWith1()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            var other = new List<int>();
+            other.Add(4);
+            var result = new Set<int>(initialCapacity);
+            result.Add(3);
+            set.ExceptWith(other);
+            CollectionAssert.AreEqual(result.ToArray(), set.ToArray());
+        }
+
     }
 }

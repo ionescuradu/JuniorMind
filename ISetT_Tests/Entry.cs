@@ -6,14 +6,22 @@ namespace ISetT_Tests
     {
         private TKey key;
 
-        public Entry( TKey key)
+        public Entry(TKey key)
         {
-            this.key = key; 
+            this.key = key;
         }
 
         public bool CompareKey(Entry<TKey> item)
         {
             return key.Equals(item.key);
+        }
+
+        public TKey Key
+        {
+            get
+            {
+                return key;
+            }
         }
 
         public int Next { get; internal set; }

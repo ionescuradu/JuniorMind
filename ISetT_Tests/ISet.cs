@@ -7,7 +7,7 @@ namespace ISetT_Tests
     class Set<T> : ISet<T>
     {
         private int[] buckets;
-        private Entry<T>[] entries;
+        private readonly Entry<T>[] entries;
         private int freePosition = 0;
         private int count;
 
@@ -84,17 +84,26 @@ namespace ISetT_Tests
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
         }
 
         public void ExceptWith(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var item in other)
+            {
+                if (Contains(item))
+                {
+                    Remove(item);
+                    count--;
+                }
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int position = 0; position < entries.Length; position++)
+            {
+                yield return entries[position].Key;
+            }
         }
 
         public void IntersectWith(IEnumerable<T> other)
@@ -142,6 +151,7 @@ namespace ISetT_Tests
                 {
                     auxEntry.Next = entries[index].Next;
                     count--;
+                    entries[index] = null;
                     removed = true;
                     freePosition = index;
                     break;
@@ -174,7 +184,10 @@ namespace ISetT_Tests
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int position = 0; position < count; position++)
+            {
+                yield return entries[position];
+            }
         }
 
         public int GetBucket(T key)
