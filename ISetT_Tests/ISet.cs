@@ -130,7 +130,26 @@ namespace ISetT_Tests
 
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var entry in entries)
+            {
+                bool subset = false;
+                if (entry == null)
+                {
+                    continue;
+                }
+                foreach (var item in other)
+                {
+                    if (entry.Equals(item))
+                    {
+                        subset = true;
+                    }
+                }
+                if (!subset)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool IsProperSupersetOf(IEnumerable<T> other)
