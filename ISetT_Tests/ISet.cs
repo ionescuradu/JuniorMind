@@ -46,7 +46,7 @@ namespace ISetT_Tests
             }
             entries[freePosition] = new Entry<T>(item)
             {
-                next = buckets[bucketIndex]
+                Next = buckets[bucketIndex]
             };
             buckets[bucketIndex] = freePosition;
             count++;
@@ -77,7 +77,7 @@ namespace ISetT_Tests
                 {
                     return true;
                 }
-                index = entries[index].next;
+                index = entries[index].Next;
             } while (index != -1);
             return false;
         }
@@ -140,14 +140,14 @@ namespace ISetT_Tests
             {
                 if (entries[index].CompareKey(new Entry<T>(item)))
                 {
-                    auxEntry.next = entries[index].next;
+                    auxEntry.Next = entries[index].Next;
                     count--;
                     removed = true;
                     freePosition = index;
                     break;
                 }
                 auxEntry = entries[index];
-                index = entries[index].next;
+                index = entries[index].Next;
             } while (!removed);
             return true;
         }
@@ -169,7 +169,7 @@ namespace ISetT_Tests
 
         void ICollection<T>.Add(T item)
         {
-            throw new NotImplementedException();
+            Add(item);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

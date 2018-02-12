@@ -16,6 +16,6 @@ namespace ISetT_Tests
             return key.Equals(item.key);
         }
 
-        public int next { get; internal set; }
+        public int Next { get; internal set; }
     }
 }
