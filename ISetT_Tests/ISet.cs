@@ -164,22 +164,23 @@ namespace ISetT_Tests
             {
                 itemCount++;
             }
-            foreach (var entry in entries)
-            {
-                bool found = false;
-                foreach (var item in other)
-                {
-                    if (entry.Key.Equals(item))
-                    {
-                        found = true;
-                    }
-                }
-                if (!found && entryCount > itemCount)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return entryCount < itemCount;
+            //foreach (var entry in entries)
+            //{
+            //    bool found = false;
+            //    foreach (var item in other)
+            //    {
+            //        if (entry.Key.Equals(item))
+            //        {
+            //            found = true;
+            //        }
+            //    }
+            //    if (!found && entryCount > itemCount)
+            //    {
+            //        return true;
+            //    }
+            //}
+            //return false;
         }
 
         public bool IsSubsetOf(IEnumerable<T> other)
