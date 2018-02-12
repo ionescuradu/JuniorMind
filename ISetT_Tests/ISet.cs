@@ -154,7 +154,32 @@ namespace ISetT_Tests
 
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            var entryCount = 0;
+            var itemCount = 0;
+            foreach (var entry in entries)
+            {
+                entryCount++;
+            }
+            foreach (var item in other)
+            {
+                itemCount++;
+            }
+            foreach (var entry in entries)
+            {
+                bool found = false;
+                foreach (var item in other)
+                {
+                    if (entry.Key.Equals(item))
+                    {
+                        found = true;
+                    }
+                }
+                if (!found && entryCount > itemCount)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool IsSubsetOf(IEnumerable<T> other)
