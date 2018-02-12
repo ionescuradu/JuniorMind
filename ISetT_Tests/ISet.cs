@@ -139,7 +139,7 @@ namespace ISetT_Tests
                 }
                 foreach (var item in other)
                 {
-                    if (entry.Equals(item))
+                    if (entry.Key.Equals(item))
                     {
                         subset = true;
                     }
