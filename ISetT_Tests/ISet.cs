@@ -8,6 +8,7 @@ namespace ISetT_Tests
     {
         private int[] buckets;
         private Entry<T>[] entries;
+        private int freePosition = 0;
         private int count;
 
         public Set(int initialCapacity)
@@ -34,44 +35,23 @@ namespace ISetT_Tests
 
         public bool Add(T item)
         {
-            var bucketIndex = GetBucket(item);
-            var index = buckets[bucketIndex];
-            int position = FreePosition(ref entries);
-            if (buckets[bucketIndex] == -1)
-            {
-                entries[position] = new Entry<T>(item);
-                buckets[bucketIndex] = position;
-                entries[position].next = -1;
-                count++;
-                return true;
-            }
             if (Contains(item))
             {
                 return false;
             }
-            entries[position] = new Entry<T>(item);
-            entries[position].next = -1;
-            while (entries[index].next != -1)
+            var bucketIndex = GetBucket(item);
+            if (freePosition == -1)
             {
-                index = entries[index].next;
+                freePosition = count;
             }
-            entries[index].next = position;
+            entries[freePosition] = new Entry<T>(item)
+            {
+                next = buckets[bucketIndex]
+            };
+            buckets[bucketIndex] = freePosition;
             count++;
+            freePosition = count;
             return true;
-        }
-
-        private int FreePosition(ref Entry<T>[] entries)
-        {
-            var position = 0;
-            for (int i = 0; i < entries.Length; i++)
-            {
-                if (entries[i] == default(Entry<T>))
-                {
-                    position = i;
-                    break;
-                }
-            }
-            return position;
         }
 
         public void Clear()
@@ -161,15 +141,14 @@ namespace ISetT_Tests
                 if (entries[index].CompareKey(new Entry<T>(item)))
                 {
                     auxEntry.next = entries[index].next;
-                    entries[index] = default(Entry<T>);
                     count--;
                     removed = true;
+                    freePosition = index;
                     break;
                 }
                 auxEntry = entries[index];
                 index = entries[index].next;
             } while (!removed);
-
             return true;
         }
 
