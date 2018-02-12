@@ -107,7 +107,25 @@ namespace ISetT_Tests
 
         public void IntersectWith(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var entry in entries)
+            {
+                bool found = false;
+                if (entry == null)
+                {
+                    continue;
+                }
+                foreach (var item in other)
+                {
+                    if (item.Equals(entry.Key))
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                {
+                    Remove(entry.Key);
+                }
+            }
         }
 
         public bool IsProperSubsetOf(IEnumerable<T> other)

@@ -132,5 +132,26 @@ namespace ISetT_Tests
             CollectionAssert.AreEqual(result.ToList(), set.ToList());
         }
 
+        [TestMethod]
+        public void Set_IntersectWith1()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(14);
+            set.Add(24);
+            set.Add(43);
+            var other = new List<int>();
+            other.Add(4);
+            other.Add(24);
+            other.Add(43);
+            var result = new Set<int>(initialCapacity);
+            result.Add(4);
+            result.Add(24);
+            result.Add(43);
+            set.IntersectWith(other);
+            CollectionAssert.AreEqual(result.ToList(), set.ToList());
+        }
     }
 }
