@@ -156,31 +156,33 @@ namespace ISetT_Tests
         {
             var entryCount = 0;
             var itemCount = 0;
+            var defaultEntry = 0;
+            var defaultItem = 0;
             foreach (var entry in entries)
             {
                 entryCount++;
+                if (entry != default(Entry<T>))
+                {
+                    defaultEntry++;
+                }
             }
             foreach (var item in other)
             {
                 itemCount++;
+                if (!item.Equals(default(T)))
+                {
+                    defaultItem++;
+                }
+            }
+            if (defaultEntry == 0)
+            {
+                if (defaultItem == 0)
+                {
+                    return false;
+                }
+                return true;
             }
             return entryCount > itemCount;
-            //foreach (var entry in entries)
-            //{
-            //    bool found = false;
-            //    foreach (var item in other)
-            //    {
-            //        if (entry.Key.Equals(item))
-            //        {
-            //            found = true;
-            //        }
-            //    }
-            //    if (!found && entryCount > itemCount)
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
         }
 
         public bool IsSubsetOf(IEnumerable<T> other)

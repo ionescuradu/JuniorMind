@@ -233,5 +233,14 @@ namespace ISetT_Tests
             Assert.AreEqual(false, set.IsProperSupersetOf(other));
         }
 
+        [TestMethod]
+        public void Set_IsProperSupersetOf4()
+        {
+            var initialCapacity = 3;
+            var set = new Set<int>(initialCapacity);
+            var other = new List<int>();
+            Assert.AreEqual(false, set.IsProperSupersetOf(other));
+        }
+
     }
 }
