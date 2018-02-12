@@ -164,7 +164,7 @@ namespace ISetT_Tests
             {
                 itemCount++;
             }
-            return entryCount < itemCount;
+            return entryCount > itemCount;
             //foreach (var entry in entries)
             //{
             //    bool found = false;
