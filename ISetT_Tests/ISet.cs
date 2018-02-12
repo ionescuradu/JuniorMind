@@ -93,7 +93,6 @@ namespace ISetT_Tests
                 if (Contains(item))
                 {
                     Remove(item);
-                    count--;
                 }
             }
         }

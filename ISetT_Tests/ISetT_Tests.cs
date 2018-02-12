@@ -129,7 +129,7 @@ namespace ISetT_Tests
             var result = new Set<int>(initialCapacity);
             result.Add(3);
             set.ExceptWith(other);
-            CollectionAssert.AreEqual(result.ToArray(), set.ToArray());
+            CollectionAssert.AreEqual(result.ToList(), set.ToList());
         }
 
     }
