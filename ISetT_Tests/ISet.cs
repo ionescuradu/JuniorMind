@@ -8,7 +8,6 @@ namespace ISetT_Tests
     {
         private int[] buckets;
         private Entry<T>[] entries;
-        private int intialCapacity;
         private int count;
 
         public Set(int initialCapacity)
@@ -35,12 +34,13 @@ namespace ISetT_Tests
 
         public bool Add(T item)
         {
-            var index = buckets[GetBucket(item)];
+            var bucketIndex = GetBucket(item);
+            var index = buckets[bucketIndex];
             int position = FreePosition(ref entries);
-            if (buckets[GetBucket(item)] == -1)
+            if (buckets[bucketIndex] == -1)
             {
                 entries[position] = new Entry<T>(item);
-                buckets[GetBucket(item)] = position;
+                buckets[bucketIndex] = position;
                 entries[position].next = -1;
                 count++;
                 return true;
@@ -168,7 +168,7 @@ namespace ISetT_Tests
                 }
                 auxEntry = entries[index];
                 index = entries[index].next;
-            } while (removed == false);
+            } while (!removed);
 
             return true;
         }
