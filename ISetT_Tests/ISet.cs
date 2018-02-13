@@ -226,6 +226,10 @@ namespace ISetT_Tests
 
         public bool IsSupersetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             if (count < OtherCount(other))
             {
                 return false;
