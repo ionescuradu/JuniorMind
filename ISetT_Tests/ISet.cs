@@ -255,6 +255,10 @@ namespace ISetT_Tests
 
         public bool Overlaps(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var item in other)
             {
                 foreach (var entry in entries)
