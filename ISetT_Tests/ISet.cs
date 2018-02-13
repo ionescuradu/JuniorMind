@@ -154,35 +154,25 @@ namespace ISetT_Tests
 
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
-            var entryCount = 0;
             var itemCount = 0;
-            var defaultEntry = 0;
-            var defaultItem = 0;
-            foreach (var entry in entries)
-            {
-                entryCount++;
-                if (entry != default(Entry<T>))
-                {
-                    defaultEntry++;
-                }
-            }
             foreach (var item in other)
             {
+                bool found = false;
                 itemCount++;
-                if (!item.Equals(default(T)))
+                foreach (var entry in entries)
                 {
-                    defaultItem++;
+                    if (entry.Key.Equals(item))
+                    {
+                        found = true;
+                        break;
+                    }
                 }
-            }
-            if (defaultEntry == 0)
-            {
-                if (defaultItem == 0)
+                if (!found)
                 {
                     return false;
                 }
-                return true;
             }
-            return entryCount > itemCount;
+            return count > itemCount;
         }
 
         public bool IsSubsetOf(IEnumerable<T> other)
