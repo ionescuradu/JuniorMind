@@ -88,6 +88,11 @@ namespace ISetT_Tests
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+
+
+
+
+
         }
 
         public void ExceptWith(IEnumerable<T> other)
@@ -271,7 +276,13 @@ namespace ISetT_Tests
 
         public void UnionWith(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var item in other)
+            {
+                if (!Contains(item))
+                {
+                    Add(item);
+                }
+            }
         }
 
         void ICollection<T>.Add(T item)
