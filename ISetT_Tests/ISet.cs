@@ -304,6 +304,10 @@ namespace ISetT_Tests
 
         public bool SetEquals(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             return Compare(other);
         }
 
