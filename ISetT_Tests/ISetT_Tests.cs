@@ -383,5 +383,19 @@ namespace ISetT_Tests
             other.Add(4);
             Assert.AreEqual(true, set.SetEquals(other));
         }
+
+        [TestMethod]
+        public void Set_SetEquals2()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(5);
+            var other = new List<int>();
+            other.Add(3);
+            other.Add(4);
+            Assert.AreEqual(false, set.SetEquals(other));
+        }
     }
 }
