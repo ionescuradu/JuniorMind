@@ -206,7 +206,17 @@ namespace ISetT_Tests
 
         public bool Overlaps(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var item in other)
+            {
+                foreach (var entry in entries)
+                {
+                    if (entry.Key.Equals(item))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool Remove(T item)
