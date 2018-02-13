@@ -90,20 +90,24 @@ namespace ISetT_Tests
         {
             for (int i = 0; i < entries.Length; i++)
             {
+                if (array.Length == 0)
+                {
+                    throw new ArgumentNullException();
+                }
+                if (arrayIndex < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                if (arrayIndex + count > array.Length)
+                {
+                    throw new ArgumentException();
+                }
                 if (entries[i] != null)
                 {
                     array[arrayIndex] = entries[i].Key;
                     arrayIndex++;
                 }
-                if (arrayIndex == array.Length)
-                {
-                    Array.Resize(ref array, array.Length * 2);
-                }
             }
-
-
-
-
         }
 
         public void ExceptWith(IEnumerable<T> other)

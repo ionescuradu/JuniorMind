@@ -452,7 +452,7 @@ namespace ISetT_Tests
         }
 
         [TestMethod]
-        public void Set_CopyTo()
+        public void Set_CopyTo1()
         {
             var initialCapacity = 10;
             var set = new Set<int>(initialCapacity);
@@ -464,5 +464,45 @@ namespace ISetT_Tests
             set.CopyTo(array, 2);
             CollectionAssert.AreEqual(result, array);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Set_CopyTo3()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(5);
+            var array = new int[0];
+            set.CopyTo(array, 2);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Set_CopyTo4()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(5);
+            var array = new int[10];
+            set.CopyTo(array, -1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Set_CopyTo5()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(5);
+            var array = new int[10];
+            set.CopyTo(array, 8);
+        }
+
     }
 }
