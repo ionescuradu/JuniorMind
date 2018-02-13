@@ -313,6 +313,10 @@ namespace ISetT_Tests
 
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var item in other)
             {
                 if (Contains(item))
