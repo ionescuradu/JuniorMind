@@ -263,6 +263,10 @@ namespace ISetT_Tests
             foreach (var entry in entries)
             {
                 bool found = false;
+                if (entry == null)
+                {
+                    continue;
+                }
                 foreach (var item in other)
                 {
                     if (entry.Key.Equals(item))

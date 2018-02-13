@@ -236,7 +236,7 @@ namespace ISetT_Tests
         [TestMethod]
         public void Set_IsProperSupersetOf3()
         {
-            var initialCapacity = 3;
+            var initialCapacity = 10;
             var set = new Set<int>(initialCapacity);
             set.Add(3);
             set.Add(4);
@@ -251,7 +251,7 @@ namespace ISetT_Tests
         [TestMethod]
         public void Set_IsProperSupersetOf4()
         {
-            var initialCapacity = 3;
+            var initialCapacity = 10;
             var set = new Set<int>(initialCapacity);
             var other = new List<int>();
             Assert.AreEqual(false, set.IsProperSupersetOf(other));
@@ -260,7 +260,7 @@ namespace ISetT_Tests
         [TestMethod]
         public void Set_IsProperSupersetOf5()
         {
-            var initialCapacity = 3;
+            var initialCapacity = 10;
             var set = new Set<int>(initialCapacity);
             set.Add(3);
             var other = new List<int>();
@@ -270,7 +270,7 @@ namespace ISetT_Tests
         [TestMethod]
         public void Set_IsSubsetOf1()
         {
-            var initialCapacity = 3;
+            var initialCapacity = 10;
             var set = new Set<int>(initialCapacity);
             set.Add(3);
             set.Add(4);
@@ -280,6 +280,22 @@ namespace ISetT_Tests
             other.Add(24);
             other.Add(3);
             Assert.AreEqual(true, set.IsSubsetOf(other));
+        }
+
+        [TestMethod]
+        public void Set_IsSubsetOf2()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(24);
+            set.Add(5);
+            var other = new List<int>();
+            other.Add(4);
+            other.Add(24);
+            other.Add(3);
+            Assert.AreEqual(false, set.IsSubsetOf(other));
         }
 
     }
