@@ -441,6 +441,7 @@ namespace ISetT_Tests
             set.Add(5);
             var other = new List<int>();
             other.Add(8);
+            other.Add(8);
             var result = new Set<int>(initialCapacity);
             result.Add(3);
             result.Add(4);
