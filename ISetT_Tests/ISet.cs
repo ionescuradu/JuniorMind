@@ -73,6 +73,10 @@ namespace ISetT_Tests
             }
             do
             {
+                if (entries[index] == null)
+                {
+                    return false;
+                }
                 if (entries[index].CompareKey(new Entry<T>(item)))
                 {
                     return true;

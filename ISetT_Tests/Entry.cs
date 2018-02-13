@@ -13,6 +13,10 @@ namespace ISetT_Tests
 
         public bool CompareKey(Entry<TKey> item)
         {
+            if (key.Equals(null))
+            {
+                return false;
+            }
             return key.Equals(item.key);
         }
 
