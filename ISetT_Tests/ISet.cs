@@ -192,6 +192,10 @@ namespace ISetT_Tests
 
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var item in other)
             {
                 bool found = false;
