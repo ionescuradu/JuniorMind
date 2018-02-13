@@ -167,7 +167,6 @@ namespace ISetT_Tests
                     }
                 }
                 if (!found)
-
                 {
                     return false;
                 }
@@ -177,7 +176,7 @@ namespace ISetT_Tests
 
         public bool IsSubsetOf(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            return Compare(other);
         }
 
         public bool IsSupersetOf(IEnumerable<T> other)
@@ -257,6 +256,27 @@ namespace ISetT_Tests
                 itemCount++;
             }
             return itemCount;
+        }
+
+        public bool Compare(IEnumerable<T> other)
+        {
+            foreach (var entry in entries)
+            {
+                bool found = false;
+                foreach (var item in other)
+                {
+                    if (entry.Key.Equals(item))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
