@@ -217,6 +217,10 @@ namespace ISetT_Tests
 
         public bool IsSubsetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             return Compare(other);
         }
 
