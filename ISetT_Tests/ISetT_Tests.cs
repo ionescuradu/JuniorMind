@@ -448,7 +448,8 @@ namespace ISetT_Tests
             result.Add(5);
             result.Add(8);
             set.UnionWith(other);
-            CollectionAssert.AreEqual(result.ToList(), set.ToList());
+            result.ToArray();
+            CollectionAssert.AreEqual(result.ToArray(), set.ToArray());
         }
 
         [TestMethod]
