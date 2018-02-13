@@ -451,5 +451,18 @@ namespace ISetT_Tests
             CollectionAssert.AreEqual(result.ToList(), set.ToList());
         }
 
+        [TestMethod]
+        public void Set_CopyTo()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            set.Add(5);
+            var array = new int[10];
+            var result = new int[10] { 0, 0, 3, 4, 5, 0, 0, 0, 0, 0};
+            set.CopyTo(array, 2);
+            CollectionAssert.AreEqual(result, array);
+        }
     }
 }

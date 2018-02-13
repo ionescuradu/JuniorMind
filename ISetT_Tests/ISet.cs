@@ -88,7 +88,18 @@ namespace ISetT_Tests
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-
+            for (int i = 0; i < entries.Length; i++)
+            {
+                if (entries[i] != null)
+                {
+                    array[arrayIndex] = entries[i].Key;
+                    arrayIndex++;
+                }
+                if (arrayIndex == array.Length)
+                {
+                    Array.Resize(ref array, array.Length * 2);
+                }
+            }
 
 
 
