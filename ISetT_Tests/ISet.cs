@@ -181,6 +181,10 @@ namespace ISetT_Tests
 
         public bool IsSupersetOf(IEnumerable<T> other)
         {
+            if (count < OtherCount(other))
+            {
+                return false;
+            }
             foreach (var item in other)
             {
                 bool found = false;
