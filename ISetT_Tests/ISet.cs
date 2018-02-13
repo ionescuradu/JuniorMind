@@ -113,6 +113,10 @@ namespace ISetT_Tests
 
         public void ExceptWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var item in other)
             {
                 if (Contains(item))

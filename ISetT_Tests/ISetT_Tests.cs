@@ -505,5 +505,18 @@ namespace ISetT_Tests
             set.CopyTo(array, 8);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Set_ExceptWithException()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            List<int> other = null;
+            var result = new Set<int>(initialCapacity);
+            set.ExceptWith(other);
+        }
+
     }
 }
