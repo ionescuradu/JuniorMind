@@ -251,7 +251,7 @@ namespace ISetT_Tests
 
         public bool SetEquals(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            return Compare(other);
         }
 
         public void SymmetricExceptWith(IEnumerable<T> other)
