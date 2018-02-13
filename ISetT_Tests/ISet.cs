@@ -136,6 +136,10 @@ namespace ISetT_Tests
 
         public void IntersectWith(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var entry in entries)
             {
                 bool found = false;
