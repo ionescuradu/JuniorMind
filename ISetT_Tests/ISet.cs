@@ -163,6 +163,10 @@ namespace ISetT_Tests
 
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             foreach (var entry in entries)
             {
                 bool subset = false;
