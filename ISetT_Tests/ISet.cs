@@ -181,7 +181,23 @@ namespace ISetT_Tests
 
         public bool IsSupersetOf(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var item in other)
+            {
+                bool found = false;
+                foreach (var entry in entries)
+                {
+                    if (entry.Key.Equals(item))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    return false;
+                }
+            }
+            return count >= OtherCount(other);
         }
 
         public bool Overlaps(IEnumerable<T> other)
