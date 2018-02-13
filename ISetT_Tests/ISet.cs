@@ -256,7 +256,13 @@ namespace ISetT_Tests
 
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
-            throw new NotImplementedException();
+            foreach (var item in other)
+            {
+                if (Contains(item))
+                {
+                    Remove(item);
+                }
+            }
         }
 
         public void UnionWith(IEnumerable<T> other)

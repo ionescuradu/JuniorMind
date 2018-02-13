@@ -397,5 +397,20 @@ namespace ISetT_Tests
             other.Add(4);
             Assert.AreEqual(false, set.SetEquals(other));
         }
+
+        [TestMethod]
+        public void Set_SymmetricExceptWith1()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            var other = new List<int>();
+            other.Add(4);
+            var result = new Set<int>(initialCapacity);
+            result.Add(3);
+            set.SymmetricExceptWith(other);
+            CollectionAssert.AreEqual(result.ToList(), set.ToList());
+        }
     }
 }
