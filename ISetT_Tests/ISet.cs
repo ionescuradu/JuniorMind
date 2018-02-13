@@ -210,6 +210,10 @@ namespace ISetT_Tests
             {
                 foreach (var entry in entries)
                 {
+                    if (entry == null)
+                    {
+                        continue;
+                    }
                     if (entry.Key.Equals(item))
                     {
                         return true;

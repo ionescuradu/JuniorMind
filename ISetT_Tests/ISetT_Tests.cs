@@ -356,5 +356,19 @@ namespace ISetT_Tests
             other.Add(14);
             Assert.AreEqual(true, set.Overlaps(other));
         }
+
+        [TestMethod]
+        public void Set_Overlaps2()
+        {
+            var initialCapacity = 10;
+            var set = new Set<int>(initialCapacity);
+            set.Add(3);
+            set.Add(4);
+            var other = new List<int>();
+            other.Add(5);
+            other.Add(34);
+            other.Add(14);
+            Assert.AreEqual(false, set.Overlaps(other));
+        }
     }
 }
