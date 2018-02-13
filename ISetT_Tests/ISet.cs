@@ -149,16 +149,15 @@ namespace ISetT_Tests
                     return false;
                 }
             }
-            return true;
+
+            return OtherCount(other) > count;
         }
 
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
-            var itemCount = 0;
             foreach (var item in other)
             {
                 bool found = false;
-                itemCount++;
                 foreach (var entry in entries)
                 {
                     if (entry.Key.Equals(item))
@@ -168,11 +167,12 @@ namespace ISetT_Tests
                     }
                 }
                 if (!found)
+
                 {
                     return false;
                 }
             }
-            return count > itemCount;
+            return count > OtherCount(other);
         }
 
         public bool IsSubsetOf(IEnumerable<T> other)
@@ -247,6 +247,16 @@ namespace ISetT_Tests
         public int GetBucket(T key)
         {
             return key.GetHashCode() % buckets.Length;
+        }
+
+        public int OtherCount(IEnumerable<T> other)
+        {
+            var itemCount = 0;
+            foreach (var item in other)
+            {
+                itemCount++;
+            }
+            return itemCount;
         }
     }
 }
