@@ -56,8 +56,16 @@ namespace JsonTests
             {
                 index++;
             }
-            if (text[index] == '-' )
+            if (text[index] == '-' || text[index] == '0')
             {
+                if (text[index] == '0')
+                {
+                    if (text[index + 1] != '.')
+                    {
+                        error += text[index] + text[index + 1];
+                        return false;
+                    }
+                }
                 if (text[index + 1] == '0')
                 {
                     if (text[index + 2] != '.')
@@ -81,11 +89,6 @@ namespace JsonTests
             }
             if (text[index] == '.')
             {
-                if (!(text[index + 1] >= '0' && text[index + 1] <= '9'))
-                {
-                    error = error + text[index] + text[index + 1];
-                    return false;
-                }
                 if (index + 1 < text.Length)
                 {
                     index++;
@@ -94,9 +97,23 @@ namespace JsonTests
                 {
                     return error == null;
                 }
+                if (index + 1 >= text.Length)
+                {
+                    return true;
+                }
+                if (!(text[index + 1] >= '0' && text[index + 1] <= '9'))
+                {
+                    error = error + text[index] + text[index + 1];
+                    return false;
+                }
             }
             if (text[index] == 'e' || text[index] == 'E')
             {
+                if (index + 1 >= text.Length)
+                {
+                    error = error + text[index - 1] + text[index];
+                    return false;
+                }
                 if (!(text[index + 1] == '+' || text[index + 1] == '-'))
                 {
                     error = error + text[index] + text[index + 1];
@@ -114,34 +131,8 @@ namespace JsonTests
                     }
                 }
             }
-            return true;
+            error = error + text[index - 1] + text[index];
+            return false;
         }
-
     }
-
-                //    if (!text[0].Equals(' '))
-                //{
-                //    if (text[i].Equals('-'))
-                //    {
-                //        continue;
-                //    }
-                //    if (text[i].Equals('0'))
-                //    {
-                //        if (!text[i + i].Equals('.'))
-                //        {
-                //            error = error + text[i] + text[i + 1];
-                //            return false;
-                //        }
-                //        continue;
-                //    }
-                //    while (text[i] <= 9 && text[i] >= 1)
-                //    {
-                //        continue;
-                //    }
-                //    if (text[i] != '.')
-                //    {
-                //        continue;
-                //    }
-                //}
-                //continue;
 }
