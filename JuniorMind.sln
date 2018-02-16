@@ -91,6 +91,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDictionaryT", "IDictionary
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISetT_Tests", "ISetT_Tests\ISetT_Tests.csproj", "{11891F48-1572-42B9-9475-1E7CB2FD51EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTests", "JsonTests\JsonTests.csproj", "{C99E907F-115D-441F-9C49-FB6D4F537B00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -273,6 +275,10 @@ Global
 		{11891F48-1572-42B9-9475-1E7CB2FD51EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11891F48-1572-42B9-9475-1E7CB2FD51EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11891F48-1572-42B9-9475-1E7CB2FD51EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99E907F-115D-441F-9C49-FB6D4F537B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99E907F-115D-441F-9C49-FB6D4F537B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99E907F-115D-441F-9C49-FB6D4F537B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99E907F-115D-441F-9C49-FB6D4F537B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
