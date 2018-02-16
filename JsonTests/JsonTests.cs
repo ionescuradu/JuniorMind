@@ -46,93 +46,176 @@ namespace JsonTests
             Assert.AreEqual(false, Number(givenText, out givenError));
         }
 
+        [TestMethod]
+        public void JsonNumberTest5()
+        {
+            var givenText = "12.-";
+            string myError = ".-";
+            Number(givenText, out var givenError);
+            Assert.AreEqual(myError, givenError);
+            Assert.AreEqual(false, Number(givenText, out givenError));
+        }
+
 
 
         public bool Number(string text, out string error)
         {
             error = null;
             var index = 0;
-            while (text[index] == ' ')
-            {
-                index++;
-            }
-            if (text[index] == '-' || text[index] == '0')
-            {
-                if (text[index] == '0')
-                {
-                    if (text[index + 1] != '.')
-                    {
-                        error += text[index] + text[index + 1];
-                        return false;
-                    }
-                }
-                if (text[index + 1] == '0')
-                {
-                    if (text[index + 2] != '.')
-                    {
-                        error = error + text[index + 1] + text[index + 2];
-                        return false;
-                    }
-                }
-                index++;
-            }
-            while (text[index] >= '0' && text[index] <= '9')
+            if (text[index] == '-')
             {
                 if (index + 1 < text.Length)
                 {
                     index++;
-                }
-                else
-                {
-                    return error == null;
-                }
-            }
-            if (text[index] == '.')
-            {
-                if (index + 1 < text.Length)
-                {
-                    index++;
-                }
-                else
-                {
-                    return error == null;
-                }
-                if (index + 1 >= text.Length)
-                {
-                    return true;
-                }
-                if (!(text[index + 1] >= '0' && text[index + 1] <= '9'))
-                {
-                    error = error + text[index] + text[index + 1];
-                    return false;
-                }
-            }
-            if (text[index] == 'e' || text[index] == 'E')
-            {
-                if (index + 1 >= text.Length)
-                {
-                    error = error + text[index - 1] + text[index];
-                    return false;
-                }
-                if (!(text[index + 1] == '+' || text[index + 1] == '-'))
-                {
-                    error = error + text[index] + text[index + 1];
-                    return false;
-                }
-                while (text[index] >= '0' && text[index] <= '9')
-                {
-                    if (index + 1 < text.Length)
+                    if (text[index] == '0')
                     {
-                        index++;
+                        if (index + 1 < text.Length)
+                        {
+                            index++;
+                            if ((text[index] == '.') || (text[index] == 'e') || (text[index] == 'E'))
+                            {
+                                if (text[index] == '.')
+                                {
+                                    if (index + 1 < text.Length)
+                                    {
+                                        index++;
+                                        while (index < text.Length)
+                                        {
+                                            if (text[index] >= '0' && text[index] <= '9')
+                                            {
+                                                index++;
+                                            }
+                                            else
+                                            {
+                                                error = error + text[index - 1] + text[index];
+                                                return false;
+                                            }
+                                        }
+                                        if (index == text.Length)
+                                        {
+                                            return true;
+                                        }
+                                        if ((text[index] == 'e') || (text[index] == 'E'))
+                                        {
+                                            if (index + 1 < text.Length)
+                                            {
+                                                index++;
+                                                if (text[index] == '+' || text[index] == '-')
+                                                {
+                                                    if (index + 1 < text.Length)
+                                                    {
+                                                        while (index < text.Length)
+                                                        {
+                                                            if (text[index] >= '0' && text[index] <= '9')
+                                                            {
+                                                                index++;
+                                                            }
+                                                            else
+                                                            {
+                                                                error = error + text[index - 1] + text[index];
+                                                                return false;
+                                                            }
+                                                        }
+                                                        if (index + 1 < text.Length)
+                                                        {
+                                                            error = error + text[index] + text[index + 1];
+                                                            return false;
+                                                        }
+                                                        else return true;
+                                                    }
+                                                    error = error + text[index - 1] + text[index];
+                                                    return false;
+                                                }
+                                                else
+                                                {
+                                                    error = error + text[index - 1] + text[index];
+                                                    return false;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                error = error + text[index - 1] + text[index];
+                                                return false;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            error = error + text[index - 1] + text[index];
+                                            return false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        error = error + text[index - 1] + text[index];
+                                        return false;
+                                    }
+                                }
+                                else
+                                { 
+                                    if (index + 1 < text.Length)
+                                    {
+                                        index++;
+                                        if (text[index] == '+' || text[index] == '-')
+                                        {
+                                            if (index + 1 < text.Length)
+                                            {
+                                                while (index < text.Length)
+                                                {
+                                                    if (text[index] >= '0' && text[index] <= '9')
+                                                    {
+                                                        index++;
+                                                    }
+                                                    else
+                                                    {
+                                                        error = error + text[index - 1] + text[index];
+                                                        return false;
+                                                    }
+                                                }
+                                                if (index + 1 < text.Length)
+                                                {
+                                                    error = error + text[index] + text[index + 1];
+                                                    return false;
+                                                }
+                                                else return true;
+                                            }
+                                            error = error + text[index - 1] + text[index];
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            error = error + text[index - 1] + text[index];
+                                            return false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        error = error + text[index - 1] + text[index];
+                                        return false;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                error = error + text[index - 1] + text[index];
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return true;
+                        }
                     }
                     else
                     {
-                        return error == null;
+                        // este o cifra de la 1 la 9 chiar de la inceput
                     }
                 }
+                else
+                {
+                    error = error + text[index];
+                    return false;
+                }
             }
-            error = error + text[index - 1] + text[index];
-            return false;
         }
     }
 }
