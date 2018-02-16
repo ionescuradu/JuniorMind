@@ -36,6 +36,16 @@ namespace JsonTests
             Assert.AreEqual(true, Number(givenText, out givenError));
         }
 
+        [TestMethod]
+        public void JsonNumberTest4()
+        {
+            var givenText = "-123+";
+            string myError = "3+";
+            Number(givenText, out var givenError);
+            Assert.AreEqual(myError, givenError);
+            Assert.AreEqual(false, Number(givenText, out givenError));
+        }
+
 
 
         public bool Number(string text, out string error)
@@ -60,11 +70,14 @@ namespace JsonTests
             }
             while (text[index] >= '0' && text[index] <= '9')
             {
-                if (index++ < text.Length)
+                if (index + 1 < text.Length)
                 {
                     index++;
                 }
-                return true;
+                else
+                {
+                    return error == null;
+                }
             }
             if (text[index] == '.')
             {
@@ -73,7 +86,14 @@ namespace JsonTests
                     error = error + text[index] + text[index + 1];
                     return false;
                 }
-                index++;
+                if (index + 1 < text.Length)
+                {
+                    index++;
+                }
+                else
+                {
+                    return error == null;
+                }
             }
             if (text[index] == 'e' || text[index] == 'E')
             {
@@ -84,14 +104,17 @@ namespace JsonTests
                 }
                 while (text[index] >= '0' && text[index] <= '9')
                 {
-                    if (index++ < text.Length)
+                    if (index + 1 < text.Length)
                     {
                         index++;
                     }
-                    return true;
+                    else
+                    {
+                        return error == null;
+                    }
                 }
             }
-            return false;
+            return true;
         }
 
     }
