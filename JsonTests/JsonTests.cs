@@ -156,8 +156,15 @@ namespace JsonTests
             Assert.AreEqual(true, Number(givenText, out givenError));
         }
 
-
-
+        [TestMethod]
+        public void JsonNumberTest16()
+        {
+            var givenText = "-1289.8me+9";
+            string myError = "-1289.8m";
+            Number(givenText, out var givenError);
+            Assert.AreEqual(myError, givenError);
+            Assert.AreEqual(false, Number(givenText, out givenError));
+        }
 
         public bool Number(string text, out string error)
         {
