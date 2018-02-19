@@ -8,6 +8,6 @@ namespace JsonTests
 {
     class Match
     {
-        bool succes;
+        bool success;
     }
 }
