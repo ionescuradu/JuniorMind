@@ -23,11 +23,7 @@ namespace JsonTests
                 auxString = input.Substring(1, input.Length - 1);
                 return (new Match { Success = true}, auxString);
             }
-            if (input[0] != givenChar)
-            {
-                return (new Match { Success = false}, input);
-            }
-            else return (new Match { Success = false}, auxString);
+            return (new Match { Success = false }, input);
         }
 
     }
