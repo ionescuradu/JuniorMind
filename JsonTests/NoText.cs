@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 namespace JsonTests
 {
     class NoText : Match
-    {
+    { 
+        public NoText()
+        {
+            Success = false;
+        }
     }
 }
