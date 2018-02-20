@@ -24,14 +24,14 @@ namespace JsonTests
                 {
                     auxString += input[i];
                 }
-                return ( , auxString);
+                return (new Match { Success = true}, auxString);
             }
             if (input[0] != givenChar)
             {
-                return (, input);
+                return (new Match { Success = false}, input);
             }
-            else return (, auxString);
-            
+            else return (new Match { Success = false}, auxString);
         }
+
     }
 }

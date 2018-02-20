@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="SuccessMatch.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="JsonTests.cs" />

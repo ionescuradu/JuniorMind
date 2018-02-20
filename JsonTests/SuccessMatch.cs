@@ -8,11 +8,5 @@ namespace JsonTests
 {
     class SuccessMatch : Match
     {
-        private string v;
-
-        public SuccessMatch(string v)
-        {
-            this.v = v;
-        }
     }
 }
