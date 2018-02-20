@@ -166,13 +166,6 @@ namespace JsonTests
             Assert.AreEqual(false, Number(givenText, out givenError));
         }
 
-        [TestMethod]
-        public void JsonNumberTest17()
-        {
-            var x = new Character('x');
-            Assert.AreEqual((new Match { Success = true }, ""), x.Match("x"));
-        }
-
         public bool Number(string text, out string error)
         {
             error = null;
