@@ -9,12 +9,23 @@ namespace JsonTests
     class NoMatch : Match
     {
         private string stringNotFound;
-        private new bool Success { get; set; }
+        private bool success;
 
         public NoMatch(string stringNotFound)
         {
-            Success = false;
+            success = false;
             this.stringNotFound = stringNotFound;
+        }
+
+        public bool Success
+        { get
+            {
+                return success;
+            }
+            set
+            {
+                success = value;
+            }
         }
     }
 }

@@ -9,11 +9,24 @@ namespace JsonTests
     class SuccessMatch : Match
     {
         private string foundString;
+        private bool success;
 
         public SuccessMatch(string foundString)
         {
-            Success = true;
+            success = true;
             this.foundString = foundString;
+        }
+
+        public bool Success
+        {
+            get
+            {
+                return success;
+            }
+            set
+            {
+                success = value;
+            }
         }
     }
 }

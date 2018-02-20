@@ -7,10 +7,23 @@ using System.Threading.Tasks;
 namespace JsonTests
 {
     class NoText : Match
-    { 
+    {
+        private bool success;
+
         public NoText()
         {
-            Success = false;
+            success = false;
+        }
+        public bool Success
+        {
+            get
+            {
+                return success;
+            }
+            set
+            {
+                success = value;
+            }
         }
     }
 }

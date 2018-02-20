@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Match
+    interface  Match
     {
-        public bool Success { get; }
+        bool Success { get; set; }
     }
 }
