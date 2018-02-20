@@ -20,10 +20,7 @@ namespace JsonTests
             var auxString = "";
             if (input[0] == givenChar)
             {
-                for (int i = 1; i < input.Length; i++)
-                {
-                    auxString += input[i];
-                }
+                auxString = input.Substring(1, input.Length - 1);
                 return (new Match { Success = true}, auxString);
             }
             if (input[0] != givenChar)
