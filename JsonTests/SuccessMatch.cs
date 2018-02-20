@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class NoMatch : Match
+    class SuccessMatch : Match
     {
+        private string v;
+
+        public SuccessMatch(string v)
+        {
+            this.v = v;
+        }
     }
 }
