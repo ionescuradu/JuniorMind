@@ -18,6 +18,10 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var auxString = "";
+            if (input.Equals(""))
+            {
+                return (new Match { Success = false }, input);
+            }
             if (input[0] == givenChar)
             {
                 auxString = input.Substring(1, input.Length - 1);

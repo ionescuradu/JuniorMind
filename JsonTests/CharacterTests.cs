@@ -32,5 +32,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "ax");
         }
+
+        [TestMethod]
+        public void CharacterTests4()
+        {
+            var x = new Character('x');
+            var (match, remainng) = x.Match("");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "");
+        }
     }
 }
