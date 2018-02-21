@@ -41,5 +41,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "");
         }
+
+        [TestMethod]
+        public void RangeTest5()
+        {
+            var x = new Range('a', 'z');
+            var (match, remainng) = x.Match("1z");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "1z");
+        }
     }
 }
