@@ -30,7 +30,7 @@ namespace JsonTests
             var x = new Character('x');
             var (match, remainng) = x.Match("ax");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual(remainng, "ax");
+            Assert.AreEqual(remainng, "a found instead of x");
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace JsonTests
             var x = new Character('x');
             var (match, remainng) = x.Match("");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual(remainng, "");
+            Assert.AreEqual(remainng, "no more text while looking for x");
         }
     }
 }

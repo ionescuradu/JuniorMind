@@ -19,13 +19,13 @@ namespace JsonTests
         {
             if (input.Equals(""))
             {
-                return (new NoText(), input);
+                return (new NoText("x"), input);
             }
             if (input[0] == givenChar)
             {
                 return (new SuccessMatch("x"), input.Substring(1));
             }
-            return (new NoMatch ("x"),  input);
+            return (new NoMatch ("x", input[0]),  input);
         }
 
     }

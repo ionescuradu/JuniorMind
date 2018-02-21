@@ -10,11 +10,12 @@ namespace JsonTests
     {
         private string stringNotFound;
         private bool success;
+        private string text = " found instead of ";
 
-        public NoMatch(string stringNotFound)
+        public NoMatch(string stringNotFound, char firstFound)
         {
             success = false;
-            this.stringNotFound = stringNotFound;
+            stringNotFound = firstFound + text + stringNotFound; 
         }
 
         public bool Success

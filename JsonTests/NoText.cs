@@ -9,9 +9,11 @@ namespace JsonTests
     class NoText : Match
     {
         private bool success;
+        private string text = "no more text while looking for ";
 
-        public NoText()
+        public NoText(string stringToFind)
         {
+            stringToFind = text + stringToFind;
             success = false;
         }
         public bool Success
