@@ -8,6 +8,6 @@ namespace JsonTests
 {
     interface  Match
     {
-        bool Success { get; set; }
+        bool Success { get; }
     }
 }

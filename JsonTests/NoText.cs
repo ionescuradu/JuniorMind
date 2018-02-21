@@ -8,23 +8,17 @@ namespace JsonTests
 {
     class NoText : Match
     {
-        private bool success;
-        private string text = "no more text while looking for ";
+        private string message = "no more text while looking for ";
 
         public NoText(string stringToFind)
         {
-            stringToFind = text + stringToFind;
-            success = false;
+            stringToFind = message + stringToFind;
         }
         public bool Success
         {
             get
             {
-                return success;
-            }
-            set
-            {
-                success = value;
+                return false;
             }
         }
     }

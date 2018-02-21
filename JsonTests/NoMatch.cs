@@ -8,24 +8,18 @@ namespace JsonTests
 {
     class NoMatch : Match
     {
-        private string stringNotFound;
-        private bool success;
+        private string message;
         private string text = " found instead of ";
 
         public NoMatch(string stringNotFound, char firstFound)
         {
-            success = false;
-            stringNotFound = firstFound + text + stringNotFound; 
+            stringNotFound = firstFound + text + message; 
         }
 
         public bool Success
         { get
             {
-                return success;
-            }
-            set
-            {
-                success = value;
+                return false;
             }
         }
     }
