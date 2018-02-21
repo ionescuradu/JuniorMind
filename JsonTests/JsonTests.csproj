@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
+    <Compile Include="Sequance.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="NoText.cs" />
     <Compile Include="NoMatch.cs" />

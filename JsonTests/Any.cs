@@ -17,6 +17,10 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
+            if (input == "")
+            {
+                return (new NoText(givenText), input);
+            }
             for (int i = 0; i < givenText.Length; i++)
             {
                 if (input[0] == givenText[i])

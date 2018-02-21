@@ -41,5 +41,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "xay");
         }
+
+        [TestMethod]
+        public void AnyTest5()
+        {
+            var x = new Any("radu");
+            var (match, remainng) = x.Match("");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "");
+        }
     }
 }
