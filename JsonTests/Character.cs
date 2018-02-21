@@ -9,6 +9,7 @@ namespace JsonTests
     class Character : Pattern
     {
         char givenChar;
+        string text;
 
         public Character(char givenChar)
         {
@@ -19,13 +20,13 @@ namespace JsonTests
         {
             if (input.Equals(""))
             {
-                return (new NoText("x"), input);
+                return (new NoText(text + givenChar), input);
             }
             if (input[0] == givenChar)
             {
-                return (new SuccessMatch("x"), input.Substring(1));
+                return (new SuccessMatch(text + givenChar), input.Substring(1));
             }
-            return (new NoMatch ("x", input[0]),  input);
+            return (new NoMatch (text + givenChar, input[0]),  input);
         }
 
     }
