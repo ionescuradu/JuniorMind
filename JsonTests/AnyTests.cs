@@ -23,5 +23,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remainng, "xy");
         }
+
+        [TestMethod]
+        public void AnyTest3()
+        {
+            var x = new Any("radu");
+            var (match, remainng) = x.Match("ixy");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "ixy");
+        }
     }
 }
