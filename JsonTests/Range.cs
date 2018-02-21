@@ -21,7 +21,7 @@ namespace JsonTests
         {
             if (input.Equals(""))
             {
-                return (new NoText(input[0].ToString()), input);
+                return (new NoText(input), input);
             }
             if (input[0] >= startChar && input[0] <=endChar)
             {
