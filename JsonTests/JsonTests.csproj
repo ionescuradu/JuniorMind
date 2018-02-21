@@ -65,6 +65,7 @@
     <Compile Include="CharacterTests.cs" />
     <Compile Include="RangeTests.cs" />
     <Compile Include="AnyTests.cs" />
+    <Compile Include="SequanceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

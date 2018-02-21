@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Sequance : Pattern
+    class Sequance :Pattern
     {
+        Pattern[] pattern;
+
+        public Sequance( params Pattern[] pattern)
+        {
+            this.pattern = pattern;
+        }
 
         public (Match, string) Match(string input)
         {
-            throw new NotImplementedException();
         }
     }
 }
