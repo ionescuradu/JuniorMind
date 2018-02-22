@@ -29,5 +29,32 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "radu");
         }
+
+        [TestMethod]
+        public void SequanceTest3()
+        {
+            string input = "radu";
+            var x = new Range('a', 'z');
+            var y = new Any("mno");
+            var patterns = new Sequance(x, y);
+            var (match, remaining) = patterns.Match(input);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "radu");
+        }
+
+        [TestMethod]
+        public void SequanceTest4()
+        {
+            string input = "radu";
+            var x = new Range('a', 'z');
+            var y = new Any("abcd");
+            var z = new Any("dpqr");
+            var t = new Any("uzt");
+            var q = new Any("abra");
+            var patterns = new Sequance(x, y, z, t, q);
+            var (match, remaining) = patterns.Match(input);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "radu");
+        }
     }
 }

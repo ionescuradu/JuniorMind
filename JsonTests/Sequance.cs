@@ -17,6 +17,10 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var aux = input;
+            if (input == "")
+            {
+                return (new NoText(input), input);
+            }
             for (int i = 0; i < pattern.Length; i++)
             {
                 var (match, remaining) = pattern[i].Match(aux);
