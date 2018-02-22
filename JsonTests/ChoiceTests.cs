@@ -15,5 +15,15 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "radu");
         }
+
+        [TestMethod]
+        public void ChoiceTest2()
+        {
+            string input = "radu";
+            var x = new Choice("-");
+            var (match, remaining) = x.Match(input);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "radu");
+        }
     }
 }
