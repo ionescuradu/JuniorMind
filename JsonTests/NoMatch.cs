@@ -11,9 +11,9 @@ namespace JsonTests
         private string message;
         private string text = " found instead of ";
 
-        public NoMatch(string stringNotFound, char firstFound)
+        public NoMatch(string givenString, char firstToFound)
         {
-            message = firstFound + text + stringNotFound; 
+            message = firstToFound + text + givenString; 
         }
 
         public bool Success

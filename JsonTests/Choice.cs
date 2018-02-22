@@ -17,6 +17,7 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
+            var found = false;
             var aux = input;
             var stringMatched= "";
             if (input == "")
@@ -28,11 +29,17 @@ namespace JsonTests
                 var (match, remaining) = choices[i].Match(aux);
                 if (match.Success)
                 {
+                    found = true;
                     stringMatched += aux[0];
                     aux = remaining;
+                    break;
                 }
             }
-            return (new SuccessMatch(stringMatched), aux);
+            if (found)
+            {
+                return (new SuccessMatch(stringMatched), aux);
+            }
+            return (new NoMatch("nothing",input[0]), aux);
 
         }
     }

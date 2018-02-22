@@ -28,14 +28,14 @@ namespace JsonTests
             var choices = new Choice(x, y, z);
             var (match, remaining) = choices.Match(input);
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "du");
+            Assert.AreEqual(remaining, "adu");
         }
 
         [TestMethod]
         public void ChoiceTest3()
         {
             string input = "raduionescu";
-            var x = new Range('a', 'z'); 
+            var x = new Range('0', '9'); 
             var y = new Any("abcd"); 
             var z = new Any("dpqr"); 
             var t = new Any("yzt"); 
@@ -44,7 +44,7 @@ namespace JsonTests
             var choice = new Choice(choiceFirst, z, t, q);
             var (match, remaining) = choice.Match(input);
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "uionescu");
+            Assert.AreEqual(remaining, "aduionescu");
         }
 
     }
