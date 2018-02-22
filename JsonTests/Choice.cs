@@ -29,7 +29,7 @@ namespace JsonTests
                 if (match.Success)
                 {
                     stringMatched += aux[0];
-                    aux = aux.Substring(1);
+                    aux = remaining;
                 }
             }
             return (new SuccessMatch(stringMatched), aux);
