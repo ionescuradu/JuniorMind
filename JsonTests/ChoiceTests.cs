@@ -35,11 +35,11 @@ namespace JsonTests
         public void ChoiceTest3()
         {
             string input = "raduionescu";
-            var x = new Range('a', 'z'); //aduionescu => r
-            var y = new Any("abcd"); // duionescu => a
-            var z = new Any("dpqr"); // uionescu => d
-            var t = new Any("yzt"); // uionescu
-            var q = new Any("abrai"); // uionescu
+            var x = new Range('a', 'z'); 
+            var y = new Any("abcd"); 
+            var z = new Any("dpqr"); 
+            var t = new Any("yzt"); 
+            var q = new Any("abrai"); 
             var choiceFirst = new Choice(x, y);
             var choice = new Choice(choiceFirst, z, t, q);
             var (match, remaining) = choice.Match(input);
