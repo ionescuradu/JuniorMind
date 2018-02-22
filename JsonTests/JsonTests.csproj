@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
+    <Compile Include="Choice.cs" />
     <Compile Include="Sequance.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="NoText.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="RangeTests.cs" />
     <Compile Include="AnyTests.cs" />
     <Compile Include="SequanceTests.cs" />
+    <Compile Include="ChoiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

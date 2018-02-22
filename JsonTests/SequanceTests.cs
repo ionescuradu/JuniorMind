@@ -61,11 +61,11 @@ namespace JsonTests
         public void SequanceTest5()
         {
             string input = "raduionescu";
-            var x = new Range('a', 'z'); //aduionescu => r
-            var y = new Any("abcd"); // duionescu => a
-            var z = new Any("dpqr"); //uionescu =>d
-            var t = new Any("uzt"); //ionescu =>u
-            var q = new Any("abrai"); //onescu => i
+            var x = new Range('a', 'z'); 
+            var y = new Any("abcd"); 
+            var z = new Any("dpqr"); 
+            var t = new Any("uzt"); 
+            var q = new Any("abrai"); 
             var patternFirst = new Sequance(x, y);
             var patterns = new Sequance(patternFirst, z, t, q);
             var (match, remaining) = patterns.Match(input);
