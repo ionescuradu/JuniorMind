@@ -8,27 +8,31 @@ namespace JsonTests
 {
     class Choice : Pattern
     {
-        string givenString;
+        Pattern[] choices;
 
-        public Choice(string givenString)
+        public Choice(params Pattern[] choices)
         {
-            this.givenString = givenString;
+            this.choices = choices;
         }
 
         public (Match, string) Match(string input)
         {
+            var aux = input;
+            var stringMatched= "";
             if (input == "")
             {
-                return (new SuccessMatch(input), input);
+                return (new NoText(input), input);
             }
-            for (int i = 0; i < givenString.Length; i++)
+            for (int i = 0; i < choices.Length; i++)
             {
-                if (input[0] == givenString[i])
+                var (match, remaining) = choices[i].Match(aux);
+                if (match.Success)
                 {
-                    return (new SuccessMatch(input[0].ToString()), input.Substring(1));
+                    stringMatched += aux[0];
+                    aux = aux.Substring(1);
                 }
             }
-            return (new SuccessMatch(givenString), input);
+            return (new SuccessMatch(stringMatched), aux);
 
         }
     }

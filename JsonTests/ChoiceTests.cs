@@ -9,31 +9,13 @@ namespace JsonTests
         [TestMethod]
         public void ChoiceTest1()
         {
-            string input = "-radu";
-            var x = new Choice("-");
-            var (match, remaining) = x.Match(input);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "radu");
-        }
-
-        [TestMethod]
-        public void ChoiceTest2()
-        {
             string input = "radu";
-            var x = new Choice("-");
-            var (match, remaining) = x.Match(input);
+            var x = new Range('a', 'z');
+            var y = new Any("bcd");
+            var choices = new Choice(x, y);
+            var (match, remaining) = choices.Match(input);
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "radu");
-        }
-
-        [TestMethod]
-        public void ChoiceTest3()
-        {
-            string input = "";
-            var x = new Choice("-");
-            var (match, remaining) = x.Match(input);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.AreEqual(remaining, "adu");
         }
     }
 }
