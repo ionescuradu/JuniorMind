@@ -20,9 +20,9 @@ namespace JsonTests
             for (int i = 0; i < pattern.Length; i++)
             {
                 var (match, remaining) = pattern[i].Match(aux);
-                if (!match.Equals(true))
+                if (match.Equals(false))
                 {
-                    return (new NoMatch(aux, aux[i]), aux);
+                    return (new NoMatch(aux, aux[i]), input);
                 }
                 aux = remaining;
             }

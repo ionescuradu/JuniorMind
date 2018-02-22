@@ -10,7 +10,12 @@ namespace JsonTests
         public void SequanceTest1()
         {
             string input = "radu";
-            var patterns = new Sequance();
+            var x = new Range('a', 'z');
+            var y = new Any("abcd");
+            var patterns = new Sequance( x, y );
+            var (match, remaining) = patterns.Match(input);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "du");
         }
     }
 }
