@@ -13,7 +13,7 @@ namespace JsonTests
 
         public NoMatch(string stringNotFound, char firstFound)
         {
-            stringNotFound = firstFound + text + message; 
+            message = firstFound + text + stringNotFound; 
         }
 
         public bool Success
