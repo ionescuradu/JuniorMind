@@ -17,5 +17,17 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "du");
         }
+
+        [TestMethod]
+        public void SequanceTest2()
+        {
+            string input = "radu";
+            var x = new Range('a', 'z');
+            var y = new Any("mno");
+            var patterns = new Sequance(x, y);
+            var (match, remaining) = patterns.Match(input);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "radu");
+        }
     }
 }
