@@ -17,29 +17,19 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            var found = false;
-            var aux = input;
-            var stringMatched= "";
             if (input == "")
             {
                 return (new NoText(input), input);
             }
             for (int i = 0; i < choices.Length; i++)
             {
-                var (match, remaining) = choices[i].Match(aux);
+                var (match, remaining) = choices[i].Match(input);
                 if (match.Success)
                 {
-                    found = true;
-                    stringMatched += aux[0];
-                    aux = remaining;
-                    break;
+                    return (new SuccessMatch(input[0].ToString()), input.Substring(1));
                 }
             }
-            if (found)
-            {
-                return (new SuccessMatch(stringMatched), aux);
-            }
-            return (new NoMatch("nothing",input[0]), aux);
+            return (new NoMatch("nothing",input[0]), input);
 
         }
     }
