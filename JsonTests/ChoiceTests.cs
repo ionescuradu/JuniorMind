@@ -47,5 +47,18 @@ namespace JsonTests
             Assert.AreEqual(remaining, "aduionescu");
         }
 
+        [TestMethod]
+        public void ChoiceTest4()
+        {
+            string input = "radu";
+            var x = new Range('0', '9');
+            var y = new Any("mno");
+            var z = new Any("abc");
+            var choices = new Choice(x, y, z);
+            var (match, remaining) = choices.Match(input);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "radu");
+        }
+
     }
 }
