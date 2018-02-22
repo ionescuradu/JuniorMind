@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +25,10 @@ namespace JsonTests
                 {
                     return (new NoMatch(aux, aux[i]), aux);
                 }
+                aux = remaining;
             }
-            return (new SuccessMatch(input),   
+            aux2 = input.Substring(0, input.Length - aux.Length);
+            return (new SuccessMatch(aux2), aux);
         }
     }
 }
