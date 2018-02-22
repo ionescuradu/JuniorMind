@@ -9,7 +9,8 @@ namespace JsonTests
         [TestMethod]
         public void SequanceTest1()
         {
-            var element1 = new Sequance();
+            string input = "radu";
+            var patterns = new Sequance(new Pattern[2]);
         }
     }
 }

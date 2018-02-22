@@ -17,14 +17,15 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            var aux = input; 
+            var aux = input;
+            var aux2 = "";
             for (int i = 0; i < pattern.Length; i++)
             {
-                if (!pattern[i].Match(aux).Item1.Equals(true))
+                var (match, remaining) = pattern[i].Match(aux);
+                if (!match.Equals(true))
                 {
                     return (new NoMatch(aux, aux[i]), aux);
                 }
-                aux = pattern[i].Match(aux).Item2;
             }
             return (new SuccessMatch(input),   
         }
