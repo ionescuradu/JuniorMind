@@ -19,7 +19,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void SequanceTest2()
+        public void ChoiceTest2()
         {
             string input = "radu";
             var x = new Range('a', 'z');
@@ -30,5 +30,22 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "du");
         }
+
+        [TestMethod]
+        public void ChoiceTest3()
+        {
+            string input = "raduionescu";
+            var x = new Range('a', 'z'); //aduionescu => r
+            var y = new Any("abcd"); // duionescu => a
+            var z = new Any("dpqr"); // uionescu => d
+            var t = new Any("yzt"); // uionescu
+            var q = new Any("abrai"); // uionescu
+            var choiceFirst = new Choice(x, y);
+            var choice = new Choice(choiceFirst, z, t, q);
+            var (match, remaining) = choice.Match(input);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "uionescu");
+        }
+
     }
 }
