@@ -17,7 +17,6 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var aux = input;
-            var aux2 = "";
             for (int i = 0; i < pattern.Length; i++)
             {
                 var (match, remaining) = pattern[i].Match(aux);
@@ -27,8 +26,7 @@ namespace JsonTests
                 }
                 aux = remaining;
             }
-            aux2 = input.Substring(0, input.Length - aux.Length);
-            return (new SuccessMatch(aux2), aux);
+            return (new SuccessMatch(input.Substring(0, input.Length - aux.Length)), aux);
         }
     }
 }
