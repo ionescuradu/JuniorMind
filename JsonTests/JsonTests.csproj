@@ -69,6 +69,7 @@
     <Compile Include="AnyTests.cs" />
     <Compile Include="SequanceTests.cs" />
     <Compile Include="ChoiceTests.cs" />
+    <Compile Include="TextTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
