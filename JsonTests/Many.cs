@@ -17,11 +17,9 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            //var aux = input;
             var (match, remaining) = pattern.Match(input);
             while (match.Success)
             {
-                //aux = remaining;
                 (match, remaining) = pattern.Match(remaining);
             }
             if (remaining == input)

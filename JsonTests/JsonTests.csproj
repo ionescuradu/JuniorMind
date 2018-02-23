@@ -75,6 +75,7 @@
     <Compile Include="TextTests.cs" />
     <Compile Include="OptionalTests.cs" />
     <Compile Include="ManyTests.cs" />
+    <Compile Include="OneOrMoreTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

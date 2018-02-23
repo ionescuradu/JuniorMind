@@ -17,7 +17,16 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            throw new NotImplementedException();
+            var (match, remaining) = pattern.Match(input);
+            while (match.Success)
+            {
+                (match, remaining) = pattern.Match(remaining);
+            }
+            if (remaining == input)
+            {
+                return (new NoMatch(input,input[0]), input);
+            }
+            return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
         }
     }
 }
