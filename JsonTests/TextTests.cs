@@ -15,5 +15,15 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "uionescu");
         }
+
+        [TestMethod]
+        public void TextTest2()
+        {
+            string input = "raduionescu";
+            var x = new Text("rau");
+            var (match, remaining) = x.Match(input);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "raduionescu");
+        }
     }
 }
