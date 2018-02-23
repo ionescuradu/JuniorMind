@@ -9,10 +9,16 @@ namespace JsonTests
     class Any : Pattern
     {
         private string givenText;
+        private Character[] chars;
 
         public Any(string givenText)
         {
             this.givenText = givenText;
+            chars = new Character[givenText.Length];
+            for (int i = 0; i < givenText.Length; i++)
+            {
+                chars[i] = new Character(givenText[i]);
+            }
         }
 
         public (Match, string) Match(string input)
@@ -21,14 +27,8 @@ namespace JsonTests
             {
                 return (new NoText(givenText), input);
             }
-            for (int i = 0; i < givenText.Length; i++)
-            {
-                if (input[0] == givenText[i])
-                {
-                    return (new SuccessMatch(input[0].ToString()), input.Substring(1));
-                }
-            }
-            return (new NoMatch(input[0].ToString(), input[0]), input);
+            var found = new Choice(chars);
+            return found.Match(input);
         }
     }
 }
