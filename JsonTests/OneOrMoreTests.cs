@@ -14,5 +14,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remainng, "adu");
         }
+
+        [TestMethod]
+        public void OneOrMore2()
+        {
+            var x = new OneOrMore(new Character('r'));
+            var (match, remainng) = x.Match("ionescu");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "ionescu");
+        }
     }
 }
