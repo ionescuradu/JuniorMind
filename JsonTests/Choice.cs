@@ -26,7 +26,7 @@ namespace JsonTests
                 var (match, remaining) = choices[i].Match(input);
                 if (match.Success)
                 {
-                    return (new SuccessMatch(input[0].ToString()), input.Substring(1));
+                    return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), input.Substring(input.Length - remaining.Length));
                 }
             }
             return (new NoMatch("nothing",input[0]), input);
