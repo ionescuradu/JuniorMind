@@ -13,7 +13,7 @@ namespace JsonTests
             var x = new Optional(new Character('-'));
             var (match, remaining) = x.Match("-radu");
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "rau");
+            Assert.AreEqual(remaining, "radu");
         }
     }
 }
