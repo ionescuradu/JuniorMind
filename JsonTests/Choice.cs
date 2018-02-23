@@ -30,7 +30,6 @@ namespace JsonTests
                 }
             }
             return (new NoMatch("nothing",input[0]), input);
-
         }
     }
 }
