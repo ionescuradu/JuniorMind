@@ -8,12 +8,10 @@ namespace JsonTests
 {
     class Any : Pattern
     {
-        private string givenText;
         private Character[] chars;
 
         public Any(string givenText)
         {
-            this.givenText = givenText;
             chars = new Character[givenText.Length];
             for (int i = 0; i < givenText.Length; i++)
             {

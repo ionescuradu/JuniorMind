@@ -9,11 +9,9 @@ namespace JsonTests
     class Text : Pattern
     {
         private Character[] chars;
-        private string givenText;
 
         public Text(string givenText)
         {
-            this.givenText = givenText;
             chars = new Character[givenText.Length];
             for (int i = 0; i < givenText.Length; i++)
             {
