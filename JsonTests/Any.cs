@@ -22,13 +22,8 @@ namespace JsonTests
         }
 
         public (Match, string) Match(string input)
-        {
-            if (input == "")
-            {
-                return (new NoText(givenText), input);
-            }
-            var found = new Choice(chars);
-            return found.Match(input);
+        { 
+            return new Choice(chars).Match(input);
         }
     }
 }
