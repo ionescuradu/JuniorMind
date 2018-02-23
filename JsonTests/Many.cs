@@ -17,18 +17,18 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            var aux = input;
+            //var aux = input;
             var (match, remaining) = pattern.Match(input);
             while (match.Success)
             {
-                aux = remaining;
-                (match, remaining) = pattern.Match(aux);
+                //aux = remaining;
+                (match, remaining) = pattern.Match(remaining);
             }
-            if (aux == input)
+            if (remaining == input)
             {
-                return (new SuccessMatch("Nothing Found"), aux);
+                return (new SuccessMatch("Nothing Found"), input);
             }
-            return (new SuccessMatch(input.Substring(0, input.Length - aux.Length)), aux);
+            return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
         }
     }
 }
