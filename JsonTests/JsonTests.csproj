@@ -54,6 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
+    <Compile Include="Many.cs" />
     <Compile Include="Optional.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Sequance.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="ChoiceTests.cs" />
     <Compile Include="TextTests.cs" />
     <Compile Include="OptionalTests.cs" />
+    <Compile Include="ManyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

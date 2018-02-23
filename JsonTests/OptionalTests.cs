@@ -23,6 +23,5 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "radu");
         }
-
     }
 }
