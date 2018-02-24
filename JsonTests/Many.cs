@@ -24,7 +24,7 @@ namespace JsonTests
             }
             if (remaining == input)
             {
-                return (new SuccessMatch("Nothing Found"), input);
+                return (new SuccessMatch(""), input);
             }
             return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
         }

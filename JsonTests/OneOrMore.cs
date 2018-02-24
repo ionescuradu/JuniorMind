@@ -9,15 +9,17 @@ namespace JsonTests
     class OneOrMore : Pattern
     {
         private Pattern pattern;
+        private Many aux;
 
         public OneOrMore(Pattern pattern)
         {
             this.pattern = pattern;
+            aux = new Many(pattern);
         }
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = new Many(pattern).Match(input);
+            var (match, remaining) = aux.Match(input);
             if (remaining == input)
             {
                 return (new NoMatch(input, input[0]), input);
