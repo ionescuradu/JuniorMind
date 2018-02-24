@@ -54,6 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
+    <Compile Include="List.cs" />
     <Compile Include="OneOrMore.cs" />
     <Compile Include="Many.cs" />
     <Compile Include="Optional.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="OptionalTests.cs" />
     <Compile Include="ManyTests.cs" />
     <Compile Include="OneOrMoreTests.cs" />
+    <Compile Include="ListTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
