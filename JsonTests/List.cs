@@ -8,12 +8,12 @@ namespace JsonTests
 {
     class List : Pattern
     {
-        private Pattern Characters;
+        private Pattern Letters;
         private Pattern Separator;
 
         public List(Pattern Characters, Pattern Separator)
         {
-            this.Characters = Characters;
+            this.Letters = Characters;
             this.Separator = Separator;
         }
 
@@ -23,12 +23,19 @@ namespace JsonTests
             {
                 return (new SuccessMatch(""), "");
             }
-            var (match, remaining) = Characters.Match(input);
+            var patterns = new Pattern[2] { Letters, Separator };
+            var (match, remaining) = new Many(new Sequance(patterns)).Match(input);
             if (match.Success && remaining == "")
             {
-                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), "");
+                return (new SuccessMatch(input), "");
             }
-            return (new NoMatch("", ' '), "");
+            (match, remaining) = Letters.Match(remaining);
+            if (match.Success && remaining == "")
+            {
+                return (new SuccessMatch(input), "");
+            }
+            return (new NoMatch(input, input[0]), input);
+
         }
     }
 }
