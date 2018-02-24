@@ -23,7 +23,12 @@ namespace JsonTests
             {
                 return (new SuccessMatch(""), "");
             }
-            return (new NoMatch("", ' '), input);
+            var (match, remaining) = Characters.Match(input);
+            if (match.Success && remaining == "")
+            {
+                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), "");
+            }
+            return (new NoMatch("", ' '), "");
         }
     }
 }
