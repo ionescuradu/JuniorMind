@@ -20,9 +20,9 @@ namespace JsonTests
             var (match, remaining) = pattern.Match(input);
             if (match.Success)
             {
-                return (new SuccessMatch(input[0].ToString()), remaining);
+                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
             }
-            return (new SuccessMatch("Nothing Found"), input);
+            return (new SuccessMatch(""), input);
         }
     }
 }
