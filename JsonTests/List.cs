@@ -11,18 +11,18 @@ namespace JsonTests
         readonly private Pattern Letters;
         readonly private Pattern Separator;
         readonly private Pattern[] patterns;
-        readonly private Many aux;
+        readonly private Many list;
 
         public List(Pattern Characters, Pattern Separator)
         {
             this.Letters = Characters;
             this.Separator = Separator;
-            aux = new Many(new Sequance(new Pattern[2] { Letters, Separator }));
+            list = new Many(new Sequance(new Pattern[] { Letters, Separator }));
         }
 
         public (Match, string) Match(string input)
         { 
-            var (match, remaining) = aux.Match(input);
+            var (match, remaining) = list.Match(input);
             if (match.Success && remaining == "")
             {
                 return (new SuccessMatch(input), "");
