@@ -29,7 +29,7 @@ namespace JsonTests
                     return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), input.Substring(input.Length - remaining.Length));
                 }
             }
-            return (new NoMatch("nothing",input[0]), input);
+            return (new NoMatch("",input[0]), input);
         }
     }
 }
