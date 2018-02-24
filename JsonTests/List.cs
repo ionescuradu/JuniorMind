@@ -17,8 +17,7 @@ namespace JsonTests
         {
             this.Letters = Characters;
             this.Separator = Separator;
-            patterns = new Pattern[2] { Letters, Separator };
-            aux = new Many(new Sequance(patterns));
+            aux = new Many(new Sequance(new Pattern[2] { Letters, Separator }));
         }
 
         public (Match, string) Match(string input)
