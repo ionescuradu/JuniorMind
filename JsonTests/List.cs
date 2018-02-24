@@ -10,20 +10,17 @@ namespace JsonTests
     {
         private Pattern Letters;
         private Pattern Separator;
+        private Pattern[] patterns;
 
         public List(Pattern Characters, Pattern Separator)
         {
             this.Letters = Characters;
             this.Separator = Separator;
+            patterns = new Pattern[2] { Letters, Separator };
         }
 
         public (Match, string) Match(string input)
-        {
-            if (input == "")
-            {
-                return (new SuccessMatch(""), "");
-            }
-            var patterns = new Pattern[2] { Letters, Separator };
+        { 
             var (match, remaining) = new Many(new Sequance(patterns)).Match(input);
             if (match.Success && remaining == "")
             {
