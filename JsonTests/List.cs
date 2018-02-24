@@ -11,17 +11,19 @@ namespace JsonTests
         private Pattern Letters;
         private Pattern Separator;
         private Pattern[] patterns;
+        private Many aux;
 
         public List(Pattern Characters, Pattern Separator)
         {
             this.Letters = Characters;
             this.Separator = Separator;
             patterns = new Pattern[2] { Letters, Separator };
+            aux = new Many(new Sequance(patterns));
         }
 
         public (Match, string) Match(string input)
         { 
-            var (match, remaining) = new Many(new Sequance(patterns)).Match(input);
+            var (match, remaining) = aux.Match(input);
             if (match.Success && remaining == "")
             {
                 return (new SuccessMatch(input), "");
