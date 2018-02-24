@@ -8,10 +8,10 @@ namespace JsonTests
 {
     class List : Pattern
     {
-        private Pattern Letters;
-        private Pattern Separator;
-        private Pattern[] patterns;
-        private Many aux;
+        readonly private Pattern Letters;
+        readonly private Pattern Separator;
+        readonly private Pattern[] patterns;
+        readonly private Many aux;
 
         public List(Pattern Characters, Pattern Separator)
         {
