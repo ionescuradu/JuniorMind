@@ -66,14 +66,5 @@ namespace JsonTests
             Assert.AreEqual(remaining, "r r r 4");
         }
 
-        [TestMethod]
-        public void ListTest7()
-        {
-            string input = "r r r 4";
-            var x = new List(new Character('r'), new Character(' '));
-            var (match, remaining) = x.Match(input);
-            Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "r r r 4");
-        }
     }
 }
