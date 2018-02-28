@@ -8,13 +8,6 @@ namespace JsonTests
 {
     class Integer : Pattern
     {
-        Pattern[] pattern;
-
-        public Integer(params Pattern[] pattern)
-        {
-            this.pattern = pattern;
-        }
-
         public (Match, string) Match(string input)
         {
             var integer = new Choice(
