@@ -65,6 +65,5 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "r r r 4");
         }
-
     }
 }

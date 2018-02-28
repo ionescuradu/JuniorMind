@@ -9,11 +9,11 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest1()
         {
-            var givenText = "-0";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
+            var givenText = "0";
+            var x = new Sequance(new Range('0', '9'));
+            var (match, remaining) = x.Match(givenText);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
