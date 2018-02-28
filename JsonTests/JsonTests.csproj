@@ -54,7 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
-    <Compile Include="WholePart.cs" />
+    <Compile Include="Integer.cs" />
     <Compile Include="List.cs" />
     <Compile Include="OneOrMore.cs" />
     <Compile Include="Many.cs" />

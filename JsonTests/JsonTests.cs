@@ -10,40 +10,40 @@ namespace JsonTests
         public void JsonNumberTest1()
         {
             var givenText = "0";
-            var wholePart = new WholePart();
-            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
+            var wholePart = new Integer();
+            Assert.AreEqual("", wholePart.Integer(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest2()
         {
             var givenText = "123456";
-            var wholePart = new WholePart();
-            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
+            var wholePart = new Integer();
+            Assert.AreEqual("", wholePart.Integer(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest3()
         {
             var givenText = "-1234";
-            var wholePart = new WholePart();
-            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
+            var wholePart = new Integer();
+            Assert.AreEqual("", wholePart.Integer(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest4()
         {
             var givenText = "-0";
-            var wholePart = new WholePart();
-            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
+            var wholePart = new Integer();
+            Assert.AreEqual("", wholePart.Integer(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest5()
         {
             var givenText = "1.";
-            var wholePart = new WholePart();
-            Assert.AreEqual(".", wholePart.CheckWholePart(givenText));
+            var wholePart = new Integer();
+            Assert.AreEqual(".", wholePart.Integer(givenText));
         }
 
         [TestMethod]
