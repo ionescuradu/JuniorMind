@@ -18,40 +18,32 @@ namespace JsonTests
         public void JsonNumberTest2()
         {
             var givenText = "123456";
-            var x = new Sequance(new Many(new Range('1', '9')));
-            var (match, remaining) = x.Match(givenText);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            var wholePart = new WholePart();
+            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest3()
         {
             var givenText = "-1234";
-            var x = new Sequance(new Optional(new Character('-')), new Many(new Range('1', '9')));
-            var (match, remaining) = x.Match(givenText);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            var wholePart = new WholePart();
+            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest4()
         {
             var givenText = "-0";
-            var x = new Sequance(new Optional(new Character('-')), new Many(new Range('1', '9')));
-            var (match, remaining) = x.Match(givenText);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            var wholePart = new WholePart();
+            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
         }
 
         [TestMethod]
         public void JsonNumberTest5()
         {
-            var givenText = "12";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
+            var givenText = "1.";
+            var wholePart = new WholePart();
+            Assert.AreEqual(".", wholePart.CheckWholePart(givenText));
         }
 
         [TestMethod]
