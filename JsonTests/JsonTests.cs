@@ -10,10 +10,8 @@ namespace JsonTests
         public void JsonNumberTest1()
         {
             var givenText = "0";
-            var x = new Sequance(new Range('0', '9'));
-            var (match, remaining) = x.Match(givenText);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            var wholePart = new WholePart();
+            Assert.AreEqual("", wholePart.CheckWholePart(givenText));
         }
 
         [TestMethod]
@@ -29,21 +27,21 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest3()
         {
-            var givenText = "+3";
-            string myError = "+";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
+            var givenText = "-1234";
+            var x = new Sequance(new Optional(new Character('-')), new Many(new Range('1', '9')));
+            var (match, remaining) = x.Match(givenText);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest4()
         {
-            var givenText = "-m23+";
-            string myError = "-m";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
+            var givenText = "-0";
+            var x = new Sequance(new Optional(new Character('-')), new Many(new Range('1', '9')));
+            var (match, remaining) = x.Match(givenText);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]

@@ -17,7 +17,7 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var aux = input;
-            if (input == "" || pattern.Length > input.Length)
+            if (input == "")
             {
                 return (new NoText(input), input);
             }   
@@ -29,6 +29,10 @@ namespace JsonTests
                     return (new NoMatch(aux, aux[i]), input);
                 }
                 aux = remaining;
+                if (remaining == "" && i < pattern.Length - 1)
+                {
+                    return (new NoMatch(aux, ' '), input);
+                }
             }
             return (new SuccessMatch(input.Substring(0, input.Length - aux.Length)), aux);
         }
