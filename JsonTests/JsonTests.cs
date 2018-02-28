@@ -9,41 +9,46 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest1()
         {
-            var givenText = "0";
-            var wholePart = new Integer();
-            Assert.AreEqual("", wholePart.Integer(givenText));
+            var integer = new Integer();
+            var (match, remaining) = integer.Match("0");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest2()
         {
-            var givenText = "123456";
-            var wholePart = new Integer();
-            Assert.AreEqual("", wholePart.Integer(givenText));
+            var integer = new Integer();
+            var (match, remaining) = integer.Match("123456");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest3()
         {
-            var givenText = "-1234";
-            var wholePart = new Integer();
-            Assert.AreEqual("", wholePart.Integer(givenText));
+            var integer = new Integer();
+            var (match, remaining) = integer.Match("-1234");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest4()
         {
-            var givenText = "-0";
-            var wholePart = new Integer();
-            Assert.AreEqual("", wholePart.Integer(givenText));
+            var integer = new Integer();
+            var (match, remaining) = integer.Match("-0");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest5()
         {
-            var givenText = "1.";
-            var wholePart = new Integer();
-            Assert.AreEqual(".", wholePart.Integer(givenText));
+            var integer = new Integer();
+            var (match, remaining) = integer.Match("1.");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, ".");
         }
 
         [TestMethod]
