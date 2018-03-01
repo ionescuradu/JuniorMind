@@ -13,7 +13,7 @@ namespace JsonTests
             var scientific = new Sequance(
                 new Any("Ee"),
                 new Optional(new Any("+-")),
-                new Many(new Range('0', '9'))
+                new OneOrMore(new Range('0', '9'))
                 );
             var (match, remaining) = scientific.Match(input);
             if (match.Success)

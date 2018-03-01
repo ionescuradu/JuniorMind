@@ -12,7 +12,7 @@ namespace JsonTests
         {
             var fractional = new Sequance(
                 new Character('.'), 
-                new Many(new Range('0', '9'))
+                new OneOrMore(new Range('0', '9'))
                 );
             var (match, remaining) = fractional.Match(input);
             if (match.Success)
