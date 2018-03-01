@@ -54,21 +54,19 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest6()
         {
-            var givenText = "-012";
-            string myError = "-01";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
+            var fractional = new Fractional();
+            var (match, remaining) = fractional.Match(".12");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest7()
         {
-            var givenText = "0+456";
-            string myError = "0+";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
+            var fractional = new Fractional();
+            var (match, remaining) = fractional.Match("1.12");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "1.12");
         }
 
         [TestMethod]
