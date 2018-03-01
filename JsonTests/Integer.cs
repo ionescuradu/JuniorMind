@@ -8,7 +8,7 @@ namespace JsonTests
 {
     class Integer : Pattern
     {
-        private Choice integer;
+        readonly private Choice integer;
         
         public Integer()
         {
