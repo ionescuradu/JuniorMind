@@ -11,7 +11,7 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var number = new Choice(
-                new Sequance(new Integer(), new Fractional(), new ScientificNotation()),
+                new Sequance(new Integer(), new Fractional(), new Scientific()),
                 new Sequance(new Integer(), new Fractional()),
                 new Sequance(new Integer())
                 );

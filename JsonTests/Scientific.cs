@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class ScientificNotation : Pattern
+    class Scientific : Pattern
     {
         public (Match, string) Match(string input)
         {
