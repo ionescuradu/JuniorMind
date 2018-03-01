@@ -54,6 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
+    <Compile Include="ScientificNotation.cs" />
     <Compile Include="Numbers.cs" />
     <Compile Include="Fractional.cs" />
     <Compile Include="Integer.cs" />
