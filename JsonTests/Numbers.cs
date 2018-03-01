@@ -8,13 +8,19 @@ namespace JsonTests
 {
     class Numbers : Pattern
     {
-        public (Match, string) Match(string input)
+        readonly private Choice number;
+
+        public Numbers()
         {
-            var number = new Choice(
+            number = new Choice(
                 new Sequance(new Integer(), new Fractional(), new Scientific()),
                 new Sequance(new Integer(), new Fractional()),
                 new Sequance(new Integer())
                 );
+        }
+
+        public (Match, string) Match(string input)
+        {
             var (match, remaining) = number.Match(input);
             if (match.Success)
             {
