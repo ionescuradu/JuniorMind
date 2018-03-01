@@ -8,14 +8,14 @@ namespace JsonTests
 {
     class Numbers : Pattern
     {
-        readonly private Choice number;
+        readonly private Sequance number;
 
         public Numbers()
         {
-            number = new Choice(
-                new Sequance(new Integer(), new Fractional(), new Scientific()),
-                new Sequance(new Integer(), new Fractional()),
-                new Sequance(new Integer())
+            number = new Sequance(
+                new Integer(), 
+                new Optional(new Fractional()),
+                new Optional(new Scientific())
                 );
         }
 
