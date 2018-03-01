@@ -14,7 +14,8 @@ namespace JsonTests
                 new Sequance(new Optional(new Character('-')),
                              new Character('0')),
                 new Sequance(new Optional(new Character('-')),
-                             new Many(new Range('1', '9'))));
+                             new Range('1', '9'),
+                             new Many(new Range('0', '9'))));
             var (match, remaining) = integer.Match(input);
             if (match.Success)
             {

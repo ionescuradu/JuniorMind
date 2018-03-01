@@ -12,7 +12,8 @@ namespace JsonTests
         {
             var number = new Choice(
                 new Sequance(new Integer(), new Fractional()),
-                new Sequance(new Integer()));
+                new Sequance(new Integer())
+                );
             var (match, remaining) = number.Match(input);
             if (match.Success)
             {
