@@ -114,6 +114,15 @@ namespace JsonTests
             Assert.AreEqual(remaining, "");
         }
 
+        [TestMethod]
+        public void JsonNumberTest13()
+        {
+            var number = new Numbers();
+            var (match, remaining) = number.Match("-104.575ef10");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "f10");
+        }
+
         public bool Number(string text, out string error)
         {
             error = null;
