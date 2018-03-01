@@ -8,13 +8,18 @@ namespace JsonTests
 {
     class Scientific : Pattern
     {
-        public (Match, string) Match(string input)
+        readonly Sequance scientific;
+
+        public Scientific()
         {
-            var scientific = new Sequance(
+            scientific = new Sequance(
                 new Any("Ee"),
                 new Optional(new Any("+-")),
                 new OneOrMore(new Range('0', '9'))
                 );
+        }
+        public (Match, string) Match(string input)
+        {
             var (match, remaining) = scientific.Match(input);
             if (match.Success)
             {

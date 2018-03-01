@@ -8,12 +8,18 @@ namespace JsonTests
 {
     class Fractional : Pattern
     {
-        public (Match, string) Match(string input)
+        readonly private Sequance fractional;
+
+        public Fractional()
         {
-            var fractional = new Sequance(
-                new Character('.'), 
+            fractional = new Sequance(
+                new Character('.'),
                 new OneOrMore(new Range('0', '9'))
                 );
+        }
+
+        public (Match, string) Match(string input)
+        {
             var (match, remaining) = fractional.Match(input);
             if (match.Success)
             {
