@@ -72,91 +72,19 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest8()
         {
-            var givenText = "123.1";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
+            var number = new Numbers();
+            var (match, remaining) = number.Match("1.12");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
         public void JsonNumberTest9()
         {
-            var givenText = "123.1+";
-            string myError = "123.1+";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest10()
-        {
-            var givenText = "123.101.1";
-            string myError = "123.101.";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest11()
-        {
-            var givenText = "-12.89e+9";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest12()
-        {
-            var givenText = "-12.89e+";
-            string myError = "-12.89e+";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest13()
-        {
-            var givenText = "1289.e+2";
-            string myError = "1289.e";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest14()
-        {
-            var givenText = "1289.8E+2";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest15()
-        {
-            var givenText = "-1289.8";
-            string myError = null;
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(true, Number(givenText, out givenError));
-        }
-
-        [TestMethod]
-        public void JsonNumberTest16()
-        {
-            var givenText = "-1289.8me+9";
-            string myError = "-1289.8m";
-            //Number(givenText, out var givenError);
-            //Assert.AreEqual(myError, givenError);
-            //Assert.AreEqual(false, Number(givenText, out givenError));
+            var number = new Numbers();
+            var (match, remaining) = number.Match("-102.475");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         public bool Number(string text, out string error)

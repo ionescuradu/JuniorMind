@@ -54,7 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
-    <Compile Include="JsonNumbers.cs" />
+    <Compile Include="Numbers.cs" />
     <Compile Include="Fractional.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="List.cs" />
