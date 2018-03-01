@@ -8,14 +8,20 @@ namespace JsonTests
 {
     class Integer : Pattern
     {
-        public (Match, string) Match(string input)
+        private Choice integer;
+        
+        public Integer()
         {
-            var integer = new Choice(
+            integer = new Choice(
                 new Sequance(new Optional(new Character('-')),
                              new Character('0')),
                 new Sequance(new Optional(new Character('-')),
                              new Range('1', '9'),
                              new Many(new Range('0', '9'))));
+        }
+
+        public (Match, string) Match(string input)
+        {
             var (match, remaining) = integer.Match(input);
             if (match.Success)
             {
