@@ -8,7 +8,7 @@ namespace JsonTests
 {
     class Text : Pattern
     {
-        private Character[] chars;
+        readonly private Character[] chars;
 
         public Text(string givenText)
         {

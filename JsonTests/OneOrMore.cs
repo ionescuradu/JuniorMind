@@ -8,8 +8,8 @@ namespace JsonTests
 {
     class OneOrMore : Pattern
     {
-        private Pattern pattern;
-        private Many aux;
+        readonly private Pattern pattern;
+        readonly private Many aux;
 
         public OneOrMore(Pattern pattern)
         {

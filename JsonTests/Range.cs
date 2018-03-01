@@ -8,8 +8,8 @@ namespace JsonTests
 {
     class Range : Pattern
     {
-        private char startChar;
-        private char endChar;
+        readonly private char startChar;
+        readonly private char endChar;
 
         public Range(char startChar, char endChar)
         {

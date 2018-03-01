@@ -8,7 +8,7 @@ namespace JsonTests
 {
     class Choice : Pattern
     {
-        Pattern[] choices;
+        readonly Pattern[] choices;
 
         public Choice(params Pattern[] choices)
         {

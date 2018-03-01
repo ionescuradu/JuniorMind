@@ -8,7 +8,7 @@ namespace JsonTests
 {
     class Many : Pattern
     {
-        private Pattern pattern;
+        readonly private Pattern pattern;
 
         public Many(Pattern pattern)
         {

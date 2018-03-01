@@ -7,7 +7,7 @@ namespace JsonTests
 {
     class Sequance :Pattern
     {
-        Pattern[] pattern;
+        readonly private Pattern[] pattern;
 
         public Sequance( params Pattern[] pattern)
         {

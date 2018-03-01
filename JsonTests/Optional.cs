@@ -8,7 +8,7 @@ namespace JsonTests
 {
     class Optional : Pattern
     {
-        private Pattern pattern;
+        readonly private Pattern pattern;
 
         public Optional(Pattern pattern)
         {
