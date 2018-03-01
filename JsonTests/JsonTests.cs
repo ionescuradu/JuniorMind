@@ -82,7 +82,7 @@ namespace JsonTests
         public void JsonNumberTest9()
         {
             var number = new Numbers();
-            var (match, remaining) = number.Match("-102.475");
+            var (match, remaining) = number.Match("-1.475");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }
