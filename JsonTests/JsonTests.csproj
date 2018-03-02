@@ -83,6 +83,7 @@
     <Compile Include="ManyTests.cs" />
     <Compile Include="OneOrMoreTests.cs" />
     <Compile Include="ListTests.cs" />
+    <Compile Include="StringTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,7 +10,7 @@ namespace JsonTests
     {   
         public (Match, string) Match(string input)
         {
-
+            return (new SuccessMatch(input), "");
         }
     }
 }
