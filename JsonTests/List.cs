@@ -10,7 +10,6 @@ namespace JsonTests
     {
         readonly private Pattern Letters;
         readonly private Pattern Separator;
-        readonly private Pattern[] patterns;
         readonly private Many list;
 
         public List(Pattern Characters, Pattern Separator)
