@@ -7,10 +7,19 @@ using System.Threading.Tasks;
 namespace JsonTests
 {
     class String : Pattern
-    {   
+    {
+        readonly private Choice specialChars;
+
+        public String()
+        {           
+        }
+
         public (Match, string) Match(string input)
         {
-            return (new SuccessMatch(input), "");
+            if (input == "")
+            {
+                return (new SuccessMatch(input), "");
+            }
         }
     }
 }
