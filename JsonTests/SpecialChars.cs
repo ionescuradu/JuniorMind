@@ -9,23 +9,28 @@ namespace JsonTests
     class SpecialChars : Pattern
     {
         readonly private Optional pattern;
+        readonly private Any hexazecimal;
 
         public SpecialChars()
         {
+            hexazecimal = new Any("0123456789ABCDEFabcdef");
             pattern = new Optional(
                 new Choice(
                     new Text("\""),
                     new Text("\\"),
-                    new Text("\/"),
+                    new Text("\\/"),
                     new Text("\b"),
                     new Text("\f"),
                     new Text("\n"),
                     new Text("\r"),
                     new Text("\t"),
-                    new Text("\u0041"),
-                    new Text("\u0042"),
-                    new Text("\u0043"),
-                    new Text("\u0044")
+                    new Sequance(new Character((char)92), 
+                                 new Character('u'), 
+                                 hexazecimal, 
+                                 hexazecimal, 
+                                 hexazecimal, 
+                                 hexazecimal
+                                 )
                     )
                 );
         }

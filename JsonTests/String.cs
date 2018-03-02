@@ -20,6 +20,7 @@ namespace JsonTests
             {
                 return (new SuccessMatch(input), "");
             }
+            return (new SuccessMatch(input), "");
         }
     }
 }
