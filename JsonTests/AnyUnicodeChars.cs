@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class ExceptionChars : Pattern
+    class AnyUnicodeChars : Pattern
     {
         readonly private Choice exceptionChars;
         readonly private Choice anyUnicodeChar;
         readonly private Any hexazecimal;
 
-        public ExceptionChars()
+        public AnyUnicodeChars()
         {
             hexazecimal = new Any("0123456789ABCDEFabcdef");
             exceptionChars = new Choice(

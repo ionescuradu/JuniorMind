@@ -8,10 +8,11 @@ namespace JsonTests
 {
     class String : Pattern
     {
-        readonly private Optional givenString;
+        readonly private OneOrMore givenString;
 
         public String()
-        {          
+        {
+            givenString = new OneOrMore(new Choice(new AnyUnicodeChars(), new SpecialChars()));
         }
 
         public (Match, string) Match(string input)
@@ -21,7 +22,11 @@ namespace JsonTests
                 return (new SuccessMatch(input), "");
             }
             var (match, remaining) = givenString.Match(input);
-            return (new SuccessMatch(input), "");
+            if (remaining == input)
+            {
+                return (new NoMatch(input, input[0]), input);
+            }
+            return (new SuccessMatch(input), remaining);
         }
     }
 }
