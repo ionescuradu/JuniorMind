@@ -7,8 +7,12 @@ namespace JsonTests
     public class ExceptionCharsTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ExceptionChars1()
         {
+            var x = new ExceptionChars();
+            var (match, remaining) = x.Match("\\u1234");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
     }
 }

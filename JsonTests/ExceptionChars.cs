@@ -46,9 +46,9 @@ namespace JsonTests
             var (match, remaining) = exceptionChars.Match(input);
             if (match.Success)
             {
-                return (new NoMatch(input, input[0]), input);
+                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
             }
-            return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
+            return (new NoMatch(input, input[0]), input);
         }
     }
 }
