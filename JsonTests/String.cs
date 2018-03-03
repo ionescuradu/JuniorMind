@@ -12,7 +12,12 @@ namespace JsonTests
 
         public String()
         {
-            givenString = new OneOrMore(new Choice(new AnyUnicodeChars(), new SpecialChars()));
+            givenString = new OneOrMore(
+                new Choice(
+                    new AnyUnicodeChars(),
+                    new SpecialChars()
+                )
+            );
         }
 
         public (Match, string) Match(string input)

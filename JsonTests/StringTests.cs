@@ -32,5 +32,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void StringTest4()
+        {
+            var x = new String();
+            //var (match, remaining) = x.Match("\u0000");
+            //Assert.IsTrue(match.Success);
+            //Assert.AreEqual("", remaining);
+        }
     }
 }

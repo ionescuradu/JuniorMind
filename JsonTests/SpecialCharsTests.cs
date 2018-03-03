@@ -32,5 +32,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "radu");
         }
+
+        [TestMethod]
+        public void SpecialCharsTest4()
+        {
+            var x = new SpecialChars();
+            var (match, remaining) = x.Match("\u1234");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "\u1234");
+        }
     }
 }
