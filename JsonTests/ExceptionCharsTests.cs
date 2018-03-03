@@ -11,7 +11,7 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u1234");
-            Assert.IsTrue(match.Success);
+            Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "");
         }
     }

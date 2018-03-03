@@ -19,7 +19,7 @@ namespace JsonTests
                                   new Character('u'),
                                   new Character('0'),
                                   new Character('0'),
-                                  new Character('1'),
+                                  new Any("01"),
                                   hexazecimal
                                   ),
                 new Sequance(new Character((char)92),
