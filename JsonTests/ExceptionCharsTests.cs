@@ -11,8 +11,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u0000");
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "\\u0000");
         }
 
         [TestMethod]
@@ -20,8 +20,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u001f");
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "\\u001f");
         }
 
         [TestMethod]
@@ -29,8 +29,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u002f");
-            Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "\\u002f");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
 
         [TestMethod]
@@ -38,8 +38,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u0022");
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "\\u0022");
         }
 
         [TestMethod]
@@ -47,8 +47,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u005C");
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, "\\u005C");
         }
 
         [TestMethod]
@@ -56,8 +56,8 @@ namespace JsonTests
         {
             var x = new ExceptionChars();
             var (match, remaining) = x.Match("\\u005D");
-            Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "\\u005D");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
         }
     }
 }

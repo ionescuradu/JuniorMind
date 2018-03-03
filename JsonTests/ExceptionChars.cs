@@ -9,6 +9,7 @@ namespace JsonTests
     class ExceptionChars : Pattern
     {
         readonly private Choice exceptionChars;
+        readonly private Choice anyUnicodeChar;
         readonly private Any hexazecimal;
 
         public ExceptionChars()
@@ -37,20 +38,21 @@ namespace JsonTests
                                   new Any("Cc")
                                   )
                                   );
+            anyUnicodeChar = new Choice(
+                new SpecialChars(),
+                new Range((char)32, (char)255)
+                );
         }
 
         public (Match, string) Match(string input)
         {
-            if (input == "")
-            {
-                return (new NoText(input), input);
-            }
             var (match, remaining) = exceptionChars.Match(input);
             if (match.Success)
             {
-                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
+                return (new NoMatch(input,input[0]), input);
             }
-            return (new NoMatch(input, input[0]), input);
+            (match, remaining) = anyUnicodeChar.Match(input);
+            return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
         }
     }
 }
