@@ -32,5 +32,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "\\u002f");
         }
+
+        [TestMethod]
+        public void ExceptionChars4()
+        {
+            var x = new ExceptionChars();
+            var (match, remaining) = x.Match("\\u0022");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
+        }
     }
 }

@@ -25,11 +25,13 @@ namespace JsonTests
                 new Sequance(new Character((char)92),
                                   new Character('u'),
                                   new Character('0'),
+                                  new Character('0'),
                                   new Character('2'),
                                   new Character('2')
                                   ),
                 new Sequance(new Character((char)92),
                                   new Character('u'),
+                                  new Character('0'),
                                   new Character('0'),
                                   new Character('5'),
                                   new Any("Cc")
