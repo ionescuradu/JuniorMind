@@ -29,7 +29,7 @@ namespace JsonTests
         {
             var x = new SpecialChars();
             var (match, remaining) = x.Match("radu");
-            Assert.IsTrue(match.Success);
+            Assert.IsFalse(match.Success);
             Assert.AreEqual(remaining, "radu");
         }
     }

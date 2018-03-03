@@ -19,7 +19,7 @@ namespace JsonTests
         public void StringTest2()
         {
             var x = new String();
-            var (match, remaining) = x.Match("");
+            var (match, remaining) = x.Match("\u0041lin");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
