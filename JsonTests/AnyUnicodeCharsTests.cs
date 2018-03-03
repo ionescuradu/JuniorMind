@@ -10,25 +10,25 @@ namespace JsonTests
         public void ExceptionChars1()
         {
             var x = new AnyUnicodeChars();
-            var (match, remaining) = x.Match("\\u0000");
+            var (match, remaining) = x.Match("\u0000");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "\\u0000");
+            Assert.AreEqual(remaining, "\u0000");
         }
 
         [TestMethod]
         public void ExceptionChars2()
         {
             var x = new AnyUnicodeChars();
-            var (match, remaining) = x.Match("\\u001f");
+            var (match, remaining) = x.Match("\u001f");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "\\u001f");
+            Assert.AreEqual(remaining, "\u001f");
         }
 
         [TestMethod]
         public void ExceptionChars3()
         {
             var x = new AnyUnicodeChars();
-            var (match, remaining) = x.Match("\\u002f");
+            var (match, remaining) = x.Match("\u002f");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }
@@ -56,6 +56,33 @@ namespace JsonTests
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\\u005D");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
+        }
+
+        [TestMethod]
+        public void ExceptionChars7()
+        {
+            var x = new AnyUnicodeChars();
+            var (match, remaining) = x.Match("\u005D");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
+        }
+
+        [TestMethod]
+        public void ExceptionChars8()
+        {
+            var x = new AnyUnicodeChars();
+            var (match, remaining) = x.Match("");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
+        }
+
+        [TestMethod]
+        public void ExceptionChars9()
+        {
+            var x = new AnyUnicodeChars();
+            var (match, remaining) = x.Match("");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }
