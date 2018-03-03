@@ -16,6 +16,13 @@ namespace JsonTests
             hexazecimal = new Any("0123456789ABCDEFabcdef");
             pattern = new Optional(
                 new Choice(
+                    new Sequance(new Character((char)92),
+                                 new Character('u'),
+                                 hexazecimal,
+                                 hexazecimal,
+                                 hexazecimal,
+                                 hexazecimal
+                                 ),
                     new Text("\""),
                     new Text("\\"),
                     new Text("\\/"),
@@ -23,14 +30,7 @@ namespace JsonTests
                     new Text("\f"),
                     new Text("\n"),
                     new Text("\r"),
-                    new Text("\t"),
-                    new Sequance(new Character((char)92), 
-                                 new Character('u'), 
-                                 hexazecimal, 
-                                 hexazecimal, 
-                                 hexazecimal, 
-                                 hexazecimal
-                                 )
+                    new Text("\t")
                     )
                 );
         }
