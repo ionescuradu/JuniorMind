@@ -82,7 +82,7 @@ namespace JsonTests
         public void ExceptionChars9()
         {
             var x = new AnyUnicodeChars();
-            var (match, remaining) = x.Match("");
+            var (match, remaining) = x.Match("radu");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }

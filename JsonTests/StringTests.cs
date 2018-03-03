@@ -37,9 +37,9 @@ namespace JsonTests
         public void StringTest4()
         {
             var x = new String();
-            //var (match, remaining) = x.Match("\u0000");
-            //Assert.IsTrue(match.Success);
-            //Assert.AreEqual("", remaining);
+            var (match, remaining) = x.Match("\u0000");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual("\u0000", remaining);
         }
     }
 }
