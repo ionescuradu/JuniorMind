@@ -10,8 +10,17 @@ namespace JsonTests
         public void ExceptionChars1()
         {
             var x = new ExceptionChars();
-            var (match, remaining) = x.Match("\\u1234");
-            Assert.IsFalse(match.Success);
+            var (match, remaining) = x.Match("\\u0000");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "");
+        }
+
+        [TestMethod]
+        public void ExceptionChars2()
+        {
+            var x = new ExceptionChars();
+            var (match, remaining) = x.Match("\\u001f");
+            Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }
     }
