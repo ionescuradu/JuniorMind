@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JsonTests
 {
     [TestClass]
-    public class ExceptionCharsTests
+    public class AnyUnicodeCharsTests
     {
         [TestMethod]
-        public void ExceptionChars1()
+        public void AnyUnicodeCharsTests1()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\u0000");
@@ -16,7 +16,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars2()
+        public void AnyUnicodeCharsTests2()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\u001f");
@@ -25,7 +25,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars3()
+        public void AnyUnicodeCharsTests3()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\u002f");
@@ -34,7 +34,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars4()
+        public void AnyUnicodeCharsTests4()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\\u0022");
@@ -43,7 +43,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars5()
+        public void AnyUnicodeCharsTests5()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\\u005C");
@@ -52,7 +52,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars6()
+        public void AnyUnicodeCharsTests6()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\\u005D");
@@ -61,7 +61,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars7()
+        public void AnyUnicodeCharsTests7()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("\u005D");
@@ -70,7 +70,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars8()
+        public void AnyUnicodeCharsTests8()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("");
@@ -79,12 +79,12 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ExceptionChars9()
+        public void AnyUnicodeCharsTests9()
         {
             var x = new AnyUnicodeChars();
             var (match, remaining) = x.Match("radu");
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.AreEqual(remaining, "adu");
         }
     }
 }
