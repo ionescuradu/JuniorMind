@@ -31,6 +31,10 @@ namespace JsonTests
             {
                 return (new NoMatch(input, input[0]), input);
             }
+            if (remaining != "")
+            {
+                return (new NoMatch(input, input[0]), remaining);
+            }
             return (new SuccessMatch(input), remaining);
         }
     }

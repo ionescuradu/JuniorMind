@@ -64,9 +64,9 @@ namespace JsonTests
         public void StringTest7()
         {
             var x = new String();
-            var (match, remaining) = x.Match("radu\u0000");
+            var (match, remaining) = x.Match("\"radu\\u0000\"");
             Assert.IsTrue(match.Success);
-            Assert.AreEqual("\u0000", remaining);
+            Assert.AreEqual("", remaining);
         }
     }
 }
