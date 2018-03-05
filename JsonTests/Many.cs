@@ -9,24 +9,33 @@ namespace JsonTests
     class Many : Pattern
     {
         readonly private Pattern pattern;
+        private int minimum;
+        private int maxim;
 
-        public Many(Pattern pattern)
+        public Many(Pattern pattern, int minimum = 0, int maxim = 0)
         {
             this.pattern = pattern;
+            this.minimum = minimum;
+            this.maxim = maxim;
         }
 
         public (Match, string) Match(string input)
         {
+            var index = 0;
             var (match, remaining) = pattern.Match(input);
             while (match.Success)
             {
+                index++;
                 (match, remaining) = pattern.Match(remaining);
             }
-            if (remaining == input)
+
+            if (minimum <= index && (maxim == 0 || index <= maxim))
             {
-                return (new SuccessMatch(""), input);
+                string foundText = input.Substring(0, input.Length - remaining.Length);
+                return (new SuccessMatch(foundText), remaining);
             }
-            return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
+
+            return (new NoMatch(input, ' '), input);
         }
     }
 }

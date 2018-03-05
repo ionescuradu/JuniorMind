@@ -12,17 +12,12 @@ namespace JsonTests
 
         public Optional(Pattern pattern)
         {
-            this.pattern = pattern;
+            this.pattern = new Many(pattern, 0, 1);
         }
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = pattern.Match(input);
-            if (match.Success)
-            {
-                return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
-            }
-            return (new SuccessMatch(""), input);
+            return pattern.Match(input);
         }
     }
 }

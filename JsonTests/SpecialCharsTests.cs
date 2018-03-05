@@ -19,7 +19,7 @@ namespace JsonTests
         public void SpecialCharsTest2()
         {
             var x = new SpecialChars();
-            var (match, remaining) = x.Match("\t");
+            var (match, remaining) = x.Match("\\t");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }

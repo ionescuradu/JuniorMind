@@ -22,5 +22,15 @@ namespace JsonTests
                 return true;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return foundString.Equals(obj);
+        }
+
+        public override string ToString()
+        {
+            return foundString;
+        }
     }
 }

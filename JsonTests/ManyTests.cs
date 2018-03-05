@@ -23,5 +23,23 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remainng, "ionescu");
         }
+
+        [TestMethod]
+        public void MinimOccurancesForMany()
+        {
+            var x = new Many(new Character('r'), 2);
+            var (match, remainng) = x.Match("radu");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "radu");
+        }
+
+        [TestMethod]
+        public void MaximumOccurances()
+        {
+            var x = new Many(new Character('r'), 0, 1);
+            var (match, remainng) = x.Match("rradu");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remainng, "rradu");
+        }
     }
 }

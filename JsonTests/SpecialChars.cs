@@ -9,14 +9,15 @@ namespace JsonTests
     class SpecialChars : Pattern
     {
         readonly private Choice pattern;
-        readonly private Any hexazecimal;
+        readonly private Choice hexazecimal;
 
         public SpecialChars()
         {
-            hexazecimal = new Any("0123456789ABCDEFabcdef");
+            hexazecimal = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'));
             pattern = new Choice(
-                new Sequance(new Character((char)92),
-                             new Character('u'),
+                new Sequance(new Text("\\u"),
                              hexazecimal,
                              hexazecimal,
                              hexazecimal,
@@ -25,11 +26,11 @@ namespace JsonTests
                 new Text("\""),
                 new Text("\\"),
                 new Text("\\/"),
-                new Text("\b"),
-                new Text("\f"),
-                new Text("\n"),
-                new Text("\r"),
-                new Text("\t")
+                new Text("\\b"),
+                new Text("\\f"),
+                new Text("\\n"),
+                new Text("\\r"),
+                new Text("\\t")
                 );
         }
 
