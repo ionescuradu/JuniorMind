@@ -29,7 +29,16 @@ namespace JsonTests
         {
             var x = new Value();
             var (match, remaining) = x.Match("-104.575e-10");
-            Assert.IsFalse(match.Success);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
+
+        [TestMethod]
+        public void ValueTest4()
+        {
+            var x = new Value();
+            var (match, remaining) = x.Match("True");
+            Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
     }
