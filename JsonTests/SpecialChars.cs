@@ -18,19 +18,16 @@ namespace JsonTests
                 new Range('a', 'f'));
             pattern = new Choice(
                 new Sequance(new Text("\\u"),
-                             hexazecimal,
-                             hexazecimal,
-                             hexazecimal,
-                             hexazecimal
+                             new Many(hexazecimal, 4, 4)
                              ),
-                new Text("\""),
-                new Text("\\"),
-                new Text("\\/"),
                 new Text("\\b"),
                 new Text("\\f"),
                 new Text("\\n"),
                 new Text("\\r"),
-                new Text("\\t")
+                new Text("\\t"),
+                new Text("\""),
+                new Text("\\"),
+                new Text("\\/")
                 );
         }
 
