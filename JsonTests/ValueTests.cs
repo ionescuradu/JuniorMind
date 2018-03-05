@@ -41,5 +41,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void ValueTest5()
+        {
+            var x = new Value();
+            var (match, remaining) = x.Match("-104.575e-1s0");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual("-104.575e-1s0", remaining);
+        }
     }
 }
