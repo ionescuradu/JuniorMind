@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Numbers : Pattern
+    class Number : Pattern
     {
         readonly private Sequance number;
 
-        public Numbers()
+        public Number()
         {
             number = new Sequance(
                 new Integer(), 

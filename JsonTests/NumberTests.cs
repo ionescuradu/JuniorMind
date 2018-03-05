@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JsonTests
 {
     [TestClass]
-    public class JsonTests
+    public class NumberTests
     {
         [TestMethod]
         public void JsonNumberTest1()
@@ -72,7 +72,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest8()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("1.12");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
@@ -81,7 +81,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest9()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("-1.475");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
@@ -90,7 +90,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest10()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("-104.575");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
@@ -99,7 +99,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest11()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("-104.575e-10");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
@@ -108,7 +108,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest12()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("-104.575e10");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
@@ -117,7 +117,7 @@ namespace JsonTests
         [TestMethod]
         public void JsonNumberTest13()
         {
-            var number = new Numbers();
+            var number = new Number();
             var (match, remaining) = number.Match("-104.575ef10");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "ef10");

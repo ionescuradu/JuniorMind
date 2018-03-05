@@ -14,7 +14,7 @@ namespace JsonTests
         {
             givenValue = new Choice(
                 new String(),
-                new Numbers(),
+                new Number(),
                 new Text("True"),
                 new Text("False"),
                 new Text("null"));
