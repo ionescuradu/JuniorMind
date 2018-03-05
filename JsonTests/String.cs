@@ -8,34 +8,30 @@ namespace JsonTests
 {
     class String : Pattern
     {
-        readonly private OneOrMore givenString;
+        readonly private Sequance givenString;
 
         public String()
         {
-            givenString = new OneOrMore(
-                new Choice(
-                    new AnyUnicodeChars(),
-                    new SpecialChars()
-                )
+            var jsonChar = new Choice(
+                new SpecialChars(),
+                new Range('0', (char)ushort.MaxValue)
             );
+
+            givenString = new Sequance(
+                new Character('\"'),
+                new Many(jsonChar),
+                new Character('\"')
+                );
         }
 
         public (Match, string) Match(string input)
         {
-            if (input == "")
-            {
-                return (new SuccessMatch(input), "");
-            }
             var (match, remaining) = givenString.Match(input);
-            if (remaining == input)
+            if (match.Success)
             {
-                return (new NoMatch(input, input[0]), input);
+                return (new SuccessMatch(input), remaining);
             }
-            if (remaining != "")
-            {
-                return (new NoMatch(input, input[0]), remaining);
-            }
-            return (new SuccessMatch(input), remaining);
+            return (new NoMatch(input, ' '), remaining);
         }
     }
 }

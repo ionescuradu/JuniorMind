@@ -54,7 +54,6 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
-    <Compile Include="AnyUnicodeChars.cs" />
     <Compile Include="SpecialChars.cs" />
     <Compile Include="String.cs" />
     <Compile Include="Scientific.cs" />
@@ -87,7 +86,6 @@
     <Compile Include="ListTests.cs" />
     <Compile Include="StringTests.cs" />
     <Compile Include="SpecialCharsTests.cs" />
-    <Compile Include="AnyUnicodeCharsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
