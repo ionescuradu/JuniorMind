@@ -14,5 +14,14 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void ValueTest2()
+        {
+            var x = new Value();
+            var (match, remaining) = x.Match("\"\"");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
     }
 }
