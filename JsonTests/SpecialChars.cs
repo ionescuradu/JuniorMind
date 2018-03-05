@@ -25,8 +25,8 @@ namespace JsonTests
                 new Text("\\n"),
                 new Text("\\r"),
                 new Text("\\t"),
-                new Text("\""),
-                new Text("\\"),
+                new Text("\\\""),
+                new Text("\\\\"),
                 new Text("\\/")
                 );
         }

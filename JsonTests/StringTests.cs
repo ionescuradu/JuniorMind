@@ -19,7 +19,8 @@ namespace JsonTests
         public void StringTest2()
         {
             var x = new String();
-            var (match, remaining) = x.Match("\"\u0041lin\"");
+            const string Input = "\"\u0041lin\"";
+            var (match, remaining) = x.Match(Input);
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
