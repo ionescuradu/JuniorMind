@@ -8,12 +8,12 @@ namespace JsonTests
 {
     class Json : Pattern
     {
-        readonly private Choice givenValue;
+        readonly private Choice value;
         readonly private Sequance array;
 
         public Json()
         {
-            givenValue = new Choice(
+            value = new Choice(
                 new String(),
                 new Number(),
                 new Text("true"),
@@ -30,12 +30,12 @@ namespace JsonTests
                 new WhiteSpaceChars(),
                 new Character('['),
                 new WhiteSpaceChars(),
-                new List(givenValue, separatorWhiteSpace),
+                new List(value, separatorWhiteSpace),
                 new WhiteSpaceChars(),
                 new Character(']'),
                 new WhiteSpaceChars()
             );
-            givenValue.Add(array);
+            value.Add(array);
         }
 
         public (Match, string) Match(string input)
@@ -51,7 +51,7 @@ namespace JsonTests
 
         public (Match, string) MatchValue(string input)
         {
-            var (match, remaining) = givenValue.Match(input);
+            var (match, remaining) = value.Match(input);
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
