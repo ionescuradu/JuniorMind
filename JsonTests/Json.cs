@@ -18,7 +18,9 @@ namespace JsonTests
                 new Number(),
                 new Text("true"),
                 new Text("false"), 
-                new Text("null"));
+                new Text("null")
+            );
+
             Sequance separatorWhiteSpace = new Sequance(
                 new WhiteSpaceChars(),
                 new Character(','), 
@@ -31,7 +33,8 @@ namespace JsonTests
                 new List(givenValue, separatorWhiteSpace),
                 new WhiteSpaceChars(),
                 new Character(']'),
-                new WhiteSpaceChars());
+                new WhiteSpaceChars()
+            );
             givenValue.Add(array);
         }
 

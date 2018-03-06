@@ -73,7 +73,7 @@ namespace JsonTests
         public void ValueTestArrayWhiteSpace()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("\\t[true\\n,null,false,1234.7,\"radu\"]");
+            var (match, remaining) = x.Match("\\t[true\\n,\\nnull    ,false,1234.7,\"radu\"]");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
