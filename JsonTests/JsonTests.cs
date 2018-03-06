@@ -55,7 +55,7 @@ namespace JsonTests
         public void ValueTestArray()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("[true,null,false,1234.7,\"radu\"]");
+            var (match, remaining) = x.MatchArray("[true,null,false,1234.7,\"radu\"]");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -64,7 +64,7 @@ namespace JsonTests
         public void ValueTestArrayNoRightParenthesis()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("true,null,false,1234.7,\"radu\"]");
+            var (match, remaining) = x.MatchArray("true,null,false,1234.7,\"radu\"]");
             Assert.IsFalse(match.Success);
             Assert.AreEqual("true,null,false,1234.7,\"radu\"]", remaining);
         }
@@ -73,7 +73,7 @@ namespace JsonTests
         public void ValueTestArrayWhiteSpace()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("\\t[true\\n,\\nnull    ,false,1234.7,\"radu\"]");
+            var (match, remaining) = x.MatchArray("\\t[true\\n,\\nnull    ,false,1234.7,\"radu\"]");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -82,7 +82,7 @@ namespace JsonTests
         public void ValueTestArrayEmpty()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("[]");
+            var (match, remaining) = x.MatchArray("[]");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }

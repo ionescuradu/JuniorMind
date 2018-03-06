@@ -27,6 +27,12 @@ namespace JsonTests
                 new Character(','), 
                 new WhiteSpaceChars()
             );
+
+            Sequance objectSequance = new Sequance(
+                new String(),
+                new Character(':'),
+                jsonValue);
+
             jsonArray = new Sequance(
                 new WhiteSpaceChars(),
                 new Character('['),
@@ -36,10 +42,17 @@ namespace JsonTests
                 new Character(']'),
                 new WhiteSpaceChars()
             );
+            
             jsonObject = new Sequance(
+                new WhiteSpaceChars(),
                 new Character('{'),
-                new List(new Sequance(new String(), new Character(':'), jsonValue), new Character(',')),
-                new Character('{'));
+                new WhiteSpaceChars(),
+                new List(objectSequance, separatorWhiteSpace),
+                new WhiteSpaceChars(),
+                new Character('{'),
+                new WhiteSpaceChars()
+                );
+
             jsonValue.Add(jsonArray);
             jsonValue.Add(jsonObject);
         }
@@ -58,6 +71,17 @@ namespace JsonTests
         public (Match, string) MatchValue(string input)
         {
             var (match, remaining) = jsonValue.Match(input);
+            if (match.Success)
+            {
+                int foundString = input.Length - remaining.Length;
+                return (new SuccessMatch(input.Substring(0, foundString)), remaining);
+            }
+            return (new NoMatch(input, ' '), remaining);
+        }
+
+        public (Match, string) MatchArray(string input)
+        {
+            var (match, remaining) = jsonArray.Match(input);
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
