@@ -17,7 +17,7 @@ namespace JsonTests
                 new String(),
                 new Number(),
                 new Text("true"),
-                new Text("false"),
+                new Text("false"), 
                 new Text("null"));
             array = new Sequance(
                 new Character('['),

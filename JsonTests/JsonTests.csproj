@@ -54,6 +54,8 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
+    <Compile Include="WhiteSpaceCharsTests.cs" />
+    <Compile Include="WhiteSpaceChars.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="Json.cs" />
     <Compile Include="SpecialChars.cs" />
