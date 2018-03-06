@@ -95,5 +95,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void ValueTestObject()
+        {
+            var x = new Json();
+            var (match, remaining) = x.Match("{ \"radu\" : true \\n, \"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
     }
 }

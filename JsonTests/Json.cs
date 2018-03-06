@@ -29,9 +29,14 @@ namespace JsonTests
             );
 
             Sequance objectSequance = new Sequance(
+                new WhiteSpaceChars(),
                 new String(),
+                new WhiteSpaceChars(),
                 new Character(':'),
-                jsonValue);
+                new WhiteSpaceChars(),
+                jsonValue,
+                new WhiteSpaceChars()
+                );
 
             jsonArray = new Sequance(
                 new WhiteSpaceChars(),
