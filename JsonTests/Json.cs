@@ -23,11 +23,11 @@ namespace JsonTests
                 new Character('['),
                 new List(givenValue, new Character(',')),
                 new Character(']'));
+            givenValue.Add(givenArray);
         }
 
         public (Match, string) Match(string input)
         {
-            givenValue.add(givenArray);
             var (match, remaining) = givenValue.Match(input);
             if (match.Success)
             {

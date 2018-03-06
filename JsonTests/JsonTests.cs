@@ -56,7 +56,7 @@ namespace JsonTests
         {
             var x = new Json();
             var (match, remaining) = x.Match("[true,null,false,1234.7,\"radu\"]");
-            Assert.IsFalse(match.Success);
+            Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
     }

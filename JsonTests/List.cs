@@ -27,11 +27,7 @@ namespace JsonTests
                 return (new SuccessMatch(input), "");
             }
             (match, remaining) = Letters.Match(remaining);
-            if (match.Success && remaining == "")
-            {
-                return (new SuccessMatch(input), "");
-            }
-            return (new NoMatch(input, input[0]), input);
+            return (new SuccessMatch(input), remaining);
 
         }
     }

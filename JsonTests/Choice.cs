@@ -32,7 +32,7 @@ namespace JsonTests
             return (new NoMatch("",input[0]), input);
         }
 
-        internal void add(Pattern newChoice)
+        internal void Add(Pattern newChoice)
         {
             choices.Add(newChoice);
         }

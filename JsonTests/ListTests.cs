@@ -62,8 +62,8 @@ namespace JsonTests
             string input = "r r r 4";
             var x = new List(new Character('r'), new Character(' '));
             var (match, remaining) = x.Match(input);
-            Assert.IsFalse(match.Success);
-            Assert.AreEqual(remaining, "r r r 4");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "4");
         }
 
         [TestMethod]
@@ -73,6 +73,15 @@ namespace JsonTests
             var (match, remaining) = x.Match("1,2");
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
+        }
+
+        [TestMethod]
+        public void ListTestRemainingChars()
+        {
+            var x = new List(new Number(), new Character(','));
+            var (match, remaining) = x.Match("1,2]");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remaining, "]");
         }
     }
 }
