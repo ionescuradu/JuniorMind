@@ -49,7 +49,7 @@ namespace JsonTests
                 new WhiteSpaceChars(),
                 new List(objectSequance, separatorWhiteSpace),
                 new WhiteSpaceChars(),
-                new Character('{'),
+                new Character('}'),
                 new WhiteSpaceChars()
                 );
 
@@ -59,7 +59,7 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = jsonArray.Match(input);
+            var (match, remaining) = jsonObject.Match(input);
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
