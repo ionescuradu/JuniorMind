@@ -88,7 +88,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void ChoiceTestAdd()
+        public void ChoiceListAddMethod()
         {
             var choice = new Choice(
                 new Range('0', '9'),
