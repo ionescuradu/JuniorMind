@@ -23,5 +23,14 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void WhiteSpaceTestNoText()
+        {
+            var x = new WhiteSpaceChars();
+            var (match, remaining) = x.Match("\\t");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
     }
 }

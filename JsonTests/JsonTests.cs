@@ -10,7 +10,7 @@ namespace JsonTests
         public void ValueTest1()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("");
+            var (match, remaining) = x.MatchValue("");
             Assert.IsFalse(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -19,7 +19,7 @@ namespace JsonTests
         public void ValueTest2()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("\"\"");
+            var (match, remaining) = x.MatchValue("\"\"");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -28,7 +28,7 @@ namespace JsonTests
         public void ValueTest3()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("-104.575e-10");
+            var (match, remaining) = x.MatchValue("-104.575e-10");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -37,7 +37,7 @@ namespace JsonTests
         public void ValueTest4()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("true");
+            var (match, remaining) = x.MatchValue("true");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -46,7 +46,7 @@ namespace JsonTests
         public void ValueTest5()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("-104.575e-1s0");
+            var (match, remaining) = x.MatchValue("-104.575e-1s0");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("s0", remaining);
         }
@@ -65,8 +65,17 @@ namespace JsonTests
         {
             var x = new Json();
             var (match, remaining) = x.Match("true,null,false,1234.7,\"radu\"]");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual("true,null,false,1234.7,\"radu\"]", remaining);
+        }
+
+        [TestMethod]
+        public void ValueTestArrayWhiteSpace()
+        {
+            var x = new Json();
+            var (match, remaining) = x.Match("\\t[true\\n,null,false,1234.7,\"radu\"]");
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(",null,false,1234.7,\"radu\"]", remaining);
+            Assert.AreEqual("", remaining);
         }
     }
 }

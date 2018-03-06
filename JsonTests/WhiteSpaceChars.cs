@@ -23,17 +23,7 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            if (input == "")
-            {
-                return (new SuccessMatch(input), "");
-            }
-            var (match, remaining) = whiteSpaceChars.Match(input);
-            if (match.Success)
-            {
-                int foundString = input.Length - remaining.Length;
-                return (new SuccessMatch(input.Substring(0, foundString)), remaining: remaining);
-            }
-            return (new NoMatch(input, input[0]), remaining);
+            return whiteSpaceChars.Match(input);
         }
     }
 }

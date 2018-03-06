@@ -19,14 +19,34 @@ namespace JsonTests
                 new Text("true"),
                 new Text("false"), 
                 new Text("null"));
+            Sequance separatorWhiteSpace = new Sequance(
+                new WhiteSpaceChars(),
+                new Character(','), 
+                new WhiteSpaceChars()
+            );
             array = new Sequance(
+                new WhiteSpaceChars(),
                 new Character('['),
-                new List(givenValue, new Character(',')),
-                new Character(']'));
+                new WhiteSpaceChars(),
+                new List(givenValue, separatorWhiteSpace),
+                new WhiteSpaceChars(),
+                new Character(']'),
+                new WhiteSpaceChars());
             givenValue.Add(array);
         }
 
         public (Match, string) Match(string input)
+        {
+            var (match, remaining) = array.Match(input);
+            if (match.Success)
+            {
+                int foundString = input.Length - remaining.Length;
+                return (new SuccessMatch(input.Substring(0, foundString)), remaining);
+            }
+            return (new NoMatch(input, ' '), remaining);
+        }
+
+        public (Match, string) MatchValue(string input)
         {
             var (match, remaining) = givenValue.Match(input);
             if (match.Success)
