@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IListT_Tests.cs" />
-    <Compile Include="List.cs" />
+    <Compile Include="ListT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VectorEnumerator.cs" />
   </ItemGroup>

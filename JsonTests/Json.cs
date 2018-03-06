@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Value : Pattern
+    class Json : Pattern
     {
         readonly private Choice givenValue;
+        readonly private Choice givenValue2;
+        //readonly private Sequance givenArray;
 
-        public Value()
+        public Json()
         {
             givenValue = new Choice(
                 new String(),
                 new Number(),
-                new Text("True"),
-                new Text("False"),
+                new Text("true"),
+                new Text("false"),
                 new Text("null"));
+            //givenArray = new Sequance(
+            //    new Character('['),
+            //    Whitespace???,
+            //    new List(new Value(), new Character(',')),
+            //    Whitespace???,
+            //    new Character(']'));
         }
 
         public (Match, string) Match(string input)

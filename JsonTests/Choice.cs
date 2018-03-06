@@ -8,11 +8,11 @@ namespace JsonTests
 {
     class Choice : Pattern
     {
-        readonly Pattern[] choices;
+        readonly private List<Pattern> choices;
 
         public Choice(params Pattern[] choices)
         {
-            this.choices = choices;
+            this.choices = choices.ToList();
         }
 
         public (Match, string) Match(string input)
@@ -21,15 +21,20 @@ namespace JsonTests
             {
                 return (new NoText(input), input);
             }
-            for (int i = 0; i < choices.Length; i++)
-            {
-                var (match, remaining) = choices[i].Match(input);
+            foreach (var item in choices)
+            { 
+                var (match, remaining) = item.Match(input);
                 if (match.Success)
                 {
                     return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), input.Substring(input.Length - remaining.Length));
                 }
             }
             return (new NoMatch("",input[0]), input);
+        }
+
+        internal void add(Pattern newChoice)
+        {
+            choices.Add(newChoice);
         }
     }
 }
