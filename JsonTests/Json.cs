@@ -65,28 +65,25 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var (match, remaining) = jsonObject.Match(input);
-            if (match.Success)
-            {
-                int foundString = input.Length - remaining.Length;
-                return (new SuccessMatch(input.Substring(0, foundString)), remaining);
-            }
-            return (new NoMatch(input, ' '), remaining);
+            return Output(input, match, remaining);
         }
 
         public (Match, string) MatchValue(string input)
         {
             var (match, remaining) = jsonValue.Match(input);
-            if (match.Success)
-            {
-                int foundString = input.Length - remaining.Length;
-                return (new SuccessMatch(input.Substring(0, foundString)), remaining);
-            }
-            return (new NoMatch(input, ' '), remaining);
+            return Output(input, match, remaining);
+
         }
 
         public (Match, string) MatchArray(string input)
         {
             var (match, remaining) = jsonArray.Match(input);
+            return Output(input, match, remaining);
+
+        }
+
+        private static (Match, string) Output(string input, Match match, string remaining)
+        {
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
