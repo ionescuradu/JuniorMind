@@ -100,7 +100,8 @@ namespace JsonTests
         public void ValueTestObject()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("{ \"radu\" : true \\n, \"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
+            var (match, remaining) = x.Match("{ \"radu\" : true \\n, " +
+                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -109,9 +110,11 @@ namespace JsonTests
         public void ValueTestObjectWrong()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("{ \"radu\" :: true \\n, \"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
+            var text = "{ \"radu\" :: true \\n, " +
+                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }";
+            var (match, remaining) = x.Match(text);
             Assert.IsFalse(match.Success);
-            Assert.AreEqual("{ \"radu\" :: true \\n, \"ionescu\" : [true,null,false,1234.7,\"radu\"] }", remaining);
+            Assert.AreEqual(text, remaining);
         }
     }
 }
