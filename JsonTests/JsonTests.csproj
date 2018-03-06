@@ -54,7 +54,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Choice.cs" />
-    <Compile Include="ValueTests.cs" />
+    <Compile Include="JsonTests.cs" />
     <Compile Include="Json.cs" />
     <Compile Include="SpecialChars.cs" />
     <Compile Include="String.cs" />
@@ -88,7 +88,6 @@
     <Compile Include="ListTests.cs" />
     <Compile Include="StringTests.cs" />
     <Compile Include="SpecialCharsTests.cs" />
-    <Compile Include="VectorEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

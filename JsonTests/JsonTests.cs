@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JsonTests
 {
     [TestClass]
-    public class ValueTests
+    public class JsonTests
     {
         [TestMethod]
         public void ValueTest1()
@@ -47,12 +47,12 @@ namespace JsonTests
         {
             var x = new Json();
             var (match, remaining) = x.Match("-104.575e-1s0");
-            Assert.IsFalse(match.Success);
-            Assert.AreEqual("-104.575e-1s0", remaining);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("s0", remaining);
         }
 
         [TestMethod]
-        public void ValueTest6()
+        public void ValueTestArray()
         {
             var x = new Json();
             var (match, remaining) = x.Match("[true,null,false,1234.7,\"radu\"]");

@@ -9,8 +9,7 @@ namespace JsonTests
     class Json : Pattern
     {
         readonly private Choice givenValue;
-        readonly private Choice givenValue2;
-        //readonly private Sequance givenArray;
+        readonly private Sequance givenArray;
 
         public Json()
         {
@@ -20,16 +19,15 @@ namespace JsonTests
                 new Text("true"),
                 new Text("false"),
                 new Text("null"));
-            //givenArray = new Sequance(
-            //    new Character('['),
-            //    Whitespace???,
-            //    new List(new Value(), new Character(',')),
-            //    Whitespace???,
-            //    new Character(']'));
+            givenArray = new Sequance(
+                new Character('['),
+                new List(givenValue, new Character(',')),
+                new Character(']'));
         }
 
         public (Match, string) Match(string input)
         {
+            givenValue.add(givenArray);
             var (match, remaining) = givenValue.Match(input);
             if (match.Success)
             {

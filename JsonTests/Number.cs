@@ -22,7 +22,7 @@ namespace JsonTests
         public (Match, string) Match(string input)
         {
             var (match, remaining) = number.Match(input);
-            if (match.Success && remaining == "")
+            if (match.Success)
             {
                 return (new SuccessMatch(input), remaining);
             }

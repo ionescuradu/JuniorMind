@@ -119,7 +119,7 @@ namespace JsonTests
         {
             var number = new Number();
             var (match, remaining) = number.Match("-104.575ef10");
-            Assert.IsFalse(match.Success);
+            Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "ef10");
         }
     }
