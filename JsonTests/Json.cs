@@ -8,12 +8,13 @@ namespace JsonTests
 {
     class Json : Pattern
     {
-        readonly private Choice value;
-        readonly private Sequance array;
+        readonly private Choice jsonValue;
+        readonly private Sequance jsonArray;
+        readonly private Sequance jsonObject;
 
         public Json()
         {
-            value = new Choice(
+            jsonValue = new Choice(
                 new String(),
                 new Number(),
                 new Text("true"),
@@ -26,21 +27,26 @@ namespace JsonTests
                 new Character(','), 
                 new WhiteSpaceChars()
             );
-            array = new Sequance(
+            jsonArray = new Sequance(
                 new WhiteSpaceChars(),
                 new Character('['),
                 new WhiteSpaceChars(),
-                new List(value, separatorWhiteSpace),
+                new List(jsonValue, separatorWhiteSpace),
                 new WhiteSpaceChars(),
                 new Character(']'),
                 new WhiteSpaceChars()
             );
-            value.Add(array);
+            jsonObject = new Sequance(
+                new Character('{'),
+                new List(new Sequance(new String(), new Character(':'), jsonValue), new Character(',')),
+                new Character('{'));
+            jsonValue.Add(jsonArray);
+            jsonValue.Add(jsonObject);
         }
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = array.Match(input);
+            var (match, remaining) = jsonArray.Match(input);
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
@@ -51,7 +57,7 @@ namespace JsonTests
 
         public (Match, string) MatchValue(string input)
         {
-            var (match, remaining) = value.Match(input);
+            var (match, remaining) = jsonValue.Match(input);
             if (match.Success)
             {
                 int foundString = input.Length - remaining.Length;
