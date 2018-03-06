@@ -116,5 +116,16 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(text, remaining);
         }
+
+        [TestMethod]
+        public void ValueTestObjectLong()
+        {
+            var x = new Json();
+            var (match, remaining) = x.Match("{ \"radu\" : { \"radu\" : true \\n, " +
+                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] } \\n, " +
+                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
     }
 }
