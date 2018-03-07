@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Any : Pattern
+    public class Any : Pattern
     {
         readonly private Character[] chars;
 

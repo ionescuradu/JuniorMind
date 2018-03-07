@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    interface  Match
+    public interface Match
     {
         bool Success { get; }
     }

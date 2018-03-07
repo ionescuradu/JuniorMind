@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class WhiteSpaceChars : Pattern
+    public class WhiteSpaceChars : Pattern
     {
         readonly private Many whiteSpaceChars;
 

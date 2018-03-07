@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Sequance :Pattern
+    public class Sequance :Pattern
     {
         readonly private Pattern[] pattern;
 

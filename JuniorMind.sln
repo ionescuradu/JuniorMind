@@ -92,6 +92,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISetT_Tests", "ISetT_Tests\ISetT_Tests.csproj", "{11891F48-1572-42B9-9475-1E7CB2FD51EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTests", "JsonTests\JsonTests.csproj", "{C99E907F-115D-441F-9C49-FB6D4F537B00}"
+	ProjectSection(ProjectDependencies) = postProject
+		{911201D4-D1C4-4491-8AE0-9608D61AF249} = {911201D4-D1C4-4491-8AE0-9608D61AF249}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json", "ClassLibrary1\Json.csproj", "{911201D4-D1C4-4491-8AE0-9608D61AF249}"
 EndProject

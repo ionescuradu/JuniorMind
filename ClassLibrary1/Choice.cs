@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Choice : Pattern
+    public class Choice : Pattern
     {
         readonly private List<Pattern> choices;
 
@@ -32,7 +32,7 @@ namespace JsonTests
             return (new NoMatch("",input[0]), input);
         }
 
-        internal void Add(Pattern newChoice)
+        public void Add(Pattern newChoice)
         {
             choices.Add(newChoice);
         }

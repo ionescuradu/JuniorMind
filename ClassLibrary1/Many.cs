@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Many : Pattern
+    public class Many : Pattern
     {
         readonly private Pattern pattern;
         private int minimum;

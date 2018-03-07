@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Fractional : Pattern
+    public class Number : Pattern
     {
-        readonly private Sequance fractional;
+        readonly private Sequance number;
 
-        public Fractional()
+        public Number()
         {
-            fractional = new Sequance(
-                new Character('.'),
-                new OneOrMore(new Range('0', '9'))
+            number = new Sequance(
+                new Integer(), 
+                new Optional(new Fractional()),
+                new Optional(new Scientific())
                 );
         }
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = fractional.Match(input);
+            var (match, remaining) = number.Match(input);
             if (match.Success)
             {
                 return (new SuccessMatch(input), remaining);

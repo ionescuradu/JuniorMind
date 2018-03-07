@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class OneOrMore : Pattern
+    public class OneOrMore : Pattern
     {
         readonly private Many aux;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class SpecialChars : Pattern
+    public class SpecialChars : Pattern
     {
         readonly private Choice pattern;
         readonly private Choice hexazecimal;

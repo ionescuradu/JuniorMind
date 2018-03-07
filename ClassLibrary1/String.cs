@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class String : Pattern
+    public class String : Pattern
     {
         readonly private Sequance givenString;
 

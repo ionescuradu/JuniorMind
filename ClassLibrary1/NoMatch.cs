@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class NoText : Match
+    public class NoMatch : Match
     {
-        private string message = "no more text while looking for ";
+        private string message;
+        private string text = " found instead of ";
 
-        public NoText(string stringToFind)
+        public NoMatch(string givenString, char firstToFound)
         {
-            stringToFind = message + stringToFind;
+            message = firstToFound + text + givenString; 
         }
+
         public bool Success
-        {
-            get
+        { get
             {
                 return false;
             }

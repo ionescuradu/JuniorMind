@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class SuccessMatch : Match
+    public class SuccessMatch : Match
     {
         private string foundString;
 

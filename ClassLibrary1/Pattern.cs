@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    interface Pattern
+    public interface Pattern
     {
         (Match, string) Match(string input);
     }

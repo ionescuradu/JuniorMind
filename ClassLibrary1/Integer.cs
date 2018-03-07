@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class Integer : Pattern
+    public class Integer : Pattern
     {
         readonly private Choice integer;
         

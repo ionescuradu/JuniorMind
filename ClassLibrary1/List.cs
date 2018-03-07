@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonTests
 {
-    class List : Pattern
+    public class List : Pattern
     {
         readonly private Pattern Letters;
         readonly private Pattern Separator;
