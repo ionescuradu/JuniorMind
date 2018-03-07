@@ -96,9 +96,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTests", "JsonTests\Json
 		{911201D4-D1C4-4491-8AE0-9608D61AF249} = {911201D4-D1C4-4491-8AE0-9608D61AF249}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json", "ClassLibrary1\Json.csproj", "{911201D4-D1C4-4491-8AE0-9608D61AF249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Json", "ClassLibrary1\Json.csproj", "{911201D4-D1C4-4491-8AE0-9608D61AF249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonApp", "ConsoleApp1\JsonApp.csproj", "{59938B50-B9A2-4B76-8DA7-14E0F619A6EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonApp", "JsonValidation\JsonApp.csproj", "{59938B50-B9A2-4B76-8DA7-14E0F619A6EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

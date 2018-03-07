@@ -7,27 +7,28 @@ using JsonTests;
 
 namespace JsonValidation
 {
-    class JsonValidation
+    public static class JsonValidation
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             if (args.Length == 0)
             {
                 Console.WriteLine("Please insert a text to be evaluated");
-                Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
+                return;
             }
             var x = new Json();
-            var (match, remaining) = x.Match(args[0].ToString());
+            args[0] = System.IO.File.ReadAllText(@"C:\Users\Radu\Documents\GitHub\JuniorMind\JsonValidation\FirstJsonText.txt");
+            var (match, remaining) = x.Match(args[0]);
             if (match.Success && remaining == "")
             {
                 Console.WriteLine("Text is correct");
-                Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
+                return;
             }
             Console.WriteLine("Text is incorrect");
-            Console.WriteLine("Press any key to exit");
             Console.ReadKey();
+
         }
     }
 }
