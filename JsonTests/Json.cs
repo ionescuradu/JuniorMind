@@ -9,8 +9,6 @@ namespace JsonTests
     class Json : Pattern
     {
         readonly private Choice jsonValue;
-        readonly private Sequance jsonArray;
-        readonly private Sequance jsonObject;
 
         public Json()
         {
@@ -38,7 +36,7 @@ namespace JsonTests
                 new WhiteSpaceChars()
                 );
 
-            jsonArray = new Sequance(
+            var jsonArray = new Sequance(
                 new WhiteSpaceChars(),
                 new Character('['),
                 new WhiteSpaceChars(),
@@ -48,12 +46,10 @@ namespace JsonTests
                 new WhiteSpaceChars()
             );
             
-            jsonObject = new Sequance(
+            var jsonObject = new Sequance(
                 new WhiteSpaceChars(),
                 new Character('{'),
-                new WhiteSpaceChars(),
                 new List(objectSequance, separatorWhiteSpace),
-                new WhiteSpaceChars(),
                 new Character('}'),
                 new WhiteSpaceChars()
                 );
@@ -64,32 +60,19 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = jsonObject.Match(input);
-            return Output(input, match, remaining);
-        }
-
-        public (Match, string) MatchValue(string input)
-        {
             var (match, remaining) = jsonValue.Match(input);
-            return Output(input, match, remaining);
-
-        }
-
-        public (Match, string) MatchArray(string input)
-        {
-            var (match, remaining) = jsonArray.Match(input);
             return Output(input, match, remaining);
 
         }
 
         private static (Match, string) Output(string input, Match match, string remaining)
         {
-            if (match.Success)
+            if (match.Success && remaining == "")
             {
                 int foundString = input.Length - remaining.Length;
                 return (new SuccessMatch(input.Substring(0, foundString)), remaining);
             }
-            return (new NoMatch(input, ' '), remaining);
+            return (new NoMatch(input, ' '), input);
         }
     }
 }
