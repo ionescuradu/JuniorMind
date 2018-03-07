@@ -20,13 +20,13 @@ namespace JsonValidation
             var x = new Json();
             args[0] = System.IO.File.ReadAllText(@"C:\Users\Radu\Documents\GitHub\JuniorMind\JsonValidation\FirstJsonText.txt");
             var (match, remaining) = x.Match(args[0]);
-            if (match.Success && remaining == "")
+            if (match.Success )
             {
-                Console.WriteLine("Text is correct");
+                Console.Write("Text is correct");
                 Console.ReadKey();
                 return;
             }
-            Console.WriteLine("Text is incorrect");
+            Console.Write(remaining);
             Console.ReadKey();
 
         }

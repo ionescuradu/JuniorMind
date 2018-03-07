@@ -14,7 +14,9 @@ namespace JsonTests
         {
             var jsonChar = new Choice(
                 new SpecialChars(),
-                new Range('0', (char)ushort.MaxValue)
+                new Range((char)32, (char)33),
+                new Range((char)35, (char)91), 
+                new Range((char)93, (char)ushort.MaxValue)
             );
 
             givenString = new Sequance(
@@ -26,6 +28,10 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
+            if (input == "")
+            {
+                return (new SuccessMatch(input), "");
+            }
             var (match, remaining) = givenString.Match(input);
             if (match.Success)
             {

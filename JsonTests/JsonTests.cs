@@ -132,7 +132,7 @@ namespace JsonTests
         public void Test()
         {
             var x = new Json();
-            var text = "{ \"radu\" : 24, \"ionescu\" : [true, false, \\n 245.4e-20], \"adu\" : [2] }";
+            var text = "{\\n\\t\"glossary\": {\\n\\t\"title\": \"example glossary\",\\n\\t\\t\\t\"GlossDiv\": {\\n\"title\": \"S\",\\n\\t\\t\\t\"GlossList\": {\\n\"GlossEntry\": {\\n\"ID\": \"SGML\",\\n\\t\"SortAs\": \"SGML\",\\n\\t\"GlossTerm\": \"Standard Generalized Markup Language\",\\n\\t\"Acronym\": \"SGML\",\\n\\t\"Abbrev\": \"ISO 8879:1986\",\\n\\t\"GlossDef\": {\\n\"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\\n\\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\\n},\\n\\t\\t\\t\\t\\t\\t\"GlossSee\": \"markup\"\\n     }\\n    }\\n    }\\n   }\\n}";
             var (match, remaining) = x.Match(text);
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);

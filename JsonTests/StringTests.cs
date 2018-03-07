@@ -10,8 +10,8 @@ namespace JsonTests
         public void StringTest1()
         {
             var x = new String();
-            var (match, remaining) = x.Match("");
-            Assert.IsFalse(match.Success);
+            var (match, remaining) = x.Match("\" \"");
+            Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
 
