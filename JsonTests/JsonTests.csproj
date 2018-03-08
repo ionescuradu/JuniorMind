@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Location.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="LocationTests.cs" />
     <Compile Include="WhiteSpaceCharsTests.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="NumberTests.cs" />

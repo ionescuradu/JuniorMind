@@ -11,17 +11,16 @@
             this.index = index;
 
             Line = 1;
-            for (int i = 0; i < text.Length; i++)
+            Column = 1;
+            for (int i = 0; i < index; i++)
             {
                 if (text[i] == '\n')
                 {
                     Line++;
                     Column = 0;
+                    continue;
                 }
-                if (i == index)
-                {
-                    Column = i + 1;
-                }
+                Column++;
             }
         }
 
