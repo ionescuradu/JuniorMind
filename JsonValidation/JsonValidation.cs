@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JsonTests;
 
+
 namespace JsonValidation
 {
     public static class JsonValidation
@@ -26,7 +27,7 @@ namespace JsonValidation
                 Console.ReadKey();
                 return;
             }
-            Console.Write("Text is incorrect at line {0} and colom {1}", JsonTests.);
+            Console.Write("Text is incorrect at line {0} and colom {1}", 1, 2);
             Console.ReadKey();
 
         }

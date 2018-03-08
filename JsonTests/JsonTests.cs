@@ -105,7 +105,6 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
-
         [TestMethod]
         public void ValueTestObjectWrong()
         {
