@@ -73,7 +73,7 @@ namespace JsonTests
         public void ValueTestArrayWhiteSpace()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("\\t[true\\n,\\nnull    ,false,1234.7,\"radu\"]");
+            var (match, remaining) = x.Match("\t[true\n,\nnull    ,false,1234.7,\"radu\"]");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -100,7 +100,7 @@ namespace JsonTests
         public void ValueTestObject()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("{ \"radu\" : true \\n, " +
+            var (match, remaining) = x.Match("{ \"radu\" : true \n, " +
                 "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
@@ -110,7 +110,7 @@ namespace JsonTests
         public void ValueTestObjectWrong()
         {
             var x = new Json();
-            var text = "{ \"radu\" :: true \\n, " +
+            var text = "{ \"radu\" :: true \n, " +
                 "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }";
             var (match, remaining) = x.Match(text);
             Assert.IsFalse(match.Success);
@@ -121,8 +121,8 @@ namespace JsonTests
         public void ValueTestObjectLong()
         {
             var x = new Json();
-            var (match, remaining) = x.Match("{ \"radu\" : { \"radu\" : true \\n, " +
-                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] } \\n, " +
+            var (match, remaining) = x.Match("{ \"radu\" : { \"radu\" : true \n, " +
+                "\"ionescu\" : [true,null,false,1234.7,\"radu\"] } \n, " +
                 "\"ionescu\" : [true,null,false,1234.7,\"radu\"] }");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
@@ -132,7 +132,17 @@ namespace JsonTests
         public void Test()
         {
             var x = new Json();
-            var text = "{\\n\\t\"glossary\": {\\n\\t\"title\": \"example glossary\",\\n\\t\\t\\t\"GlossDiv\": {\\n\"title\": \"S\",\\n\\t\\t\\t\"GlossList\": {\\n\"GlossEntry\": {\\n\"ID\": \"SGML\",\\n\\t\"SortAs\": \"SGML\",\\n\\t\"GlossTerm\": \"Standard Generalized Markup Language\",\\n\\t\"Acronym\": \"SGML\",\\n\\t\"Abbrev\": \"ISO 8879:1986\",\\n\\t\"GlossDef\": {\\n\"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\\n\\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\\n},\\n\\t\\t\\t\\t\\t\\t\"GlossSee\": \"markup\"\\n     }\\n    }\\n    }\\n   }\\n}";
+            var text = "{\n\t\"glossary\": {\n\t\"title\": \"example glossary\",\n\t\t\t\"GlossDiv\": {\n\"title\": \"S\",\n\t\t\t\"GlossList\": {\n\"GlossEntry\": {\n\"ID\": \"SGML\",\n\t\"SortAs\": \"SGML\",\n\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n\t\"Acronym\": \"SGML\",\n\t\"Abbrev\": \"ISO 8879:1986\",\n\t\"GlossDef\": {\n\"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n},\n\t\t\t\t\t\t\"GlossSee\": \"markup\"\n     }\n    }\n    }\n   }\n}";
+            var (match, remaining) = x.Match(text);
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual("", remaining);
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            var x = new Json();
+            var text = "{\n\r\"glossary\": {}}";
             var (match, remaining) = x.Match(text);
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);

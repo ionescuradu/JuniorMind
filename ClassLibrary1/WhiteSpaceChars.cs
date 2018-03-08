@@ -15,9 +15,9 @@ namespace JsonTests
             whiteSpaceChars = new Many(
                 new Choice(
                     new Text(" "),
-                    new Text("\\t"),
-                    new Text("\\n"),
-                    new Text("\\r")
+                    new Text("\t"),
+                    new Text("\n"),
+                    new Text("\r")
                     ));
         }
 

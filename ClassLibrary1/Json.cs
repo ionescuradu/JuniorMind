@@ -46,9 +46,10 @@ namespace JsonTests
                 new WhiteSpaceChars()
             );
             
-            var jsonObject = new Sequance(
+             var jsonObject = new Sequance(
                 new WhiteSpaceChars(),
                 new Character('{'),
+                new WhiteSpaceChars(),
                 new List(objectSequance, separatorWhiteSpace),
                 new Character('}'),
                 new WhiteSpaceChars()

@@ -41,5 +41,23 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "");
         }
+
+        [TestMethod]
+        public void CharacterTestsWhiteSpace()
+        {
+            var x = new Character('\t');
+            var (match, remainng) = x.Match("\t");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remainng, "");
+        }
+
+        [TestMethod]
+        public void CharacterTestsWhiteSpace2()
+        {
+            var x = new Character('\n');
+            var (match, remainng) = x.Match("\n");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remainng, "");
+        }
     }
 }

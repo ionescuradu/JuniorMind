@@ -19,7 +19,7 @@ namespace JsonTests
         public void WhiteSpaceTestTab()
         {
             var x = new WhiteSpaceChars();
-            var (match, remaining) = x.Match("\\t");
+            var (match, remaining) = x.Match("\t \n    \r");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
@@ -28,7 +28,7 @@ namespace JsonTests
         public void WhiteSpaceTestNoText()
         {
             var x = new WhiteSpaceChars();
-            var (match, remaining) = x.Match("\\t");
+            var (match, remaining) = x.Match("\r");
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }

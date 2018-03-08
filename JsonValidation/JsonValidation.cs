@@ -18,15 +18,15 @@ namespace JsonValidation
                 return;
             }
             var x = new Json();
-            args[0] = System.IO.File.ReadAllText(@"C:\Users\Radu\Documents\GitHub\JuniorMind\JsonValidation\FirstJsonText.txt");
-            var (match, remaining) = x.Match(args[0]);
+            var inputText = System.IO.File.ReadAllText(args[0]);
+            var (match, remaining) = x.Match(inputText);
             if (match.Success )
             {
                 Console.Write("Text is correct");
                 Console.ReadKey();
                 return;
             }
-            Console.Write(remaining);
+            Console.Write("Text is incorrect");
             Console.ReadKey();
 
         }
