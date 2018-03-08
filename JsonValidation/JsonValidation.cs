@@ -26,7 +26,7 @@ namespace JsonValidation
                 Console.ReadKey();
                 return;
             }
-            Console.Write("Text is incorrect");
+            Console.Write("Text is incorrect at line {0} and colom {1}", JsonTests.);
             Console.ReadKey();
 
         }

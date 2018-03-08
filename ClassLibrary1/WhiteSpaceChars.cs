@@ -23,6 +23,11 @@ namespace JsonTests
 
         public (Match, string) Match(string input)
         {
+            var (match, remaining) = new Text("\n").Match(input);
+            if (match.Success)
+            {
+                new RowsAndColoms(1,0);
+            }
             return whiteSpaceChars.Match(input);
         }
     }
