@@ -14,5 +14,15 @@ namespace JsonTests
             Assert.AreEqual(1, location.Line);
             Assert.AreEqual(2, location.Column);
         }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            var text = "text";
+            var location = new Location(text, 3);
+            Assert.AreEqual(1, location.Line);
+            Assert.AreEqual(4, location.Column);
+        }
+
     }
 }
