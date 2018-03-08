@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JsonTests
 {
     [TestClass]
-    public class UnitTest1
+    public class LocationTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestOneLine1()
         {
             var text = "text";
             var location = new Location(text, 1);
@@ -16,7 +16,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void TestOneLine2()
         {
             var text = "text";
             var location = new Location(text, 3);
