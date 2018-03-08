@@ -30,7 +30,7 @@ namespace JsonTests
             var text = "text \n radu";
             var location = new Location(text, 9);
             Assert.AreEqual(2, location.Line);
-            Assert.AreEqual(3, location.Column);
+            Assert.AreEqual(4, location.Column);
         }
 
         [TestMethod]
@@ -39,7 +39,25 @@ namespace JsonTests
             var text = "text \n radu \n 5";
             var location = new Location(text, 15);
             Assert.AreEqual(3, location.Line);
+            Assert.AreEqual(3, location.Column);
+        }
+
+        [TestMethod]
+        public void TestThreeLines2()
+        {
+            var text = "{ \"glossary\":\na{ ";
+            var location = new Location(text, 15);
+            Assert.AreEqual(2, location.Line);
             Assert.AreEqual(2, location.Column);
+        }
+
+        [TestMethod]
+        public void TestThreeLines3()
+        {
+            var text = "{\n\"glossary\":\n\n\na{ ";
+            var location = new Location(text, 16);
+            Assert.AreEqual(5, location.Line);
+            Assert.AreEqual(1, location.Column);
         }
 
     }

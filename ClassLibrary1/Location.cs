@@ -17,7 +17,7 @@
                 if (text[i] == '\n')
                 {
                     Line++;
-                    Column = 0;
+                    Column = 1;
                     continue;
                 }
                 Column++;

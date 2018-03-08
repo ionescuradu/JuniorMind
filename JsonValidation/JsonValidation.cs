@@ -27,7 +27,8 @@ namespace JsonValidation
                 Console.ReadKey();
                 return;
             }
-            Console.Write("Text is incorrect at line {0} and colom {1}", 1, 2);
+            var location = new Location(inputText, inputText.Length - remaining.Length);
+            Console.Write("Text is incorrect at line {0} and colom {1}", location.Line, location.Column);
             Console.ReadKey();
 
         }
