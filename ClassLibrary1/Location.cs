@@ -1,6 +1,6 @@
 ﻿namespace JsonTests
 {
-    internal class Location
+    public class Location
     {
         private string text;
         private int index;

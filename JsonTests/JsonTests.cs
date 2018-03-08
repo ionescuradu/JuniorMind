@@ -48,7 +48,7 @@ namespace JsonTests
             var x = new Json();
             var (match, remaining) = x.Match("-104.575e-1s0");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual("-104.575e-1s0", remaining);
+            Assert.AreEqual("s0", remaining);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace JsonTests
             var x = new Json();
             var (match, remaining) = x.Match("true,null,false,1234.7,\"radu\"]");
             Assert.IsFalse(match.Success);
-            Assert.AreEqual("true,null,false,1234.7,\"radu\"]", remaining);
+            Assert.AreEqual(",null,false,1234.7,\"radu\"]", remaining);
         }
 
         [TestMethod]

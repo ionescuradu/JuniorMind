@@ -63,7 +63,6 @@ namespace JsonTests
         {
             var (match, remaining) = jsonValue.Match(input);
             return Output(input, match, remaining);
-
         }
 
         private static (Match, string) Output(string input, Match match, string remaining)
@@ -73,7 +72,7 @@ namespace JsonTests
                 int foundString = input.Length - remaining.Length;
                 return (new SuccessMatch(input.Substring(0, foundString)), remaining);
             }
-            return (new NoMatch(input, ' '), input);
+            return (new NoMatch(input, ' '), remaining);
         }
     }
 }

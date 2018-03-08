@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Location.cs" />
     <Compile Include="LocationTests.cs" />
     <Compile Include="WhiteSpaceCharsTests.cs" />
     <Compile Include="JsonTests.cs" />
