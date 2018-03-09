@@ -98,5 +98,19 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "onescu");
         }
+
+        [TestMethod]
+        public void ChoiceRemainingIndex()
+        {
+            string input = "radu";
+            var choice = new Choice(
+                new Text("ram"),
+                new Text("radm")
+            );
+            var (match, remaining) = choice.Match(input);
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(3, noMatch.ErrorPosition);
+        }
+
     }
 }

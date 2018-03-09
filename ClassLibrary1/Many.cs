@@ -35,7 +35,7 @@ namespace JsonTests
                 return (new SuccessMatch(foundText), remaining);
             }
 
-            return (new NoMatch(input, ' '), input);
+            return (new NoMatch(input), input);
         }
     }
 }

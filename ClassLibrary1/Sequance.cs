@@ -26,7 +26,7 @@ namespace JsonTests
                 var (match, remaining) = pattern[i].Match(aux);
                 if (!match.Success)
                 {
-                    return (new NoMatch(aux, ' '), input);
+                    return (new NoMatch(aux, input.Length - remaining.Length), input);
                 }
                 aux = remaining;
             }

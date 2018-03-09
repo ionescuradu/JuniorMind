@@ -25,7 +25,7 @@ namespace JsonTests
             {
                 return (new SuccessMatch(givenChar.ToString()), input.Substring(1));
             }
-            return (new NoMatch (givenChar.ToString(), input[0]),  input);
+            return (new NoMatch(givenChar.ToString()),  input);
         }
 
     }

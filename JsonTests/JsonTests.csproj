@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LocationTests.cs" />
+    <Compile Include="MaxIndexStringTests.cs" />
+    <Compile Include="NoMatchTests.cs" />
     <Compile Include="WhiteSpaceCharsTests.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="NumberTests.cs" />

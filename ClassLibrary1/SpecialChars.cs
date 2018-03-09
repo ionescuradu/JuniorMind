@@ -38,7 +38,7 @@ namespace JsonTests
             {
                 return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), remaining);
             }
-            return (new NoMatch(input, input[0]), remaining);
+            return (new NoMatch(input), remaining);
         }
     }
 }

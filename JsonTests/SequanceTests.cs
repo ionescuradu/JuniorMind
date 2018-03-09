@@ -113,5 +113,32 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "");
         }
+
+
+        [TestMethod]
+        public void SequanceBasicErrorReporting()
+        {
+            var x = new Sequance(
+                new Character('a'),
+                new Character('b')
+            );
+            var (match, remainng) = x.Match("ax");
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(1, noMatch.ErrorPosition);
+        }
+
+        [TestMethod]
+        public void SequanceTextErrorReporting()
+        {
+            var x = new Sequance(
+                new Character('a'),
+                new Character('b'),
+                new Character('c'),
+                new Character('d')
+            );
+            var (match, remainng) = x.Match("abcx");
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(3, noMatch.ErrorPosition);
+        }
     }
 }

@@ -146,5 +146,15 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual("", remaining);
         }
+
+        [TestMethod]
+        public void ValueTestObjectWrong2()
+        {
+            var x = new Json();
+            var text = "[2,]";
+            var (match, remaining) = x.Match(text);
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(text, remaining);
+        }
     }
 }

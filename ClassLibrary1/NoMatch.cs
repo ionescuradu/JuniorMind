@@ -8,19 +8,26 @@ namespace JsonTests
 {
     public class NoMatch : Match
     {
-        private string message;
-        private string text = " found instead of ";
-
-        public NoMatch(string givenString, char firstToFound)
+        private readonly string givenString;
+        private readonly int errorPosition;
+        
+        public NoMatch(string givenString, int errorPosition = 0)
         {
-            message = firstToFound + text + givenString; 
+            this.givenString = givenString;
+            this.errorPosition = errorPosition;
         }
 
-        public bool Success
-        { get
+        public int Merge(NoMatch error)
+        {
+            if (ErrorPosition < error.ErrorPosition)
             {
-                return false;
+                return error.ErrorPosition;
             }
+            return ErrorPosition;
         }
+
+        public bool Success => false;
+
+        public int ErrorPosition => errorPosition;
     }
 }
