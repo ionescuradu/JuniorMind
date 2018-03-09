@@ -26,13 +26,7 @@ namespace JsonTests
             {
                 return (new SuccessMatch(input), "");
             }
-            if (input.Length > 2)
-            {
-                if (remaining[0] == ']' && input[input.Length - remaining.Length - 1] == ',')
-                {
-                    return (new NoMatch(remaining), remaining);
-                }
-            }
+
             (match, remaining) = Letters.Match(remaining);
             return (new SuccessMatch(input), remaining);
 

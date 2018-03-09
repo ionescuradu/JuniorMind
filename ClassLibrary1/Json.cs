@@ -40,7 +40,7 @@ namespace JsonTests
                 new WhiteSpaceChars(),
                 new Character('['),
                 new WhiteSpaceChars(),
-                new List(jsonValue, separatorWhiteSpace),
+                (new List(jsonValue, separatorWhiteSpace)),
                 new WhiteSpaceChars(),
                 new Character(']'),
                 new WhiteSpaceChars()

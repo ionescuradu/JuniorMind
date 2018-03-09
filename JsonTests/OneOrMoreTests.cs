@@ -23,5 +23,13 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "ionescu");
         }
+
+        [TestMethod]
+        public void OneOrMoreRemainingString()
+        {
+            var x = new OneOrMore(new Character('r'));
+            var (match, remainng) = x.Match("ionescu");
+            Assert.AreEqual(0, ((NoMatch)match).ErrorPosition);
+        }
     }
 }

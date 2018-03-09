@@ -28,14 +28,12 @@ namespace JsonTests
                 index++;
                 (match, remaining) = pattern.Match(remaining);
             }
-
             if (minimum <= index && (maxim == 0 || index <= maxim))
             {
                 string foundText = input.Substring(0, input.Length - remaining.Length);
                 return (new SuccessMatch(foundText), remaining);
             }
-
-            return (new NoMatch(input), input);
+            return (new NoMatch(input, input.Length - remaining.Length), input);
         }
     }
 }

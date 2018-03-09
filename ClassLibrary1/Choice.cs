@@ -21,6 +21,8 @@ namespace JsonTests
             {
                 return (new NoText(input), input);
             }
+            var noMatch = new NoMatch("");
+            var max = 0;
             foreach (var item in choices)
             { 
                 var (match, remaining) = item.Match(input);
@@ -28,8 +30,9 @@ namespace JsonTests
                 {
                     return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), input.Substring(input.Length - remaining.Length));
                 }
+                max = noMatch.Merge((NoMatch)match);
             }
-            return (new NoMatch(""), input);
+            return (new NoMatch("", max), input);
         }
 
         public void Add(Pattern newChoice)

@@ -41,5 +41,21 @@ namespace JsonTests
             Assert.IsFalse(match.Success);
             Assert.AreEqual(remainng, "rradu");
         }
+
+        [TestMethod]
+        public void MaximumOccurancesRemainingText()
+        {
+            var x = new Many(new Character('r'), 0, 1);
+            var (match, remainng) = x.Match("rradu");
+            Assert.AreEqual(2, ((NoMatch)match).ErrorPosition);
+        }
+
+        [TestMethod]
+        public void MaximumOccurancesRemainingText2()
+        {
+            var x = new Many(new Character('r'), 4, 0);
+            var (match, remainng) = x.Match("rrradu");
+            Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
+        }
     }
 }
