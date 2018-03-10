@@ -32,8 +32,8 @@ namespace JsonTests
             string input = "r ";
             var x = new List(new Character('r'), new Character(' '));
             var (match, remaining) = x.Match(input);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual("r ", remaining);
         }
 
         [TestMethod]
@@ -42,8 +42,8 @@ namespace JsonTests
             string input = "r r r ";
             var x = new List(new Character('r'), new Character(' '));
             var (match, remaining) = x.Match(input);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, input);
         }
 
         [TestMethod]
@@ -62,8 +62,8 @@ namespace JsonTests
             string input = "r r r 4";
             var x = new List(new Character('r'), new Character(' '));
             var (match, remaining) = x.Match(input);
-            Assert.IsTrue(match.Success);
-            Assert.AreEqual(remaining, "4");
+            Assert.IsFalse(match.Success);
+            Assert.AreEqual(remaining, input);
         }
 
         [TestMethod]

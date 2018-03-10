@@ -25,6 +25,15 @@ namespace JsonTests
         }
 
         [TestMethod]
+        public void ManyTests3()
+        {
+            var x = new Many(new Sequance(new Character('r'), new Character(' ')));
+            var (match, remainng) = x.Match("r r ionescu");
+            Assert.IsTrue(match.Success);
+            Assert.AreEqual(remainng, "ionescu");
+        }
+
+        [TestMethod]
         public void MinimOccurancesForMany()
         {
             var x = new Many(new Character('r'), 2);
@@ -57,5 +66,7 @@ namespace JsonTests
             var (match, remainng) = x.Match("rrradu");
             Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
         }
+
+
     }
 }

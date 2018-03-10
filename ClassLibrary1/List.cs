@@ -8,28 +8,35 @@ namespace JsonTests
 {
     public class List : Pattern
     {
-        readonly private Pattern Letters;
-        readonly private Pattern Separator;
+        readonly private Pattern characters;
+        readonly private Pattern separator;
         readonly private Many list;
 
-        public List(Pattern Characters, Pattern Separator)
+        public List(Pattern characters, Pattern separator)
         {
-            this.Letters = Characters;
-            this.Separator = Separator;
-            list = new Many(new Sequance(new Pattern[] { Letters, Separator }));
+            this.characters = characters;
+            this.separator = separator;
+            list = new Many(new Sequance(new Pattern[] { characters, separator }));
         }
 
         public (Match, string) Match(string input)
-        { 
-            var (match, remaining) = list.Match(input);
-            if (match.Success && remaining == "")
+        {
+            if (input == "")
             {
                 return (new SuccessMatch(input), "");
             }
-
-            (match, remaining) = Letters.Match(remaining);
+            var (match, remaining) = list.Match(input);
+            var aux = remaining;
+            (match, remaining) = characters.Match(remaining);
+            if (aux != input)
+            {
+                if (!match.Success)
+                {
+                    return (new NoMatch(input, input.Length - remaining.Length), input);
+                }
+                return (new SuccessMatch(input.Substring(input.Length - remaining.Length)), remaining);
+            }
             return (new SuccessMatch(input), remaining);
-
         }
     }
 }
