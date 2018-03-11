@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace JsonTests
 {
     [TestClass]
@@ -171,9 +170,27 @@ namespace JsonTests
         public void ValueTestObjectIndexRemaining1()
         {
             var x = new Json();
+            var text = "truf";
+            var (match, remaining) = x.Match(text);
+            Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
+        }
+
+        [TestMethod]
+        public void ValueTestObjectIndexRemaining2()
+        {
+            var x = new Json();
+            var text = "{\"2\": 2,}";
+            var (match, remaining) = x.Match(text);
+            Assert.AreEqual(8, ((NoMatch)match).ErrorPosition);
+        }
+
+        [TestMethod]
+        public void ValueTestObjectIndexRemaining3()
+        {
+            var x = new Json();
             var text = "[2,]";
             var (match, remaining) = x.Match(text);
-            Assert.AreEqual(2, ((NoMatch)match).ErrorPosition);
+            Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
         }
     }
 }

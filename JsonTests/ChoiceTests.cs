@@ -102,15 +102,30 @@ namespace JsonTests
         [TestMethod]
         public void ChoiceRemainingIndex()
         {
-            string input = "radu";
+            string input = "raduionescu";
             var choice = new Choice(
+                new Text("radm"),
                 new Text("ram"),
-                new Text("radm")
+                new Text("raduim"),
+                new Text("raduv")
             );
             var (match, remaining) = choice.Match(input);
             var noMatch = (NoMatch)match;
-            Assert.AreEqual(3, noMatch.ErrorPosition);
+            Assert.AreEqual(5, noMatch.ErrorPosition);
         }
 
+        [TestMethod]
+        public void SequanceInChoiceRemainingTest()
+        {
+            string input = "raduionescu";
+            var choice1 = new Choice(
+                new Sequance(
+                new Text("ra"),
+                new Text("dm")
+            ));
+            var (match, remaining) = choice1.Match(input);
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(2, noMatch.ErrorPosition);
+        }
     }
 }

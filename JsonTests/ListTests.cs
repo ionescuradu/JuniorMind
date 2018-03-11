@@ -83,5 +83,23 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "]");
         }
+
+        [TestMethod]
+        public void ListTestErrorChars()
+        {
+            var x = new List(new Number(), new Character(','));
+            var (match, remaining) = x.Match("1,m");
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(2, noMatch.ErrorPosition);
+        }
+
+        [TestMethod]
+        public void ListTestErrorChars2()
+        {
+            var x = new List(new Number(), new Character(','));
+            var (match, remaining) = x.Match("1,1,");
+            var noMatch = (NoMatch)match;
+            Assert.AreEqual(4, noMatch.ErrorPosition);
+        }
     }
 }

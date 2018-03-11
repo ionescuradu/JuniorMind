@@ -122,14 +122,5 @@ namespace JsonTests
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "ef10");
         }
-
-        [TestMethod]
-        public void JsonNumberTest14()
-        {
-            var number = new Number();
-            var (match, remaining) = number.Match("12.1m");
-            var aux = ((NoMatch)match).ErrorPosition;
-            Assert.AreEqual(4, ((NoMatch)match).ErrorPosition);
-        }
     }
 }

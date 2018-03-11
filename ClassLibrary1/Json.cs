@@ -71,7 +71,12 @@ namespace JsonTests
                 int foundString = input.Length - remaining.Length;
                 return (new SuccessMatch(input.Substring(0, foundString)), remaining);
             }
-            return (new NoMatch(input), remaining);
+            if (match as NoMatch == null)
+            {
+                return (new NoMatch(input), remaining);
+            }
+            var match2 = match as NoMatch;
+            return (new NoMatch(input, match2.ErrorPosition), remaining);
         }
     }
 }

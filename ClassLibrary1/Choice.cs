@@ -30,7 +30,11 @@ namespace JsonTests
                 {
                     return (new SuccessMatch(input.Substring(0, input.Length - remaining.Length)), input.Substring(input.Length - remaining.Length));
                 }
-                max = noMatch.Merge((NoMatch)match);
+                if (max < noMatch.Merge((NoMatch)match))
+                {
+                    max = noMatch.Merge((NoMatch)match);
+                }
+                noMatch = (NoMatch)match;
             }
             return (new NoMatch("", max), input);
         }
