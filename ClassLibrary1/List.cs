@@ -16,7 +16,7 @@ namespace JsonTests
         {
             this.characters = characters;
             this.separator = separator;
-            list = new Many(new Sequance(new Pattern[] { separator, characters }));
+            list = new Many(new Sequance(separator, characters));
         }
 
         public (Match, string) Match(string input)
@@ -29,7 +29,7 @@ namespace JsonTests
             if (match.Success)
             {
                 (match, remaining) = list.Match(remaining);
-                return (new SuccessMatch(input), remaining);
+                return (match, remaining);
             }
             return (new SuccessMatch(input), input);
 

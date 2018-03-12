@@ -31,11 +31,31 @@ namespace JsonTests
         public int NoMatchPosition(string input)
         {
             var aux = noMatch;
-            while (aux.noMatch != null)
+            while (aux.noMatch.noMatch != null)
             {
                 aux = aux.noMatch;
             }
             return input.Length - aux.givenString.Length;
+        }
+
+        public string NoMatchWrongChar()
+        {
+            var aux = noMatch;
+            while (aux.noMatch.noMatch != null)
+            {
+                aux = aux.noMatch;
+            }
+            return aux.givenString[0].ToString();
+        }
+
+        public string NoMatchExpectedValue()
+        {
+            var aux = noMatch;
+            while (aux.noMatch != null)
+            {
+                aux = aux.noMatch;
+            }
+            return aux.givenString.ToString();
         }
 
         public bool Success => false;
