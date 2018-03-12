@@ -16,7 +16,7 @@ namespace JsonTests
         {
             this.characters = characters;
             this.separator = separator;
-            list = new Many(new Sequance(new Pattern[] { characters, separator }));
+            list = new Many(new Sequance(new Pattern[] { separator, characters }));
         }
 
         public (Match, string) Match(string input)
@@ -25,18 +25,14 @@ namespace JsonTests
             {
                 return (new SuccessMatch(input), "");
             }
-            var (match, remaining) = list.Match(input);
-            var aux = remaining;
-            (match, remaining) = characters.Match(remaining);
-            if (aux != input)
+            var (match, remaining) = characters.Match(input);
+            if (match.Success)
             {
-                if (!match.Success)
-                {
-                    return (new NoMatch(input, input.Length - remaining.Length), input);
-                }
-                return (new SuccessMatch(input.Substring(input.Length - remaining.Length)), remaining);
+                (match, remaining) = list.Match(remaining);
+                return (new SuccessMatch(input), remaining);
             }
-            return (new SuccessMatch(input), remaining);
+            return (new SuccessMatch(input), input);
+
         }
     }
 }

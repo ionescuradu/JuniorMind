@@ -26,7 +26,7 @@ namespace JsonTests
             {
                 return (new SuccessMatch(input), remaining);
             }
-            return (new NoMatch(input, input.Length - remaining.Length), remaining);
+            return (new NoMatch(input, input.Length - remaining.Length, match as NoMatch), remaining);
         }
     }
 }

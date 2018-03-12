@@ -75,8 +75,7 @@ namespace JsonTests
             {
                 return (new NoMatch(input), remaining);
             }
-            var match2 = match as NoMatch;
-            return (new NoMatch(input, match2.ErrorPosition), remaining);
+            return (new NoMatch(input, 0, match as NoMatch), remaining);
         }
     }
 }

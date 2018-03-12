@@ -140,18 +140,5 @@ namespace JsonTests
             var noMatch = (NoMatch)match;
             Assert.AreEqual(3, noMatch.ErrorPosition);
         }
-
-        [TestMethod]
-        public void SequanceTextErrorReporting2()
-        {
-            var x = new Sequance(
-                new Character('['),
-                new List(new Number(), new Character(',')),
-                new Character(']')
-            );
-            var (match, remainng) = x.Match("[2,]");
-            var noMatch = (NoMatch)match;
-            Assert.AreEqual(3, noMatch.ErrorPosition);
-        }
     }
 }

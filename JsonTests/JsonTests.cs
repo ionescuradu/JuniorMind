@@ -172,7 +172,7 @@ namespace JsonTests
             var x = new Json();
             var text = "truf";
             var (match, remaining) = x.Match(text);
-            Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
+            Assert.AreEqual(3, (match as NoMatch).NoMatchSum(text));
         }
 
         [TestMethod]
@@ -181,7 +181,7 @@ namespace JsonTests
             var x = new Json();
             var text = "{\"2\": 2,}";
             var (match, remaining) = x.Match(text);
-            Assert.AreEqual(8, ((NoMatch)match).ErrorPosition);
+            Assert.AreEqual(8, (match as NoMatch).NoMatchSum(text));
         }
 
         [TestMethod]
@@ -190,7 +190,16 @@ namespace JsonTests
             var x = new Json();
             var text = "[2,]";
             var (match, remaining) = x.Match(text);
-            Assert.AreEqual(3, ((NoMatch)match).ErrorPosition);
+            Assert.AreEqual(3, (match as NoMatch).NoMatchSum(text));
+        }
+
+        [TestMethod]
+        public void ValueTestObjectIndexRemaining4()
+        {
+            var x = new Json();
+            var text = "{\"2\":2,\"2\":}";
+            var (match, remaining) = x.Match(text);
+            Assert.AreEqual(11, (match as NoMatch).NoMatchSum(text));
         }
     }
 }

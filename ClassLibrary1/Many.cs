@@ -33,7 +33,7 @@ namespace JsonTests
                 string foundText = input.Substring(0, input.Length - remaining.Length);
                 return (new SuccessMatch(foundText), remaining);
             }
-            return (new NoMatch(input, input.Length - remaining.Length), input);
+            return (new NoMatch(input, input.Length - remaining.Length, match as NoMatch), input);
         }
     }
 }
