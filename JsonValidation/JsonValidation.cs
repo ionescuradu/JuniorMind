@@ -28,7 +28,8 @@ namespace JsonValidation
                 return;
             }
             var location = new Location(inputText, ((NoMatch)match).NoMatchSum(inputText));
-            Console.Write("Text is incorrect at line {0} and colom {1}", location.Line, location.Column);
+            Console.WriteLine("Text is incorrect at line {0} and colom {1}", location.Line, location.Column);
+            //Console.WriteLine("{0} found instead of {1}",)
             Console.ReadKey();
 
         }

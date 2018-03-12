@@ -28,7 +28,7 @@ namespace JsonTests
             return ErrorPosition;
         }
 
-        public int NoMatchSum(string input)
+        public int NoMatchPosition(string input)
         {
             var aux = noMatch;
             while (aux.noMatch != null)

@@ -201,5 +201,14 @@ namespace JsonTests
             var (match, remaining) = x.Match(text);
             Assert.AreEqual(11, (match as NoMatch).NoMatchSum(text));
         }
+
+        [TestMethod]
+        public void ValueTestObjectIndexRemaining5()
+        {
+            var x = new Json();
+            var text = "{\"2\":2,\"2\":radu}";
+            var (match, remaining) = x.Match(text);
+            Assert.AreEqual(15, (match as NoMatch).NoMatchSum(text));
+        }
     }
 }
