@@ -36,7 +36,7 @@ namespace JsonTests
                     noMatch = match as NoMatch;
                 }
             }
-            return (new NoMatch(input, max, noMatch), input);
+            return (noMatch, input);
         }
 
         public void Add(Pattern newChoice)
