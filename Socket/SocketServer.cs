@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net;
 using System.Net.Sockets;
+
 
 namespace Socket
 {
@@ -11,9 +13,14 @@ namespace Socket
 
         public SocketServer(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType)
         {
-            this.addressFamily = AddressFamily.InterNetwork;
-            this.socketType = SocketType.Stream;
-            this.protocolType = ProtocolType.Tcp;
+            this.addressFamily = addressFamily;
+            this.socketType = socketType;
+            this.protocolType = protocolType;
+        }
+
+        public void Bind(IPEndPoint ipEndPoint)
+        {
+            throw new NotImplementedException();
         }
     }
 }
