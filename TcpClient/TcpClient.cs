@@ -48,7 +48,7 @@ namespace TcpClientClass
         }
         public static void Main(string[] args)
         {
-            Connect("www.goole.com", "abracadabra");
+            Connect("127.0.0.1", "abracadabra");
         }
     }
 }
