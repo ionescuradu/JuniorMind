@@ -23,14 +23,14 @@ namespace TcpClientClass
             {
                 int port = 5000;
                 TcpClient client = new TcpClient(server, port);
-                Byte[] data = Encoding.ASCII.GetBytes(message);
+                Byte[] data = Encoding.UTF8.GetBytes(message);
                 NetworkStream stream = client.GetStream();
                 stream.Write(data, 0, data.Length);
                 Console.WriteLine("Sent: {0}", message);
                 data = new Byte[256];
                 String responseData = String.Empty;
                 Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                responseData = Encoding.UTF8.GetString(data, 0, bytes);
                 Console.WriteLine("Received: {0}", responseData);
                 stream.Close();
                 client.Close();
