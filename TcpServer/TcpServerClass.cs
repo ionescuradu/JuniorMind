@@ -29,10 +29,10 @@ namespace TcpServerClass
                     int i;
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
-                        data = Encoding.UTF8.GetString(bytes, 0, i);
+                        data = Encoding.UTF32.GetString(bytes, 0, i);
                         Console.WriteLine("Received: {0}", data);
-                        data = data.ToUpper();
-                        byte[] msg = Encoding.UTF8.GetBytes(data);
+                        //data = data.ToUpper();
+                        byte[] msg = Encoding.UTF32.GetBytes(data);
                         stream.Write(msg, 0, msg.Length);
                         Console.WriteLine("Sent: {0}", data);
                     }
