@@ -55,8 +55,7 @@ namespace TcpServerClass
                             }
                         }
                     }
-                    byte[] msg = null;
-                    msg = Encoding.UTF8.GetBytes(html);
+                    var msg = Encoding.UTF8.GetBytes(html);
                     stream.Write(msg, 0, msg.Length);
                     Console.WriteLine("Sent: {0}", html);
                     client.Close();
