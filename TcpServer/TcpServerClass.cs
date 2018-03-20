@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using TcpHtmlVerifyTests;
+
 
 
 
@@ -26,17 +28,37 @@ namespace TcpServerClass
                     TcpClient client = server.AcceptTcpClient();
                     Console.WriteLine("Connected!");
                     data = null;
+                    string html = "";
                     NetworkStream stream = client.GetStream();
-                    int i;
+                    int i = 0;
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
-                        data = Encoding.UTF8.GetString(bytes, 0, i);
-                        Console.WriteLine("Received: {0}", data);
-                        string html = "";
-                        byte[] msg = Encoding.UTF8.GetBytes(html);
-                        stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine("Sent: {0}", html);
+                        data += Encoding.UTF8.GetString(bytes, 0, i);
+                        //byte[] msg = Encoding.UTF8.GetBytes(data);
+                        //stream.Write(msg, 0, msg.Length);
+                        //Console.WriteLine("Sent: {0}", data);
+                        if (data.Length > 4)
+                        {
+                            if ((data.Substring(data.Length - 4) == "\r\n\r\n"))
+                            {
+                                Console.WriteLine("Received: {0}", data);
+                                var (match, remaining) = new HtmlVerify().Match(data);
+                                if (match.Success)
+                                {
+                                    html = "<h1>The header is correct</h1>";
+                                }
+                                else
+                                {
+                                    html = "<h1>The header is incorrect</h1>";
+                                }
+                                break;
+                            }
+                        }
                     }
+                    byte[] msg = null;
+                    msg = Encoding.UTF8.GetBytes(html);
+                    stream.Write(msg, 0, msg.Length);
+                    Console.WriteLine("Sent: {0}", html);
                     client.Close();
                 }
             }

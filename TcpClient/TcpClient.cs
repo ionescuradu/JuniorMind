@@ -48,7 +48,12 @@ namespace TcpClientClass
         }
         public static void Main(string[] args)
         {
-            Connect("127.0.0.1", @"PUT/somewhere/fun HTTP/1.1");
+            Connect("127.0.0.1", "PUT /somewhere/fun HTTP/1.1" +
+                "\nHost: origin.example.com" +
+                "\nContent-Type: video/h264" +
+                "\nContent-Length: 1234567890987" +
+                "\nExpect: 100-continue" +
+                "\r\n\r\n");
         }
     }
 }
