@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using TcpTextVerify;
+
 
 
 namespace TcpServerClass
@@ -32,17 +32,7 @@ namespace TcpServerClass
                     {
                         data = Encoding.UTF8.GetString(bytes, 0, i);
                         Console.WriteLine("Received: {0}", data);
-                        string html;
-                        var text = new TextVerify();
-                        var (match, remaining) = text.Match(data);
-                        if (match.Success && remaining == "")
-                        {
-                            html = "<h1>Header is OK</h1>";
-                        }
-                        else
-                        {
-                        html = "<h1>Header is not OK</h1>";
-                        }
+                        string html = "";
                         byte[] msg = Encoding.UTF8.GetBytes(html);
                         stream.Write(msg, 0, msg.Length);
                         Console.WriteLine("Sent: {0}", html);

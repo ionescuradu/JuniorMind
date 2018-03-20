@@ -114,7 +114,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServer", "TcpServer\TcpS
 		{911201D4-D1C4-4491-8AE0-9608D61AF249} = {911201D4-D1C4-4491-8AE0-9608D61AF249}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpTextVerify", "TcpTextVerify\TcpTextVerify.csproj", "{9C6C5192-7EBA-496E-A3AE-4105205B1D77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpHtmlVerify", "TcpTextVerify\TcpHtmlVerify.csproj", "{9C6C5192-7EBA-496E-A3AE-4105205B1D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpHtmlVerifyTests", "TcpTextVerifyTests\TcpHtmlVerifyTests.csproj", "{73F5F020-0338-4A5D-AA36-EF06C61BB730}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C6C5192-7EBA-496E-A3AE-4105205B1D77} = {9C6C5192-7EBA-496E-A3AE-4105205B1D77}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -330,6 +335,10 @@ Global
 		{9C6C5192-7EBA-496E-A3AE-4105205B1D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C6C5192-7EBA-496E-A3AE-4105205B1D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C6C5192-7EBA-496E-A3AE-4105205B1D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F5F020-0338-4A5D-AA36-EF06C61BB730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F5F020-0338-4A5D-AA36-EF06C61BB730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F5F020-0338-4A5D-AA36-EF06C61BB730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F5F020-0338-4A5D-AA36-EF06C61BB730}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
