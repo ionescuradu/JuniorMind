@@ -23,14 +23,14 @@ namespace TcpClientClass
             {
                 int port = 5000;
                 TcpClient client = new TcpClient(server, port);
-                Byte[] data = Encoding.UTF32.GetBytes(message);
+                Byte[] data = Encoding.UTF8.GetBytes(message);
                 NetworkStream stream = client.GetStream();
                 stream.Write(data, 0, data.Length);
                 Console.WriteLine("Sent: {0}", message);
                 data = new Byte[1024];
                 String responseData = String.Empty;
                 Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = Encoding.UTF32.GetString(data, 0, bytes);
+                responseData = Encoding.UTF8.GetString(data, 0, bytes);
                 Console.WriteLine("Received: {0}", responseData);
                 stream.Close();
                 client.Close();
@@ -48,7 +48,7 @@ namespace TcpClientClass
         }
         public static void Main(string[] args)
         {
-            Connect("127.0.0.1", "abracadabra.....and then puffff...he vanish in thin air");
+            Connect("127.0.0.1", @"PUT/somewhere/fun HTTP/1.1");
         }
     }
 }
