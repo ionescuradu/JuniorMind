@@ -41,8 +41,8 @@ namespace TcpHtmlVerifyTests
                         new Many(new Character(' ')),
                         anyChar
                         )
-                    )
-
+                    ),
+                new Text("\r\n\r\n")
                 );
         }
 
