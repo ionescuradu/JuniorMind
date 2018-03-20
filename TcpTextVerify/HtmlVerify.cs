@@ -31,14 +31,17 @@ namespace TcpHtmlVerifyTests
                 anyChar,
                 new Character(' '),
                 new Text("HTTP/1.1"),
-                new Many(new Sequance(
-                new Text("\n"),
-                new Many(new Character(' ')),
-                anyChar,
-                new Many(new Character(' ')),
-                new Character(':'),
-                new Many(new Character(' ')),
-                anyChar))
+                new Many(
+                    new Sequance(
+                        new Text("\n"),
+                        new Many(new Character(' ')),
+                        anyChar,
+                        new Many(new Character(' ')),
+                        new Character(':'),
+                        new Many(new Character(' ')),
+                        anyChar
+                        )
+                    )
 
                 );
         }
