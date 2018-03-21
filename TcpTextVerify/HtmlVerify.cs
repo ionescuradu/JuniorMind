@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JsonTests;
+using TcpHtmlVerify;
 
 namespace TcpHtmlVerifyTests
 {
@@ -12,15 +13,7 @@ namespace TcpHtmlVerifyTests
         private Sequance htmlOrder;
         public HtmlVerify()
         {
-            var methods = new Choice(
-                new Text("OPTIONS"),
-                new Text("GET"),
-                new Text("HEAD"),
-                new Text("POST"),
-                new Text("PUT"), 
-                new Text("DELETE"),
-                new Text("TRACE"),
-                new Text("CONNECT"));
+            var methods = new MethodPattern();
             var anyChar = new Many(
                 new Choice(
                     new Range('!', '9'),

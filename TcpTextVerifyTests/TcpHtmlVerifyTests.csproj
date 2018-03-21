@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HtmlTests.cs" />
+    <Compile Include="MethodMatchTests.cs" />
+    <Compile Include="MethodPatternTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +68,10 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Json.csproj">
+      <Project>{911201d4-d1c4-4491-8ae0-9608d61af249}</Project>
+      <Name>Json</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TcpTextVerify\TcpHtmlVerify.csproj">
       <Project>{9c6c5192-7eba-496e-a3ae-4105205b1d77}</Project>
       <Name>TcpHtmlVerify</Name>

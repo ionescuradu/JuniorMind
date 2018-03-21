@@ -23,7 +23,7 @@ namespace TcpServerClass
                 Byte[] bytes = new Byte[1024];
                 string data = null;
                 while (true)
-                {
+                {//sdl
                     Console.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
                     Console.WriteLine("Connected!");

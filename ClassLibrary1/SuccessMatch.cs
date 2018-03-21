@@ -8,20 +8,16 @@ namespace JsonTests
 {
     public class SuccessMatch : Match
     {
-        private string foundString;
+        private readonly string foundString;
 
         public SuccessMatch(string foundString)
         {
             this.foundString = foundString;
         }
 
-        public bool Success
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public bool Success => true;
+
+        public string MachedText => foundString;
 
         public override bool Equals(object obj)
         {
