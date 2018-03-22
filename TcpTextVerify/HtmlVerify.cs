@@ -9,6 +9,7 @@ namespace TcpHtmlVerifyTests
         public HtmlVerify()
         {
             var methods = new MethodPattern();
+            var uriPath = new UriParsing();
             var anyChar = new Many(
                 new Choice(
                     new Range('!', '9'),
@@ -16,7 +17,7 @@ namespace TcpHtmlVerifyTests
             htmlOrder = new Sequance(
                 methods,
                 new Character(' '),
-                anyChar,
+                uriPath,
                 new Character(' '),
                 new Text("HTTP/1.1"),
                 new Many(

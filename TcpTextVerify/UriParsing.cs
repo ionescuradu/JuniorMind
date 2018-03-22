@@ -26,7 +26,7 @@ namespace TcpHtmlVerify
                     return (match, remaining);
                 }
             }
-            return (match, input);
+            return (match, remaining);
             
         }
     }
