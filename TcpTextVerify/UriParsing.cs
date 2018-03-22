@@ -19,11 +19,15 @@ namespace TcpHtmlVerify
         public (Match, string) Match(string input)
         {
             var (match, remaining) = pattern.Match(input);
-            if (Uri.TryCreate(input, UriKind.Absolute, out Uri outUri))
+            if (match.Success && (input != remaining))
             {
-                return (match, remaining);
+                var successMatch = (SuccessMatch)match;
+                if (Uri.IsWellFormedUriString(successMatch.MachedText, UriKind.RelativeOrAbsolute))
+                {
+                    return (match, remaining);
+                }
             }
-            return (match, input);
+            return ((NoMatch)match, input);
             
         }
     }
