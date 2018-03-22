@@ -31,7 +31,9 @@ namespace TcpHtmlVerifyTests
                         anyChar
                         )
                     ),
-                new Text("\r\n\r\n")
+                new Choice(
+                    new Text("\r\n\r\n"),
+                    new Text("\n\n"))
                 );
         }
 

@@ -15,7 +15,7 @@ namespace TcpHtmlVerify
         }
 
         [Fact]
-        public void UriParsingTestIncorrectUri()
+        public void UriParsingTestUriRemainingText()
         {
             var uriText = "/en-us/library/system.uri(v=vs.110).aspx HTTP/1.1";
             var pattern = new UriParsing();
