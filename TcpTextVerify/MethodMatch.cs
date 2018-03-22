@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JsonTests;
+﻿using JsonTests;
 using TcpHtmlVerify;
 
 namespace TcpTextVerifyTests

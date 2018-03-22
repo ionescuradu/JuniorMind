@@ -6,6 +6,7 @@ namespace TcpHtmlVerify
     public class UriMatch : Match
     {
         private readonly string text;
+        private string aux;
 
         public UriMatch(string text)
         {
@@ -16,12 +17,13 @@ namespace TcpHtmlVerify
         {
             if (Uri.IsWellFormedUriString(text, UriKind.RelativeOrAbsolute))
             {
+                aux = text;
                 return text;
             }
-            return "";
+            return aux = "";
         }
 
-        public bool Success => true;
+        public bool Success => (text == aux);
 
     }
 }
