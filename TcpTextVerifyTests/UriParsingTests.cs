@@ -17,7 +17,7 @@ namespace TcpHtmlVerify
         [Fact]
         public void UriParsingTestIncorrectUri()
         {
-            var uriText = "/en-us/library//system.uri(v=vs.110).aspx HTTP/1.1";
+            var uriText = "/en-us/library/system.uri(v=vs.110).aspx HTTP/1.1";
             var pattern = new UriParsing();
             var (match, remaining) = pattern.Match(uriText);
             Assert.True(match.Success);

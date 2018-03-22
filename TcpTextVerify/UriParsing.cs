@@ -5,7 +5,6 @@ namespace TcpHtmlVerify
 {
     public class UriParsing : Pattern
     {
-        //private readonly string uriText;
         private readonly Pattern pattern;
 
         public UriParsing()
@@ -19,7 +18,7 @@ namespace TcpHtmlVerify
         public (Match, string) Match(string input)
         {
             var (match, remaining) = pattern.Match(input);
-            if (match.Success && (input != remaining))
+            if (match.Success)
             {
                 var successMatch = (SuccessMatch)match;
                 if (Uri.IsWellFormedUriString(successMatch.MachedText, UriKind.RelativeOrAbsolute))
@@ -27,7 +26,7 @@ namespace TcpHtmlVerify
                     return (match, remaining);
                 }
             }
-            return ((NoMatch)match, input);
+            return (match, input);
             
         }
     }
