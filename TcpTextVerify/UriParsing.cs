@@ -21,10 +21,6 @@ namespace TcpHtmlVerify
             if (match.Success)
             {
                 var successMatch = (SuccessMatch)match;
-                if (Uri.IsWellFormedUriString(successMatch.MachedText, UriKind.RelativeOrAbsolute))
-                {
-                    return (match, remaining);
-                }
             }
             return (match, remaining);
             
