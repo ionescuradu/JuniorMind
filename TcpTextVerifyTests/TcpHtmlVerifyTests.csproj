@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyValuesPairsTests.cs" />
     <Compile Include="UriMatchTests.cs" />
     <Compile Include="UriParsingTests.cs" />
     <Compile Include="HtmlTests.cs" />
