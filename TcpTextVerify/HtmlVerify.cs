@@ -40,8 +40,6 @@ namespace TcpHtmlVerifyTests
 
         public (Match, string) Match(string input)
         {
-            var dictionary = new Dictionary<string, string>();
-
             var (match, remaining) = htmlOrder.Match(input);
             return (match, remaining);
         }
