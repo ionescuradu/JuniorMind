@@ -21,6 +21,7 @@ namespace TcpHtmlVerify
             if (match.Success)
             {
                 var successMatch = (SuccessMatch)match;
+                return (new UriMatch(successMatch.MachedText), remaining);
             }
             return (match, remaining);
             

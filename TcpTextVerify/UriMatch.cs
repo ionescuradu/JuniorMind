@@ -5,25 +5,16 @@ namespace TcpHtmlVerify
 {
     public class UriMatch : Match
     {
-        private readonly string text;
-        private string aux;
+        private readonly Uri uri;
 
         public UriMatch(string text)
         {
-            this.text = text;
+            uri = new Uri(text,UriKind.Relative);
         }
 
-        public string IsUri()
-        {
-            if (Uri.IsWellFormedUriString(text, UriKind.RelativeOrAbsolute))
-            {
-                aux = text;
-                return text;
-            }
-            return aux = "";
-        }
+        public Uri Uri => uri;
 
-        public bool Success => (text == aux);
+        public bool Success => true;
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using JsonTests;
+﻿using System.Collections.Generic;
+using JsonTests;
 using TcpHtmlVerify;
 
 namespace TcpHtmlVerifyTests
@@ -14,23 +15,23 @@ namespace TcpHtmlVerifyTests
                 new Choice(
                     new Range('!', '9'),
                     new Range(';', '~')));
+            var elementList = new Sequance(
+                    new Many(new Character(' ')),
+                        anyChar,
+                        new Many(new Character(' ')),
+                        new Character(':'),
+                        new Many(new Character(' ')),
+                        anyChar);
             htmlOrder = new Sequance(
                 methods,
                 new Character(' '),
                 uriPath,
                 new Character(' '),
                 new Text("HTTP/1.1"),
-                new Many(
+                new Optional(
                     new Sequance(
                         new Text("\n"),
-                        new Many(new Character(' ')),
-                        anyChar,
-                        new Many(new Character(' ')),
-                        new Character(':'),
-                        new Many(new Character(' ')),
-                        anyChar
-                        )
-                    ),
+                        new List(elementList, new Text("\n")))),
                 new Choice(
                     new Text("\r\n\r\n"),
                     new Text("\n\n"))
@@ -39,6 +40,8 @@ namespace TcpHtmlVerifyTests
 
         public (Match, string) Match(string input)
         {
+            var dictionary = new Dictionary<string, string>();
+
             var (match, remaining) = htmlOrder.Match(input);
             return (match, remaining);
         }

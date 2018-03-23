@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 
 namespace TcpHtmlVerify
@@ -6,17 +7,17 @@ namespace TcpHtmlVerify
     public class UriMatchTests
     {
         [Fact]
-        public void IsNotSuccessMatch()
+        public void IsSuccessMatch()
         {
-            var uriMatch = new UriMatch(" /messages/D5B6JPDK2/");
-            Assert.False(uriMatch.Success);
+            var uriMatch = new UriMatch("/messages/D5B6JPDK2/");
+            Assert.True(uriMatch.Success);
         }
 
         [Fact]
         public void HasHttpUriProperty()
         {
-            var uriMatch = new UriMatch("/messages/D5B6JPDK2/");
-            Assert.Equal("/messages/D5B6JPDK2/", uriMatch.IsUri());
+            var uriMatch = new UriMatch("messages/D5B6JPDK2/");
+            Assert.Equal("messages/D5B6JPDK2/", uriMatch.Uri.ToString());
         }
 
     }
