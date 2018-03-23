@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="FieldsMatchTests.cs" />
     <Compile Include="FiledsParsingTests.cs" />
-    <Compile Include="SuccessMatchArrayTests.cs" />
     <Compile Include="UriMatchTests.cs" />
     <Compile Include="UriParsingTests.cs" />
     <Compile Include="HtmlTests.cs" />

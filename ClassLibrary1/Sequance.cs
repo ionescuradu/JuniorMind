@@ -1,13 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JsonTests
+﻿namespace JsonTests
 {
     public class Sequance :Pattern
     {
-        readonly private Pattern[] pattern;
+        readonly Pattern[] pattern;
+        readonly MatchesArray successArray = new MatchesArray();
 
         public Sequance( params Pattern[] pattern)
         {
@@ -28,9 +24,10 @@ namespace JsonTests
                 {
                     return (new NoMatch(aux, input.Length - remaining.Length, match as NoMatch), input);
                 }
+                successArray.Add(match);
                 aux = remaining;
             }
-            return (new SuccessMatch(input.Substring(0, input.Length - aux.Length)), aux);
+            return (successArray, aux);
         }
     }
 }

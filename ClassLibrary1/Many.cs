@@ -12,6 +12,7 @@ namespace JsonTests
         private int minimum;
         private int maxim;
 
+
         public Many(Pattern pattern, int minimum = 0, int maxim = 0)
         {
             this.pattern = pattern;
