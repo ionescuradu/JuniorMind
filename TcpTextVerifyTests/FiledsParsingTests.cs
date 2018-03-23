@@ -24,5 +24,16 @@ namespace TcpHtmlVerify
             Assert.True(match.Success);
             Assert.Equal("", remaining);
         }
+
+        [Fact]
+        public void FieldsParsingRemainingText()
+        {
+            var fieldText = "Server: nginx/1.13.9\n" +
+                "Content-Length: 3643\r\n\r\n";
+            var pattern = new FieldsParsing();
+            var (match, remaining) = pattern.Match(fieldText);
+            Assert.True(match.Success);
+            Assert.Equal("\r\n\r\n", remaining);
+        }
     }
 }
