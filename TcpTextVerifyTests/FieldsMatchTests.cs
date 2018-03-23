@@ -14,7 +14,7 @@ namespace TcpHtmlVerify
         }
 
         [Fact]
-        public void FieldsMatchDictionary()
+        public void FieldsMatchDictionary2Fields()
         {
             var keyValueMatch = new FieldsMatch(
                 "Server: nginx/1.13.9\r\nContent-Lenght: 112\r\n\r\n");
@@ -22,6 +22,17 @@ namespace TcpHtmlVerify
             dictionaryToCompare.Add("Server", "nginx/1.13.9");
             dictionaryToCompare.Add("Content-Lenght", "112");
             Assert.Equal(dictionaryToCompare,keyValueMatch.Dictionary);
+        }
+
+        [Fact]
+        public void FieldsMatchDictionary2FieldsWithSeparator()
+        {
+            var keyValueMatch = new FieldsMatch(
+                "Server: nginx/1.13.9\nContent-Lenght: 112");
+            Dictionary<string, string> dictionaryToCompare = new Dictionary<string, string>();
+            dictionaryToCompare.Add("Server", "nginx/1.13.9");
+            dictionaryToCompare.Add("Content-Lenght", "112");
+            Assert.Equal(dictionaryToCompare, keyValueMatch.Dictionary);
         }
 
     }
