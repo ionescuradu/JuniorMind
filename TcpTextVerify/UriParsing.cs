@@ -1,5 +1,4 @@
-﻿using System;
-using JsonTests;
+﻿using JsonTests;
 
 namespace TcpHtmlVerify
 {

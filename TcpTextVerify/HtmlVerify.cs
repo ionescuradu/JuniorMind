@@ -34,8 +34,7 @@ namespace TcpHtmlVerifyTests
                         new List(elementList, new Text("\n")))),
                 new Choice(
                     new Text("\r\n\r\n"),
-                    new Text("\n\n"))
-                );
+                    new Text("\n\n")));
         }
 
         public (Match, string) Match(string input)
