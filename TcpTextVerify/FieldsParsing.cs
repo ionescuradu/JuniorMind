@@ -4,7 +4,7 @@ namespace TcpHtmlVerify
 {
     public class FieldsParsing : Pattern
     {
-        private readonly Pattern pattern;
+        private readonly Pattern fields;
 
         public FieldsParsing()
         {
@@ -20,14 +20,18 @@ namespace TcpHtmlVerify
                         new Many(new Character(' ')),
                         anyChar,
                         new Many(new Character(' ')));
-            pattern = new List(elementList, new Text("\n"));
+            fields = new List(elementList, new Text("\n"));
         }
         public (Match, string) Match(string input)
         {
-            var (match, remaining) = pattern.Match(input);
+            var (match, remaining) = new Optional(new Text("\n")).Match(input);
             if (match.Success)
             {
-                return (new FieldsMatch(match.ToString()), remaining);
+                (match, remaining) = fields.Match(remaining);
+                if (match.Success)
+                {
+                    return (new FieldsMatch(match.ToString()), remaining);
+                }
             }
             return (match, remaining);
         }

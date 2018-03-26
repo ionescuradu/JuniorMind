@@ -3,7 +3,6 @@
     public class Sequance :Pattern
     {
         readonly Pattern[] pattern;
-        readonly MatchesArray successArray = new MatchesArray();
 
         public Sequance( params Pattern[] pattern)
         {
@@ -16,7 +15,9 @@
             if (input == "")
             {
                 return (new NoText(input), input);
-            }   
+            }
+
+            var successArray = new MatchesArray();
             for (int i = 0; i < pattern.Length; i++)
             {
                 var (match, remaining) = pattern[i].Match(aux);

@@ -22,10 +22,7 @@ namespace TcpHtmlVerifyTests
                 uriPath,
                 new Character(' '),
                 new Text("HTTP/1.1"),
-                new Optional(
-                    new Sequance(
-                        new Text("\n"),
-                        fields)),
+                fields,
                 new Choice(
                     new Text("\r\n\r\n"),
                     new Text("\n\n")));

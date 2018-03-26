@@ -173,18 +173,9 @@ namespace JsonTests
         public void SequanceMatchArrayListSequanceMany()
         {
             string input = "r r raduionescu";
-            var patterns = new Sequance(
-                new Character('r'),
-                new Many(
-                    new Sequance(
-                        new Character(' '),
-                        new Character('r')))
-                );
-            var patterns2 = new List(new Character('r'), new Character(' '));
-            var (match1, remaining1) = patterns.Match(input);
-            var (match2, remaining2) = patterns2.Match(input);
-            Assert.AreEqual("r r r", match1.ToString());
-            Assert.AreEqual("r r r", match2.ToString());
+            var patterns = new List(new Character('r'), new Character(' '));
+            var (match, remaining) = patterns.Match(input);
+            Assert.AreEqual("r r r", match.ToString());
         }
     }
 }
