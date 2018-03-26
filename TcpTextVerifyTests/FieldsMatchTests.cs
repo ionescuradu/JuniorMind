@@ -29,6 +29,7 @@ namespace TcpHtmlVerify
         {
             var keyValueMatch = new FieldsMatch(
                 "Server: nginx/1.13.9\nContent-Lenght: 112");
+            var x = keyValueMatch.Dictionary;
             Dictionary<string, string> dictionaryToCompare = new Dictionary<string, string>();
             dictionaryToCompare.Add("Server", "nginx/1.13.9");
             dictionaryToCompare.Add("Content-Lenght", "112");

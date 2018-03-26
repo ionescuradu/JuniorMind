@@ -12,7 +12,7 @@ namespace JsonTests
             string input = "radu";
             var x = new Range('a', 'z');
             var y = new Any("abcd");
-            var patterns = new Sequance( x, y );
+            var patterns = new Sequance(x, y);
             var (match, remaining) = patterns.Match(input);
             Assert.IsTrue(match.Success);
             Assert.AreEqual(remaining, "du");
@@ -61,11 +61,11 @@ namespace JsonTests
         public void SequanceTest5()
         {
             string input = "raduionescu";
-            var x = new Range('a', 'z'); 
-            var y = new Any("abcd"); 
-            var z = new Any("dpqr"); 
-            var t = new Any("uzt"); 
-            var q = new Any("abrai"); 
+            var x = new Range('a', 'z');
+            var y = new Any("abcd");
+            var z = new Any("dpqr");
+            var t = new Any("uzt");
+            var q = new Any("abrai");
             var patternFirst = new Sequance(x, y);
             var patterns = new Sequance(patternFirst, z, t, q);
             var (match, remaining) = patterns.Match(input);
@@ -78,7 +78,7 @@ namespace JsonTests
         {
             string input = "radu";
             var patterns = new Sequance(
-                new Range('a', 'z'), 
+                new Range('a', 'z'),
                 new Optional(new Character('a'))
                 );
             var (match, remaining) = patterns.Match(input);
@@ -139,6 +139,21 @@ namespace JsonTests
             var (match, remainng) = x.Match("abcx");
             var noMatch = (NoMatch)match;
             Assert.AreEqual(3, noMatch.ErrorPosition);
+        }
+
+        [TestMethod]
+        public void SequanceMatchArray()
+        {
+            string input = "raduionescu";
+            var patterns = new Sequance(
+                new Sequance(
+                    new Character('r'),
+                    new Character('a')),
+                new Sequance(
+                    new Character('d'),
+                    new Character('u')));
+            var (match, remaining) = patterns.Match(input);
+            Assert.AreEqual("radu", match.ToString());
         }
     }
 }
