@@ -33,5 +33,19 @@ namespace JsonTests
             var (match, remaining) = firstSequance.Match("ab");
             Assert.Equal("ab", match.ToString());
         }
+
+        [Fact]
+        public void MatchArrayToStringSequanceInSeqance()
+        {
+            var firstSequance = new Sequance(
+                new Character('a'),
+                new Character('b'),
+                new Sequance(
+                    new Character('c'),
+                    new Character('d'))
+                );
+            var (match, remaining) = firstSequance.Match("abcde");
+            Assert.Equal("abcd", match.ToString());
+        }
     }
 }
