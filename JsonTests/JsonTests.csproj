@@ -68,7 +68,7 @@
     <Compile Include="LocationTests.cs" />
     <Compile Include="MaxIndexStringTests.cs" />
     <Compile Include="NoMatchTests.cs" />
-    <Compile Include="SuccessMatchArrayTests.cs" />
+    <Compile Include="MatchArrayTests.cs" />
     <Compile Include="WhiteSpaceCharsTests.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="NumberTests.cs" />

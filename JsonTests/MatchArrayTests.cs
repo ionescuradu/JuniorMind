@@ -1,7 +1,7 @@
 ﻿using Xunit;
 namespace JsonTests
 {
-    public class SuccessMatchArrayTests
+    public class MatchArrayTests
     {
 
         [Fact]
@@ -22,6 +22,16 @@ namespace JsonTests
             var successMatchArray = (MatchesArray)match;
             Assert.True(successMatchArray.Success);
 
+        }
+
+        [Fact]
+        public void MatchArrayToString()
+        {
+            var firstSequance = new Sequance(
+                new Character('a'),
+                new Character('b'));
+            var (match, remaining) = firstSequance.Match("ab");
+            Assert.Equal("ab", match.ToString());
         }
     }
 }

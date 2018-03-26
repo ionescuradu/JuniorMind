@@ -27,8 +27,7 @@ namespace TcpHtmlVerify
             var (match, remaining) = pattern.Match(input);
             if (match.Success)
             {
-                var successMatch = (SuccessMatch)match;
-                return (new FieldsMatch(successMatch.MachedText), remaining);
+                return (new FieldsMatch(match.ToString()), remaining);
             }
             return (match, remaining);
         }
