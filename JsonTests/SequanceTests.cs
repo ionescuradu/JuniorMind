@@ -142,7 +142,7 @@ namespace JsonTests
         }
 
         [TestMethod]
-        public void SequanceMatchArray()
+        public void SequanceMatchArray2Sequance()
         {
             string input = "raduionescu";
             var patterns = new Sequance(
@@ -154,6 +154,19 @@ namespace JsonTests
                     new Character('u')));
             var (match, remaining) = patterns.Match(input);
             Assert.AreEqual("radu", match.ToString());
+        }
+
+        [TestMethod]
+        public void SequanceMatchArrayListSequance()
+        {
+            string input = "ra duionescu";
+            var patterns = new List(
+                new Sequance(
+                    new Character('r'),
+                    new Character('a')),
+                new Character(' '));
+            var (match, remaining) = patterns.Match(input);
+            Assert.AreEqual("ra", match.ToString());
         }
     }
 }
