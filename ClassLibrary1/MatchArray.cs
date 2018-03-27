@@ -35,6 +35,8 @@ namespace JsonTests
 
         public bool Success => true;
 
+        public List<Match> List => successMatches;
+
         public override string ToString()
         {
             var text = new StringBuilder();
