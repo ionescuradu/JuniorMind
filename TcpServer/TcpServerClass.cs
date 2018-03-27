@@ -14,7 +14,6 @@ namespace TcpServerClass
         public static void Main()
         {
             TcpListener server = null;
-            Match aux = null;
             try
             {
                 Int32 port = 5000;
@@ -34,10 +33,9 @@ namespace TcpServerClass
                     data = StringGivenByClient(bytes, data, stream);
                     var x = new HtmlVerify();
                     var (match, remaining) = x.Match(data);
-                    aux = match;
                     html = HtmlValidation(match);
-                    Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (aux as Request).Uri);
-                    var message = html + "\n" + "\nRequested path was: " + (aux as Request).Uri;
+                    Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (match as Request).Uri);
+                    var message = html + "\n" + "\nRequested path was: " + (match as Request).Uri;
                     var msg = Encoding.UTF8.GetBytes(message);
                     stream.Write(msg, 0, msg.Length);
                     client.Close();
