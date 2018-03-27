@@ -33,6 +33,8 @@ namespace TcpHtmlVerifyTests
             var (match, remaining) = htmlOrder.Match(input);
             if (match.Success)
             {
+                var text = "";
+                var x = text.IndexOf("\r\n");
                 return (new Request(match), remaining);
             }
             return (match, remaining);

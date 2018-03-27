@@ -37,7 +37,7 @@ namespace TcpServerClass
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data += Encoding.UTF8.GetString(bytes, 0, i);
-                        if (data.IndexOf("\r\n\r\n") != 0)
+                        if (data.IndexOf("\r\n\r\n") != -1)
                         {
                             break;
                         }
