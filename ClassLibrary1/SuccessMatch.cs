@@ -15,10 +15,10 @@ namespace JsonTests
 
         public string MachedText => foundString;
 
-        //public override bool Equals(object obj)
-        //{
-        //    return foundString.Equals(obj);
-        //}
+        public override bool Equals(object obj)
+        {
+            return foundString.Equals(obj);
+        }
 
         public override string ToString()
         {

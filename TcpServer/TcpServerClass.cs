@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using JsonTests;
+using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
 
@@ -14,6 +16,7 @@ namespace TcpServerClass
         public static void Main()
         {
             TcpListener server = null;
+            Match aux = null;
             try
             {
                 Int32 port = 5000;
@@ -23,7 +26,7 @@ namespace TcpServerClass
                 Byte[] bytes = new Byte[1024];
                 string data = null;
                 while (true)
-                {//sdl
+                {
                     Console.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
                     Console.WriteLine("Connected!");
@@ -34,30 +37,26 @@ namespace TcpServerClass
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data += Encoding.UTF8.GetString(bytes, 0, i);
-                        //byte[] msg = Encoding.UTF8.GetBytes(data);
-                        //stream.Write(msg, 0, msg.Length);
-                        //Console.WriteLine("Sent: {0}", data);
-                        if (data.Length > 4)
+                        if (data.IndexOf("\r\n\r\n") != 0)
                         {
-                            if ((data.Substring(data.Length - 4) == "\r\n\r\n"))
-                            {
-                                Console.WriteLine("Received: {0}", data);
-                                var (match, remaining) = new HtmlVerify().Match(data);
-                                if (match.Success)
-                                {
-                                    html = "<h1>The header is correct</h1>";
-                                }
-                                else
-                                {
-                                    html = "<h1>The header is incorrect</h1>";
-                                }
-                                break;
-                            }
+                            break;
                         }
                     }
-                    var msg = Encoding.UTF8.GetBytes(html);
+                    var x = new HtmlVerify();
+                    var (match, remaining) = x.Match(data);
+                    aux = match;
+                    if (match.Success)
+                    {
+                        html = "<h1>The header is correct</h1>";
+                    }
+                    else
+                    {
+                        html = "<h1>The header is incorrect</h1>";
+                    }
+                    Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (aux as Request).Uri);
+                    var message = html + "\n" + "\nRequested path was: " + (aux as Request).Uri;
+                    var msg = Encoding.UTF8.GetBytes(message);
                     stream.Write(msg, 0, msg.Length);
-                    Console.WriteLine("Sent: {0}", html);
                     client.Close();
                 }
             }
