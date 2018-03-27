@@ -31,7 +31,7 @@ namespace TcpHtmlVerifyTests
         public (Match, string) Match(string input)
         {
             var (match, remaining) = htmlOrder.Match(input);
-            var list = ((MatchesArray)match).List;
+            var request = new Request(((MatchesArray)match).List);
             return (match, remaining);
         }
     }
