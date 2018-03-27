@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using JsonTests;
 using TcpTextVerifyTests;
 
@@ -7,60 +8,33 @@ namespace TcpHtmlVerify
 {
     public class Request : Match
     {
-        private readonly Match match;
-        private readonly List<Match> list;
+        private readonly Method method;
+        private readonly Uri uri;
+        private readonly Dictionary<string, string> fields;
 
         public Request(Match match)
         {
-            this.match = match;
-            list = (match as MatchesArray).List;
+            var list = (match as MatchesArray).List;
+            method = list
+                .OfType<MethodMatch>()
+                .First()
+                .Method;
+            uri = list
+                .OfType<UriMatch>()
+                .First()
+                .Uri;
+            fields = list
+                .OfType<FieldsMatch>()
+                .First()
+                .Dictionary;
         }
 
         public bool Success => true;
 
-        public Method Method
-        {
-            get
-            {
-                foreach (var item in list)
-                {
-                    if (item is MethodMatch)
-                    {
-                        return (item as MethodMatch).Method;
-                    }
-                }
-                return new Method();
-            }
-        }
+        public Method Method => method;
 
-        public Uri Uri
-        {
-            get
-            {
-                foreach (var item in list)
-                {
-                    if (item is UriMatch)
-                    {
-                        return (item as UriMatch).Uri;
-                    }
-                }
-                return new UriMatch("").Uri;
-            }
-        }
+        public Uri Uri => uri;
 
-        public Dictionary<string, string> Fields
-        {
-            get
-            {
-                foreach (var item in list)
-                {
-                    if (item is FieldsMatch)
-                    {
-                        return (item as FieldsMatch).Dictionary;
-                    }
-                }
-                return new Dictionary<string, string>();
-            }
-        }
+        public Dictionary<string, string> Fields => fields;
     }
 }
