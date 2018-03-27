@@ -7,8 +7,6 @@ using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
 
-
-
 namespace TcpServerClass
 {
     class TcpServerClass
@@ -33,26 +31,11 @@ namespace TcpServerClass
                     data = null;
                     string html = "";
                     NetworkStream stream = client.GetStream();
-                    int i = 0;
-                    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-                    {
-                        data += Encoding.UTF8.GetString(bytes, 0, i);
-                        if (data.IndexOf("\r\n\r\n") != -1)
-                        {
-                            break;
-                        }
-                    }
+                    data = StringGivenByClient(bytes, data, stream);
                     var x = new HtmlVerify();
                     var (match, remaining) = x.Match(data);
                     aux = match;
-                    if (match.Success)
-                    {
-                        html = "<h1>The header is correct</h1>";
-                    }
-                    else
-                    {
-                        html = "<h1>The header is incorrect</h1>";
-                    }
+                    html = HtmlValidation(match);
                     Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (aux as Request).Uri);
                     var message = html + "\n" + "\nRequested path was: " + (aux as Request).Uri;
                     var msg = Encoding.UTF8.GetBytes(message);
@@ -70,6 +53,36 @@ namespace TcpServerClass
             }
             Console.WriteLine("\nHit enter to continue...");
             Console.Read();
+        }
+
+        private static string HtmlValidation(Match match)
+        {
+            string html;
+            if (match.Success)
+            {
+                html = "<h1>The header is correct</h1>";
+            }
+            else
+            {
+                html = "<h1>The header is incorrect</h1>";
+            }
+
+            return html;
+        }
+
+        private static string StringGivenByClient(byte[] bytes, string data, NetworkStream stream)
+        {
+            int i = 0;
+            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                data += Encoding.UTF8.GetString(bytes, 0, i);
+                if (data.IndexOf("\r\n\r\n") != -1)
+                {
+                    break;
+                }
+            }
+
+            return data;
         }
     }
 }
