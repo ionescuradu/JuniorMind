@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using TcpHtmlVerify;
+using Xunit;
 
 
 namespace TcpHtmlVerifyTests
@@ -38,7 +39,7 @@ namespace TcpHtmlVerifyTests
             var x = new HtmlVerify();
             var (match, remaining) = x.Match(input);
             Assert.True(match.Success);
-            Assert.Equal("", remaining);
+            Assert.Equal("1234567890987", (match as Request).Fields["Content-Length"] );
         }
 
         [Fact]
