@@ -33,7 +33,6 @@ namespace TcpHtmlVerifyTests
             var (match, remaining) = htmlOrder.Match(input);
             if (match.Success)
             {
-                var matchArray = (MatchesArray)match;
                 return (new Request(match), remaining);
             }
             return (match, remaining);
