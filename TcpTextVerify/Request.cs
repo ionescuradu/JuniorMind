@@ -7,11 +7,13 @@ namespace TcpHtmlVerify
 {
     public class Request : Match
     {
+        private readonly Match match;
         private readonly List<Match> list;
 
-        public Request(List<Match> list)
+        public Request(Match match)
         {
-            this.list = list;
+            this.match = match;
+            list = (match as MatchesArray).List;
         }
 
         public bool Success => true;

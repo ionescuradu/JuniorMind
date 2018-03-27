@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JsonTests;
 using TcpHtmlVerifyTests;
 using Xunit;
@@ -12,7 +11,10 @@ namespace TcpHtmlVerify
         [Fact]
         public void IsASuccessMatch()
         {
-            var request = new Request(new List<Match>());
+            var input = "PUT /somewhere/fun HTTP/1.1\r\n\r\n";
+            var x = new HtmlVerify();
+            var (match, remaining) = x.Match(input);
+            var request = new Request(match);
             Assert.True(request.Success);
         }
 
@@ -22,7 +24,7 @@ namespace TcpHtmlVerify
             var input = "PUT /somewhere/fun HTTP/1.1\r\n\r\n";
             var x = new HtmlVerify();
             var (match, remaining) = x.Match(input);
-            var request = new Request((match as MatchesArray).List);
+            var request = new Request(match);
             Assert.Equal(Method.PUT, request.Method);
         }
 
@@ -32,7 +34,7 @@ namespace TcpHtmlVerify
             var input = "PUT /somewhere/fun HTTP/1.1\r\n\r\n";
             var x = new HtmlVerify();
             var (match, remaining) = x.Match(input);
-            var request = new Request((match as MatchesArray).List);
+            var request = new Request(match);
             Assert.Equal(new UriMatch("/somewhere/fun").Uri, request.Uri);
         }
 
@@ -43,7 +45,7 @@ namespace TcpHtmlVerify
                 "\r\n\r\n";
             var x = new HtmlVerify();
             var (match, remaining) = x.Match(input);
-            var request = new Request((match as MatchesArray).List);
+            var request = new Request(match);
             Assert.Equal("origin.example.com", request.Fields["Host"]);
         }
     }
