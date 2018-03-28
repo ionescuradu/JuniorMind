@@ -48,11 +48,12 @@ namespace TcpHtmlVerify
             {
                 fields.Add(name, value);
             }
+            fields[name] = value;
         }
 
         public void AddPayload(string textGiven)
         {
-            fields.Add("Content-Length", textGiven.Length.ToString());
+            AddField("Content-Length", textGiven.Length.ToString());
             payload = textGiven;
         }
     }

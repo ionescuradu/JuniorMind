@@ -75,5 +75,21 @@ namespace TcpHtmlVerify
                 "\r\n{this is my first payload content}");
             Assert.Equal(expected, response.GetBytes());
         }
+
+        [Fact]
+        public void ItIncludesTheGivenPayloadWithFieldModification()
+        {
+            var response = new Response(StatusCode.OK);
+            response.AddField("Content-Type", "text");
+            response.AddField("Content-Length", "20");
+            response.AddPayload("{this is my first payload content}");
+
+            var expected = //Encoding.ASCII.GetBytes(
+                ("HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text\r\n" +
+                "Content-Length: 34\r\n" +
+                "\r\n{this is my first payload content}");
+            Assert.Equal(expected, response.GetBytes());
+        }
     }
 }
