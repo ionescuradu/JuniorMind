@@ -78,10 +78,6 @@
       <Project>{911201d4-d1c4-4491-8ae0-9608d61af249}</Project>
       <Name>Json</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JsonTests\JsonTests.csproj">
-      <Project>{c99e907f-115d-441f-9c49-fb6d4f537b00}</Project>
-      <Name>JsonTests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TcpTextVerify\TcpHtmlVerify.csproj">
       <Project>{9c6c5192-7eba-496e-a3ae-4105205b1d77}</Project>
       <Name>TcpHtmlVerify</Name>
