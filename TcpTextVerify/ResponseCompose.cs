@@ -41,7 +41,10 @@ namespace TcpHtmlVerify
 
         public void AddField(string name, string value)
         {
-            fields.Add(name, value);
+            if (!fields.ContainsKey(name))
+            {
+                fields.Add(name, value);
+            }
         }
     }
 }

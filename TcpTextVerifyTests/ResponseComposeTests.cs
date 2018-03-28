@@ -30,5 +30,19 @@ namespace TcpHtmlVerify
                 "\r\n");
             Assert.Equal(expected, response.GetBytes());
         }
+
+        [Fact]
+        public void ItIncludesTheGivenFieldsDuplicate()
+        {
+            var response = new Response(StatusCode.OK);
+            response.AddField("Content-Type", "text");
+            response.AddField("Content-Type", "text");
+            
+            var expected = //Encoding.ASCII.GetBytes(
+                ("HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text\r\n" +
+                "\r\n");
+            Assert.Equal(expected, response.GetBytes());
+        }
     }
 }
