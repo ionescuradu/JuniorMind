@@ -44,5 +44,36 @@ namespace TcpHtmlVerify
                 "\r\n");
             Assert.Equal(expected, response.GetBytes());
         }
+
+        [Fact]
+        public void ItIncludesTheGivenFieldsMultiple()
+        {
+            var response = new Response(StatusCode.OK);
+            response.AddField("Content-Type", "text");
+            response.AddField("Connection", "keep-alive");
+
+            var expected = //Encoding.ASCII.GetBytes(
+                ("HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text\r\n" +
+                "Connection: keep-alive\r\n" +
+                "\r\n");
+            Assert.Equal(expected, response.GetBytes());
+        }
+
+
+        [Fact]
+        public void ItIncludesTheGivenPayload()
+        {
+            var response = new Response(StatusCode.OK);
+            response.AddField("Content-Type", "text");
+            response.AddPayload("{this is my first payload content}");
+
+            var expected = //Encoding.ASCII.GetBytes(
+                ("HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text\r\n" +
+                "Content-Length: 34\r\n" +
+                "\r\n{this is my first payload content}");
+            Assert.Equal(expected, response.GetBytes());
+        }
     }
 }
