@@ -1,20 +1,34 @@
-﻿using Xunit;
+﻿using System.Text;
+using TcpHtmlVerifyTests;
+using Xunit;
 namespace TcpHtmlVerify
 {
     public class ResponseTests
     {
-        [Fact]
-        public void HttpFormat()
+        [Theory]
+        [InlineData(StatusCode.OK, "HTTP/1.1 200 OK\r\n\r\n")]
+        [InlineData(StatusCode.NotFound, "HTTP/1.1 404 Not Found\r\n\r\n")]
+        public void ItIncludesTheGivenResponseCode(
+            StatusCode code, 
+            string expectedHeaders)
         {
-            var x = new Response();
-            Assert.Equal("HTTP/1.1", x.Protocol);
+            var response = new Response(code);
+
+            var expected = Encoding.ASCII.GetBytes(expectedHeaders);
+            //Assert.Equal(expected, response.GetBytes());
         }
 
         [Fact]
-        public void ResponseCode()
+        public void ItIncludesTheGivenFields()
         {
-            var x = new Response();
-            Assert.Equal("200 OK", x.ResponseCode);
+            var response = new Response(StatusCode.OK);
+            response.AddField("Content-Type", "text");
+
+            var expected = //Encoding.ASCII.GetBytes(
+                ("HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text\r\n" +
+                "\r\n");
+            Assert.Equal(expected, response.GetBytes());
         }
     }
 }
