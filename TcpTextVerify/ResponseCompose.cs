@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TcpHtmlVerify
 {
@@ -8,23 +6,28 @@ namespace TcpHtmlVerify
     {
         private StatusCode statusCode;
         private string response;
-        private Dictionary<string, string> dictionary;
+        private Dictionary<string, string> fields;
 
         public Response(StatusCode statusCode)
         {
             this.statusCode = statusCode;
-            dictionary = new Dictionary<string, string>();
+            fields = new Dictionary<string, string>();
         }
 
         public string GetBytes()
         {
             response = $"HTTP/1.1 {StatusCodeText()}\r\n";
-            foreach (var item in dictionary)
+            AddingFieldsText();
+            return response;//Encoding.ASCII.GetBytes(response);
+        }
+
+        private void AddingFieldsText()
+        {
+            foreach (var item in fields)
             {
                 response += item.Key + ": " + item.Value + "\r\n";
             }
             response += "\r\n";
-            return response;//Encoding.ASCII.GetBytes(response);
         }
 
         private string StatusCodeText()
@@ -38,7 +41,7 @@ namespace TcpHtmlVerify
 
         public void AddField(string name, string value)
         {
-            dictionary.Add(name, value);
+            fields.Add(name, value);
         }
     }
 }
