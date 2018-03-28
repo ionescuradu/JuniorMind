@@ -33,7 +33,7 @@ namespace TcpServerClass
                     data = StringGivenByClient(bytes, data, stream);
                     var x = new HtmlVerify();
                     var (match, remaining) = x.Match(data);
-                    html = HtmlValidation(match);
+                    html = HttpValidation(match);
                     Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (match as Request).Uri);
                     var message = html + "\n" + "\nRequested path was: " + (match as Request).Uri;
                     var msg = Encoding.UTF8.GetBytes(message);
@@ -53,7 +53,7 @@ namespace TcpServerClass
             Console.Read();
         }
 
-        private static string HtmlValidation(Match match)
+        private static string HttpValidation(Match match)
         {
             string html;
             if (match.Success)
