@@ -1,0 +1,7 @@
+﻿
+namespace TcpHtmlVerify
+{
+    class RequestToResponseTests
+    {
+    }
+}
