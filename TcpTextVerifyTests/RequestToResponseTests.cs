@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using TcpHtmlVerifyTests;
 using Xunit;
 
@@ -7,32 +8,25 @@ namespace TcpHtmlVerify
     public class RequestToResponseTests
     {
         [Fact]
-        public void FirstResponseNoContent()
+        public void GenerateResponseForValidPath()
         {
-            var input = "PUT /somewhere/fun HTTP/1.1" +
-                "\r\n\r\n";
-            var x = new HtmlVerify();
-            var (match, remaining) = x.Match(input);
-            var response = new RequestToResponse(match as Request, new MemoRepository().Repository(""));
-            string result = "HTTP/1.1 200 OK\r\n" +
-                "Content-Length: 0\r\n" + 
-                "\r\n";
-            Assert.Equal(Encoding.ASCII.GetBytes(result), response.ToByte());
-        }
+            // Given
+            var payload = "payloadBody";
+            var repository = new MemoRepository(payload);
+            var controller = new StaticController(repository);
+            var request = new Request(
+                Method.GET, 
+                new Uri("/index.html", UriKind.Relative), 
+                new System.Collections.Generic.Dictionary<string, string>());
 
-        [Fact]
-        public void ResponseWithContent()
-        {
-            var input = "PUT /somewhere/fun HTTP/1.1\nHost: origin.example.com" +
-                "\r\n\r\n";
-            var x = new HtmlVerify();
-            var (match, remaining) = x.Match(input);
-            var response = new RequestToResponse(match as Request, new MemoRepository().Repository("{radu}"));
+            // When
+            var response = controller.Response(request);
+
+            // Then
             string result = "HTTP/1.1 200 OK\r\n" +
-                "Host: origin.example.com\r\n" +
-                "Content-Length: 6\r\n\r\n" +
-                "{radu}";
-            Assert.Equal(Encoding.ASCII.GetBytes(result), response.ToByte());
+                    $"Content-Length: {payload.Length}\r\n\r\n" +
+                    payload;
+            Assert.Equal(Encoding.ASCII.GetBytes(result), response.GetBytes());
         }
     }
 }

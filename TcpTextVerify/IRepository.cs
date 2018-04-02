@@ -5,7 +5,7 @@ namespace TcpHtmlVerify
 {
     public interface IRepository
     {
-        Stream Repository(string input);
+        Stream LoadFile(string filePath);
             
     }
 }

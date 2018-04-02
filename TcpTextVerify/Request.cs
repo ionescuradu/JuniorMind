@@ -29,6 +29,16 @@ namespace TcpHtmlVerify
                 .Dictionary;
         }
 
+        public Request(
+            Method method, 
+            Uri url, 
+            Dictionary<string, string> fields)
+        {
+            this.method = method;
+            this.uri = url;
+            this.fields = fields;
+        }
+
         public bool Success => true;
 
         public Method Method => method;

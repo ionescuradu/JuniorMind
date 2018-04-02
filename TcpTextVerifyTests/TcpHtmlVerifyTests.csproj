@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="FieldsMatchTests.cs" />
     <Compile Include="FiledsParsingTests.cs" />
+    <Compile Include="FileRepositoryTests.cs" />
     <Compile Include="RequestTests.cs" />
     <Compile Include="RequestToResponseTests.cs" />
     <Compile Include="ResponseComposeTests.cs" />

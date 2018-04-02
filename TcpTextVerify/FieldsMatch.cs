@@ -10,11 +10,11 @@ namespace TcpHtmlVerify
 
         public FieldsMatch(string input)
         {
-            var x = input.Split(":".ToCharArray());
+            //var x = input.Split(":".ToCharArray());
             dictionary = input
-                .Split("\n".ToCharArray())
+                .Split("\r\n".ToCharArray())
                 .Where(s => !string.IsNullOrEmpty(s.Trim()))
-                .Select(s => s.Split(":".ToCharArray()))
+                .Select(s => s.Split(":".ToCharArray(),2))
                 .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
         }
 

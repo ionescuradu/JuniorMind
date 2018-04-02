@@ -1,0 +1,6 @@
+﻿namespace TcpHtmlVerify
+{
+    class FileRepositoryTests
+    {
+    }
+}

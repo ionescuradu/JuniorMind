@@ -28,16 +28,14 @@ namespace TcpServerClass
                     TcpClient client = server.AcceptTcpClient();
                     Console.WriteLine("Connected!");
                     data = null;
-                    string html = "";
                     NetworkStream stream = client.GetStream();
                     data = StringGivenByClient(bytes, data, stream);
                     var x = new HtmlVerify();
                     var (match, remaining) = x.Match(data);
-                    html = HttpValidation(match);
-                    Console.WriteLine("Sent: {0}\nRequested path was: {1}", html, (match as Request).Uri);
-                    var message = html + "\n" + "\nRequested path was: " + (match as Request).Uri;
-                    var msg = Encoding.UTF8.GetBytes(message);
-                    stream.Write(msg, 0, msg.Length);
+                    var controller = new StaticController(new FileRepository(@"C:\Users\Radu\Documents\GitHub\JuniorMind\aaa"));
+                    var response = controller.Response(match as Request);
+                    var message = response.GetBytes();
+                    stream.Write(message, 0, message.Length);
                     client.Close();
                 }
             }
@@ -51,21 +49,6 @@ namespace TcpServerClass
             }
             Console.WriteLine("\nHit enter to continue...");
             Console.Read();
-        }
-
-        private static string HttpValidation(Match match)
-        {
-            string html;
-            if (match.Success)
-            {
-                html = "<h1>The header is correct</h1>";
-            }
-            else
-            {
-                html = "<h1>The header is incorrect</h1>";
-            }
-
-            return html;
         }
 
         private static string StringGivenByClient(byte[] bytes, string data, NetworkStream stream)

@@ -21,7 +21,7 @@ namespace TcpHtmlVerifyTests
                 new Character(' '),
                 uriPath,
                 new Character(' '),
-                new Text("HTTP/1.1"),
+                new Text("HTTP/1.1\r\n"),
                 fields,
                 new Choice(
                     new Text("\r\n\r\n"),
@@ -33,8 +33,6 @@ namespace TcpHtmlVerifyTests
             var (match, remaining) = htmlOrder.Match(input);
             if (match.Success)
             {
-                var text = "";
-                var x = text.IndexOf("\r\n");
                 return (new Request(match), remaining);
             }
             return (match, remaining);
