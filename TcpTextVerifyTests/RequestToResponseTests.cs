@@ -28,5 +28,26 @@ namespace TcpHtmlVerify
                     payload;
             Assert.Equal(Encoding.ASCII.GetBytes(result), response.GetBytes());
         }
+
+        //[Fact]
+        //public void GenerateResponseForIndexHtmlPath()
+        //{
+        //    // Given
+        //    var payload = 391;
+        //    var repository = new IndexRepository(@"C:\Users\Radu\Documents\GitHub\JuniorMind\aaa");
+        //    var controller = new StaticController(repository);
+        //    var request = new Request(
+        //        Method.GET,
+        //        new Uri("/NoPath.txt", UriKind.Relative),
+        //        new System.Collections.Generic.Dictionary<string, string>());
+
+        //    // When
+        //    var response = controller.Response(request);
+
+        //    // Then
+        //    string result = "HTTP/1.1 200 OK\r\n" +
+        //            $"Content-Length: {payload}\r\n\r\n";
+        //    Assert.Equal(Encoding.ASCII.GetBytes(result), response.GetBytes());
+        //}
     }
 }

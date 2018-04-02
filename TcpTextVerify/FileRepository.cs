@@ -13,8 +13,18 @@ namespace TcpHtmlVerify
 
         public Stream LoadFile(string filePath)
         {
+            var indexHtml = "index.html";
             var path = Path.Combine(rootPath, filePath.Trim("/".ToCharArray()));
-            return new FileStream(path, FileMode.Open, FileAccess.Read);
+            if (File.Exists(path))
+            {
+                return new FileStream(path, FileMode.Open, FileAccess.Read);
+            }
+            path = Path.Combine(path, indexHtml.Trim("/".ToCharArray()));
+            if (File.Exists(path))
+            {
+                return new FileStream(path, FileMode.Open, FileAccess.Read);
+            }
+            return null;
         }
     }
 }
