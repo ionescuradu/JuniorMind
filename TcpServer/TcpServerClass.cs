@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using JsonTests;
 using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
@@ -34,6 +33,7 @@ namespace TcpServerClass
                     if (!string.IsNullOrEmpty(data))
                         ProcessRequest(stream, data, repository);
                     client.Close();
+                    Console.WriteLine("Connected!");
                 }
             }
             catch (SocketException e)
