@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace TcpHtmlVerify
 {
@@ -11,20 +12,19 @@ namespace TcpHtmlVerify
             this.rootPath = rootPath;
         }
 
+        public bool IsDirectory(string path)
+        {
+            return Directory.Exists(GetFullPath(path));
+        }
+
         public Stream LoadFile(string filePath)
         {
-            var indexHtml = "index.html";
-            var path = Path.Combine(rootPath, filePath.Trim("/".ToCharArray()));
-            if (File.Exists(path))
-            {
-                return new FileStream(path, FileMode.Open, FileAccess.Read);
-            }
-            path = Path.Combine(path, indexHtml.Trim("/".ToCharArray()));
-            if (File.Exists(path))
-            {
-                return new FileStream(path, FileMode.Open, FileAccess.Read);
-            }
-            return null;
+            return new FileStream(GetFullPath(filePath), FileMode.Open, FileAccess.Read);
+        }
+
+        private string GetFullPath(string filePath)
+        {
+            return Path.Combine(rootPath, filePath.Trim("/".ToCharArray()));
         }
     }
 }

@@ -12,6 +12,11 @@ namespace TcpHtmlVerify
             this.input = input;
         }
 
+        public bool IsDirectory(string path)
+        {
+            return false;
+        }
+
         public Stream LoadFile(string filePath)
         {
             return new MemoryStream(Encoding.ASCII.GetBytes(input));

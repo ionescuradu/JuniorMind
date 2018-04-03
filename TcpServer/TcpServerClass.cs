@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -14,28 +15,24 @@ namespace TcpServerClass
         public static void Main()
         {
             TcpListener server = null;
+            FileRepository repository = new FileRepository(@"C:\Users\Radu\Documents\GitHub\JuniorMind\aaa");
+
             try
             {
                 Int32 port = 5000;
                 IPAddress localAddr = IPAddress.Parse("127.0.0.1");
                 server = new TcpListener(localAddr, port);
                 server.Start();
-                Byte[] bytes = new Byte[1024];
-                string data = null;
                 while (true)
                 {
                     Console.Write("Waiting for a connection... ");
-                    TcpClient client = server.AcceptTcpClient();
+                    var client = server.AcceptTcpClient();
+
                     Console.WriteLine("Connected!");
-                    data = null;
-                    NetworkStream stream = client.GetStream();
-                    data = StringGivenByClient(bytes, data, stream);
-                    var x = new HtmlVerify();
-                    var (match, remaining) = x.Match(data);
-                    var controller = new StaticController(new FileRepository(@"C:\Users\Radu\Documents\GitHub\JuniorMind\aaa"));
-                    var response = controller.Response(match as Request);
-                    var message = response.GetBytes();
-                    stream.Write(message, 0, message.Length);
+                    var stream = client.GetStream();
+                    var data = ReceiveHeaders(stream);
+                    if (!string.IsNullOrEmpty(data))
+                        ProcessRequest(stream, data, repository);
                     client.Close();
                 }
             }
@@ -51,20 +48,45 @@ namespace TcpServerClass
             Console.Read();
         }
 
-        private static string StringGivenByClient(byte[] bytes, string data, NetworkStream stream)
+        private static void ProcessRequest(
+            NetworkStream stream,
+            string headers,
+            IRepository repository)
         {
-            int i = 0;
-            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
-            {
-                data += Encoding.UTF8.GetString(bytes, 0, i);
-                if (data.IndexOf("\r\n\r\n") != -1)
-                {
-                    break;
-                }
-            }
+            var x = new HtmlVerify();
+            var (match, remaining) = x.Match(headers);
+            var controller = new StaticController(repository);
+            var request = match as Request;
 
-            return data;
+            Console.WriteLine($"Request received {request.Uri}");
+
+            var response = controller.Response(request);
+            var message = response.GetBytes();
+            stream.Write(message, 0, message.Length);
+        }
+
+        private static string ReceiveHeaders(Stream stream)
+        {
+            var bytes = new Byte[1024];
+            try
+            {
+                string data = "";
+                int i = 0;
+                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+                {
+                    data += Encoding.UTF8.GetString(bytes, 0, i);
+                    if (data.IndexOf("\r\n\r\n") != -1)
+                    {
+                        break;
+                    }
+                }
+                return data;
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
     }
 }
-    

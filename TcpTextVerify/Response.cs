@@ -8,13 +8,14 @@ namespace TcpHtmlVerify
     public class Response
     {
         private StatusCode statusCode;
-        private Dictionary<string, string> fields;
+        private IDictionary<string, string> fields;
         private byte[] payload;
 
         public Response(StatusCode statusCode)
         {
             this.statusCode = statusCode;
-            fields = new Dictionary<string, string>();
+            fields = new SortedDictionary<string, string>();
+            AddField("Content-Length", "0");
         }
 
         public byte[] GetBytes()

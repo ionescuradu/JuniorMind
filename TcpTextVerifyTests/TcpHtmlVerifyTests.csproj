@@ -60,8 +60,8 @@
     <Compile Include="FiledsParsingTests.cs" />
     <Compile Include="FileRepositoryTests.cs" />
     <Compile Include="RequestTests.cs" />
-    <Compile Include="RequestToResponseTests.cs" />
-    <Compile Include="ResponseComposeTests.cs" />
+    <Compile Include="StaticControllerTests.cs" />
+    <Compile Include="ResponseTests.cs" />
     <Compile Include="UriMatchTests.cs" />
     <Compile Include="UriParsingTests.cs" />
     <Compile Include="HtmlTests.cs" />
