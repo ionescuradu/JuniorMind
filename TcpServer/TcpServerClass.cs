@@ -72,6 +72,9 @@ namespace TcpServerClass
             {
                 string data = "";
                 int i = 0;
+                //var reader = new StreamReader(stream);
+                //while (reader.Read() != -1)
+                //{
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
                     data += Encoding.UTF8.GetString(bytes, 0, i);
@@ -80,6 +83,7 @@ namespace TcpServerClass
                         break;
                     }
                 }
+                //}
                 return data;
             }
             catch (SocketException e)
