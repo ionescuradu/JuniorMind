@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreateHttpServer\CreateHttpServer.csproj">
+      <Project>{bb52b490-e68d-4da4-8fd7-8597f3d3feaf}</Project>
+      <Name>CreateHttpServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TcpServer\TcpServer.csproj">
+      <Project>{340fd35e-6ecc-46eb-93cb-25c1a190a5e1}</Project>
+      <Name>TcpServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TcpTextVerify\TcpHtmlVerify.csproj">
+      <Project>{9C6C5192-7EBA-496E-A3AE-4105205B1D77}</Project>
+      <Name>TcpHtmlVerify</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{340FD35E-6ECC-46EB-93CB-25C1A190A5E1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TcpServer</RootNamespace>
-    <AssemblyName>TcpServer</AssemblyName>
+    <ProjectGuid>{BB52B490-E68D-4DA4-8FD7-8597F3D3FEAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreateHttpServer</RootNamespace>
+    <AssemblyName>CreateHttpServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,23 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TcpServerClass.cs" />
+    <Compile Include="CreateHttpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Json.csproj">
       <Project>{911201d4-d1c4-4491-8ae0-9608d61af249}</Project>
       <Name>Json</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CreateHttpServer\CreateHttpServer.csproj">
-      <Project>{bb52b490-e68d-4da4-8fd7-8597f3d3feaf}</Project>
-      <Name>CreateHttpServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TcpTextVerify\TcpHtmlVerify.csproj">
-      <Project>{9c6c5192-7eba-496e-a3ae-4105205b1d77}</Project>
+      <Project>{9C6C5192-7EBA-496E-A3AE-4105205B1D77}</Project>
       <Name>TcpHtmlVerify</Name>
     </ProjectReference>
   </ItemGroup>

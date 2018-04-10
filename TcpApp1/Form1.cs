@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
 using System.Windows.Forms;
+using CreateHttpServer;
+using TcpHtmlVerify;
 
 namespace TcpApp1
 {
@@ -16,5 +13,26 @@ namespace TcpApp1
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartServer(object sender, EventArgs e)
+        {
+            var httpServer = new HttpServer(
+                IPAddress.Parse(localAddress.Text),
+                Convert.ToInt32(portNumber.Text),
+                new FileRepository(fileRepository.Text)
+                );
+            httpServer.Start();
+        }
+
+        private void StopServer(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
