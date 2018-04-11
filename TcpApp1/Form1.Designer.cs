@@ -40,6 +40,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(223, 282);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 59);
@@ -50,6 +51,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(223, 385);
             this.button2.Name = "button2";
@@ -61,6 +63,7 @@
             // 
             // portNumber
             // 
+            this.portNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.portNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.portNumber.Location = new System.Drawing.Point(38, 210);
             this.portNumber.Name = "portNumber";
@@ -70,6 +73,7 @@
             // 
             // localAddress
             // 
+            this.localAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.localAddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.localAddress.Location = new System.Drawing.Point(232, 210);
             this.localAddress.Name = "localAddress";
@@ -79,6 +83,7 @@
             // 
             // fileRepository
             // 
+            this.fileRepository.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fileRepository.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.fileRepository.Location = new System.Drawing.Point(423, 210);
             this.fileRepository.Name = "fileRepository";
@@ -88,6 +93,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(68, 194);
             this.label1.Name = "label1";
@@ -97,6 +103,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(270, 194);
             this.label2.Name = "label2";
@@ -106,6 +113,7 @@
             // 
             // FilePath
             // 
+            this.FilePath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FilePath.AutoSize = true;
             this.FilePath.Location = new System.Drawing.Point(465, 194);
             this.FilePath.Name = "FilePath";
@@ -119,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(575, 480);
+            this.ClientSize = new System.Drawing.Size(584, 461);
             this.Controls.Add(this.FilePath);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -128,6 +136,8 @@
             this.Controls.Add(this.portNumber);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MaximumSize = new System.Drawing.Size(1366, 768);
+            this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "Form1";
             this.Text = "TcpServer";
             this.Load += new System.EventHandler(this.Form1_Load);

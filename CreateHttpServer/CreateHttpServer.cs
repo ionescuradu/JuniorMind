@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
@@ -11,9 +12,10 @@ namespace CreateHttpServer
     public class HttpServer
     {
         private TcpListener server;
-        private IPAddress localAddress;
-        private Int32 port;
-        private FileRepository repository;
+        private readonly IPAddress localAddress;
+        private readonly Int32 port;
+        private readonly FileRepository repository;
+        private bool stopLoop;
 
         public HttpServer(
             IPAddress localAddress,
@@ -21,6 +23,7 @@ namespace CreateHttpServer
             FileRepository repository
             )
         {
+            stopLoop = false;
             server = new TcpListener(localAddress, port);
             this.localAddress = localAddress;
             this.port = port;
@@ -29,15 +32,25 @@ namespace CreateHttpServer
         
         public void Start()
         {
+            var th = new Thread(StartServer);
+            th.Start();
+        }
+
+        public void Stop()
+        {
+            stopLoop = true;
+        }
+
+        private void StartServer()
+        {
             try
             {
                 server = new TcpListener(localAddress, port);
                 server.Start();
-                while (true)
+                while (!stopLoop)
                 {
                     Console.Write("Waiting for a connection... ");
                     var client = server.AcceptTcpClient();
-
                     Console.WriteLine("Connected!");
                     var stream = client.GetStream();
                     var data = ReceiveHeaders(stream);
@@ -74,7 +87,6 @@ namespace CreateHttpServer
                         break;
                     }
                 }
-                //}
                 return data;
             }
             catch (SocketException e)

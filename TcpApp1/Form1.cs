@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Net;
-using System.Net.Sockets;
+using System.Threading;
 using System.Windows.Forms;
 using CreateHttpServer;
+using TcpApp1.Properties;
 using TcpHtmlVerify;
 
 namespace TcpApp1
 {
     public partial class Form1 : Form
     {
+        private HttpServer httpServer;
+
         public Form1()
         {
             InitializeComponent();
@@ -16,12 +19,14 @@ namespace TcpApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            portNumber.Text = Settings.Default.port.ToString();
+            localAddress.Text = Settings.Default.ipAddress.ToString();
+            fileRepository.Text = Settings.Default.repositoryPath.ToString();
         }
 
         private void StartServer(object sender, EventArgs e)
         {
-            var httpServer = new HttpServer(
+            httpServer = new HttpServer(
                 IPAddress.Parse(localAddress.Text),
                 Convert.ToInt32(portNumber.Text),
                 new FileRepository(fileRepository.Text)
@@ -31,7 +36,7 @@ namespace TcpApp1
 
         private void StopServer(object sender, EventArgs e)
         {
-
+            httpServer.Stop();
         }
 
     }
