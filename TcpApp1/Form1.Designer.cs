@@ -65,7 +65,8 @@
             // 
             this.portNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.portNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.portNumber.Location = new System.Drawing.Point(38, 210);
+            this.portNumber.Location = new System.Drawing.Point(40, 200);
+            this.portNumber.MaximumSize = new System.Drawing.Size(300, 200);
             this.portNumber.Name = "portNumber";
             this.portNumber.Size = new System.Drawing.Size(125, 20);
             this.portNumber.TabIndex = 0;
@@ -75,7 +76,7 @@
             // 
             this.localAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.localAddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.localAddress.Location = new System.Drawing.Point(232, 210);
+            this.localAddress.Location = new System.Drawing.Point(232, 200);
             this.localAddress.Name = "localAddress";
             this.localAddress.Size = new System.Drawing.Size(125, 20);
             this.localAddress.TabIndex = 1;
@@ -85,7 +86,7 @@
             // 
             this.fileRepository.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fileRepository.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.fileRepository.Location = new System.Drawing.Point(423, 210);
+            this.fileRepository.Location = new System.Drawing.Point(423, 200);
             this.fileRepository.Name = "fileRepository";
             this.fileRepository.Size = new System.Drawing.Size(125, 20);
             this.fileRepository.TabIndex = 2;
@@ -95,7 +96,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 194);
+            this.label1.Location = new System.Drawing.Point(70, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
@@ -105,7 +106,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(270, 194);
+            this.label2.Location = new System.Drawing.Point(270, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
@@ -115,7 +116,7 @@
             // 
             this.FilePath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FilePath.AutoSize = true;
-            this.FilePath.Location = new System.Drawing.Point(465, 194);
+            this.FilePath.Location = new System.Drawing.Point(465, 185);
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(48, 13);
             this.FilePath.TabIndex = 3;
