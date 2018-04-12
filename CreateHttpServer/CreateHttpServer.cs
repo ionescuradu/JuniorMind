@@ -68,6 +68,7 @@ namespace CreateHttpServer
             finally
             {
                 server.Stop();
+                OnScreen("Server shut down\r\n");
             }
             OnScreen("\nHit enter to continue...\r\n");
         }

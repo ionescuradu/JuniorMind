@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.start = new System.Windows.Forms.Button();
+            this.stop = new System.Windows.Forms.Button();
             this.portNumber = new System.Windows.Forms.TextBox();
             this.localAddress = new System.Windows.Forms.TextBox();
             this.fileRepository = new System.Windows.Forms.TextBox();
@@ -39,28 +39,28 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // start
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(223, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 59);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Start Server";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.StartServer);
+            this.start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.start.Location = new System.Drawing.Point(223, 125);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(143, 59);
+            this.start.TabIndex = 3;
+            this.start.Text = "Start Server";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.StartServer);
             // 
-            // button2
+            // stop
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(223, 385);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 59);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Stop Server";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.StopServer);
+            this.stop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stop.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.stop.Location = new System.Drawing.Point(223, 385);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(143, 59);
+            this.stop.TabIndex = 4;
+            this.stop.Text = "Stop Server";
+            this.stop.UseVisualStyleBackColor = true;
+            this.stop.Click += new System.EventHandler(this.StopServer);
             // 
             // portNumber
             // 
@@ -125,6 +125,7 @@
             // 
             // txtConsole
             // 
+            this.txtConsole.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtConsole.Location = new System.Drawing.Point(77, 207);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
@@ -133,10 +134,10 @@
             // 
             // Form1
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.start;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
+            this.CancelButton = this.stop;
             this.ClientSize = new System.Drawing.Size(584, 461);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.FilePath);
@@ -145,8 +146,8 @@
             this.Controls.Add(this.fileRepository);
             this.Controls.Add(this.localAddress);
             this.Controls.Add(this.portNumber);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.stop);
+            this.Controls.Add(this.start);
             this.MaximumSize = new System.Drawing.Size(1366, 768);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "Form1";
@@ -160,8 +161,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Button stop;
         private System.Windows.Forms.TextBox portNumber;
         private System.Windows.Forms.TextBox localAddress;
         private System.Windows.Forms.TextBox fileRepository;

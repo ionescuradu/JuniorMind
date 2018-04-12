@@ -23,10 +23,12 @@ namespace TcpApp1
             portNumber.Text = Settings.Default.port.ToString();
             localAddress.Text = Settings.Default.ipAddress.ToString();
             fileRepository.Text = Settings.Default.repositoryPath.ToString();
+            stop.Enabled = false;
         }
 
         private void StartServer(object sender, EventArgs e)
         {
+            stop.Enabled = true;
             httpServer = new HttpServer(
                 IPAddress.Parse(localAddress.Text),
                 Convert.ToInt32(portNumber.Text),
@@ -34,12 +36,11 @@ namespace TcpApp1
                 );
             httpServer.OnScreen += HttpServer_OnScreen;
             httpServer.Start();
-            //txtConsole.Text = builder.ToString();
         }
 
         private void HttpServer_OnScreen(string output)
         {
-            txtConsole.Text += output + "\r\n";
+            txtConsole.Text += output;
         }
 
         private void StopServer(object sender, EventArgs e)
