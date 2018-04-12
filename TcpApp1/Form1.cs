@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using System.Threading;
+using System.Text;
 using System.Windows.Forms;
 using CreateHttpServer;
 using TcpApp1.Properties;
@@ -11,6 +11,7 @@ namespace TcpApp1
     public partial class Form1 : Form
     {
         private HttpServer httpServer;
+        private StringBuilder builder = new StringBuilder();
 
         public Form1()
         {
@@ -31,7 +32,14 @@ namespace TcpApp1
                 Convert.ToInt32(portNumber.Text),
                 new FileRepository(fileRepository.Text)
                 );
+            httpServer.OnScreen += HttpServer_OnScreen;
             httpServer.Start();
+            //txtConsole.Text = builder.ToString();
+        }
+
+        private void HttpServer_OnScreen(string output)
+        {
+            txtConsole.Text += output + "\r\n";
         }
 
         private void StopServer(object sender, EventArgs e)
@@ -39,5 +47,14 @@ namespace TcpApp1
             httpServer.Stop();
         }
 
+        void OnScreen(string output)
+        {
+            builder.AppendLine(output);
+        }
+
+        public override string ToString()
+        {
+            return builder.ToString();
+        }
     }
 }

@@ -16,7 +16,9 @@ namespace CreateHttpServer
         private readonly Int32 port;
         private readonly FileRepository repository;
         private bool stopLoop;
-
+        public delegate void ConsoleOutput(string output);
+        public event ConsoleOutput OnScreen;
+        
         public HttpServer(
             IPAddress localAddress,
             Int32 port,
@@ -49,27 +51,25 @@ namespace CreateHttpServer
                 server.Start();
                 while (!stopLoop)
                 {
-                    Console.Write("Waiting for a connection... ");
+                    OnScreen("Waiting for a connection...");
                     var client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
+                    OnScreen("Connected!\r\n");
                     var stream = client.GetStream();
                     var data = ReceiveHeaders(stream);
                     if (!string.IsNullOrEmpty(data))
                         ProcessRequest(stream, data, repository);
                     client.Close();
-                    Console.WriteLine("Connected!");
                 }
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                OnScreen($"SocketException: {e}\r\n");
             }
             finally
             {
                 server.Stop();
             }
-            Console.WriteLine("\nHit enter to continue...");
-            Console.Read();
+            OnScreen("\nHit enter to continue...\r\n");
         }
 
         private static string ReceiveHeaders(Stream stream)

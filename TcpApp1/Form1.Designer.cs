@@ -36,12 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.FilePath = new System.Windows.Forms.Label();
+            this.txtConsole = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(223, 282);
+            this.button1.Location = new System.Drawing.Point(223, 125);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 59);
             this.button1.TabIndex = 3;
@@ -65,7 +66,7 @@
             // 
             this.portNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.portNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.portNumber.Location = new System.Drawing.Point(40, 200);
+            this.portNumber.Location = new System.Drawing.Point(42, 68);
             this.portNumber.MaximumSize = new System.Drawing.Size(300, 200);
             this.portNumber.Name = "portNumber";
             this.portNumber.Size = new System.Drawing.Size(125, 20);
@@ -76,7 +77,7 @@
             // 
             this.localAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.localAddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.localAddress.Location = new System.Drawing.Point(232, 200);
+            this.localAddress.Location = new System.Drawing.Point(232, 68);
             this.localAddress.Name = "localAddress";
             this.localAddress.Size = new System.Drawing.Size(125, 20);
             this.localAddress.TabIndex = 1;
@@ -86,7 +87,7 @@
             // 
             this.fileRepository.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fileRepository.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.fileRepository.Location = new System.Drawing.Point(423, 200);
+            this.fileRepository.Location = new System.Drawing.Point(419, 68);
             this.fileRepository.Name = "fileRepository";
             this.fileRepository.Size = new System.Drawing.Size(125, 20);
             this.fileRepository.TabIndex = 2;
@@ -96,7 +97,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 185);
+            this.label1.Location = new System.Drawing.Point(74, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
@@ -106,7 +107,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(270, 185);
+            this.label2.Location = new System.Drawing.Point(271, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
@@ -116,11 +117,19 @@
             // 
             this.FilePath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FilePath.AutoSize = true;
-            this.FilePath.Location = new System.Drawing.Point(465, 185);
+            this.FilePath.Location = new System.Drawing.Point(464, 52);
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(48, 13);
             this.FilePath.TabIndex = 3;
             this.FilePath.Text = "&File Path";
+            // 
+            // txtConsole
+            // 
+            this.txtConsole.Location = new System.Drawing.Point(77, 207);
+            this.txtConsole.Multiline = true;
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.Size = new System.Drawing.Size(435, 134);
+            this.txtConsole.TabIndex = 5;
             // 
             // Form1
             // 
@@ -129,6 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.FilePath);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -158,6 +168,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label FilePath;
+        private System.Windows.Forms.TextBox txtConsole;
     }
 }
 
