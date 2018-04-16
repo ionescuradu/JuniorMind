@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
@@ -18,7 +19,7 @@ namespace CreateHttpServer
         private bool stopLoop;
         public delegate void ConsoleOutput(string output);
         public event ConsoleOutput OnScreen;
-        
+
         public HttpServer(
             IPAddress localAddress,
             Int32 port,
@@ -31,7 +32,7 @@ namespace CreateHttpServer
             this.port = port;
             this.repository = repository;
         }
-        
+
         public void Start()
         {
             var th = new Thread(StartServer);
@@ -49,56 +50,51 @@ namespace CreateHttpServer
             {
                 server = new TcpListener(localAddress, port);
                 server.Start();
-                while (!stopLoop)
-                {
-                    OnScreen("Waiting for a connection...");
-                    var client = server.AcceptTcpClient();
-                    OnScreen("Connected!\r\n");
-                    var stream = client.GetStream();
-                    var data = ReceiveHeaders(stream);
-                    if (!string.IsNullOrEmpty(data))
-                        ProcessRequest(stream, data, repository);
-                    client.Close();
-                }
+                AcceptClient();
             }
             catch (SocketException e)
             {
                 OnScreen($"SocketException: {e}\r\n");
             }
-            finally
-            {
-                server.Stop();
-                OnScreen("Server shut down\r\n");
-            }
-            OnScreen("\nHit enter to continue...\r\n");
         }
 
-        private static string ReceiveHeaders(Stream stream)
+        private Task AcceptClient()
         {
-            var bytes = new Byte[1024];
-            try
-            {
-                string data = "";
-                int i = 0;
-                while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            OnScreen("Waiting for a connection...\r\n");
+            return server
+                .AcceptTcpClientAsync()
+                .ContinueWith(t =>
                 {
-                    data += Encoding.UTF8.GetString(bytes, 0, i);
-                    if (data.IndexOf("\r\n\r\n") != -1)
-                    {
-                        break;
-                    }
-                }
-                return data;
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine(e);
-                return null;
-            }
+                    if (!stopLoop)
+                        AcceptClient();
+                    else
+                        OnScreen("Stopping the server");
+                    return t.Result;
+                })
+                .ContinueWith(t =>
+                    ServeClient(t.Result).Wait()
+                );
         }
 
-        private static void ProcessRequest(
-            NetworkStream stream,
+        private Task ServeClient(TcpClient tcpClient)
+        {
+            return ReadGivenStream(tcpClient.GetStream())
+                .ContinueWith(headersTask =>
+                {
+                    var result = headersTask.Result;
+                    OnScreen($"Headers received {result.Item1}");
+                    WriteGivenStream(result.Item1, result.Item2).Wait();
+                    tcpClient.Close();
+                });
+        }
+
+        private Task WriteGivenStream(string headers, Stream stream)
+        {
+            return ProcessRequest(stream, headers, repository);
+        }
+
+        private Task ProcessRequest(
+            Stream stream,
             string headers,
             IRepository repository)
         {
@@ -107,11 +103,55 @@ namespace CreateHttpServer
             var controller = new StaticController(repository);
             var request = match as Request;
 
-            Console.WriteLine($"Request received {request.Uri}");
+            OnScreen($"Path received: {request.Uri}\r\n");
 
             var response = controller.Response(request);
+            response.AddField("Connection", "close");
+            OnScreen($"Responce headers {response.Headers}");
+
             var message = response.GetBytes();
-            stream.Write(message, 0, message.Length);
+            return stream
+                .WriteAsync(message, 0, message.Length)
+                .ContinueWith(t => OnScreen($"Finished writing in stream\r\n"));
         }
+
+        private Task<(string, Stream)> ReadGivenStream(Stream stream)
+        {
+            var bytes = new Byte[1024];
+            try
+            {
+                OnScreen("Connected!\r\n");
+                return stream.ReadAsync(bytes, 0, bytes.Length)
+                  .ContinueWith(t =>
+                  {
+                      OnScreen($"Read {t.Result} bytes\r\n");
+                      return t.Result;
+                  })
+                  .ContinueWith(t => (Encoding.UTF8.GetString(bytes, 0, t.Result), stream));
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        private string DataFromStream(byte[] bytes)
+        {
+            int i;
+            var data = "";
+            while ((i = bytes.Length) != 0)
+            {
+                data += Encoding.UTF8.GetString(bytes, 0, i);
+                if (data.IndexOf("\r\n\r\n") != -1)
+                {
+                    OnScreen($"Request received:{data}\r\n");
+                    break;
+                }
+            }
+            return data;
+        }
+
+
     }
 }

@@ -41,10 +41,10 @@
             // 
             // start
             // 
-            this.start.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.start.Location = new System.Drawing.Point(223, 125);
+            this.start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.start.Location = new System.Drawing.Point(429, 90);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(143, 59);
+            this.start.Size = new System.Drawing.Size(143, 25);
             this.start.TabIndex = 3;
             this.start.Text = "Start Server";
             this.start.UseVisualStyleBackColor = true;
@@ -52,11 +52,11 @@
             // 
             // stop
             // 
-            this.stop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stop.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.stop.Location = new System.Drawing.Point(223, 385);
+            this.stop.Location = new System.Drawing.Point(429, 417);
             this.stop.Name = "stop";
-            this.stop.Size = new System.Drawing.Size(143, 59);
+            this.stop.Size = new System.Drawing.Size(143, 32);
             this.stop.TabIndex = 4;
             this.stop.Text = "Stop Server";
             this.stop.UseVisualStyleBackColor = true;
@@ -64,32 +64,34 @@
             // 
             // portNumber
             // 
-            this.portNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.portNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.portNumber.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.portNumber.Location = new System.Drawing.Point(42, 68);
-            this.portNumber.MaximumSize = new System.Drawing.Size(300, 200);
+            this.portNumber.Location = new System.Drawing.Point(117, 6);
             this.portNumber.Name = "portNumber";
-            this.portNumber.Size = new System.Drawing.Size(125, 20);
+            this.portNumber.Size = new System.Drawing.Size(455, 20);
             this.portNumber.TabIndex = 0;
             this.portNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // localAddress
             // 
-            this.localAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.localAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.localAddress.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.localAddress.Location = new System.Drawing.Point(232, 68);
+            this.localAddress.Location = new System.Drawing.Point(117, 35);
             this.localAddress.Name = "localAddress";
-            this.localAddress.Size = new System.Drawing.Size(125, 20);
+            this.localAddress.Size = new System.Drawing.Size(455, 20);
             this.localAddress.TabIndex = 1;
             this.localAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fileRepository
             // 
-            this.fileRepository.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.fileRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.fileRepository.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.fileRepository.Location = new System.Drawing.Point(419, 68);
+            this.fileRepository.Location = new System.Drawing.Point(117, 64);
             this.fileRepository.Name = "fileRepository";
-            this.fileRepository.Size = new System.Drawing.Size(125, 20);
+            this.fileRepository.Size = new System.Drawing.Size(455, 20);
             this.fileRepository.TabIndex = 2;
             this.fileRepository.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -97,7 +99,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 52);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
@@ -107,7 +109,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(271, 52);
+            this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
@@ -117,7 +119,7 @@
             // 
             this.FilePath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FilePath.AutoSize = true;
-            this.FilePath.Location = new System.Drawing.Point(464, 52);
+            this.FilePath.Location = new System.Drawing.Point(12, 67);
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(48, 13);
             this.FilePath.TabIndex = 3;
@@ -125,11 +127,14 @@
             // 
             // txtConsole
             // 
-            this.txtConsole.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtConsole.Location = new System.Drawing.Point(77, 207);
+            this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConsole.Location = new System.Drawing.Point(12, 121);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(435, 134);
+            this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtConsole.Size = new System.Drawing.Size(560, 290);
             this.txtConsole.TabIndex = 5;
             // 
             // Form1

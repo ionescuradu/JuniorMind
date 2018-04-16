@@ -20,14 +20,22 @@ namespace TcpHtmlVerify
 
         public byte[] GetBytes()
         {
-            var headers = $"HTTP/1.1 {StatusCodeText()}\r\n";
-            headers += AddingFieldsText();
-            var responce = Encoding.ASCII.GetBytes(headers);
+            var responce = Encoding.ASCII.GetBytes(Headers);
             if (payload != null)
             {
                 return responce.Concat(payload).ToArray();
             }
             return responce;
+        }
+
+        public string Headers
+        {
+            get
+            {
+                var headers = $"HTTP/1.1 {StatusCodeText()}\r\n";
+                headers += AddingFieldsText();
+                return headers;
+            }
         }
 
         private string AddingFieldsText()

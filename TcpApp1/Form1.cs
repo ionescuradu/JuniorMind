@@ -40,9 +40,13 @@ namespace TcpApp1
 
         private void HttpServer_OnScreen(string output)
         {
-            txtConsole.Text += output;
+            txtConsole.Invoke((Action)(() => {
+                txtConsole.AppendText(DateTime.Now.ToLongTimeString() + " " + output);
+                txtConsole.SelectionStart = txtConsole.Text.Length;
+                txtConsole.ScrollToCaret();
+            }));
         }
-
+            
         private void StopServer(object sender, EventArgs e)
         {
             httpServer.Stop();
