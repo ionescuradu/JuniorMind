@@ -24,11 +24,14 @@ namespace TcpApp1
             localAddress.Text = Settings.Default.ipAddress.ToString();
             fileRepository.Text = Settings.Default.repositoryPath.ToString();
             stop.Enabled = false;
+            txtConsole.Hide();
         }
 
         private void StartServer(object sender, EventArgs e)
         {
             stop.Enabled = true;
+            start.Enabled = false;
+            txtConsole.Show();
             httpServer = new HttpServer(
                 IPAddress.Parse(localAddress.Text),
                 Convert.ToInt32(portNumber.Text),
@@ -49,6 +52,9 @@ namespace TcpApp1
             
         private void StopServer(object sender, EventArgs e)
         {
+            start.Enabled = true;
+            stop.Enabled = false;
+            portNumber.Select();
             httpServer.Stop();
         }
 

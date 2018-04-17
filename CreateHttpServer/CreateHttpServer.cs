@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TcpHtmlVerify;
 using TcpHtmlVerifyTests;
 
@@ -42,6 +43,7 @@ namespace CreateHttpServer
         public void Stop()
         {
             stopLoop = true;
+            server.Stop();
         }
 
         private void StartServer()
@@ -61,31 +63,34 @@ namespace CreateHttpServer
         private Task AcceptClient()
         {
             OnScreen("Waiting for a connection...\r\n");
-            return server
-                .AcceptTcpClientAsync()
+            var acceptTask = server
+                .AcceptTcpClientAsync();
+            acceptTask
                 .ContinueWith(t =>
                 {
                     if (!stopLoop)
                         AcceptClient();
                     else
                         OnScreen("Stopping the server");
-                    return t.Result;
-                })
+
+                    ServeClient(t.Result).Wait();
+                }, TaskContinuationOptions.OnlyOnRanToCompletion);
+            acceptTask
                 .ContinueWith(t =>
-                    ServeClient(t.Result).Wait()
-                );
+                    OnScreen("Error on task completion"), TaskContinuationOptions.OnlyOnFaulted);
+            return acceptTask;
         }
 
         private Task ServeClient(TcpClient tcpClient)
         {
-            return ReadGivenStream(tcpClient.GetStream())
-                .ContinueWith(headersTask =>
-                {
-                    var result = headersTask.Result;
-                    OnScreen($"Headers received {result.Item1}");
-                    WriteGivenStream(result.Item1, result.Item2).Wait();
-                    tcpClient.Close();
-                });
+        return ReadGivenStream(tcpClient.GetStream())
+            .ContinueWith(headersTask =>
+            {
+                var result = headersTask.Result;
+                OnScreen($"Headers received {result.Item1}");
+                WriteGivenStream(result.Item1, result.Item2).Wait();
+                tcpClient.Close();
+            });
         }
 
         private Task WriteGivenStream(string headers, Stream stream)
@@ -151,7 +156,5 @@ namespace CreateHttpServer
             }
             return data;
         }
-
-
     }
 }
