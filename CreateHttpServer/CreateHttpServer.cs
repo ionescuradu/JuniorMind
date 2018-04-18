@@ -60,25 +60,37 @@ namespace CreateHttpServer
             }
         }
 
-        private Task AcceptClient()
+        private async void AcceptClient()
         {
-            OnScreen("Waiting for a connection...\r\n");
-            var acceptTask = server
-                .AcceptTcpClientAsync();
-            acceptTask
-                .ContinueWith(t =>
+            try
+            {
+                OnScreen("\r\nWaiting for a connection...\r\n");
+                if (stopLoop)
                 {
-                    if (!stopLoop)
-                        AcceptClient();
-                    else
-                        OnScreen("Stopping the server");
-
-                    ServeClient(t.Result).Wait();
-                }, TaskContinuationOptions.OnlyOnRanToCompletion);
-            acceptTask
-                .ContinueWith(t =>
-                    OnScreen("Error on task completion"), TaskContinuationOptions.OnlyOnFaulted);
-            return acceptTask;
+                    OnScreen("Stopping the server");
+                    return;
+                }
+                var client = await server.AcceptTcpClientAsync();
+                AcceptClient();
+                await ServeClient(client);
+            }
+            catch (ObjectDisposedException)
+            {
+                OnScreen($"Server stopped");
+            }
+            //return;
+            //    .ContinueWith(t =>
+            //    {
+            //        if (!stopLoop)
+            //            AcceptClient();
+            //        else
+            //            OnScreen("Stopping the server");
+            //        ServeClient(t.Result).Wait();
+            //    }, TaskContinuationOptions.OnlyOnRanToCompletion);
+            //acceptTask
+            //    .ContinueWith(t =>
+            //        OnScreen("Error on task completion"), TaskContinuationOptions.OnlyOnFaulted);
+            //return acceptTask;
         }
 
         private Task ServeClient(TcpClient tcpClient)
@@ -87,7 +99,7 @@ namespace CreateHttpServer
             .ContinueWith(headersTask =>
             {
                 var result = headersTask.Result;
-                OnScreen($"Headers received {result.Item1}");
+                OnScreen($"Headers received {result.Item1}\r\n");
                 WriteGivenStream(result.Item1, result.Item2).Wait();
                 tcpClient.Close();
             });
@@ -108,11 +120,11 @@ namespace CreateHttpServer
             var controller = new StaticController(repository);
             var request = match as Request;
 
-            OnScreen($"Path received: {request.Uri}\r\n");
+            //OnScreen($"Path received: {request.Uri}\r\n");
 
             var response = controller.Response(request);
             response.AddField("Connection", "close");
-            OnScreen($"Responce headers {response.Headers}");
+            OnScreen($"Responce headers {response.Headers}\r\n");
 
             var message = response.GetBytes();
             return stream
@@ -156,5 +168,6 @@ namespace CreateHttpServer
             }
             return data;
         }
+
     }
 }
