@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:FirstWpfApp"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="384"
-        Width="683"
-        Background="LightGray">
+        MinHeight="384"
+        MinWidth="683"
+        Background="#eee">
     <Grid Margin="10,10,10,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -56,23 +56,77 @@
                      Width="300" />
         </StackPanel>
         <Grid Grid.Column="1"
-              Grid.Row="1"
-              Grid.RowSpan="6">
-            <Border BorderBrush="Gray"
+              Grid.Row="2"
+              Grid.RowSpan="7">
+            <Border Background="White"
                     BorderThickness="1">
                 <Border.Effect>
-                    <DropShadowEffect />
+                    <DropShadowEffect Opacity="0.2"
+                                      BlurRadius="26"
+                                      ShadowDepth="10" />
                 </Border.Effect>
-            </Border>   
-            <Border 
-                BorderBrush="Black"
-                BorderThickness="1">
-            <Rectangle Fill="Gray"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Grid.RowSpan="6" />
             </Border>
-            
+        </Grid>
+        <Grid Grid.Column="1"
+              Grid.Row="2"
+              Grid.RowSpan="7">
+            <Label Content="IPAddress"
+                   FontSize="18"
+                   Foreground="#777"
+                   FontWeight="Bold"
+                   Margin="10,0,0,0" />
+            <TextBox x:Name="IPAddressInput"
+                     Height="30"
+                     Padding="5,5,5,5"
+                     Background="Gray"
+                     Opacity="0.4"
+                     VerticalAlignment="Top"
+                     Margin="120,2.5,50,0"
+                     Foreground="Black" />
+            <Label Content="Port"
+                   FontSize="18"
+                   Foreground="#777"
+                   FontWeight="Bold"
+                   Margin="10,40,0,0" />
+            <TextBox x:Name="PortInput"
+                     Height="30"
+                     Padding="5,5,5,5"
+                     Background="Gray"
+                     VerticalAlignment="Top"
+                     Margin="120,42.5,50,0"
+                     Opacity="0.4"
+                     Foreground="Black" />
+            <Label Content="Path"
+                   FontSize="18"
+                   Foreground="#777"
+                   FontWeight="Bold"
+                   Margin="10,80,0,0" />
+            <TextBox x:Name="PathInput"
+                     Height="30"
+                     Padding="5,5,5,5"
+                     Background="Gray"
+                     VerticalAlignment="Top"
+                     Margin="120,82.5,50,0"
+                     Opacity="0.4"
+                     Foreground="Black" />
+            <Button x:Name="StartServer"
+                    Content="START"
+                    Foreground="Black"
+                    FontSize="14"
+                    Width="50"
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    Margin="20,120,20,80"
+                    VerticalAlignment="Top" />
+            <Button x:Name="StopServer"
+                    Content="STOP"
+                    Foreground="Black"
+                    FontSize="14"
+                    Width="50"
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    Margin="20,165,20,35"
+                    VerticalAlignment="Top" />
         </Grid>
     </Grid>
 </Window>
