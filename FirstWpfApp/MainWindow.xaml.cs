@@ -25,7 +25,5 @@ namespace FirstWpfApp
                 PathInput.Text = openFileDialog.FileName;
             }
         }
-
-       
     }
 }
