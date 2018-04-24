@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Microsoft.Win32;
 
 namespace FirstWpfApp
 {
@@ -11,5 +12,20 @@ namespace FirstWpfApp
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                DefaultExt = ".txt"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                PathInput.Text = openFileDialog.FileName;
+            }
+        }
+
+       
     }
 }
