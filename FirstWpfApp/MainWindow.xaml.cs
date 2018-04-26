@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace FirstWpfApp
@@ -15,14 +16,11 @@ namespace FirstWpfApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                DefaultExt = ".txt"
-            };
+            var openFolder = new FolderBrowserDialog();
 
-            if (openFileDialog.ShowDialog() == true)
+            if (openFolder.ShowDialog().ToString() != null)
             {
-                PathInput.Text = openFileDialog.FileName;
+                PathInput.Text = openFolder.SelectedPath.ToString();
             }
         }
     }

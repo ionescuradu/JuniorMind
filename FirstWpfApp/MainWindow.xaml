@@ -10,7 +10,7 @@
         MinWidth="683"
         Background="#eee">
     <Window.DataContext>
-        <local:HttpSettingsViewModel/>
+        <local:HttpSettingsViewModel />
     </Window.DataContext>
     <Grid Margin="10,10,10,10">
         <Grid.RowDefinitions>
@@ -86,8 +86,8 @@
                      Background="White"
                      VerticalAlignment="Top"
                      Margin="120,2.5,50,0"
-                     Foreground="Black" 
-                     BorderThickness="1"/>
+                     Foreground="Black"
+                     BorderThickness="1" />
             <Label Content="Port"
                    FontSize="18"
                    Foreground="#777"
@@ -101,8 +101,8 @@
                      Background="White"
                      VerticalAlignment="Top"
                      Margin="120,42.5,50,0"
-                     Foreground="Black" 
-                     BorderThickness="1"/>
+                     Foreground="Black"
+                     BorderThickness="1" />
             <Label Content="Path"
                    FontSize="18"
                    Foreground="#777"
@@ -116,8 +116,8 @@
                      Text="{Binding Path =Path}"
                      TextAlignment="Center"
                      Margin="120,82.5,100,0"
-                     Foreground="Black" 
-                     BorderThickness="1"/>
+                     Foreground="Black"
+                     BorderThickness="1" />
             <Button Content="..."
                     Height="30"
                     Width="30"
@@ -134,8 +134,7 @@
                     Command="{Binding Path=ExecuteCommand}"
                     HorizontalAlignment="Right"
                     Margin="20,150,20,80"
-                    VerticalAlignment="Top"
-                     />
+                    VerticalAlignment="Top" />
             <Button x:Name="StopServer"
                     Content="STOP"
                     Foreground="Black"
@@ -143,9 +142,20 @@
                     Width="50"
                     Height="30"
                     HorizontalAlignment="Right"
+                    Command="{Binding Path=StopCommand}"
                     Margin="20,195,20,35"
-                    VerticalAlignment="Top"
-                     />
+                    VerticalAlignment="Top" />
+            <TextBox x:Name="txtConsole"
+                     Height="170"
+                     Padding="5,5,5,5"
+                     Background="White"
+                     VerticalAlignment="Top"
+                     TextAlignment="left"
+                     Margin="50,150,100,0"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     Text="{Binding Path = TxtConsole, Mode=OneWay}"
+                     Foreground="Black"
+                     BorderThickness="1" />
         </Grid>
     </Grid>
 </Window>

@@ -56,7 +56,7 @@ namespace CreateHttpServer
             }
             catch (SocketException e)
             {
-                OnScreen($"SocketException: {e}\r\n");
+                TriggerOnScreen($"SocketException: {e}\r\n");
             }
         }
 
@@ -64,10 +64,10 @@ namespace CreateHttpServer
         {
             try
             {
-                OnScreen("\r\nWaiting for a connection...\r\n");
+                TriggerOnScreen("\r\nWaiting for a connection...\r\n");
                 if (stopLoop)
                 {
-                    OnScreen("Stopping the server");
+                    TriggerOnScreen("Stopping the server");
                     return;
                 }
                 var client = await server.AcceptTcpClientAsync();
@@ -76,21 +76,8 @@ namespace CreateHttpServer
             }
             catch (ObjectDisposedException)
             {
-                OnScreen($"Server stopped");
+                TriggerOnScreen($"Server stopped");
             }
-            //return;
-            //    .ContinueWith(t =>
-            //    {
-            //        if (!stopLoop)
-            //            AcceptClient();
-            //        else
-            //            OnScreen("Stopping the server");
-            //        ServeClient(t.Result).Wait();
-            //    }, TaskContinuationOptions.OnlyOnRanToCompletion);
-            //acceptTask
-            //    .ContinueWith(t =>
-            //        OnScreen("Error on task completion"), TaskContinuationOptions.OnlyOnFaulted);
-            //return acceptTask;
         }
 
         private Task ServeClient(TcpClient tcpClient)
@@ -99,7 +86,7 @@ namespace CreateHttpServer
             .ContinueWith(headersTask =>
             {
                 var result = headersTask.Result;
-                OnScreen($"Headers received {result.Item1}\r\n");
+                TriggerOnScreen($"Headers received {result.Item1}\r\n");
                 WriteGivenStream(result.Item1, result.Item2).Wait();
                 tcpClient.Close();
             });
@@ -120,16 +107,15 @@ namespace CreateHttpServer
             var controller = new StaticController(repository);
             var request = match as Request;
 
-            //OnScreen($"Path received: {request.Uri}\r\n");
 
             var response = controller.Response(request);
             response.AddField("Connection", "close");
-            OnScreen($"Responce headers {response.Headers}\r\n");
+            TriggerOnScreen($"Responce headers {response.Headers}\r\n");
 
             var message = response.GetBytes();
             return stream
                 .WriteAsync(message, 0, message.Length)
-                .ContinueWith(t => OnScreen($"Finished writing in stream\r\n"));
+                .ContinueWith(t => TriggerOnScreen($"Finished writing in stream\r\n"));
         }
 
         private Task<(string, Stream)> ReadGivenStream(Stream stream)
@@ -137,11 +123,11 @@ namespace CreateHttpServer
             var bytes = new Byte[1024];
             try
             {
-                OnScreen("Connected!\r\n");
+                TriggerOnScreen("Connected!\r\n");
                 return stream.ReadAsync(bytes, 0, bytes.Length)
                   .ContinueWith(t =>
                   {
-                      OnScreen($"Read {t.Result} bytes\r\n");
+                      TriggerOnScreen($"Read {t.Result} bytes\r\n");
                       return t.Result;
                   })
                   .ContinueWith(t => (Encoding.UTF8.GetString(bytes, 0, t.Result), stream));
@@ -162,11 +148,16 @@ namespace CreateHttpServer
                 data += Encoding.UTF8.GetString(bytes, 0, i);
                 if (data.IndexOf("\r\n\r\n") != -1)
                 {
-                    OnScreen($"Request received:{data}\r\n");
+                    TriggerOnScreen($"Request received:{data}\r\n");
                     break;
                 }
             }
             return data;
+        }
+
+        private void TriggerOnScreen(string message)
+        {
+            OnScreen?.Invoke(message);
         }
 
     }
